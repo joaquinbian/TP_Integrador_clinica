@@ -59,3 +59,63 @@
 	"Paciente.h"
 	"Profesional.h"
 
+1728382077 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\fecha.cpp
+	"Fecha.h"
+	<iostream>
+	<sstream>
+	<iomanip>
+	<string>
+
+1728381531 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\fecha.h
+	<string>
+
+1728555093 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\paciente.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Paciente.h"
+	"Fecha.h"
+
+1728597510 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\paciente.h
+	<string>
+	"persona.h"
+	"Fecha.h"
+
+1728521613 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\persona.h
+	<string>
+
+1728555076 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\pacientesarchivo.cpp
+	<iostream>
+	"PacientesArchivo.h"
+
+1728554817 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\pacientesarchivo.h
+	"Paciente.h"
+
+1728555153 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\persona.cpp
+	"Persona.h"
+	<cstring>
+	<iostream>
+
+1728556047 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\profesional.cpp
+	<iostream>
+	<cstring>
+	"Profesional.h"
+	"Persona.h"
+
+1728556057 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\profesional.h
+	<cstring>
+	"Persona.h"
+
+1728598933 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\main.cpp
+	<iostream>
+	<cstdlib>
+	"Persona.h"
+	"Paciente.h"
+	"funcionesGlobales.h"
+
+1728595763 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\funcionesglobales.h
+	<iostream>
+	"PacientesArchivo.h"
+	"Paciente.h"
+	"Profesional.h"
+
