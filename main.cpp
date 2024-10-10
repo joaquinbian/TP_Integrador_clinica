@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-    int opcion, opcionPaciente, opcionProfesional;
+    int opcion, opcionPaciente, opcionProfesional, opcionListado;
     char salir;
     Paciente p1;
     Profesional pr1;
@@ -23,9 +23,6 @@ int main()
         cout<<"2 - PROFESIONALES " <<endl;
         cout<<"3 - LISTADOS " <<endl;
         cout<<"0 - SALIR " <<endl<<endl;
-        /*cout<<"6 - LISTAR PACIENTES " <<endl;
-        cout<<"7 - CARGAR PROFESIONAL " <<endl;
-        cout<<"8 - LISTAR PROFESIONALES " <<endl<<endl;*/
 
         cout<<"Ingrese una opcion : ";
         cin>>opcion;
@@ -107,8 +104,50 @@ int main()
                 {
                     break;
                 }
+            }
+            break;
+        case 3:
+            while (true)
+            {
+                system("cls");
+                cout << "\033[4m";  // Comienza subrayado
+                cout<<"LISTADOS " <<endl<<endl;
+                cout << "\033[0m";  // Detiene subrayado
 
+                cout << "1 - LISTAR PACIENTES" << endl;
+                cout << "2 - LISTAR RROFESIONALES" << endl;
+                cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
 
+                cout << "Ingrese una opcion: ";
+                cin >> opcionListado;
+
+                switch(opcionListado)
+                {
+                case 1:
+                    system("cls");
+                    cout << "\033[4m";  // Comienza subrayado
+                    cout<<"LISTA DE PACIENTES" <<endl<<endl;
+                    cout << "\033[0m";  // Detiene subrayado
+
+                    break;
+                case 2:
+                    system("cls");
+                    cout << "\033[4m";  // Comienza subrayado
+                    cout<<"LISTA DE PROFESIONALES" <<endl<<endl;
+                    cout << "\033[0m";  // Detiene subrayado
+
+                    break;
+                case 0:
+                    system("cls");
+                    break;
+                default:
+                    cout << "Opcion no valida." << endl;
+                }
+
+                if (opcionProfesional == 0)
+                {
+                    break;
+                }
             }
             break;
         case 0:
