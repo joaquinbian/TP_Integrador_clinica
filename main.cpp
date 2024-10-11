@@ -91,7 +91,7 @@ int main()
                     cout << "\033[4m";  // Comienza subrayado
                     cout<<"DATOS DEL PROFESIONAL " <<endl<<endl;
                     cout << "\033[0m";  // Detiene subrayado
-                    cargarProfesional();
+                    guardarProfesional();
                     break;
                 case 0:
                     system("cls");

@@ -69,7 +69,7 @@
 1728381531 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\fecha.h
 	<string>
 
-1728555093 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\paciente.cpp
+1728641456 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\paciente.cpp
 	<iostream>
 	<cstring>
 	<string>
@@ -91,7 +91,7 @@
 1728641128 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\pacientesarchivo.h
 	"Paciente.h"
 
-1728555153 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\persona.cpp
+1728641447 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\persona.cpp
 	"Persona.h"
 	<cstring>
 	<iostream>
@@ -117,5 +117,12 @@
 	<iostream>
 	"PacientesArchivo.h"
 	"Paciente.h"
+	"Profesional.h"
+
+1728641089 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\profesionalesarchivo.cpp
+	<iostream>
+	"ProfesionalesArchivo.h"
+
+1728641269 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\profesionalesarchivo.h
 	"Profesional.h"
 

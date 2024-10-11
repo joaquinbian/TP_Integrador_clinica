@@ -12,7 +12,6 @@ class ProfesionalesArchivo
         int buscar(char* matricula);
         Profesional Leer(int pos);
 
-
     private:
         std::string _filename;
 

@@ -55,36 +55,3 @@ const char* Paciente::getObraSocial()const
 {
     return _obraSocial;
 }
-void Paciente::cargar(){
-    Persona::cargar();
-
-    int edad;
-    char obraSocial[20], dni[20];
-    Fecha fechaNacimiento;
-
-    cout<<"Fecha de nacimiento "<<endl;
-    cin>>fechaNacimiento;
-    setFechaNacimiento(fechaNacimiento);
-
-    cout<<"Ingrese la edad del paciente : ";
-    cin>>edad;
-    setEdad(edad);
-
-    cout << "Ingrese el DNI del paciente: ";
-    cin.ignore();
-    cin.getline(dni, 20);
-    setDni(dni);
-
-    cout << "Ingrese la obra social: ";
-    cin.getline(obraSocial, 20);
-    setObraSocial(obraSocial);
-}
-
-void Paciente::mostrar(){
-    Persona::mostrar();
-
-    cout<<"Fecha de nacimiento : " << getFechaNacimiento().toString()<<endl;
-    cout<<"Edad : " <<getEdad() <<endl;
-    cout<<"DNI : " <<getDni() <<endl;
-    cout<<"Obra Social : " <<getObraSocial() <<endl;
-}

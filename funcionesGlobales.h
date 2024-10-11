@@ -2,7 +2,7 @@
 #include "PacientesArchivo.h"
 #include "Paciente.h"
 #include "Profesional.h"
-//incluir clase profesionalesArchivo
+#include "ProfesionalesArchivo.h"
 
 using namespace std;
 
@@ -128,6 +128,24 @@ void guardarPaciente()
     else
     {
         cout<<"No se pudo guardar el paciente " <<endl;
+        system("pause");
+        system("cls");
+    }
+}
+void guardarProfesional()
+{
+    Profesional profesional;
+    ProfesionalesArchivo pa;
+    profesional = cargarProfesional();
+    if(pa.Guardar(profesional))
+    {
+        cout<<"Profesional guardado exitosamente" <<endl;
+        system("pause");
+        system("cls");
+    }
+    else
+    {
+        cout<<"No se pudo guardar el profesional " <<endl;
         system("pause");
         system("cls");
     }
