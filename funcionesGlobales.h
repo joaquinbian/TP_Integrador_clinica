@@ -73,11 +73,11 @@ Profesional cargarProfesional()
     cin.getline(email, 50);
 
     cout << "Ingrese la especialidad: ";
-    cin.ignore();
+    //cin.ignore();
     cin.getline(especialidad, 50);
 
     cout << "Ingrese el numero de matricula: ";
-    cin.ignore();
+    //cin.ignore();
     cin.getline(matricula, 50);
 
     cout << "Ingrese el valor de la consulta : $";
@@ -100,6 +100,7 @@ void mostrarPaciente(Paciente paciente)
     cout<<"Edad : " <<paciente.getEdad() <<endl;
     cout<<"DNI : " <<paciente.getDni() <<endl;
     cout<<"Obra Social : " <<paciente.getObraSocial() <<endl;
+    cout<<"-----------------------------------------------"<<endl;
 }
 void mostrarProfesional(Profesional profesional)
 {
@@ -111,8 +112,9 @@ void mostrarProfesional(Profesional profesional)
     cout<<"Email : " <<profesional.getEmail() <<endl;
     cout<<"Matricula : " <<profesional.getMatricula() <<endl;
     cout<<"Especialidad : " <<profesional.getEspecialidad() <<endl;
-    cout<<"Valor de la consulta : " <<profesional.getValorConsulta() <<endl;
+    cout<<"Valor de la consulta : $" <<profesional.getValorConsulta() <<endl;
     cout<<"Atiende obras sociales y prepagas : " <<profesional.getSoloParticular() <<endl;
+      cout<<"-----------------------------------------------"<<endl;
 }
 void guardarPaciente()
 {
@@ -162,4 +164,17 @@ void mostrarTodosPacientes()
         mostrarPaciente(pacientes[i]);
     }
     delete [] pacientes;
+}
+void mostrarTodosProfesionales()
+{
+    Profesional *profesionales;
+    ProfesionalesArchivo pa;
+    int cantidad = pa.getCantidad();
+    profesionales = new Profesional [cantidad];
+    pa.leerTodos(profesionales, cantidad);
+    for(int i = 0; i < cantidad; i++)
+    {
+        mostrarProfesional(profesionales[i]);
+    }
+    delete [] profesionales;
 }

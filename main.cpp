@@ -126,17 +126,18 @@ int main()
                 case 1:
                     system("cls");
                     cout << "\033[4m";  // Comienza subrayado
-                    cout<<"LISTA DE PACIENTES" <<endl<<endl;
+                    cout<<"LISTADO DE PACIENTES" <<endl<<endl;
                     cout << "\033[0m";  // Detiene subrayado
-                    system("pause");
                     mostrarTodosPacientes();
+                    system("pause");
                     break;
                 case 2:
                     system("cls");
                     cout << "\033[4m";  // Comienza subrayado
-                    cout<<"LISTA DE PROFESIONALES" <<endl<<endl;
+                    cout<<"LISTADO DE PROFESIONALES" <<endl<<endl;
                     cout << "\033[0m";  // Detiene subrayado
-
+                    mostrarTodosProfesionales();
+                    system("pause");
                     break;
                 case 0:
                     system("cls");
