@@ -9,7 +9,7 @@ class PacientesArchivo
         bool leerTodos(Paciente registros[], int cantidad);
         bool guardar(int pos, const Paciente &registro);
         int getCantidad();
-        int buscar(int dni);
+        int buscar(char* dni);
         Paciente Leer(int pos);
 
 

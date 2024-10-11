@@ -84,11 +84,11 @@
 1728521613 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\persona.h
 	<string>
 
-1728555076 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\pacientesarchivo.cpp
+1728641103 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\pacientesarchivo.cpp
 	<iostream>
 	"PacientesArchivo.h"
 
-1728554817 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\pacientesarchivo.h
+1728641128 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\pacientesarchivo.h
 	"Paciente.h"
 
 1728555153 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\persona.cpp
@@ -106,14 +106,14 @@
 	<cstring>
 	"Persona.h"
 
-1728598933 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\main.cpp
+1728601024 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\main.cpp
 	<iostream>
 	<cstdlib>
 	"Persona.h"
 	"Paciente.h"
 	"funcionesGlobales.h"
 
-1728595763 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\funcionesglobales.h
+1728601211 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\funcionesglobales.h
 	<iostream>
 	"PacientesArchivo.h"
 	"Paciente.h"

@@ -88,7 +88,8 @@ Profesional cargarProfesional()
 
     return Profesional(nombre,  apellido, telefono,  direccion,  ciudad,  email, matricula, especialidad, valorConsulta, soloParticular);
 }
-void mostrarPaciente(Paciente paciente){
+void mostrarPaciente(Paciente paciente)
+{
     cout<<"Nombre : " <<paciente.getNombre() <<endl;
     cout<<"Apellido : " <<paciente.getApellido() <<endl;
     cout<<"Domicilio : " <<paciente.getDireccion() <<endl;
@@ -100,7 +101,8 @@ void mostrarPaciente(Paciente paciente){
     cout<<"DNI : " <<paciente.getDni() <<endl;
     cout<<"Obra Social : " <<paciente.getObraSocial() <<endl;
 }
-void mostrarProfesional(Profesional profesional){
+void mostrarProfesional(Profesional profesional)
+{
     cout<<"Nombre : " <<profesional.getNombre() <<endl;
     cout<<"Apellido : " <<profesional.getApellido() <<endl;
     cout<<"Domicilio : " <<profesional.getDireccion() <<endl;
@@ -135,14 +137,11 @@ void mostrarTodosPacientes()
     Paciente *pacientes;
     PacientesArchivo pa;
     int cantidad = pa.getCantidad();
-     pacientes = new Paciente [cantidad];
+    pacientes = new Paciente [cantidad];
     pa.leerTodos(pacientes, cantidad);
     for(int i = 0; i < cantidad; i++)
     {
-
-
-            mostrarPaciente(pacientes[i]);
-
+        mostrarPaciente(pacientes[i]);
     }
     delete [] pacientes;
 }

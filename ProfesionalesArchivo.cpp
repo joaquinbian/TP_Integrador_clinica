@@ -1,13 +1,12 @@
 #include<iostream>
-#include "PacientesArchivo.h"
-
+#include "ProfesionalesArchivo.h"
 using namespace std;
 
-PacientesArchivo::PacientesArchivo()
+ProfesionalesArchivo::ProfesionalesArchivo()
 {
-    _filename = "pacientes.dat";
+    _filename = "profesionales.dat";
 }
-bool PacientesArchivo::Guardar(const Paciente &registro)
+bool ProfesionalesArchivo::Guardar(const Profesional &registro)
 {
     bool resultado;
     FILE *pFile;
@@ -16,11 +15,11 @@ bool PacientesArchivo::Guardar(const Paciente &registro)
     {
         return false;
     }
-    resultado = fwrite(&registro, sizeof(Paciente), 1, pFile);
+    resultado = fwrite(&registro, sizeof(Profesional), 1, pFile);
     fclose(pFile);
     return resultado;
 }
-bool PacientesArchivo::leerTodos(Paciente registros[], int cantidad)
+bool ProfesionalesArchivo::leerTodos(Profesional registros[], int cantidad)
 {
     bool resultado;
     FILE *pFile;
@@ -29,14 +28,14 @@ bool PacientesArchivo::leerTodos(Paciente registros[], int cantidad)
     {
         return false;
     }
-    resultado = fread(registros, sizeof(Paciente), cantidad, pFile) == cantidad;
+    resultado = fread(registros, sizeof(Profesional), cantidad, pFile) == cantidad;
     fclose(pFile);
     return resultado;
 }
-int PacientesArchivo::getCantidad()
+int ProfesionalesArchivo::getCantidad()
 {
     int total;
-    Paciente registro;
+    Profesional registro;
     FILE *pFile;
     pFile = fopen(_filename.c_str(), "rb");
     if(pFile == nullptr)
@@ -46,24 +45,24 @@ int PacientesArchivo::getCantidad()
     fseek(pFile, 0, SEEK_END); ///Posiciono el cursor al final del archivo
     total = ftell(pFile); ///obtengo cantidad de bytes totales desde el inicio hasta la ubicacion del cursor
     fclose(pFile);
-    return total / sizeof(Paciente); ///obtengo cantidad de registros
+    return total / sizeof(Profesional); ///obtengo cantidad de registros
 
 }
-Paciente PacientesArchivo::Leer(int pos)
+Profesional ProfesionalesArchivo::Leer(int pos)
 {
-    Paciente registro;
+    Profesional registro;
     FILE *pFile;
     pFile = fopen(_filename.c_str(), "rb");
     if(pFile == nullptr)
     {
         return registro;
     }
-    fseek(pFile, sizeof(Paciente) * pos, SEEK_SET);
-    fread(&registro, sizeof(Paciente), 1, pFile);
+    fseek(pFile, sizeof(Profesional) * pos, SEEK_SET);
+    fread(&registro, sizeof(Profesional), 1, pFile);
     fclose(pFile);
     return registro;
 }
-bool PacientesArchivo::guardar(int pos, const Paciente &registro)
+bool ProfesionalesArchivo::guardar(int pos, const Profesional &registro)
 {
     bool resultado;
     FILE *pFile;
@@ -72,15 +71,15 @@ bool PacientesArchivo::guardar(int pos, const Paciente &registro)
     {
         return false;
     }
-    fseek(pFile, sizeof(Paciente) * pos, SEEK_SET);
-    resultado = fwrite(&registro, sizeof(Paciente), 1, pFile);
+    fseek(pFile, sizeof(Profesional) * pos, SEEK_SET);
+    resultado = fwrite(&registro, sizeof(Profesional), 1, pFile);
     fclose(pFile);
     return resultado;
 }
-int PacientesArchivo::buscar(char* dni)
+int ProfesionalesArchivo::buscar(char* matricula)
 {
-    Paciente registro;
-    PacientesArchivo pa;
+    Profesional registro;
+    ProfesionalesArchivo pa;
     int pos = 0;
     FILE *pFile;
     pFile = fopen(_filename.c_str(), "rb");
@@ -88,16 +87,16 @@ int PacientesArchivo::buscar(char* dni)
     {
         return false;
     }
-    while(fread(&registro, sizeof(Paciente), 1, pFile) == 1)
+    while(fread(&registro, sizeof(Profesional), 1, pFile) == 1)
     {
-        if(registro.getDni() == dni)
+        if(registro.getMatricula() == matricula)
         {
             break;
         }
         pos++;
     }
     fclose(pFile);
-    if(registro.getDni() == dni)
+    if(registro.getMatricula() == matricula)
     {
         return pos;
     }

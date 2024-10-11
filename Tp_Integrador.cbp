@@ -44,6 +44,8 @@
 		<Unit filename="Persona.h" />
 		<Unit filename="Profesional.cpp" />
 		<Unit filename="Profesional.h" />
+		<Unit filename="ProfesionalesArchivo.cpp" />
+		<Unit filename="ProfesionalesArchivo.h" />
 		<Unit filename="funcionesGlobales.h" />
 		<Unit filename="main.cpp" />
 		<Extensions />

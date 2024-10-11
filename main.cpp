@@ -53,7 +53,7 @@ int main()
                     cout << "\033[4m";  // Comienza subrayado
                     cout << "DATOS DEL PACIENTE" << endl<<endl;
                     cout << "\033[0m";  // Detiene subrayado
-                    cargarPaciente();
+                    guardarPaciente();
                     break;
                 case 0:
                     system("cls");
@@ -115,7 +115,7 @@ int main()
                 cout << "\033[0m";  // Detiene subrayado
 
                 cout << "1 - LISTAR PACIENTES" << endl;
-                cout << "2 - LISTAR RROFESIONALES" << endl;
+                cout << "2 - LISTAR PROFESIONALES" << endl;
                 cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
 
                 cout << "Ingrese una opcion: ";
@@ -128,7 +128,8 @@ int main()
                     cout << "\033[4m";  // Comienza subrayado
                     cout<<"LISTA DE PACIENTES" <<endl<<endl;
                     cout << "\033[0m";  // Detiene subrayado
-
+                    system("pause");
+                    mostrarTodosPacientes();
                     break;
                 case 2:
                     system("cls");
@@ -144,7 +145,7 @@ int main()
                     cout << "Opcion no valida." << endl;
                 }
 
-                if (opcionProfesional == 0)
+                if (opcionListado == 0)
                 {
                     break;
                 }
@@ -169,12 +170,8 @@ int main()
                     break;
                 }
             }
-            while(salir != 's' || salir != 'S' || salir != 'n' || salir != 'N');
-
-            if (salir == 'n' || salir == 'N')
-            {
-                break;
-            }
+            while(salir != 's' && salir != 'S' && salir != 'n' && salir != 'N');
+            break;
 
 
 
