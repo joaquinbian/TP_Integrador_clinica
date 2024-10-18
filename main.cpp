@@ -3,8 +3,7 @@
 #include "Persona.h"
 #include "Paciente.h"
 #include "funcionesGlobales.h"
-
-//Prueba commit Carletti Santiago
+#include "Turno.h"
 
 using namespace std;
 
