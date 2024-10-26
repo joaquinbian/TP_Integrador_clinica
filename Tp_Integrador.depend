@@ -206,3 +206,82 @@
 	"Turno.h"
 	"Fecha.h"
 
+1729965718 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Fecha.cpp
+	"Fecha.h"
+	<iostream>
+	<sstream>
+	<iomanip>
+	<string>
+
+1729965718 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Fecha.h
+	<string>
+
+1729972768 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/main.cpp
+	<iostream>
+	<cstdlib>
+	"Persona.h"
+	"Paciente.h"
+	"funcionesGlobales.h"
+	"Turno.h"
+
+1729965718 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Persona.h
+	<string>
+
+1729966630 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Paciente.h
+	<string>
+	"Persona.h"
+	"Fecha.h"
+
+1729973784 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/funcionesGlobales.h
+	<iostream>
+	"PacientesArchivo.h"
+	"Paciente.h"
+	"Profesional.h"
+	"ProfesionalesArchivo.h"
+
+1729969025 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/PacientesArchivo.h
+	"Paciente.h"
+
+1729965718 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Profesional.h
+	<cstring>
+	"Persona.h"
+
+1729965718 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/ProfesionalesArchivo.h
+	"Profesional.h"
+
+1729965718 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Turno.h
+	"Fecha.h"
+
+1729965718 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Paciente.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Paciente.h"
+	"Fecha.h"
+
+1729973684 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/PacientesArchivo.cpp
+	<iostream>
+	"PacientesArchivo.h"
+
+1729965718 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Persona.cpp
+	"Persona.h"
+	<cstring>
+	<iostream>
+
+1729965718 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Profesional.cpp
+	<iostream>
+	<cstring>
+	"Profesional.h"
+	"Persona.h"
+
+1729965718 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/ProfesionalesArchivo.cpp
+	<iostream>
+	"ProfesionalesArchivo.h"
+
+1729966508 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Turno.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Turno.h"
+	"Fecha.h"
+

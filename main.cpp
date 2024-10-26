@@ -40,9 +40,10 @@ int main()
                 cout << "\033[0m";  // Detiene subrayado
 
                 cout << "1 - CARGAR PACIENTE" << endl;
-                cout << "2 - ASIGNAR TURNO" << endl;
-                cout << "3 - MODIFICAR TURNO" << endl;
-                cout << "4 - ELIMINAR TURNO" << endl;
+                cout << "2 - MODIFICAR PACIENTE" << endl;
+                cout << "3 - ASIGNAR TURNO" << endl;
+                cout << "4 - MODIFICAR TURNO" << endl;
+                cout << "5 - ELIMINAR TURNO" << endl;
                 cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
 
                 cout << "Ingrese una opcion: ";
@@ -57,6 +58,9 @@ int main()
                     cout << "\033[0m";  // Detiene subrayado
                     guardarPaciente();
                     break;
+                case 2:
+                    system("cls");
+                    editarPaciente();
                 case 0:
                     system("cls");
                     break;

@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "persona.h"
+#include "Persona.h"
 #include "Fecha.h"
 
 
