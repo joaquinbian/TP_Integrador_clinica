@@ -2,19 +2,27 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="PacientesArchivo.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Profesional.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="12" topLine="0" />
+			<Cursor1 position="134" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Paciente.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+	<File name="funcionesGlobales.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2160" topLine="0" />
+			<Cursor1 position="3828" topLine="0" />
 		</Cursor>
+		<Folding>
+			<Collapse line="9" />
+			<Collapse line="50" />
+			<Collapse line="119" />
+			<Collapse line="137" />
+			<Collapse line="155" />
+			<Collapse line="168" />
+		</Folding>
 	</File>
-	<File name="Paciente.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+	<File name="Paciente.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="415" topLine="3" />
+			<Cursor1 position="415" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Fecha.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -22,16 +30,52 @@
 			<Cursor1 position="462" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="funcionesGlobales.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+	<File name="Profesional.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4480" topLine="0" />
+			<Cursor1 position="137" topLine="12" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4558" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ProfesionalesArchivo.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="830" topLine="0" />
 		</Cursor>
 		<Folding>
 			<Collapse line="9" />
-			<Collapse line="50" />
-			<Collapse line="91" />
-			<Collapse line="104" />
-			<Collapse line="117" />
+			<Collapse line="35" />
+			<Collapse line="51" />
+			<Collapse line="65" />
+			<Collapse line="79" />
+		</Folding>
+	</File>
+	<File name="Paciente.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1342" topLine="18" />
+		</Cursor>
+	</File>
+	<File name="Persona.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1394" topLine="29" />
+		</Cursor>
+	</File>
+	<File name="ProfesionalesArchivo.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="404" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="PacientesArchivo.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2030" topLine="10" />
+		</Cursor>
+		<Folding>
+			<Collapse line="6" />
+			<Collapse line="10" />
+			<Collapse line="23" />
+			<Collapse line="36" />
 		</Folding>
 	</File>
 	<File name="Persona.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
@@ -39,44 +83,22 @@
 			<Cursor1 position="62" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Persona.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2428" topLine="67" />
-		</Cursor>
-	</File>
 	<File name="Fecha.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1061" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+	<File name="PacientesArchivo.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4321" topLine="124" />
+			<Cursor1 position="328" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Profesional.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="137" topLine="1" />
-		</Cursor>
-	</File>
-	<File name="Profesional.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="134" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="PacientesArchivo.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="898" topLine="9" />
-		</Cursor>
-	</File>
-	<Target name="Debug" top="PacientesArchivo.cpp">
+	<Target name="Debug" top="main.cpp">
 		<File name="main.cpp" />
-		<File name="PacientesArchivo.cpp" />
-		<File name="PacientesArchivo.h" />
 		<File name="funcionesGlobales.h" />
 		<File name="Persona.cpp" />
 		<File name="Paciente.cpp" />
-		<File name="Profesional.h" />
-		<File name="Paciente.h" />
+		<File name="Profesional.cpp" />
+		<File name="ProfesionalesArchivo.cpp" />
 	</Target>
 </CodeBlocks_layout_file>
