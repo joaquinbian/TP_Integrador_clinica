@@ -134,6 +134,29 @@ void guardarPaciente()
         system("cls");
     }
 }
+void editarPaciente(){
+    char DNI[20];
+    PacientesArchivo pa;
+    cout << "Ingrese el DNI del paciente que quiere editar: ";
+    cin.ignore();
+    cin.getline(DNI, 20);
+
+    int pos = pa.buscar(DNI);
+    if(pos == -1 ){
+        cout << "El paciente que quiere editar no ha sido encontrado." << endl;
+        return;
+    }
+
+    Paciente paciente;
+    paciente = cargarPaciente();
+    bool res = pa.guardar(pos, paciente);
+    if(res){
+        cout << "El paciente ha sido editado correctamente";
+    } else {
+        cout << "Ocurrio un error al editar el pacietne";
+    }
+}
+
 void guardarProfesional()
 {
     Profesional profesional;

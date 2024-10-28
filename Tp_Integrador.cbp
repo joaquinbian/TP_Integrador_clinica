@@ -46,6 +46,10 @@
 		<Unit filename="Profesional.h" />
 		<Unit filename="ProfesionalesArchivo.cpp" />
 		<Unit filename="ProfesionalesArchivo.h" />
+		<Unit filename="Turno.cpp" />
+		<Unit filename="Turno.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="funcionesGlobales.h" />
 		<Unit filename="main.cpp" />
 		<Extensions />
