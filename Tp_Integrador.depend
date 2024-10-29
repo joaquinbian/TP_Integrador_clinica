@@ -285,3 +285,84 @@
 	"Turno.h"
 	"Fecha.h"
 
+1730159931 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_clinica\fecha.cpp
+	"Fecha.h"
+	<iostream>
+	<sstream>
+	<iomanip>
+	<string>
+
+1730159931 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_clinica\fecha.h
+	<string>
+
+1730159931 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_clinica\main.cpp
+	<iostream>
+	<cstdlib>
+	"Persona.h"
+	"Paciente.h"
+	"funcionesGlobales.h"
+	"Turno.h"
+
+1730159931 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_clinica\persona.h
+	<string>
+
+1730159931 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_clinica\paciente.h
+	<string>
+	"Persona.h"
+	"Fecha.h"
+
+1730159931 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_clinica\funcionesglobales.h
+	<iostream>
+	"PacientesArchivo.h"
+	"Paciente.h"
+	"Profesional.h"
+	"ProfesionalesArchivo.h"
+
+1730159931 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_clinica\pacientesarchivo.h
+	"Paciente.h"
+
+1730159931 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_clinica\profesional.h
+	<cstring>
+	"Persona.h"
+
+1730159931 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_clinica\profesionalesarchivo.h
+	"Profesional.h"
+
+1730160299 c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_clinica\turno.h
+	<cstring>
+	"Fecha.h"
+
+1730159931 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_clinica\paciente.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Paciente.h"
+	"Fecha.h"
+
+1730159931 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_clinica\pacientesarchivo.cpp
+	<iostream>
+	"PacientesArchivo.h"
+	<cstring>
+
+1730159931 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_clinica\persona.cpp
+	"Persona.h"
+	<cstring>
+	<iostream>
+
+1730159931 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_clinica\profesional.cpp
+	<iostream>
+	<cstring>
+	"Profesional.h"
+	"Persona.h"
+
+1730159931 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_clinica\profesionalesarchivo.cpp
+	<iostream>
+	"ProfesionalesArchivo.h"
+
+1730160462 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_clinica\turno.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Turno.h"
+	"Fecha.h"
+

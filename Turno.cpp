@@ -7,17 +7,18 @@ using namespace std;
 
 
 Turno::Turno(){}
-Turno::Turno(Fecha fechaTurno, std::string dniPaciente, std::string dniProfesional)
+Turno::Turno(Fecha fechaTurno, std::string dniPaciente, std::string matricula, int horario)
 {
     setFecha(fechaTurno);
     setDniPaciente(dniPaciente);
-    setDniProfesional(dniProfesional);
+    setMatricula(matricula);
+    setHorario(horario);
 
 }
 
 void Turno::setFecha(Fecha fechaTurno)
 {
-    _fecha = fechaTurno;
+    _fechaTurno = fechaTurno;
 }
 
 void Turno::setDniPaciente(string dniPaciente)
@@ -26,8 +27,36 @@ void Turno::setDniPaciente(string dniPaciente)
     _dniPaciente[sizeof(_dniPaciente) - 1] = '\0';
 }
 
-void Turno::setDniProfesional(string dniProfesional)
+void Turno::setMatricula(string matriucla)
 {
-    strncpy(_dniProfesional, dniProfesional.c_str(), sizeof(_dniProfesional) - 1);
-    _dniProfesional[sizeof(_dniProfesional) - 1] = '\0';
+    strncpy(_matricula, matriucla.c_str(), sizeof(_matricula) - 1);
+    _matricula[sizeof(_matricula) - 1] = '\0';
+}
+
+void Turno::setHorario(int horario){
+
+    if(horario > 8 || horario < 17){
+
+        _horario = horario;
+    }
+}
+
+const char* Turno::getDniPaciente() const{
+
+    return _dniPaciente;
+}
+
+const char* Turno::getMatricula() const{
+
+    return _matricula;
+}
+
+Fecha Turno::getFecha() const{
+
+    return _fechaTurno;
+}
+
+const int Turno::getHorario() const{
+
+    return _horario;
 }

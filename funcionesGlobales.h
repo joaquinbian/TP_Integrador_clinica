@@ -3,6 +3,7 @@
 #include "Paciente.h"
 #include "Profesional.h"
 #include "ProfesionalesArchivo.h"
+#include "Turno.h"
 
 using namespace std;
 
@@ -54,7 +55,7 @@ Profesional cargarProfesional()
     bool soloParticular;
 
     cout << "Ingrese el nombre: ";
-    cin.ignore();
+    //cin.ignore();
     cin.getline(nombre, 50);
 
     cout << "Ingrese el apellido: ";
@@ -88,6 +89,7 @@ Profesional cargarProfesional()
 
     return Profesional(nombre,  apellido, telefono,  direccion,  ciudad,  email, matricula, especialidad, valorConsulta, soloParticular);
 }
+
 void mostrarPaciente(Paciente paciente)
 {
     cout<<"Nombre : " <<paciente.getNombre() <<endl;
