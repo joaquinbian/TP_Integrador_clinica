@@ -5,29 +5,37 @@
 #include "Fecha.h"
 using namespace std;
 
-
 Turno::Turno(){}
-Turno::Turno(Fecha fechaTurno, std::string dniPaciente, std::string dniProfesional)
+Turno::Turno(Fecha fechaTurno, std::string horaTurno, std::string nombreProfesional, std::string apellidoProfesional, std::string especialidad)
 {
     setFecha(fechaTurno);
-    setDniPaciente(dniPaciente);
-    setDniProfesional(dniProfesional);
+    setHora(horaTurno);
+    setNombre(nombreProfesional);
+    setApellido(apellidoProfesional);
 
 }
 
 void Turno::setFecha(Fecha fechaTurno)
 {
-    _fecha = fechaTurno;
+    _fechaTurno = fechaTurno;
 }
 
-void Turno::setDniPaciente(string dniPaciente)
+void Turno::setHora(std::string horaTurno)
 {
-    strncpy(_dniPaciente, dniPaciente.c_str(), sizeof(_dniPaciente) - 1);
-    _dniPaciente[sizeof(_dniPaciente) - 1] = '\0';
+    strcpy(_horaTurno, horaTurno.c_str());
 }
 
-void Turno::setDniProfesional(string dniProfesional)
+void Turno::setNombre(std::string nombreProfesional)
 {
-    strncpy(_dniProfesional, dniProfesional.c_str(), sizeof(_dniProfesional) - 1);
-    _dniProfesional[sizeof(_dniProfesional) - 1] = '\0';
+    strcpy(_nombreProfesional, nombreProfesional.c_str());
+}
+
+void Turno::setApellido(std::string apellidoProfesional)
+{
+    strcpy(_apellidoProfesional, apellidoProfesional.c_str());
+}
+
+void Turno::setEspecialidad(std::string especialidad)
+{
+    strcpy(_especialidad, especialidad.c_str());
 }

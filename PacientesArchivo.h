@@ -10,7 +10,6 @@ class PacientesArchivo
         bool guardar(int pos, const Paciente &registro);
         int getCantidad();
         int buscar(char* dni);
-        bool editar(char* dni);
         Paciente Leer(int pos);
 
 

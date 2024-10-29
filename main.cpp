@@ -9,7 +9,7 @@ using namespace std;
 
 int main()
 {
-    int opcion, opcionPaciente, opcionProfesional, opcionListado, opcionTurno;
+    int opcion, opcionPaciente, opcionProfesional, opcionListado;
     char salir;
     Paciente p1;
     Profesional pr1;
@@ -23,7 +23,6 @@ int main()
         cout<<"1 - PACIENTES" <<endl;
         cout<<"2 - PROFESIONALES " <<endl;
         cout<<"3 - LISTADOS " <<endl;
-        cout<<"4 - TURNOS " <<endl;
         cout<<"0 - SALIR " <<endl<<endl;
 
         cout<<"Ingrese una opcion : ";
@@ -40,10 +39,9 @@ int main()
                 cout << "\033[0m";  // Detiene subrayado
 
                 cout << "1 - CARGAR PACIENTE" << endl;
-                cout << "2 - MODIFICAR PACIENTE" << endl;
-                cout << "3 - ASIGNAR TURNO" << endl;
-                cout << "4 - MODIFICAR TURNO" << endl;
-                cout << "5 - ELIMINAR TURNO" << endl;
+                cout << "2 - ASIGNAR TURNO" << endl;
+                cout << "3 - MODIFICAR TURNO" << endl;
+                cout << "4 - ELIMINAR TURNO" << endl;
                 cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
 
                 cout << "Ingrese una opcion: ";
@@ -58,9 +56,6 @@ int main()
                     cout << "\033[0m";  // Detiene subrayado
                     guardarPaciente();
                     break;
-                case 2:
-                    system("cls");
-                    editarPaciente();
                 case 0:
                     system("cls");
                     break;
@@ -158,50 +153,6 @@ int main()
                 }
             }
             break;
-                case 4:
-            while (true)
-            {
-                system("cls");
-                cout << "\033[4m";  // Comienza subrayado
-                cout<<"TURNOS " <<endl<<endl;
-                cout << "\033[0m";  // Detiene subrayado
-
-                cout << "1 - EDITAR OPCION 1" << endl;
-                cout << "2 - EDITAR OPCION 2" << endl;
-                cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
-
-                cout << "Ingrese una opciÓn: ";
-                cin >> opcionTurno;
-
-                switch(opcionTurno)
-                {
-                case 1:
-                    system("cls");
-                    cout << "\033[4m";  // Comienza subrayado
-                    cout<<"SECCION OPCION 1" <<endl<<endl;
-                    cout << "\033[0m";  // Detiene subrayado
-                    system("pause");
-                    break;
-                case 2:
-                    system("cls");
-                    cout << "\033[4m";  // Comienza subrayado
-                    cout<<"SECCION OPCION 2" <<endl<<endl;
-                    cout << "\033[0m";  // Detiene subrayado
-                    system("pause");
-                    break;
-                case 0:
-                    system("cls");
-                    break;
-                default:
-                    cout << "Opción no válida." << endl;
-                }
-
-                if (opcionTurno == 0)
-                {
-                    break;
-                }
-            }
-                    break;
         case 0:
             do
             {

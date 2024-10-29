@@ -3,6 +3,7 @@
 #include "Profesional.h"
 #include "Persona.h"
 using namespace std;
+
 Profesional::Profesional(){}
 Profesional::Profesional(string nombre, string apellido, string telefono, string direccion, string ciudad, string email, string matricula, string especialidad, float valorConsulta, bool soloParticular ):Persona(nombre, apellido, telefono, direccion, ciudad, email)
 {

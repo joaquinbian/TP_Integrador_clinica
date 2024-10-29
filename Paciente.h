@@ -1,8 +1,8 @@
 #pragma once
 #include <string>
-#include "Persona.h"
+#include "persona.h"
 #include "Fecha.h"
-
+#include "Turno.h"
 
 class Paciente : public Persona
 {
@@ -18,9 +18,10 @@ public:
     int getEdad() const;
     const char* getDni() const;
     const char* getObraSocial() const;
+    void setTurno(Turno turno);
+    Turno getTurno();
     void cargar();
     void mostrar();
-
 
 private:
     Fecha _fechaNacimiento;
@@ -28,6 +29,7 @@ private:
     int _edad;
     char _dni[20];
     char _obraSocial[20];
+    Turno _turno;
 
 };
 

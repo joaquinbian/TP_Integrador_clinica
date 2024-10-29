@@ -1,6 +1,5 @@
 #include<iostream>
 #include "PacientesArchivo.h"
-#include <cstring>
 using namespace std;
 
 PacientesArchivo::PacientesArchivo()
@@ -90,16 +89,16 @@ int PacientesArchivo::buscar(char* dni)
     }
     while(fread(&registro, sizeof(Paciente), 1, pFile) == 1)
     {
-        if(strcmp(registro.getDni(), dni) == 0){
-             return pos;
+        if(registro.getDni() == dni)
+        {
+            break;
         }
         pos++;
     }
     fclose(pFile);
-
+    if(registro.getDni() == dni)
+    {
+        return pos;
+    }
     return -1;
 }
-
-
-
-
