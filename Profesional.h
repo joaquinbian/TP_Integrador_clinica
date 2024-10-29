@@ -2,7 +2,6 @@
 #include <cstring>
 #include "Persona.h"
 
-
 class Profesional : public Persona
 {
     public:

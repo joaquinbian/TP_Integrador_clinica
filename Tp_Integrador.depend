@@ -106,7 +106,7 @@
 	<cstring>
 	"Persona.h"
 
-1728643477 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\main.cpp
+1728643249 source:c:\users\fedef\desktop\programacion\utn\tec_en_programacion\2_cuatrimestre\programacion_2\tp_integrador\tp_integrador_pg2\main.cpp
 	<iostream>
 	<cstdlib>
 	"Persona.h"
@@ -181,7 +181,7 @@
 1728783189 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_pg2\profesionalesarchivo.h
 	"Profesional.h"
 
-1729542940 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_pg2\main.cpp
+1729289180 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_pg2\main.cpp
 	<iostream>
 	<cstdlib>
 	"Persona.h"
@@ -206,17 +206,17 @@
 	"Turno.h"
 	"Fecha.h"
 
-1729965718 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Fecha.cpp
+1729295441 source:c:\users\carle\desktop\tp_integrador_pg2-main\tp_integrador_pg2-main\fecha.cpp
 	"Fecha.h"
 	<iostream>
 	<sstream>
 	<iomanip>
 	<string>
 
-1729965718 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Fecha.h
+1729295441 c:\users\carle\desktop\tp_integrador_pg2-main\tp_integrador_pg2-main\fecha.h
 	<string>
 
-1729972768 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/main.cpp
+1729295442 source:c:\users\carle\desktop\tp_integrador_pg2-main\tp_integrador_pg2-main\main.cpp
 	<iostream>
 	<cstdlib>
 	"Persona.h"
@@ -224,64 +224,264 @@
 	"funcionesGlobales.h"
 	"Turno.h"
 
-1729965718 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Persona.h
+1729295442 c:\users\carle\desktop\tp_integrador_pg2-main\tp_integrador_pg2-main\persona.h
 	<string>
 
-1729966630 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Paciente.h
+1729295441 c:\users\carle\desktop\tp_integrador_pg2-main\tp_integrador_pg2-main\paciente.h
 	<string>
-	"Persona.h"
+	"persona.h"
 	"Fecha.h"
 
-1729973784 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/funcionesGlobales.h
+1729295442 c:\users\carle\desktop\tp_integrador_pg2-main\tp_integrador_pg2-main\funcionesglobales.h
 	<iostream>
 	"PacientesArchivo.h"
 	"Paciente.h"
 	"Profesional.h"
 	"ProfesionalesArchivo.h"
 
-1729969025 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/PacientesArchivo.h
+1729295441 c:\users\carle\desktop\tp_integrador_pg2-main\tp_integrador_pg2-main\pacientesarchivo.h
 	"Paciente.h"
 
-1729965718 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Profesional.h
+1729295442 c:\users\carle\desktop\tp_integrador_pg2-main\tp_integrador_pg2-main\profesional.h
 	<cstring>
 	"Persona.h"
 
-1729965718 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/ProfesionalesArchivo.h
+1729295442 c:\users\carle\desktop\tp_integrador_pg2-main\tp_integrador_pg2-main\profesionalesarchivo.h
 	"Profesional.h"
 
-1729965718 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Turno.h
+1729295442 c:\users\carle\desktop\tp_integrador_pg2-main\tp_integrador_pg2-main\turno.h
 	"Fecha.h"
 
-1729965718 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Paciente.cpp
+1729295441 source:c:\users\carle\desktop\tp_integrador_pg2-main\tp_integrador_pg2-main\paciente.cpp
 	<iostream>
 	<cstring>
 	<string>
 	"Paciente.h"
 	"Fecha.h"
 
-1729973684 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/PacientesArchivo.cpp
+1729295441 source:c:\users\carle\desktop\tp_integrador_pg2-main\tp_integrador_pg2-main\pacientesarchivo.cpp
 	<iostream>
 	"PacientesArchivo.h"
 
-1729965718 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Persona.cpp
+1729295442 source:c:\users\carle\desktop\tp_integrador_pg2-main\tp_integrador_pg2-main\persona.cpp
 	"Persona.h"
 	<cstring>
 	<iostream>
 
-1729965718 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Profesional.cpp
+1729295442 source:c:\users\carle\desktop\tp_integrador_pg2-main\tp_integrador_pg2-main\profesional.cpp
 	<iostream>
 	<cstring>
 	"Profesional.h"
 	"Persona.h"
 
-1729965718 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/ProfesionalesArchivo.cpp
+1729295442 source:c:\users\carle\desktop\tp_integrador_pg2-main\tp_integrador_pg2-main\profesionalesarchivo.cpp
 	<iostream>
 	"ProfesionalesArchivo.h"
 
-1729966508 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/Tp_integrador_PG2/Turno.cpp
+1729295442 source:c:\users\carle\desktop\tp_integrador_pg2-main\tp_integrador_pg2-main\turno.cpp
 	<iostream>
 	<cstring>
 	<string>
 	"Turno.h"
 	"Fecha.h"
+
+1729291841 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\8\fecha.cpp
+	"Fecha.h"
+	<iostream>
+	<sstream>
+	<iomanip>
+	<string>
+
+1729291841 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\8\fecha.h
+	<string>
+
+1729291842 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\8\main.cpp
+	<iostream>
+	<cstdlib>
+	"Persona.h"
+	"Paciente.h"
+	"funcionesGlobales.h"
+	"Turno.h"
+
+1729291842 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\8\persona.h
+	<string>
+
+1729291841 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\8\paciente.h
+	<string>
+	"persona.h"
+	"Fecha.h"
+
+1729291842 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\8\funcionesglobales.h
+	<iostream>
+	"PacientesArchivo.h"
+	"Paciente.h"
+	"Profesional.h"
+	"ProfesionalesArchivo.h"
+
+1729291841 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\8\pacientesarchivo.h
+	"Paciente.h"
+
+1729291842 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\8\profesional.h
+	<cstring>
+	"Persona.h"
+
+1729291842 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\8\profesionalesarchivo.h
+	"Profesional.h"
+
+1729291842 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\8\turno.h
+	"Fecha.h"
+
+1729291841 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\8\paciente.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Paciente.h"
+	"Fecha.h"
+
+1729291841 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\8\pacientesarchivo.cpp
+	<iostream>
+	"PacientesArchivo.h"
+
+1729291842 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\8\persona.cpp
+	"Persona.h"
+	<cstring>
+	<iostream>
+
+1729291842 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\8\profesional.cpp
+	<iostream>
+	<cstring>
+	"Profesional.h"
+	"Persona.h"
+
+1729291842 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\8\profesionalesarchivo.cpp
+	<iostream>
+	"ProfesionalesArchivo.h"
+
+1729291842 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\8\turno.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Turno.h"
+	"Fecha.h"
+
+1730122885 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nosubido\fecha.cpp
+	"Fecha.h"
+	<iostream>
+	<sstream>
+	<iomanip>
+	<string>
+
+1730122860 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nosubido\fecha.h
+	<string>
+
+1730122729 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nosubido\main.cpp
+	<iostream>
+	<cstdlib>
+	"Persona.h"
+	"Paciente.h"
+	"funcionesGlobales.h"
+	"Turno.h"
+
+1729291842 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nosubido\persona.h
+	<string>
+
+1730131530 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nosubido\paciente.h
+	<string>
+	"persona.h"
+	"Fecha.h"
+	"Turno.h"
+
+1730131785 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nosubido\funcionesglobales.h
+	<iostream>
+	"PacientesArchivo.h"
+	"Paciente.h"
+	"Profesional.h"
+	"ProfesionalesArchivo.h"
+	"Turno.h"
+
+1730122743 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nosubido\pacientesarchivo.h
+	"Paciente.h"
+
+1730123182 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nosubido\profesional.h
+	<cstring>
+	"Persona.h"
+
+1730122813 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nosubido\profesionalesarchivo.h
+	"Profesional.h"
+
+1730127886 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nosubido\turno.h
+	"Fecha.h"
+
+1730131572 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nosubido\paciente.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Paciente.h"
+	"Fecha.h"
+
+1730124615 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nosubido\pacientesarchivo.cpp
+	<iostream>
+	"PacientesArchivo.h"
+
+1730123157 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nosubido\persona.cpp
+	"Persona.h"
+	<cstring>
+	<iostream>
+
+1730123200 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nosubido\profesional.cpp
+	<iostream>
+	<cstring>
+	"Profesional.h"
+	"Persona.h"
+
+1730124716 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nosubido\profesionalesarchivo.cpp
+	<iostream>
+	"ProfesionalesArchivo.h"
+
+1730127886 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nosubido\turno.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Turno.h"
+	"Fecha.h"
+
+1730122885 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nocorre\fecha.cpp
+	"Fecha.h"
+	<iostream>
+	<sstream>
+	<iomanip>
+	<string>
+
+1730122860 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nocorre\fecha.h
+	<string>
+
+1730123485 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nocorre\pacientesarchivo.cpp
+	<iostream>
+	"PacientesArchivo.h"
+
+1730122743 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nocorre\pacientesarchivo.h
+	"Paciente.h"
+
+1730122910 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nocorre\paciente.h
+	<string>
+	"persona.h"
+	"Fecha.h"
+
+1729291842 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nocorre\persona.h
+	<string>
+
+1730123157 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nocorre\persona.cpp
+	"Persona.h"
+	<cstring>
+	<iostream>
+
+1730123200 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nocorre\profesional.cpp
+	<iostream>
+	<cstring>
+	"Profesional.h"
+	"Persona.h"
+
+1730123182 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\versiones\9nocorre\profesional.h
+	<cstring>
+	"Persona.h"
 

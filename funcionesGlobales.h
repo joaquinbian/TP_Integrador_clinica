@@ -3,8 +3,32 @@
 #include "Paciente.h"
 #include "Profesional.h"
 #include "ProfesionalesArchivo.h"
+#include "Turno.h"
 
 using namespace std;
+
+Turno cargarTurno(){
+
+    Fecha fechaTurno;
+    char horaTurno [6], nombreProfesional[50], apellidoProfesional[50], especialidad[50];
+
+    cout << "Ingrese la fecha del turno: ";
+    cin >> fechaTurno;
+
+    cout << "Ingrese la hora del turno (HH:MM): ";
+    cin >> horaTurno;
+
+    cout << "Ingrese el nombre del profesional: ";
+    cin >> nombreProfesional;
+
+    cout << "Ingrese el apellido del profesional: ";
+    cin >> apellidoProfesional;
+
+    cout << "Ingrese la especialidad: ";
+    cin >> especialidad;
+
+    return Turno(fechaTurno, horaTurno, nombreProfesional, apellidoProfesional, especialidad);
+}
 
 Paciente cargarPaciente()
 {
@@ -88,6 +112,8 @@ Profesional cargarProfesional()
 
     return Profesional(nombre,  apellido, telefono,  direccion,  ciudad,  email, matricula, especialidad, valorConsulta, soloParticular);
 }
+
+
 void mostrarPaciente(Paciente paciente)
 {
     cout<<"Nombre : " <<paciente.getNombre() <<endl;
@@ -121,6 +147,10 @@ void guardarPaciente()
     Paciente paciente;
     PacientesArchivo pa;
     paciente = cargarPaciente();
+
+    ///Falta desarrollar. Actualmente asigna directamente el turno al paciente
+    paciente.setTurno(cargarTurno());
+
     if(pa.Guardar(paciente))
     {
         cout<<"Paciente guardado exitosamente" <<endl;
@@ -134,29 +164,6 @@ void guardarPaciente()
         system("cls");
     }
 }
-void editarPaciente(){
-    char DNI[20];
-    PacientesArchivo pa;
-    cout << "Ingrese el DNI del paciente que quiere editar: ";
-    cin.ignore();
-    cin.getline(DNI, 20);
-
-    int pos = pa.buscar(DNI);
-    if(pos == -1 ){
-        cout << "El paciente que quiere editar no ha sido encontrado." << endl;
-        return;
-    }
-
-    Paciente paciente;
-    paciente = cargarPaciente();
-    bool res = pa.guardar(pos, paciente);
-    if(res){
-        cout << "El paciente ha sido editado correctamente";
-    } else {
-        cout << "Ocurrio un error al editar el pacietne";
-    }
-}
-
 void guardarProfesional()
 {
     Profesional profesional;
