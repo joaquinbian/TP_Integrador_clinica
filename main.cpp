@@ -41,9 +41,7 @@ int main()
 
                 cout << "1 - CARGAR PACIENTE" << endl;
                 cout << "2 - MODIFICAR PACIENTE" << endl;
-                cout << "3 - ASIGNAR TURNO" << endl;
-                cout << "4 - MODIFICAR TURNO" << endl;
-                cout << "5 - ELIMINAR TURNO" << endl;
+                cout << "3 - ELIMINAR PACIENTE" << endl;
                 cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
 
                 cout << "Ingrese una opcion: ";
@@ -61,6 +59,14 @@ int main()
                 case 2:
                     system("cls");
                     editarPaciente();
+                    break;
+                case 3:
+                    system("cls");
+                    cout << "\033[4m";  // Comienza subrayado
+                    cout<<"SECCION OPCION 3" <<endl<<endl;
+                    cout << "\033[0m";  // Detiene subrayado
+                    system("pause");
+                    break;
                 case 0:
                     system("cls");
                     break;
@@ -98,6 +104,20 @@ int main()
                     cout<<"DATOS DEL PROFESIONAL " <<endl<<endl;
                     cout << "\033[0m";  // Detiene subrayado
                     guardarProfesional();
+                    break;
+                case 2:
+                    system("cls");
+                    cout << "\033[4m";  // Comienza subrayado
+                    cout<<"SECCION OPCION 2" <<endl<<endl;
+                    cout << "\033[0m";  // Detiene subrayado
+                    system("pause");
+                    break;
+                case 3:
+                    system("cls");
+                    cout << "\033[4m";  // Comienza subrayado
+                    cout<<"SECCION OPCION 3" <<endl<<endl;
+                    cout << "\033[0m";  // Detiene subrayado
+                    system("pause");
                     break;
                 case 0:
                     system("cls");
@@ -166,8 +186,9 @@ int main()
                 cout<<"TURNOS " <<endl<<endl;
                 cout << "\033[0m";  // Detiene subrayado
 
-                cout << "1 - EDITAR OPCION 1" << endl;
-                cout << "2 - EDITAR OPCION 2" << endl;
+                cout << "1 - ASIGNAR TURNO" << endl;
+                cout << "2 - MODIFICAR TURNO" << endl;
+                cout << "3 - ELIMINAR TURNO" << endl;
                 cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
 
                 cout << "Ingrese una opciÓn: ";
@@ -183,6 +204,13 @@ int main()
                     system("pause");
                     break;
                 case 2:
+                    system("cls");
+                    cout << "\033[4m";  // Comienza subrayado
+                    cout<<"SECCION OPCION 2" <<endl<<endl;
+                    cout << "\033[0m";  // Detiene subrayado
+                    system("pause");
+                    break;
+                case 3:
                     system("cls");
                     cout << "\033[4m";  // Comienza subrayado
                     cout<<"SECCION OPCION 2" <<endl<<endl;
