@@ -175,6 +175,23 @@ void guardarProfesional()
         system("cls");
     }
 }
+
+
+void buscarProfesional(){
+    char matricula[15];
+    ProfesionalesArchivo pa;
+    cout << "Ingrese la matricula del profesional que desea buscar: ";
+    cin.ignore();
+    cin.getline(matricula, 15);
+
+    int pos = pa.buscar(matricula);
+    if(pos == -1 ){
+        cout << "El profesional no ha sido encontrado." << endl;
+        return;
+    }
+    Profesional p = pa.Leer(pos);
+    p.mostrar();
+}
 void mostrarTodosPacientes()
 {
     Paciente *pacientes;
