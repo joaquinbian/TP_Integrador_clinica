@@ -93,8 +93,9 @@ int main()
                 cout << "\033[0m";  // Detiene subrayado
 
                 cout << "1 - CARGAR PROFESIONAL" << endl;
-                cout << "2 - MODIFICAR PROFESIONAL" << endl;
-                cout << "3 - ELIMINAR PROFESIONAL" << endl;
+                cout << "2 - BUSCAR PROFESIONAL" << endl;
+                cout << "3 - MODIFICAR PROFESIONAL" << endl;
+                cout << "4 - ELIMINAR PROFESIONAL" << endl;
                 cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
 
                 cout << "Ingrese una opcion: ";
@@ -112,11 +113,18 @@ int main()
                 case 2:
                     system("cls");
                     cout << "\033[4m";  // Comienza subrayado
+                    cout<<"BUSCAR PROFESIONAL " <<endl<<endl;
+                    cout << "\033[0m";  // Detiene subrayado
+                    buscarProfesional();
+                    break;
+                case 3:
+                    system("cls");
+                    cout << "\033[4m";  // Comienza subrayado
                     cout<<"SECCION OPCION 2" <<endl<<endl;
                     cout << "\033[0m";  // Detiene subrayado
                     system("pause");
                     break;
-                case 3:
+                case 4:
                     system("cls");
                     cout << "\033[4m";  // Comienza subrayado
                     cout<<"SECCION OPCION 3" <<endl<<endl;
