@@ -55,3 +55,16 @@ const char* Paciente::getObraSocial()const
 {
     return _obraSocial;
 }
+
+void Paciente::mostrar(){
+     cout<<"Nombre : " <<this->getNombre() <<endl;
+    cout<<"Apellido : " <<this->getApellido() <<endl;
+    cout<<"Domicilio : " <<this->getDireccion() <<endl;
+    cout<<"Ciudad : " <<this->getCiudad() <<endl;
+    cout<<"Telefono : " <<this->getTelefono() <<endl;
+    cout<<"Email : " <<this->getEmail() <<endl;
+    cout<<"Fecha de nacimiento : " << this->getFechaNacimiento().toString()<<endl;
+    cout<<"Edad : " <<this->getEdad() <<endl;
+    cout<<"DNI : " <<this->getDni() <<endl;
+    cout<<"Obra Social : " <<this->getObraSocial() <<endl;
+}

@@ -13,6 +13,8 @@ class Profesional : public Persona
         void setValorConsulta(float valorConsulta);
         void setSoloParticular(bool soloParticular);
 
+
+        void mostrar();
         const char* getMatricula() const;
         const char* getEspecialidad() const;
         const float getValorConsulta() const;
