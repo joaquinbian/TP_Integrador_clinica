@@ -40,8 +40,9 @@ int main()
                 cout << "\033[0m";  // Detiene subrayado
 
                 cout << "1 - CARGAR PACIENTE" << endl;
-                cout << "2 - MODIFICAR PACIENTE" << endl;
-                cout << "3 - ELIMINAR PACIENTE" << endl;
+                cout << "2 - BUSCAR PACIENTE" << endl;
+                cout << "3 - MODIFICAR PACIENTE" << endl;
+                cout << "4 - ELIMINAR PACIENTE" << endl;
                 cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
 
                 cout << "Ingrese una opcion: ";
@@ -57,10 +58,13 @@ int main()
                     guardarPaciente();
                     break;
                 case 2:
+                    buscarPaciente();
+                    break;
+                case 3:
                     system("cls");
                     editarPaciente();
                     break;
-                case 3:
+                case 4:
                     system("cls");
                     cout << "\033[4m";  // Comienza subrayado
                     cout<<"SECCION OPCION 3" <<endl<<endl;

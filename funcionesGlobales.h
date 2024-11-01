@@ -47,6 +47,22 @@ Paciente cargarPaciente()
 
     return Paciente( nombre,  apellido, telefono,  direccion,  ciudad,  email, fechaNacimiento,  edad,  obraSocial,  dni);
 }
+
+void buscarPaciente(){
+    char DNI[20];
+    PacientesArchivo pa;
+    cout << "Ingrese el DNI del paciente que quiere buscar: ";
+    cin.ignore();
+    cin.getline(DNI, 20);
+
+    int pos = pa.buscar(DNI);
+    if(pos == -1 ){
+        cout << "El paciente no ha sido encontrado." << endl;
+        return;
+    }
+    Paciente p = pa.Leer(pos);
+    p.mostrar();
+}
 Profesional cargarProfesional()
 {
     char nombre[50], apellido[50], direccion[50], telefono[50], ciudad[50], email[50], matricula[15], especialidad[50];
@@ -90,31 +106,13 @@ Profesional cargarProfesional()
 }
 void mostrarPaciente(Paciente paciente)
 {
-    cout<<"Nombre : " <<paciente.getNombre() <<endl;
-    cout<<"Apellido : " <<paciente.getApellido() <<endl;
-    cout<<"Domicilio : " <<paciente.getDireccion() <<endl;
-    cout<<"Ciudad : " <<paciente.getCiudad() <<endl;
-    cout<<"Telefono : " <<paciente.getTelefono() <<endl;
-    cout<<"Email : " <<paciente.getEmail() <<endl;
-    cout<<"Fecha de nacimiento : " << paciente.getFechaNacimiento().toString()<<endl;
-    cout<<"Edad : " <<paciente.getEdad() <<endl;
-    cout<<"DNI : " <<paciente.getDni() <<endl;
-    cout<<"Obra Social : " <<paciente.getObraSocial() <<endl;
+    paciente.mostrar();
     cout<<"-----------------------------------------------"<<endl;
 }
 void mostrarProfesional(Profesional profesional)
 {
-    cout<<"Nombre : " <<profesional.getNombre() <<endl;
-    cout<<"Apellido : " <<profesional.getApellido() <<endl;
-    cout<<"Domicilio : " <<profesional.getDireccion() <<endl;
-    cout<<"Ciudad : " <<profesional.getCiudad() <<endl;
-    cout<<"Telefono : " <<profesional.getTelefono() <<endl;
-    cout<<"Email : " <<profesional.getEmail() <<endl;
-    cout<<"Matricula : " <<profesional.getMatricula() <<endl;
-    cout<<"Especialidad : " <<profesional.getEspecialidad() <<endl;
-    cout<<"Valor de la consulta : $" <<profesional.getValorConsulta() <<endl;
-    cout<<"Atiende obras sociales y prepagas : " <<profesional.getSoloParticular() <<endl;
-      cout<<"-----------------------------------------------"<<endl;
+    profesional.mostrar();
+    cout<<"-----------------------------------------------"<<endl;
 }
 void guardarPaciente()
 {
@@ -157,6 +155,8 @@ void editarPaciente(){
     }
 }
 
+
+
 void guardarProfesional()
 {
     Profesional profesional;
@@ -184,7 +184,8 @@ void mostrarTodosPacientes()
     pa.leerTodos(pacientes, cantidad);
     for(int i = 0; i < cantidad; i++)
     {
-        mostrarPaciente(pacientes[i]);
+        pacientes[i].mostrar();
+        cout << "-------------------------------------------------" << endl;
     }
     delete [] pacientes;
 }
@@ -197,7 +198,9 @@ void mostrarTodosProfesionales()
     pa.leerTodos(profesionales, cantidad);
     for(int i = 0; i < cantidad; i++)
     {
-        mostrarProfesional(profesionales[i]);
+        profesionales[i].mostrar();
+        cout << "-------------------------------------------------" << endl;
+
     }
     delete [] profesionales;
 }
