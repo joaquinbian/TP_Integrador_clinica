@@ -3,8 +3,32 @@
 #include "Paciente.h"
 #include "Profesional.h"
 #include "ProfesionalesArchivo.h"
+#include "Turno.h"
 
 using namespace std;
+
+Turno cargarTurno(){
+
+    Fecha fechaTurno;
+    char horaTurno [6], nombreProfesional[50], apellidoProfesional[50], especialidad[50];
+
+    cout << "Ingrese la fecha del turno: " << endl;
+    cin >> fechaTurno;
+
+    cout << "Ingrese la hora del turno (HH:MM): ";
+    cin >> horaTurno;
+
+    cout << "Ingrese el nombre del profesional: ";
+    cin >> nombreProfesional;
+
+    cout << "Ingrese el apellido del profesional: ";
+    cin >> apellidoProfesional;
+
+    cout << "Ingrese la especialidad: ";
+    cin >> especialidad;
+
+    return Turno(fechaTurno, horaTurno, nombreProfesional, apellidoProfesional, especialidad);
+}
 
 Paciente cargarPaciente()
 {
@@ -119,6 +143,10 @@ void guardarPaciente()
     Paciente paciente;
     PacientesArchivo pa;
     paciente = cargarPaciente();
+
+    ///Falta desarrollar. Actualmente asigna directamente el turno al paciente
+    paciente.setTurno(cargarTurno());
+
     if(pa.Guardar(paciente))
     {
         cout<<"Paciente guardado exitosamente" <<endl;

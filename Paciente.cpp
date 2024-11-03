@@ -1,11 +1,10 @@
 #include<iostream>
 #include <cstring>
 #include <string>
-
 #include "Paciente.h"
 #include "Fecha.h"
-
 using namespace std;
+
 Paciente::Paciente(){}
 Paciente::Paciente(string nombre, string apellido, string telefono, string direccion, string ciudad, string email, Fecha fechaNacimiento, int edad, std::string obraSocial, std::string dni):Persona(nombre, apellido, telefono, direccion, ciudad, email)
 {
@@ -54,6 +53,13 @@ const char* Paciente::getDni() const
 const char* Paciente::getObraSocial()const
 {
     return _obraSocial;
+}
+
+void Paciente::setTurno(Turno turno){
+    _turno = turno;
+}
+Turno Paciente::getTurno(){
+    return _turno;
 }
 
 void Paciente::mostrar(){

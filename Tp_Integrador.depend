@@ -285,3 +285,86 @@
 	"Turno.h"
 	"Fecha.h"
 
+1730663226 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\fecha.cpp
+	"Fecha.h"
+	<iostream>
+	<sstream>
+	<iomanip>
+	<string>
+
+1730663226 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\fecha.h
+	<string>
+
+1730663226 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\main.cpp
+	<iostream>
+	<cstdlib>
+	"Persona.h"
+	"Paciente.h"
+	"funcionesGlobales.h"
+	"Turno.h"
+
+1730663226 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\persona.h
+	<string>
+
+1730664862 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\paciente.h
+	<string>
+	"Persona.h"
+	"Fecha.h"
+	"Turno.h"
+
+1730667055 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\funcionesglobales.h
+	<iostream>
+	"PacientesArchivo.h"
+	"Paciente.h"
+	"Profesional.h"
+	"ProfesionalesArchivo.h"
+	"Turno.h"
+
+1730663226 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\pacientesarchivo.h
+	"Paciente.h"
+
+1730666863 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\profesional.h
+	<cstring>
+	"Persona.h"
+
+1730663226 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\profesionalesarchivo.h
+	"Profesional.h"
+
+1730666358 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\turno.h
+	"Fecha.h"
+
+1730665527 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\pacientesarchivo.cpp
+	<iostream>
+	"PacientesArchivo.h"
+	<cstring>
+
+1730663226 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\persona.cpp
+	"Persona.h"
+	<cstring>
+	<iostream>
+
+1730665721 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\profesional.cpp
+	<iostream>
+	<cstring>
+	"Profesional.h"
+	"Persona.h"
+
+1730663226 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\profesionalesarchivo.cpp
+	<iostream>
+	<cstring>
+	"ProfesionalesArchivo.h"
+
+1730666215 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\turno.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Turno.h"
+	"Fecha.h"
+
+1730664565 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\paciente.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Paciente.h"
+	"Fecha.h"
+
