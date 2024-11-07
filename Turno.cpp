@@ -6,12 +6,13 @@
 using namespace std;
 
 Turno::Turno(){}
-Turno::Turno(Fecha fechaTurno, std::string horaTurno, std::string nombreProfesional, std::string apellidoProfesional, std::string especialidad)
+Turno::Turno(Fecha fechaTurno, int horaTurno, std::string especialidad, std::string dniPaciente, std::string matricula)
 {
     setFecha(fechaTurno);
-    setHora(horaTurno);
-    setNombre(nombreProfesional);
-    setApellido(apellidoProfesional);
+    setHoraTurno(horaTurno);
+    setEspecialidad(especialidad);
+    setDniPaciente(dniPaciente);
+    setMatricula(matricula);
 }
 
 void Turno::setFecha(Fecha fechaTurno)
@@ -19,19 +20,22 @@ void Turno::setFecha(Fecha fechaTurno)
     _fechaTurno = fechaTurno;
 }
 
-void Turno::setHora(std::string horaTurno)
+Fecha Turno::getFecha() const
 {
-    strcpy(_horaTurno, horaTurno.c_str());
+    return _fechaTurno;
 }
 
-void Turno::setNombre(std::string nombreProfesional)
-{
-    strcpy(_nombreProfesional, nombreProfesional.c_str());
+void Turno::setHoraTurno(int horaTurno){
+
+    if(horaTurno > 8 || horaTurno < 17){
+
+        _horaTurno = horaTurno;
+    }
 }
 
-void Turno::setApellido(std::string apellidoProfesional)
-{
-    strcpy(_apellidoProfesional, apellidoProfesional.c_str());
+const int Turno::getHoraTurno() const{
+
+    return _horaTurno;
 }
 
 void Turno::setEspecialidad(std::string especialidad)
@@ -39,14 +43,29 @@ void Turno::setEspecialidad(std::string especialidad)
     strcpy(_especialidad, especialidad.c_str());
 }
 
-//void Turno::setDniPaciente(string dniPaciente)
-//{
-//    strncpy(_dniPaciente, dniPaciente.c_str(), sizeof(_dniPaciente) - 1);
-//    _dniPaciente[sizeof(_dniPaciente) - 1] = '\0';
-//}
-//
-//void Turno::setDniProfesional(string dniProfesional)
-//{
-//    strncpy(_dniProfesional, dniProfesional.c_str(), sizeof(_dniProfesional) - 1);
-//    _dniProfesional[sizeof(_dniProfesional) - 1] = '\0';
-//}
+const char* Turno::getEspecialidad() const{
+
+    return _especialidad;
+}
+
+void Turno::setDniPaciente(string dniPaciente)
+{
+    strncpy(_dniPaciente, dniPaciente.c_str(), sizeof(_dniPaciente) - 1);
+    _dniPaciente[sizeof(_dniPaciente) - 1] = '\0';
+}
+
+const char* Turno::getDniPaciente() const{
+
+    return _dniPaciente;
+}
+
+void Turno::setMatricula(string matriucla)
+{
+    strncpy(_matricula, matriucla.c_str(), sizeof(_matricula) - 1);
+    _matricula[sizeof(_matricula) - 1] = '\0';
+}
+
+const char* Turno::getMatricula() const{
+
+    return _matricula;
+}

@@ -10,24 +10,25 @@ using namespace std;
 Turno cargarTurno(){
 
     Fecha fechaTurno;
-    char horaTurno [6], nombreProfesional[50], apellidoProfesional[50], especialidad[50];
+    char especialidad[50], dniPaciente[50], matricula[50];
+    int horaTurno;
 
     cout << "Ingrese la fecha del turno: " << endl;
     cin >> fechaTurno;
 
-    cout << "Ingrese la hora del turno (HH:MM): ";
+    cout << "Ingrese la hora del turno (Formato?): ";
     cin >> horaTurno;
-
-    cout << "Ingrese el nombre del profesional: ";
-    cin >> nombreProfesional;
-
-    cout << "Ingrese el apellido del profesional: ";
-    cin >> apellidoProfesional;
 
     cout << "Ingrese la especialidad: ";
     cin >> especialidad;
 
-    return Turno(fechaTurno, horaTurno, nombreProfesional, apellidoProfesional, especialidad);
+    cout << "Ingrese el DNI del paciente: ";
+    cin >> dniPaciente;
+
+    cout << "Ingrese la matr�cula del profesional: ";
+    cin >> matricula;
+
+    return Turno(fechaTurno, horaTurno, especialidad, dniPaciente, matricula);
 }
 
 Paciente cargarPaciente()
