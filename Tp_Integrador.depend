@@ -368,3 +368,86 @@
 	"Paciente.h"
 	"Fecha.h"
 
+1730156974 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Fecha.cpp
+	"Fecha.h"
+	<iostream>
+	<sstream>
+	<iomanip>
+	<string>
+
+1730156974 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Fecha.h
+	<string>
+
+1730156974 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Persona.cpp
+	"Persona.h"
+	<cstring>
+	<iostream>
+
+1730156974 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Persona.h
+	<string>
+
+1731023904 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Paciente.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Paciente.h"
+	"Fecha.h"
+
+1731023904 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Paciente.h
+	<string>
+	"Persona.h"
+	"Fecha.h"
+	"Turno.h"
+
+1731023904 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Turno.h
+	"Fecha.h"
+
+1731023904 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/PacientesArchivo.cpp
+	<iostream>
+	"PacientesArchivo.h"
+	<cstring>
+
+1730157103 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/PacientesArchivo.h
+	"Paciente.h"
+
+1731023904 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Profesional.cpp
+	<iostream>
+	<cstring>
+	"Profesional.h"
+	"Persona.h"
+
+1731023904 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Profesional.h
+	<cstring>
+	"Persona.h"
+
+1731023904 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/ProfesionalesArchivo.cpp
+	<iostream>
+	<cstring>
+	"ProfesionalesArchivo.h"
+
+1730156974 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/ProfesionalesArchivo.h
+	"Profesional.h"
+
+1731023904 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Turno.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Turno.h"
+	"Fecha.h"
+
+1731026214 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/main.cpp
+	<iostream>
+	<cstdlib>
+	"Persona.h"
+	"Paciente.h"
+	"funcionesGlobales.h"
+	"Turno.h"
+
+1731026372 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/funcionesGlobales.h
+	<iostream>
+	"PacientesArchivo.h"
+	"Paciente.h"
+	"Profesional.h"
+	"ProfesionalesArchivo.h"
+	"Turno.h"
+
