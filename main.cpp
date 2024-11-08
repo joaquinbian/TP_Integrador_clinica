@@ -60,11 +60,12 @@ int main()
                     guardarPaciente();
                     //system("pause");
                     break;
-                
+
                 case 2:
+                    system("cls");
                     cout << "BUSCAR PACIENTE" << endl<<endl;
                     cout << "\033[0m";  // Detiene subrayado
-                    
+
                     cout << "1 - POR DNI" << endl;
                     cout << "2 - POR OBRA SOCIAL" << endl;
                     cout << "0 - VOLVER AL MENU PRINCIPAL" << endl;
@@ -74,9 +75,11 @@ int main()
                     switch (opcionBuscarPaciente){
                     case 1:
                         buscarPaciente();
+                        system("pause");
                         break;
                     case 2:
                         buscarPacientesPorObraSocial();
+                        system("pause");
                         break;
                     case 0:
                         system("cls");
