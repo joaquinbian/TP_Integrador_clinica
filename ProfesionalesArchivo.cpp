@@ -1,7 +1,5 @@
 #include<iostream>
-#include <cstring>
 #include "ProfesionalesArchivo.h"
-
 using namespace std;
 
 ProfesionalesArchivo::ProfesionalesArchivo()
@@ -87,19 +85,18 @@ int ProfesionalesArchivo::buscar(char* matricula)
     pFile = fopen(_filename.c_str(), "rb");
     if(pFile == nullptr)
     {
-        return false;
+        return -1;
     }
     while(fread(&registro, sizeof(Profesional), 1, pFile) == 1)
     {
-        if(strcmp(registro.getMatricula(), matricula) == 0)
-        {
-            break;
+        if(strcmp(registro.getMatricula(), matricula) == 0){
+             return pos;
         }
         pos++;
     }
     fclose(pFile);
-
-    if(pos >= 0){
+    if(registro.getMatricula() == matricula)
+    {
         return pos;
     }
     return -1;

@@ -2,36 +2,31 @@
 #include <string>
 #include "Persona.h"
 #include "Fecha.h"
-#include "Turno.h"
+
 
 class Paciente : public Persona
 {
 public:
     Paciente();
-    Paciente(std::string nombre, std::string apellido, std::string telefono, std::string direccion, std::string ciudad, std::string email, Fecha fechaNacimiento, int edad, std::string obraSocial, std::string dni);
+    Paciente(std::string nombre, std::string apellido, std::string telefono, std::string direccion, std::string ciudad, std::string email, Fecha fechaNacimiento, std::string obraSocial, std::string dni, bool eliminado = false);
     void setFechaNacimiento(Fecha fechaNacimiento);
-    //void setFechaTurno(Fecha fechaTurno);
-    void setEdad(int edad);
     void setObraSocial(std::string obraSocial);
     void setDni(std::string Dni);
+    void setEliminado(bool estado);
     Fecha getFechaNacimiento() const;
-    int getEdad() const;
     const char* getDni() const;
     const char* getObraSocial() const;
-    void setTurno(Turno turno);
-    Turno getTurno();
-    void cargar();
-    void mostrar();
+    const bool getEliminado() const;
+    //void cargar();
+    //void mostrar();
 
 
 private:
     Fecha _fechaNacimiento;
     Fecha _fechaTurno;
-    int _edad;
     char _dni[20];
     char _obraSocial[20];
-    Turno _turno;
-
+    bool _eliminado;
 };
 
 

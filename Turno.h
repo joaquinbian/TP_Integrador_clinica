@@ -5,25 +5,19 @@ class Turno
 {
 public:
     Turno();
-    Turno(Fecha fechaTurno, int horaTurno, std::string especialidad, std::string dniPaciente, std::string matricula);
+    Turno(Fecha fechaTurno, std::string dniPaciente, std::string dniProfesional);
+    void setFecha(Fecha fechaTurno);
+    void setDniPaciente(std::string dni);
+    void setDniProfesional(std::string dni);
+    const char* getDniPaciente() const;
+    const char* getDniProfesional() const;
+    Fecha getFecha() const;
     void cargar();
     void mostrar();
 
-    void setFecha(Fecha fechaTurno);
-    Fecha getFecha() const;
-    void setHoraTurno(int horaTurno);
-    void setEspecialidad(std::string especialidad);
-    const char* getEspecialidad() const;
-    void setDniPaciente(std::string dniPaciente);
-    const char* getDniPaciente() const;
-    void setMatricula(std::string matricula);
-    const char* getMatricula() const;
-    const int getHoraTurno() const;
-
 private:
-    Fecha _fechaTurno;
-    int _horaTurno; ///CADA UNA HORA
-    char _especialidad[50];
+    Fecha _fecha;
     char _dniPaciente[50];
-    char _matricula[50];
+    char _dniProfesional[50];
+
 };

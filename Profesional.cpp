@@ -3,9 +3,8 @@
 #include "Profesional.h"
 #include "Persona.h"
 using namespace std;
-
 Profesional::Profesional(){}
-Profesional::Profesional(string nombre, string apellido, string telefono, string direccion, string ciudad, string email, string matricula, string especialidad, float valorConsulta, bool soloParticular ):Persona(nombre, apellido, telefono, direccion, ciudad, email)
+Profesional::Profesional(string nombre, string apellido, string telefono, string direccion, string ciudad, string email, string matricula, string especialidad, float valorConsulta, bool soloParticular, bool eliminado ):Persona(nombre, apellido, telefono, direccion, ciudad, email)
 {
     setMatricula(matricula);
     setEspecialidad(especialidad);
@@ -31,6 +30,10 @@ void Profesional::setValorConsulta(float valorConsulta)
         _valorConsulta = 0;
     }
 }
+void Profesional::setEliminado(bool estado){
+
+    _eliminado = estado;
+}
 void Profesional::setSoloParticular(bool soloParticular)
 {
     _soloParticular = soloParticular;
@@ -51,16 +54,7 @@ const bool Profesional::getSoloParticular() const
 {
     return _soloParticular;
 }
+const bool Profesional::getEliminado() const {
 
-void Profesional::mostrar(){
-    cout<<"Nombre : " <<this->getNombre() <<endl;
-    cout<<"Apellido : " <<this->getApellido() <<endl;
-    cout<<"Domicilio : " <<this->getDireccion() <<endl;
-    cout<<"Ciudad : " <<this->getCiudad() <<endl;
-    cout<<"Telefono : " <<this->getTelefono() <<endl;
-    cout<<"Email : " <<this->getEmail() <<endl;
-    cout<<"Matricula : " <<this->getMatricula() <<endl;
-    cout<<"Especialidad : " <<this->getEspecialidad() <<endl;
-    cout<<"Valor de la consulta : $" <<this->getValorConsulta() <<endl;
-    cout<<"Atiende obras sociales y prepagas : " <<this->getSoloParticular() <<endl;
+    return _eliminado;
 }

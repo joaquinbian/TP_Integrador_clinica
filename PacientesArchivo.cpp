@@ -90,14 +90,6 @@ int PacientesArchivo::buscar(char* dni)
     }
     while(fread(&registro, sizeof(Paciente), 1, pFile) == 1)
     {
-        /*Anotaci¢n personal Santiago - Antes estaba lo siguiente:
-
-        if(registro.getDni() == dni)
-        {
-            break;
-        }
-
-        */
         if(strcmp(registro.getDni(), dni) == 0){
              return pos;
         }
