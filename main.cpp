@@ -62,11 +62,42 @@ int main()
                 case 2:
                     system("cls");
                     cout << "\033[4m";  // Comienza subrayado
+<<<<<<< HEAD
                     cout << "MODIFICAR PACIENTE" << endl<<endl;
                     cout << "\033[0m";  // Detiene subrayado
                     editarPaciente();
                     system("pause");
                     break;
+=======
+                    cout << "BUSCAR PACIENTE" << endl<<endl;
+                    cout << "\033[0m";  // Detiene subrayado
+                    
+                    cout << "1 - POR DNI" << endl;
+                    cout << "2 - POR OBRA SOCIAL" << endl;
+                    cout << "0 - VOLVER AL MENU PRINCIPAL" << endl;
+                    int opcionBuscarPaciente;
+                    cout << "Ingrese una opcion: ";
+                    cin >> opcionBuscarPaciente;
+                    switch (opcionBuscarPaciente){
+                    case 1:
+                        buscarPaciente();
+                        break;
+                    case 2:
+                        buscarPacientesPorObraSocial();
+                        break;
+                    case 0:
+                        system("cls");
+                        break;
+                    default:
+                        cout << "Opcion no valida." << endl;
+                    }
+
+                    if (opcionProfesional == 0)
+                    {
+                        break;
+                    }
+                        break;
+>>>>>>> dc0ea17215845aa9d6db3c87e9869bd8539351f4
                 case 3:
                     system("cls");
                     cout << "\033[4m";  // Comienza subrayado
