@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include "PacientesArchivo.h"
 #include "Paciente.h"
 #include "Profesional.h"
@@ -47,8 +48,8 @@ Paciente cargarPaciente()
 }
 void mostrarPaciente(Paciente paciente)
 {
-    cout<<"Nombre : " <<paciente.getNombre() <<endl;
     cout<<"Apellido : " <<paciente.getApellido() <<endl;
+    cout<<"Nombre : " <<paciente.getNombre() <<endl;
     cout<<"Domicilio : " <<paciente.getDireccion() <<endl;
     cout<<"Ciudad : " <<paciente.getCiudad() <<endl;
     cout<<"Telefono : " <<paciente.getTelefono() <<endl;
@@ -65,23 +66,41 @@ void mostrarPacienteResumido(Paciente paciente)
     cout<<"DNI : " <<paciente.getDni() <<endl;
     cout<<"-----------------------------------------------"<<endl;
 }
+
+
 void mostrarTodosPacientesActivos()
 {
     Paciente *pacientes;
     PacientesArchivo pa;
     int cantidad = pa.getCantidad();
-    pacientes = new Paciente [cantidad];
+    pacientes = new Paciente[cantidad];
     pa.leerTodos(pacientes, cantidad);
-    for(int i = 0; i < cantidad; i++)
-    {
-        if(pacientes[i].getEliminado() == false)
-        {
 
+    for (int i = 0; i < cantidad - 1; i++)
+    {
+        for (int j = i + 1; j < cantidad; j++)
+        {
+            if (strcmp(pacientes[i].getApellido(), pacientes[j].getApellido()) > 0)
+            {
+                // Intercambiar pacientes
+                Paciente temp = pacientes[i];
+                pacientes[i] = pacientes[j];
+                pacientes[j] = temp;
+            }
+        }
+    }
+
+    for (int i = 0; i < cantidad; i++)
+    {
+        if (!pacientes[i].getEliminado())
+        {
             mostrarPaciente(pacientes[i]);
         }
     }
-    delete [] pacientes;
+
+    delete[] pacientes;
 }
+
 void mostrarTodosPacientesActivosResumidos()
 {
     Paciente *pacientes;
@@ -300,17 +319,33 @@ void mostrarTodosProfesionalesActivos()
     Profesional *profesionales;
     ProfesionalesArchivo pa;
     int cantidad = pa.getCantidad();
-    profesionales = new Profesional [cantidad];
+    profesionales = new Profesional[cantidad];
     pa.leerTodos(profesionales, cantidad);
-    for(int i = 0; i < cantidad; i++)
+
+    for (int i = 0; i < cantidad - 1; i++)
     {
-        if(profesionales[i].getEliminado() == false)
+        for (int j = i + 1; j < cantidad; j++)
         {
 
+            if (strcmp(profesionales[i].getApellido(), profesionales[j].getApellido()) > 0)
+            {
+                Profesional temp = profesionales[i];
+                profesionales[i] = profesionales[j];
+                profesionales[j] = temp;
+            }
+        }
+    }
+
+    // Mostrar pacientes activos
+    for (int i = 0; i < cantidad; i++)
+    {
+        if (!profesionales[i].getEliminado())
+        {
             mostrarProfesional(profesionales[i]);
         }
     }
-    delete [] profesionales;
+
+    delete[] profesionales;
 }
 void mostrarTodosProfesionalesActivosResumido()
 {
@@ -458,24 +493,47 @@ void mostrarEspecialidades(Especialidad especialidad)
     cout<<especialidad.getId()<< " - " <<especialidad.getNombreEspecialidad() <<endl;
     cout<<"-----------------------------------------------"<<endl;
 }
-void mostrarTodasEspeciaidades()
+#include <cstring> // Para usar strcmp
+
+void mostrarTodasEspecialidadesActivas()
 {
     Especialidad *especialidades;
     EspecialidadesArchivo ea;
     int cantidad = ea.getCantidad();
-    especialidades = new Especialidad [cantidad];
+    especialidades = new Especialidad[cantidad];
     ea.leerTodos(especialidades, cantidad);
-    for(int i = 0; i < cantidad; i++)
+
+    // Ordenar especialidades alfabéticamente por nombre, sin cambiar los IDs
+    for (int i = 0; i < cantidad - 1; i++)
     {
-
-        if(especialidades[i].getEliminado() == false)
+        for (int j = i + 1; j < cantidad; j++)
         {
+            const char *nombre1 = especialidades[i].getNombreEspecialidad();
+            const char *nombre2 = especialidades[j].getNombreEspecialidad();
 
+            if (nombre1 && nombre2 && strcmp(nombre1, nombre2) > 0)
+            {
+                // Intercambiar especialidades, los IDs permanecen iguales
+                Especialidad temp = especialidades[i];
+                especialidades[i] = especialidades[j];
+                especialidades[j] = temp;
+            }
+        }
+    }
+
+    // Mostrar especialidades activas
+    for (int i = 0; i < cantidad; i++)
+    {
+        if (!especialidades[i].getEliminado())
+        {
             mostrarEspecialidades(especialidades[i]);
         }
     }
-    delete [] especialidades;
+
+    delete[] especialidades;
 }
+
+
 void mostrarTodasEspeciaidadesEliminadas()
 {
     Especialidad *especialidades;
@@ -500,7 +558,7 @@ void editarEspecialidad()
     char nombreEspecialidad[50];
     Especialidad especialidad;
     EspecialidadesArchivo ea;
-    mostrarTodasEspeciaidades();
+    mostrarTodasEspecialidadesActivas();
     cout << "Ingrese el ID de la especialidad que desea editar: ";
     cin>>id;
     cin.ignore();
@@ -525,7 +583,7 @@ void eliminarEspecialidad()
 {
     Especialidad especialidad;
     EspecialidadesArchivo ea;
-    mostrarTodasEspeciaidades();
+    mostrarTodasEspecialidadesActivas();
     int codigo;
     cout<<"Ingrese el codigo a eliminar : ";
     cin>>codigo;

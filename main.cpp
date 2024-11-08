@@ -270,7 +270,7 @@ int main()
                     cout << "\033[4m";  // Comienza subrayado
                     cout<<"LISTAR ESPECILIALIDADES" <<endl<<endl;
                     cout << "\033[0m";  // Detiene subrayado
-                    mostrarTodasEspeciaidades();
+                    mostrarTodasEspecialidadesActivas();
                     system("pause");
                     system("cls");
                     break;

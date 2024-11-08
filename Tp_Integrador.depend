@@ -383,12 +383,12 @@
 1731001710 c:\users\fedef\desktop\version joaco\tp_integrador_pg2\especialidadesarchivo.h
 	"Especialidad.h"
 
-1731001710 source:c:\users\fedef\desktop\version joaco\version oficial\tp_integrador_clinica\especialidad.cpp
+1731027320 source:c:\users\fedef\desktop\version joaco\version oficial\tp_integrador_clinica\especialidad.cpp
 	<iostream>
 	<cstring>
 	"Especialidad.h"
 
-1731001710 c:\users\fedef\desktop\version joaco\version oficial\tp_integrador_clinica\especialidad.h
+1731027302 c:\users\fedef\desktop\version joaco\version oficial\tp_integrador_clinica\especialidad.h
 	<string>
 
 1731001710 source:c:\users\fedef\desktop\version joaco\version oficial\tp_integrador_clinica\especialidadesarchivo.cpp
@@ -409,7 +409,7 @@
 1730541289 c:\users\fedef\desktop\version joaco\version oficial\tp_integrador_clinica\fecha.h
 	<string>
 
-1731007152 source:c:\users\fedef\desktop\version joaco\version oficial\tp_integrador_clinica\main.cpp
+1731027456 source:c:\users\fedef\desktop\version joaco\version oficial\tp_integrador_clinica\main.cpp
 	<iostream>
 	<cstdlib>
 	"Persona.h"
@@ -425,14 +425,16 @@
 	"Persona.h"
 	"Fecha.h"
 
-1731006931 c:\users\fedef\desktop\version joaco\version oficial\tp_integrador_clinica\funcionesglobales.h
+1731028734 c:\users\fedef\desktop\version joaco\version oficial\tp_integrador_clinica\funcionesglobales.h
 	<iostream>
+	<cstring>
 	"PacientesArchivo.h"
 	"Paciente.h"
 	"Profesional.h"
 	"ProfesionalesArchivo.h"
 	"Especialidad.h"
 	"EspecialidadesArchivo.h"
+	<cstring>
 
 1730541289 c:\users\fedef\desktop\version joaco\version oficial\tp_integrador_clinica\pacientesarchivo.h
 	"Paciente.h"

@@ -24,7 +24,10 @@ void Especialidad::setNombreEspecialidad(string nombreEspecialidad) {
 void Especialidad::setEliminado(bool estado) {
     _eliminado = estado;
 }
+void Especialidad::setId(int id){
 
+    _id = id;
+}
 const char* Especialidad::getNombreEspecialidad() const {
     return _nombreEspecialidad;
 }
