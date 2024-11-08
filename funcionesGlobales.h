@@ -228,6 +228,56 @@ void restaurarPaciente()
         cout<<"No se encontro el paciente "<<endl;
     }
 }
+
+void buscarPaciente(){
+    char DNI[20];
+    PacientesArchivo pa;
+    cout << "Ingrese el DNI del paciente que quiere buscar: ";
+    cin.ignore();
+    cin.getline(DNI, 20);
+
+    int pos = pa.buscar(DNI);
+    if(pos == -1 ){
+        cout << "El paciente no ha sido encontrado." << endl;
+        return;
+    }
+    Paciente p = pa.Leer(pos);
+    mostrarPaciente(p);
+}
+
+void buscarPacientesPorObraSocial(){
+    Paciente *pacientes;
+    PacientesArchivo pa;
+    int cantidad = pa.getCantidad();
+    pacientes = new Paciente[cantidad];
+
+    bool encontrado = false;
+    
+    if(pacientes == NULL){
+        cout << "No se pudo leer los pacientes" << endl;
+    }
+
+    pa.leerTodos(pacientes, cantidad);
+    char obraSocial[20];
+    cout << "Ingrese la obra social por la que quiere filtrar: ";
+    cin.ignore();
+    cin.getline(obraSocial, 20);
+
+    for(int i = 0; i < cantidad; i++){
+        if(strcmp(pacientes[i].getObraSocial(), obraSocial) == 0){
+            encontrado  = true;
+            mostrarPaciente(pacientes[i]);
+        }
+    }
+
+    if(!encontrado){
+        cout << "NO se encontro ningun paciente con esa obra social" << endl;
+    }
+
+    delete [] pacientes;
+}
+
+
 ///PROFESIONALES
 Profesional cargarProfesional()
 {
@@ -263,7 +313,7 @@ Profesional cargarProfesional()
     cout << "Ingrese el valor de la consulta: $";
     cin >> valorConsulta;
 
-    cout << "¿Atiende solo particulares? (s/n): ";
+    cout << "ï¿½Atiende solo particulares? (s/n): ";
     cin >> soloParticularChar;
 
     // Actualiza `soloParticular` basado en la respuesta
@@ -364,7 +414,6 @@ void mostrarTodosProfesionalesActivosResumido()
     }
     delete [] profesionales;
 }
-<<<<<<< HEAD
 void mostrarTodosProfesionalesEliminados()
 {
     Profesional *profesionales;
@@ -504,7 +553,7 @@ void mostrarTodasEspecialidadesActivas()
     especialidades = new Especialidad[cantidad];
     ea.leerTodos(especialidades, cantidad);
 
-    // Ordenar especialidades alfabéticamente por nombre, sin cambiar los IDs
+    // Ordenar especialidades alfabï¿½ticamente por nombre, sin cambiar los IDs
     for (int i = 0; i < cantidad - 1; i++)
     {
         for (int j = i + 1; j < cantidad; j++)
@@ -634,38 +683,5 @@ void restaurarEspecialidad()
 }
 
 
-=======
 
 
-void buscarPacientesPorObraSocial(){
-    Paciente *pacientes;
-    PacientesArchivo pa;
-    int cantidad = pa.getCantidad();
-    pacientes = new Paciente[cantidad];
-
-    bool encontrado = false;
-    
-    if(pacientes == NULL){
-        cout << "No se pudo leer los pacientes" << endl;
-    }
-
-    pa.leerTodos(pacientes, cantidad);
-    char obraSocial[20];
-    cout << "Ingrese la obra social por la que quiere filtrar: ";
-    cin.ignore();
-    cin.getline(obraSocial, 20);
-
-    for(int i = 0; i < cantidad; i++){
-        if(strcmp(pacientes[i].getObraSocial(), obraSocial) == 0){
-            encontrado  = true;
-            pacientes[i].mostrar();
-        }
-    }
-
-    if(!encontrado){
-        cout << "NO se encontro ningun paciente con esa obra social" << endl;
-    }
-
-    delete [] pacientes;
-}
->>>>>>> dc0ea17215845aa9d6db3c87e9869bd8539351f4

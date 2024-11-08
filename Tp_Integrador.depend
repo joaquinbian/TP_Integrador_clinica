@@ -456,14 +456,15 @@
 	"Paciente.h"
 	"Fecha.h"
 
-<<<<<<< HEAD
+1731023904 D
+
 1730541289 source:c:\users\fedef\desktop\version joaco\version oficial\tp_integrador_clinica\pacientesarchivo.cpp
 	<iostream>
 	"PacientesArchivo.h"
 	<cstring>
 
 1730541289 source:c:\users\fedef\desktop\version joaco\version oficial\tp_integrador_clinica\persona.cpp
-=======
+
 1730156974 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Fecha.cpp
 	"Fecha.h"
 	<iostream>
@@ -475,34 +476,42 @@
 	<string>
 
 1730156974 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Persona.cpp
->>>>>>> dc0ea17215845aa9d6db3c87e9869bd8539351f4
+
+1731026372 ea17215845aa9d6db3c87e9869bd8539351f4
 	"Persona.h"
 	<cstring>
 	<iostream>
+	<iostream>
+	<cstring>
+	"Profesional.h"
+	"Persona.h"
+	<iostream>
+	<cstring>
+	<string>
+	"Turno.h"
+	"Fecha.h"
 
-<<<<<<< HEAD
 1731003559 source:c:\users\fedef\desktop\version joaco\version oficial\tp_integrador_clinica\profesional.cpp
-=======
+
 1730156974 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Persona.h
 	<string>
 
-1731023904 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Paciente.cpp
+1731032995 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Paciente.cpp
 	<iostream>
 	<cstring>
 	<string>
 	"Paciente.h"
 	"Fecha.h"
 
-1731023904 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Paciente.h
+1731032995 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Paciente.h
 	<string>
 	"Persona.h"
 	"Fecha.h"
-	"Turno.h"
 
-1731023904 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Turno.h
+1731032995 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Turno.h
 	"Fecha.h"
 
-1731023904 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/PacientesArchivo.cpp
+1731032995 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/PacientesArchivo.cpp
 	<iostream>
 	"PacientesArchivo.h"
 	<cstring>
@@ -510,43 +519,37 @@
 1730157103 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/PacientesArchivo.h
 	"Paciente.h"
 
-1731023904 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Profesional.cpp
->>>>>>> dc0ea17215845aa9d6db3c87e9869bd8539351f4
+1731032995 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Profesional.cpp
 	<iostream>
 	<cstring>
 	"Profesional.h"
 	"Persona.h"
 
-<<<<<<< HEAD
 1731001710 source:c:\users\fedef\desktop\version joaco\version oficial\tp_integrador_clinica\profesionalesarchivo.cpp
 	<iostream>
 	"ProfesionalesArchivo.h"
 
 1730541289 source:c:\users\fedef\desktop\version joaco\version oficial\tp_integrador_clinica\turno.cpp
-=======
-1731023904 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Profesional.h
+
+1731032995 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Profesional.h
 	<cstring>
 	"Persona.h"
 
-1731023904 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/ProfesionalesArchivo.cpp
+1731032995 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/ProfesionalesArchivo.cpp
 	<iostream>
-	<cstring>
 	"ProfesionalesArchivo.h"
 
 1730156974 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/ProfesionalesArchivo.h
 	"Profesional.h"
 
-1731023904 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Turno.cpp
->>>>>>> dc0ea17215845aa9d6db3c87e9869bd8539351f4
+1731032995 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Turno.cpp
 	<iostream>
 	<cstring>
 	<string>
 	"Turno.h"
 	"Fecha.h"
 
-<<<<<<< HEAD
-=======
-1731026214 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/main.cpp
+1731033458 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/main.cpp
 	<iostream>
 	<cstdlib>
 	"Persona.h"
@@ -554,12 +557,30 @@
 	"funcionesGlobales.h"
 	"Turno.h"
 
-1731026372 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/funcionesGlobales.h
+1731033891 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/funcionesGlobales.h
 	<iostream>
+	<cstring>
 	"PacientesArchivo.h"
 	"Paciente.h"
 	"Profesional.h"
 	"ProfesionalesArchivo.h"
-	"Turno.h"
+	"Especialidad.h"
+	"EspecialidadesArchivo.h"
+	<cstring>
 
->>>>>>> dc0ea17215845aa9d6db3c87e9869bd8539351f4
+1731032995 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Especialidad.cpp
+	<iostream>
+	<cstring>
+	"Especialidad.h"
+
+1731032995 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/Especialidad.h
+	<string>
+
+1731032995 source:/home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/EspecialidadesArchivo.cpp
+	<iostream>
+	"EspecialidadesArchivo.h"
+	<cstring>
+
+1731032995 /home/joaquin/utn_tup/2_cuatrimestre/programacion2/TP_Integrador_clinica/EspecialidadesArchivo.h
+	"Especialidad.h"
+

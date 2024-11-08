@@ -40,10 +40,11 @@ int main()
                 cout << "\033[0m";  // Detiene subrayado
 
                 cout << "1 - CARGAR PACIENTE" << endl;
-                cout << "2 - MODIFICAR PACIENTE" << endl;
-                cout << "3 - ELIMINAR PACIENTE" <<endl;
-                cout << "4 - LISTAR PACIENTES" << endl;
-                cout << "5 - RESTAURAR PACIENTES" << endl;
+                cout << "2 - BUSCAR PACIENTE" << endl;
+                cout << "3 - MODIFICAR PACIENTE" << endl;
+                cout << "4 - ELIMINAR PACIENTE" <<endl;
+                cout << "5 - LISTAR PACIENTES" << endl;
+                cout << "6 - RESTAURAR PACIENTES" << endl;
                 cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
 
                 cout << "Ingrese una opcion: ";
@@ -59,16 +60,8 @@ int main()
                     guardarPaciente();
                     //system("pause");
                     break;
+                
                 case 2:
-                    system("cls");
-                    cout << "\033[4m";  // Comienza subrayado
-<<<<<<< HEAD
-                    cout << "MODIFICAR PACIENTE" << endl<<endl;
-                    cout << "\033[0m";  // Detiene subrayado
-                    editarPaciente();
-                    system("pause");
-                    break;
-=======
                     cout << "BUSCAR PACIENTE" << endl<<endl;
                     cout << "\033[0m";  // Detiene subrayado
                     
@@ -97,8 +90,15 @@ int main()
                         break;
                     }
                         break;
->>>>>>> dc0ea17215845aa9d6db3c87e9869bd8539351f4
                 case 3:
+                    system("cls");
+                    cout << "\033[4m";  // Comienza subrayado
+                    cout << "MODIFICAR PACIENTE" << endl<<endl;
+                    cout << "\033[0m";  // Detiene subrayado
+                    editarPaciente();
+                    system("pause");
+                    break;
+                case 4:
                     system("cls");
                     cout << "\033[4m";  // Comienza subrayado
                     cout << "ELIMINAR PACIENTE" << endl<<endl;
@@ -106,7 +106,7 @@ int main()
                     eliminarPaciente();
                     system("pause");
                     break;
-                case 4:
+                case 5:
                     system("cls");
                     cout << "\033[4m";  // Comienza subrayado
                     cout << "LISTAR PACIENTES" << endl<<endl;
@@ -114,7 +114,7 @@ int main()
                     mostrarTodosPacientesActivos();
                     system("pause");
                     break;
-                case 5:
+                case 6:
                     system("cls");
                     cout << "\033[4m";  // Comienza subrayado
                     cout << "RESTAURAR PACIENTE" << endl<<endl;
