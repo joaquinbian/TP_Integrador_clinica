@@ -6,6 +6,8 @@
 #include "ProfesionalesArchivo.h"
 #include "Especialidad.h"
 #include "EspecialidadesArchivo.h"
+#include "Turno.h"
+#include "TurnosArchivo.h"
 
 using namespace std;
 ///PACIENTES
@@ -252,7 +254,7 @@ void buscarPacientesPorObraSocial(){
     pacientes = new Paciente[cantidad];
 
     bool encontrado = false;
-    
+
     if(pacientes == NULL){
         cout << "No se pudo leer los pacientes" << endl;
     }
@@ -313,7 +315,7 @@ Profesional cargarProfesional()
     cout << "Ingrese el valor de la consulta: $";
     cin >> valorConsulta;
 
-    cout << "�Atiende solo particulares? (s/n): ";
+    cout << "∩┐╜Atiende solo particulares? (s/n): ";
     cin >> soloParticularChar;
 
     // Actualiza `soloParticular` basado en la respuesta
@@ -553,7 +555,7 @@ void mostrarTodasEspecialidadesActivas()
     especialidades = new Especialidad[cantidad];
     ea.leerTodos(especialidades, cantidad);
 
-    // Ordenar especialidades alfab�ticamente por nombre, sin cambiar los IDs
+    // Ordenar especialidades alfab∩┐╜ticamente por nombre, sin cambiar los IDs
     for (int i = 0; i < cantidad - 1; i++)
     {
         for (int j = i + 1; j < cantidad; j++)
@@ -682,6 +684,87 @@ void restaurarEspecialidad()
 
 }
 
+///TURNOS
+Turno cargarTurno(){
 
+    Fecha fechaTurno;
+    char especialidad[50], dniPaciente[50], matricula[50];
+    int horaTurno;
 
+    cout << "Ingrese la fecha del turno: " << endl;
+    cin >> fechaTurno;
+
+    cout << "Ingrese la hora del turno (Entero): ";
+    cin >> horaTurno;
+
+    cout << "Ingrese la especialidad: ";
+    cin >> especialidad;
+
+    cout << "Ingrese el DNI del paciente: ";
+    cin >> dniPaciente;
+
+    cout << "Ingrese la matr�cula del profesional: ";
+    cin >> matricula;
+
+    return Turno(fechaTurno, horaTurno, especialidad, dniPaciente, matricula);
+}
+
+void buscarTurno(){
+    char DNI[20];
+    TurnosArchivo ta;
+    cout << "Ingrese DNI del paciente para buscar turno: ";
+    cin.ignore();
+    cin.getline(DNI, 20);
+
+    int pos = ta.buscar(DNI);
+    if(pos == -1 ){
+        cout << "El turno no ha sido encontrado." << endl;
+        return;
+    }
+    Turno t = ta.Leer(pos);
+    t.mostrar();
+}
+
+void guardarTurno()
+{
+    Turno turno;
+    TurnosArchivo ta;
+    turno = cargarTurno();
+
+    if(ta.Guardar(turno))
+    {
+        cout<<"Turno guardado exitosamente" <<endl;
+        system("pause");
+        system("cls");
+    }
+    else
+    {
+        cout<<"No se pudo guardar el turno " <<endl;
+        system("pause");
+        system("cls");
+    }
+}
+
+void editarTurno(){
+    char DNI[20];
+    TurnosArchivo ta;
+    cout << "DNI del paciente para editar turno: ";
+    cin.ignore();
+    cin.getline(DNI, 20);
+
+    int pos = ta.buscar(DNI);
+    if(pos == -1 ){
+        cout << "El turno que quiere editar no ha sido encontrado." << endl;
+        return;
+    }
+
+    Turno turno;
+    turno = cargarTurno();
+    bool res = ta.guardar(pos, turno);
+    if(res){
+        cout << "El turno ha sido editado correctamente";
+    } else {
+        cout << "Ocurrio un error al editar el turno";
+    }
+}
 
