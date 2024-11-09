@@ -289,7 +289,7 @@ void buscarPacientesPorObraSocial(){
 ///PROFESIONALES
 Profesional cargarProfesional()
 {
-    char nombre[50], apellido[50], direccion[50], telefono[50], ciudad[50], email[50], matricula[15], soloParticularChar;
+    char nombre[50], apellido[50], direccion[50], telefono[50], ciudad[50], email[50], matricula[50], soloParticularChar;
     float valorConsulta;
     int especialidad;
     bool soloParticular = false;
@@ -484,10 +484,10 @@ void eliminarProfesional()
 
     mostrarTodosProfesionalesActivosResumido();
 
-    char matricula[20];
+    char matricula[50];
     cout<<endl<<"Ingrese la matricula del profesional a eliminar : ";
     cin.ignore();
-    cin.getline(matricula, 20);
+    cin.getline(matricula, 50);
 
     int pos = pa.buscar(matricula);
     if(pos != -1)
@@ -509,10 +509,10 @@ void restaurarProfesional()
 
     mostrarTodosProfesionalesEliminados();
 
-    char matricula[20];
+    char matricula[50];
     cout<<endl<<"Ingrese la matricula del profesional a eliminar : ";
     cin.ignore();
-    cin.getline(matricula, 20);
+    cin.getline(matricula, 50);
 
     int pos = pa.buscar(matricula);
     if(pos != -1)
@@ -528,11 +528,11 @@ void restaurarProfesional()
     }
 }
 void buscarProfesional(){
-    char matricula[15];
+    char matricula[50];
     ProfesionalesArchivo pa;
     cout << "Ingrese la matricula del profesional que quiere buscar: ";
     cin.ignore();
-    cin.getline(matricula, 15);
+    cin.getline(matricula, 50);
 
     int pos = pa.buscar(matricula);
     if(pos == -1 ){

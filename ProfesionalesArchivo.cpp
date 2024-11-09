@@ -89,15 +89,15 @@ int ProfesionalesArchivo::buscar(char* matricula)
     }
     while(fread(&registro, sizeof(Profesional), 1, pFile) == 1)
     {
+        cout <<"MATRICULA A BUSCAR " << matricula << endl;
+        cout << "MATRICULA DEL PROFESIONAL " << registro.getMatricula() << endl;
         if(strcmp(registro.getMatricula(), matricula) == 0){
-            fclose(pFile);
-            return pos;
+            break;
         }
         pos++;
     }
-    if(registro.getMatricula() == matricula)
-    {
-        fclose(pFile);
+    fclose(pFile);
+    if(pos >= 0){
         return pos;
     }
     return -1;
