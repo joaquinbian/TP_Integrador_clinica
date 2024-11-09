@@ -823,3 +823,45 @@ void editarTurno(){
     }
 }
 
+void mostrarTodosTurnosActivos()
+{
+    Turno *turnos;
+    TurnosArchivo ta;
+    int cantidad = ta.getCantidad();
+    turnos = new Turno [cantidad];
+    ta.leerTodos(turnos, cantidad);
+    for(int i = 0; i < cantidad; i++)
+    {
+        if(turnos[i].getEliminado() == false)
+        {
+            turnos[i].mostrar();
+        }
+    }
+    delete [] turnos;
+}
+
+void eliminarTurno()
+{
+    Turno turno;
+    TurnosArchivo ta;
+
+    mostrarTodosTurnosActivos();
+    char dni[20];
+    cout<<endl<<"Ingrese DNI/paciente del turno a eliminar : ";
+    cin.ignore();
+    cin.getline(dni, 20);
+
+    int pos = ta.buscar(dni);
+    if(pos != -1)
+    {
+        turno = ta.Leer(pos);
+        turno.setEliminado(true);
+        ta.guardar(pos,turno);
+        cout << endl <<"Turno eliminado con �xito" <<endl << endl;
+    }
+    else
+    {
+        cout << endl << "No se pudo eliminar el turno" << endl << endl;
+    }
+}
+
