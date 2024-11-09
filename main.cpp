@@ -16,6 +16,7 @@ int main()
 
     while(true)
     {
+        system("cls");
         cout << "\033[4m";  // Comienza subrayado
         cout<<"SISTEMA DE GESTION DE TURNOS " <<endl<<endl;
         cout << "\033[0m";  // Detiene subrayado
@@ -35,8 +36,9 @@ int main()
             while (true)
             {
                 system("cls");
+
                 cout << "\033[4m";  // Comienza subrayado
-                cout<<"PACIENTES " <<endl<<endl;
+                cout<<"PACIENTES" <<endl<<endl;
                 cout << "\033[0m";  // Detiene subrayado
 
                 cout << "1 - CARGAR PACIENTE" << endl;
@@ -63,21 +65,24 @@ int main()
 
                 case 2:
                     system("cls");
+                    cout << "\033[4m";  // Comienza subrayado
                     cout << "BUSCAR PACIENTE" << endl<<endl;
                     cout << "\033[0m";  // Detiene subrayado
 
                     cout << "1 - POR DNI" << endl;
                     cout << "2 - POR OBRA SOCIAL" << endl;
-                    cout << "0 - VOLVER AL MENU PRINCIPAL" << endl;
+                    cout << "0 - VOLVER AL MENU PRINCIPAL" << endl<< endl;
                     int opcionBuscarPaciente;
                     cout << "Ingrese una opcion: ";
                     cin >> opcionBuscarPaciente;
                     switch (opcionBuscarPaciente){
                     case 1:
+                        system("cls");
                         buscarPaciente();
                         system("pause");
                         break;
                     case 2:
+                        system("cls");
                         buscarPacientesPorObraSocial();
                         system("pause");
                         break;
@@ -142,15 +147,17 @@ int main()
             while (true)
             {
                 system("cls");
+
                 cout << "\033[4m";  // Comienza subrayado
-                cout<<"PROFESIONALES " <<endl<<endl;
+                cout<<"PROFESIONALES" <<endl<<endl;
                 cout << "\033[0m";  // Detiene subrayado
 
                 cout << "1 - CARGAR PROFESIONAL" << endl;
-                cout << "2 - MODIFICAR PROFESIONAL" << endl;
-                cout << "3 - ELIMINAR PROFESIONAL" << endl;
-                cout << "4 - LISTAR PROFESIONALES" << endl;
-                cout << "5 - RESTAURAR PROFESIONALES" << endl;
+                cout << "2 - BUSCAR PROFESIONAL" << endl;
+                cout << "3 - MODIFICAR PROFESIONAL" << endl;
+                cout << "4 - ELIMINAR PROFESIONAL" << endl;
+                cout << "5 - LISTAR PROFESIONALES" << endl;
+                cout << "6 - RESTAURAR PROFESIONALES" << endl;
                 cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
 
                 cout << "Ingrese una opcion: ";
@@ -167,13 +174,55 @@ int main()
                     break;
                 case 2:
                     system("cls");
+                    cout << "\033[4m";
+                    cout << "BUSCAR PROFESIONAL" << endl<<endl;
+                    cout << "\033[0m";  // Detiene subrayado
+
+                    cout << "1 - POR MATRICULA" << endl;
+                    cout << "2 - POR ESPECIALIDAD" << endl;
+                    cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
+                    int opcionBuscarProfesional;
+
+                    cout << "Ingrese una opcion: ";
+                    cin >> opcionBuscarProfesional;
+                    switch (opcionBuscarProfesional){
+                    case 1:
+                        system("cls");
+                        cout << "\033[4m";
+                        cout << "BUSCAR PROFESIONAL" << endl<<endl;
+                        cout << "\033[0m";  // Detiene subrayado
+                        buscarProfesional();
+                        system("pause");
+                        break;
+                    case 2:
+                        system("cls");
+                        cout << "\033[4m";
+                        cout << "BUSCAR PROFESIONAL" << endl<<endl;
+                        cout << "\033[0m";  // Detiene subrayado
+                        buscarProfesionalPorEspecialidad();
+                        system("pause");
+                        break;
+                    case 0:
+                        system("cls");
+                        break;
+                    default:
+                        cout << "Opcion no valida." << endl;
+                    }
+
+                    if (opcionProfesional == 0)
+                    {
+                        break;
+                    }
+                        break;
+                case 3:
+                    system("cls");
                     cout << "\033[4m";  // Comienza subrayado
                     cout<<"MODIFICAR PROFESIONAL " <<endl<<endl;
                     cout << "\033[0m";  // Detiene subrayado
                     editarProfesional();
                     system("pause");
                     break;
-                case 3:
+                case 4:
                     system("cls");
                     cout << "\033[4m";  // Comienza subrayado
                     cout<<"ELIMINAR PROFESIONAL " <<endl<<endl;
@@ -181,7 +230,7 @@ int main()
                     eliminarProfesional();
                     system("pause");
                     break;
-                case 4:
+                case 5:
                     system("cls");
                     cout << "\033[4m";  // Comienza subrayado
                     cout<<"LISTAR PROFESIONAL " <<endl<<endl;
@@ -189,7 +238,7 @@ int main()
                     mostrarTodosProfesionalesActivos();
                     system("pause");
                     break;
-                case 5:
+                case 6:
                     system("cls");
                     cout << "\033[4m";  // Comienza subrayado
                     cout << "RESTAURAR PROFESIONALES" << endl<<endl;

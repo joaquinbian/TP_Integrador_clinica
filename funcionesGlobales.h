@@ -144,13 +144,13 @@ void guardarPaciente()
     paciente = cargarPaciente();
     if(pa.Guardar(paciente))
     {
-        cout<<"Paciente guardado exitosamente" <<endl;
+        cout<<endl<<"Paciente guardado exitosamente" <<endl<<endl;
         system("pause");
         system("cls");
     }
     else
     {
-        cout<<"No se pudo guardar el paciente " <<endl;
+        cout<<endl<<"No se pudo guardar el paciente " <<endl<<endl;
         system("pause");
         system("cls");
     }
@@ -166,20 +166,22 @@ void editarPaciente()
     int pos = pa.buscar(DNI);
     if(pos == -1 )
     {
-        cout << "El paciente que quiere editar no ha sido encontrado." << endl;
+        cout << endl <<"El paciente que quiere editar no ha sido encontrado." << endl<<endl;
         return;
     }
 
     Paciente paciente;
+    cout << endl;
     paciente = cargarPaciente();
     bool res = pa.guardar(pos, paciente);
     if(res)
     {
-        cout << "El paciente ha sido editado correctamente";
+        cout << endl;
+        cout << "El paciente ha sido editado correctamente" << endl << endl;
     }
     else
     {
-        cout << "Ocurrio un error al editar el paciente";
+        cout << endl <<"Ocurrio un error al editar el paciente" <<endl << endl;
     }
 }
 void eliminarPaciente()
@@ -189,7 +191,7 @@ void eliminarPaciente()
 
     mostrarTodosPacientesActivosResumidos();
     char dni[20];
-    cout<<"Ingrese el DNI del paciente a eliminar : ";
+    cout<<endl<<"Ingrese el DNI del paciente a eliminar : ";
     cin.ignore();
     cin.getline(dni, 20);
 
@@ -199,11 +201,11 @@ void eliminarPaciente()
         paciente = pa.Leer(pos);
         paciente.setEliminado(true);
         pa.guardar(pos,paciente);
-        cout<<"paciente eliminado " <<endl;
+        cout << endl <<"Paciente eliminado con exito" <<endl << endl;
     }
     else
     {
-        cout<<"No se encontro el paciente "<<endl;
+        cout << endl << "No se logro eliminar el paciente con exito" << endl << endl;
     }
 }
 void restaurarPaciente()
@@ -213,7 +215,7 @@ void restaurarPaciente()
 
     mostrarTodosPacientesEliminados();
     char dni[20];
-    cout<<"Ingrese el DNI del paciente a restaurar : ";
+    cout<<endl<<"Ingrese el DNI del paciente a restaurar : ";
     cin.ignore();
     cin.getline(dni, 20);
 
@@ -223,11 +225,12 @@ void restaurarPaciente()
         paciente = pa.Leer(pos);
         paciente.setEliminado(false);
         pa.guardar(pos,paciente);
-        cout<<"paciente restaurado " <<endl;
+        cout << endl;
+        cout<<"Paciente restaurado con exito" <<endl<<endl;
     }
     else
     {
-        cout<<"No se encontro el paciente "<<endl;
+        cout<<endl<<"No se logro restaurar el paciente con exito"<<endl<<endl;
     }
 }
 
@@ -240,10 +243,11 @@ void buscarPaciente(){
 
     int pos = pa.buscar(DNI);
     if(pos == -1 ){
-        cout << "El paciente no ha sido encontrado." << endl;
+        cout << endl << "El paciente no ha sido encontrado." << endl <<endl;
         return;
     }
     Paciente p = pa.Leer(pos);
+    cout << endl;
     mostrarPaciente(p);
 }
 
@@ -256,18 +260,19 @@ void buscarPacientesPorObraSocial(){
     bool encontrado = false;
 
     if(pacientes == NULL){
-        cout << "No se pudo leer los pacientes" << endl;
+        cout << endl <<"No se pudo leer los pacientes" << endl <<endl;
     }
 
     pa.leerTodos(pacientes, cantidad);
     char obraSocial[20];
-    cout << "Ingrese la obra social por la que quiere filtrar: ";
+    cout << "Ingrese la obra social del paciente que quiere buscar: ";
     cin.ignore();
     cin.getline(obraSocial, 20);
 
     for(int i = 0; i < cantidad; i++){
         if(strcmp(pacientes[i].getObraSocial(), obraSocial) == 0){
             encontrado  = true;
+            cout << endl;
             mostrarPaciente(pacientes[i]);
         }
     }
@@ -315,7 +320,8 @@ Profesional cargarProfesional()
     cout << "Ingrese el valor de la consulta: $";
     cin >> valorConsulta;
 
-    cout << "∩┐╜Atiende solo particulares? (s/n): ";
+    cout << "Atiende solo particulares? (s/n): ";
+
     cin >> soloParticularChar;
 
     // Actualiza `soloParticular` basado en la respuesta
@@ -333,13 +339,13 @@ void guardarProfesional()
     profesional = cargarProfesional();
     if(pa.Guardar(profesional))
     {
-        cout<<"Profesional guardado exitosamente" <<endl;
+        cout<<endl<<"Profesional guardado exitosamente" <<endl<<endl;
         system("pause");
         system("cls");
     }
     else
     {
-        cout<<"No se pudo guardar el profesional " <<endl;
+        cout<<endl<<"No se pudo guardar el profesional " <<endl<<endl;
         system("pause");
         system("cls");
     }
@@ -438,27 +444,28 @@ void editarProfesional()
     char matricula[20];
     ProfesionalesArchivo pa;
     mostrarTodosProfesionalesActivos();
-    cout << "Ingrese la matricula del profesional que quiere editar: ";
+    cout <<endl<< "Ingrese la matricula del profesional que quiere editar: ";
     cin.ignore();
     cin.getline(matricula, 20);
 
     int pos = pa.buscar(matricula);
     if(pos == -1 )
     {
-        cout << "El profesional que quiere editar no ha sido encontrado." << endl;
+        cout << endl <<"El profesional que quiere editar no ha sido encontrado." <<endl<< endl;
         return;
     }
 
     Profesional profesional;
+    cout<<endl;
     profesional = cargarProfesional();
     bool res = pa.guardar(pos, profesional);
     if(res)
     {
-        cout << "El profesional ha sido editado correctamente";
+        cout <<endl<< "El profesional ha sido editado correctamente"<<endl;
     }
     else
     {
-        cout << "Ocurrio un error al editar el profesional";
+        cout <<endl<< "Ocurrio un error al editar el profesional"<<endl;
     }
 }
 void eliminarProfesional()
@@ -469,7 +476,7 @@ void eliminarProfesional()
     mostrarTodosProfesionalesActivosResumido();
 
     char matricula[20];
-    cout<<"Ingrese la matricula del profesional a eliminar : ";
+    cout<<endl<<"Ingrese la matricula del profesional a eliminar : ";
     cin.ignore();
     cin.getline(matricula, 20);
 
@@ -479,11 +486,11 @@ void eliminarProfesional()
         profesional = pa.Leer(pos);
         profesional.setEliminado(true);
         pa.guardar(pos,profesional);
-        cout<<"profesional eliminado " <<endl;
+        cout<<endl<<"profesional eliminado " <<endl<<endl;
     }
     else
     {
-        cout<<"No se encontro el profesional "<<endl;
+        cout<<endl<<"No se encontro el profesional "<<endl<<endl;
     }
 }
 void restaurarProfesional()
@@ -494,7 +501,7 @@ void restaurarProfesional()
     mostrarTodosProfesionalesEliminados();
 
     char matricula[20];
-    cout<<"Ingrese la matricula del profesional a eliminar : ";
+    cout<<endl<<"Ingrese la matricula del profesional a eliminar : ";
     cin.ignore();
     cin.getline(matricula, 20);
 
@@ -504,12 +511,60 @@ void restaurarProfesional()
         profesional = pa.Leer(pos);
         profesional.setEliminado(false);
         pa.guardar(pos,profesional);
-        cout<<"profesional restaurado " <<endl;
+        cout<<endl<<"Profesional restaurado con exito" <<endl<<endl;
     }
     else
     {
-        cout<<"No se encontro el profesional "<<endl;
+        cout<<endl<<"No se encontro el profesional "<<endl<<endl;
     }
+}
+void buscarProfesional(){
+    char matricula[15];
+    ProfesionalesArchivo pa;
+    cout << "Ingrese la matricula del profesional que quiere buscar: ";
+    cin.ignore();
+    cin.getline(matricula, 15);
+
+    int pos = pa.buscar(matricula);
+    if(pos == -1 ){
+        cout << "El profesional no ha sido encontrado." << endl;
+        return;
+    }
+    Profesional p = pa.Leer(pos);
+    cout << endl;
+    mostrarProfesional(p);
+}
+void buscarProfesionalPorEspecialidad(){
+    Profesional *profesional;
+    ProfesionalesArchivo pa;
+    int cantidad = pa.getCantidad();
+    profesional = new Profesional[cantidad];
+
+    bool encontrado = false;
+
+    if(profesional == NULL){
+        cout << "No se pudo leer los profesionales" << endl;
+    }
+
+    pa.leerTodos(profesional, cantidad);
+    char especialidad[50];
+    cout << "Ingrese la especialidad del profesional que quiere buscar: ";
+    cin.ignore();
+    cin.getline(especialidad, 50);
+
+    for(int i = 0; i < cantidad; i++){
+        if(strcmp(profesional[i].getEspecialidad(), especialidad) == 0){
+            encontrado  = true;
+            cout << endl;
+            mostrarProfesional(profesional[i]);
+        }
+    }
+
+    if(!encontrado){
+        cout << "NO se encontro ningun profesional con esa obra social" << endl;
+    }
+
+    delete [] profesional;
 }
 ///ESPECIALIDADES
 Especialidad cargarEspecialidad()
