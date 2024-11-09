@@ -10,6 +10,7 @@
 #include "TurnosArchivo.h"
 
 using namespace std;
+void mostrarTodasEspecialidadesActivas();
 ///PACIENTES
 Paciente cargarPaciente()
 {
@@ -288,9 +289,11 @@ void buscarPacientesPorObraSocial(){
 ///PROFESIONALES
 Profesional cargarProfesional()
 {
-    char nombre[50], apellido[50], direccion[50], telefono[50], ciudad[50], email[50], matricula[15], especialidad[50], soloParticularChar;
+    char nombre[50], apellido[50], direccion[50], telefono[50], ciudad[50], email[50], matricula[15], soloParticularChar;
     float valorConsulta;
+    int especialidad;
     bool soloParticular = false;
+
 
     cout << "Ingrese el nombre: ";
     cin.ignore();
@@ -311,8 +314,10 @@ Profesional cargarProfesional()
     cout << "Ingrese el correo electronico: ";
     cin.getline(email, 50);
 
-    cout << "Ingrese la especialidad: ";
-    cin.getline(especialidad, 50);
+    cout << "Especialidades: " << endl;
+    mostrarTodasEspecialidadesActivas();
+    cout << "Ingrese el codigo de la especialidad ";
+    cin >> especialidad;
 
     cout << "Ingrese el numero de matricula: ";
     cin.getline(matricula, 50);
@@ -547,13 +552,16 @@ void buscarProfesionalPorEspecialidad(){
     }
 
     pa.leerTodos(profesional, cantidad);
-    char especialidad[50];
+    system("cls");
+    mostrarTodasEspecialidadesActivas();
+    int especialidad;
     cout << "Ingrese la especialidad del profesional que quiere buscar: ";
-    cin.ignore();
-    cin.getline(especialidad, 50);
-
+    cin >> especialidad;
+    
     for(int i = 0; i < cantidad; i++){
-        if(strcmp(profesional[i].getEspecialidad(), especialidad) == 0){
+        cout << "especialidad buscada: " << especialidad << endl;
+        cout << "especialidad del profesional " << profesional[i].getEspecialidad() << endl;
+        if(profesional[i].getEspecialidad() == especialidad){
             encontrado  = true;
             cout << endl;
             mostrarProfesional(profesional[i]);
@@ -561,7 +569,7 @@ void buscarProfesionalPorEspecialidad(){
     }
 
     if(!encontrado){
-        cout << "NO se encontro ningun profesional con esa obra social" << endl;
+        cout << "NO se encontro ningun profesional con esa especialidad" << endl;
     }
 
     delete [] profesional;
@@ -595,15 +603,12 @@ void guardarEspecialidad()
         system("cls");
     }
 }
-void mostrarEspecialidades(Especialidad especialidad)
-{
+void mostrarEspecialidades(Especialidad especialidad){
     cout<<especialidad.getId()<< " - " <<especialidad.getNombreEspecialidad() <<endl;
     cout<<"-----------------------------------------------"<<endl;
 }
-#include <cstring> // Para usar strcmp
 
-void mostrarTodasEspecialidadesActivas()
-{
+void mostrarTodasEspecialidadesActivas(){
     Especialidad *especialidades;
     EspecialidadesArchivo ea;
     int cantidad = ea.getCantidad();
