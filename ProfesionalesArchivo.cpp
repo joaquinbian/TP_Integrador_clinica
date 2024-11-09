@@ -90,13 +90,14 @@ int ProfesionalesArchivo::buscar(char* matricula)
     while(fread(&registro, sizeof(Profesional), 1, pFile) == 1)
     {
         if(strcmp(registro.getMatricula(), matricula) == 0){
-             return pos;
+            fclose(pFile);
+            return pos;
         }
         pos++;
     }
-    fclose(pFile);
     if(registro.getMatricula() == matricula)
     {
+        fclose(pFile);
         return pos;
     }
     return -1;

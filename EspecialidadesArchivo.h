@@ -12,6 +12,7 @@ class EspecialidadesArchivo
         int getCantidad();
         int buscar(int id);
         bool editar(char* dni);
+        Especialidad buscarEspecalidad(int id);
         Especialidad Leer(int pos);
 
 

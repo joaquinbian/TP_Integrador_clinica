@@ -357,6 +357,7 @@ void guardarProfesional()
 }
 void mostrarProfesional(Profesional profesional)
 {
+    EspecialidadesArchivo espFile;
     cout<<"Nombre : " <<profesional.getNombre() <<endl;
     cout<<"Apellido : " <<profesional.getApellido() <<endl;
     cout<<"Domicilio : " <<profesional.getDireccion() <<endl;
@@ -364,17 +365,18 @@ void mostrarProfesional(Profesional profesional)
     cout<<"Telefono : " <<profesional.getTelefono() <<endl;
     cout<<"Email : " <<profesional.getEmail() <<endl;
     cout<<"Matricula : " <<profesional.getMatricula() <<endl;
-    cout<<"Especialidad : " <<profesional.getEspecialidad() <<endl;
+    cout<<"Especialidad : " << espFile.buscarEspecalidad(profesional.getEspecialidad()).getNombreEspecialidad() <<endl;
     cout<<"Valor de la consulta : $" <<profesional.getValorConsulta() <<endl;
     cout<<"Atiende obras sociales y prepagas : " <<profesional.getSoloParticular() <<endl;
     cout<<"-----------------------------------------------"<<endl;
 }
 void mostrarProfesionalResumido(Profesional profesional)
 {
+    EspecialidadesArchivo espFile;
     cout<<"Nombre : " <<profesional.getNombre() <<endl;
     cout<<"Apellido : " <<profesional.getApellido() <<endl;
     cout<<"Matricula : " <<profesional.getMatricula() <<endl;
-    cout<<"Especialidad : " <<profesional.getEspecialidad() <<endl;
+    cout<<"Especialidad : " << espFile.buscarEspecalidad(profesional.getEspecialidad()).getNombreEspecialidad() <<endl;
     cout<<"-----------------------------------------------"<<endl;
 }
 void mostrarTodosProfesionalesActivos()
@@ -446,12 +448,12 @@ void mostrarTodosProfesionalesEliminados()
 }
 void editarProfesional()
 {
-    char matricula[20];
+    char matricula[50];
     ProfesionalesArchivo pa;
     mostrarTodosProfesionalesActivos();
     cout <<endl<< "Ingrese la matricula del profesional que quiere editar: ";
     cin.ignore();
-    cin.getline(matricula, 20);
+    cin.getline(matricula, 50);
 
     int pos = pa.buscar(matricula);
     if(pos == -1 )
@@ -467,10 +469,12 @@ void editarProfesional()
     if(res)
     {
         cout <<endl<< "El profesional ha sido editado correctamente"<<endl;
+        return;
     }
     else
     {
         cout <<endl<< "Ocurrio un error al editar el profesional"<<endl;
+        return;
     }
 }
 void eliminarProfesional()
@@ -557,10 +561,8 @@ void buscarProfesionalPorEspecialidad(){
     int especialidad;
     cout << "Ingrese la especialidad del profesional que quiere buscar: ";
     cin >> especialidad;
-    
+
     for(int i = 0; i < cantidad; i++){
-        cout << "especialidad buscada: " << especialidad << endl;
-        cout << "especialidad del profesional " << profesional[i].getEspecialidad() << endl;
         if(profesional[i].getEspecialidad() == especialidad){
             encontrado  = true;
             cout << endl;

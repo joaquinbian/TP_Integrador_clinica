@@ -20,7 +20,7 @@ class Profesional : public Persona
         const bool getEliminado() const;
 
     private:
-        char _matricula[15];
+        char _matricula[50];
         int idEspecialidad;
         float _valorConsulta;
         bool _soloParticular = true;
