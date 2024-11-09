@@ -5,19 +5,47 @@
 #include "Fecha.h"
 using namespace std;
 
-
 Turno::Turno(){}
-Turno::Turno(Fecha fechaTurno, std::string dniPaciente, std::string dniProfesional)
+Turno::Turno(Fecha fechaTurno, int horaTurno, std::string especialidad, std::string dniPaciente, std::string matricula)
 {
     setFecha(fechaTurno);
+    setHoraTurno(horaTurno);
+    setEspecialidad(especialidad);
     setDniPaciente(dniPaciente);
-    setDniProfesional(dniProfesional);
-
+    setMatricula(matricula);
 }
 
 void Turno::setFecha(Fecha fechaTurno)
 {
-    _fecha = fechaTurno;
+    _fechaTurno = fechaTurno;
+}
+
+Fecha Turno::getFecha() const
+{
+    return _fechaTurno;
+}
+
+void Turno::setHoraTurno(int horaTurno){
+
+    if(horaTurno > 8 || horaTurno < 17){
+
+        _horaTurno = horaTurno;
+    }
+}
+
+const int Turno::getHoraTurno() const{
+
+    return _horaTurno;
+}
+
+void Turno::setEspecialidad(std::string especialidad)
+{
+    strcpy(_especialidad, especialidad.c_str());
+}
+
+const char* Turno::getEspecialidad() const{
+
+    return _especialidad;
 }
 
 void Turno::setDniPaciente(string dniPaciente)
@@ -26,8 +54,26 @@ void Turno::setDniPaciente(string dniPaciente)
     _dniPaciente[sizeof(_dniPaciente) - 1] = '\0';
 }
 
-void Turno::setDniProfesional(string dniProfesional)
+const char* Turno::getDniPaciente() const{
+
+    return _dniPaciente;
+}
+
+void Turno::setMatricula(string matriucla)
 {
-    strncpy(_dniProfesional, dniProfesional.c_str(), sizeof(_dniProfesional) - 1);
-    _dniProfesional[sizeof(_dniProfesional) - 1] = '\0';
+    strncpy(_matricula, matriucla.c_str(), sizeof(_matricula) - 1);
+    _matricula[sizeof(_matricula) - 1] = '\0';
+}
+
+const char* Turno::getMatricula() const{
+
+    return _matricula;
+}
+
+void Turno::mostrar(){
+    //cout<<"Fecha : " <<this->getFecha() <<endl;
+    cout<<"Hora : " <<this->getHoraTurno() <<endl;
+    cout<<"Especialidad : " <<this->getEspecialidad() <<endl;
+    cout<<"DNI Paciente : " <<this->getDniPaciente() <<endl;
+    cout<<"Matricula : " <<this->getMatricula() <<endl;
 }

@@ -54,6 +54,10 @@
 		<Unit filename="Turno.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="TurnosArchivo.cpp" />
+		<Unit filename="TurnosArchivo.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="funcionesGlobales.h" />
 		<Unit filename="main.cpp" />
 		<Extensions />
