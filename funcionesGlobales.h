@@ -749,10 +749,10 @@ Turno cargarTurno(){
     cout << "Ingrese la fecha del turno: " << endl;
     cin >> fechaTurno;
 
-    cout << "Ingrese la hora del turno (Entero): ";
+    cout << "Ingrese la hora del turno (8-20 hs): ";
     cin >> horaTurno;
 
-    cout << "Ingrese la especialidad: ";
+    cout << "Ingrese la especialidad (minúsc., sin espacios ni tildes): ";
     cin >> especialidad;
 
     cout << "Ingrese el DNI del paciente: ";
@@ -830,11 +830,30 @@ void mostrarTodosTurnosActivos()
     int cantidad = ta.getCantidad();
     turnos = new Turno [cantidad];
     ta.leerTodos(turnos, cantidad);
-    for(int i = 0; i < cantidad; i++)
+
+    ///Inicio ordenamiento por fecha ascendente
+    for (int i = 0; i < cantidad - 1; i++) {
+        for (int j = 0; j < cantidad - 1; j++) {
+            Fecha fecha1 = turnos[j].getFecha();
+            Fecha fecha2 = turnos[j + 1].getFecha();
+
+            if (fecha1.getAnio() > fecha2.getAnio() ||
+                (fecha1.getAnio() == fecha2.getAnio() && fecha1.getMes() > fecha2.getMes()) ||
+                (fecha1.getAnio() == fecha2.getAnio() && fecha1.getMes() == fecha2.getMes() && fecha1.getDia() > fecha2.getDia()))
+            {
+                Turno aux = turnos[j];
+                turnos[j] = turnos[j + 1];
+                turnos[j + 1] = aux;
+            }
+        }
+    }
+    ///Final ordenamiento por fecha ascendente
+
+    for(int k = 0; k < cantidad; k++)
     {
-        if(turnos[i].getEliminado() == false)
+        if(turnos[k].getEliminado() == false)
         {
-            turnos[i].mostrar();
+            turnos[k].mostrar();
         }
     }
     delete [] turnos;
