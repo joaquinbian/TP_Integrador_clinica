@@ -63,6 +63,15 @@ std::istream& operator>>(std::istream& in, Fecha& fecha) {
     return in;
 }
 
+bool operator==(Fecha &f1,  Fecha &f2) {
+
+
+    if(f1.getDia() == f2.getDia() && f1.getMes() == f2.getMes() && f1.getAnio() == f2.getAnio()){
+            return true;
+    }
+    return false;
+}
+
 ///METODOS PRIVADOS
 bool Fecha::validar()
 {

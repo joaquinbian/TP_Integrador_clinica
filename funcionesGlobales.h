@@ -12,7 +12,7 @@
 using namespace std;
 void mostrarTodasEspecialidadesActivas();
 Especialidad buscarEspecialidad(int id);
-bool validarExisteTurno(const Fecha f, const int h);
+bool validarExisteTurno(Turno t);
 
 ///PACIENTES
 Paciente cargarPaciente()
@@ -310,6 +310,7 @@ Profesional cargarProfesional()
 
 
     cout << "Ingrese el nombre: ";
+    cin.ignore();
     cin.getline(nombre, 50);
 
     cout << "Ingrese el apellido: ";
@@ -798,6 +799,7 @@ Especialidad buscarEspecialidad(int id){
 ///TURNOS
 Turno cargarTurno(){
 
+    Turno turno;
     Fecha fechaTurno;
     char dniPaciente[50], matricula[50];
     int horaTurno, especialidad;
@@ -812,33 +814,39 @@ Turno cargarTurno(){
             cin >> horaTurno;
         }while(horaTurno < 8 || horaTurno > 20);
 
-        existeT = validarExisteTurno(fechaTurno, horaTurno);
+        
+
+
+        mostrarTodasEspecialidadesActivas();
+        cout << "Ingrese el codigo de la especialidad ";
+        cin >> especialidad;
+
+        do {
+
+            cout << "Ingrese el DNI del paciente: ";
+            cin >> dniPaciente;
+            existeP = existePaciente(dniPaciente);
+            if(!existeP){
+                cout << "No encontramos un paciente con ese DNI " << endl;
+            }
+        }while(!existeP);
+
+        cout << "Profesionales de " << buscarEspecialidad(especialidad).getNombreEspecialidad() << endl;
+        buscarProfesionalesPorEspecialidad(especialidad);
+        cout << "Ingrese la matricula del profesional: ";
+        cin >> matricula;
+
+        turno = Turno(fechaTurno, horaTurno, especialidad, dniPaciente, matricula);
+
+        existeT = validarExisteTurno(turno);
+
         if(existeT){
-             cout << "Ya hay un turno asignado para el " << fechaTurno.toString() << " a las " << horaTurno << " ingrese otro horario " << endl;
-         }
+            cout << "El profesional ya tiene un turno el dia " << fechaTurno.toString() << " a las " << horaTurno << ", seleccione otro horario"<< endl;  
+        }
+
     } while(existeT);
 
-
-    mostrarTodasEspecialidadesActivas();
-    cout << "Ingrese el codigo de la especialidad ";
-    cin >> especialidad;
-
-    do {
-
-        cout << "Ingrese el DNI del paciente: ";
-        cin >> dniPaciente;
-        existeP = existePaciente(dniPaciente);
-        if(!existeP){
-            cout << "No encontramos un paciente con ese DNI " << endl;
-        }
-    }while(!existeP);
-
-    cout << "Profesionales de " << buscarEspecialidad(especialidad).getNombreEspecialidad() << endl;
-    buscarProfesionalesPorEspecialidad(especialidad);
-    cout << "Ingrese la matricula del profesional: ";
-    cin >> matricula;
-
-    return Turno(fechaTurno, horaTurno, especialidad, dniPaciente, matricula);
+    return turno;
 }
 
 void buscarTurno(){
@@ -973,7 +981,20 @@ void eliminarTurno()
     }
 }
 
-bool validarExisteTurno(Fecha f,  int h){
+bool validarFechaTurno(Turno t1, Turno t2){
+    //if(t1.getFecha() == t2.getFecha() && t1.getHoraTurno() == t2.getHoraTurno()){
+    Fecha f1 = t1.getFecha();
+    Fecha f2 = t2.getFecha();
+    if(f1.getDia() == f2.getDia() && f1.getMes() == f2.getMes() && f1.getAnio() == f2.getAnio()){
+        if(t1.getHoraTurno() == t2.getHoraTurno()){
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool validarExisteTurno(Turno t){
 
     Turno *turnos;
     TurnosArchivo ta;
@@ -982,9 +1003,8 @@ bool validarExisteTurno(Fecha f,  int h){
     turnos = new Turno [cantidad];
     ta.leerTodos(turnos, cantidad);
     for(int i = 0; i < cantidad; i++){
-        Fecha fechaTurnoActual = turnos[i].getFecha();
-        if(fechaTurnoActual.getDia() == f.getDia() && fechaTurnoActual.getMes() == f.getMes() && fechaTurnoActual.getAnio() == f.getAnio()){
-            if(turnos[i].getHoraTurno() == h){
+        if(validarFechaTurno(t, turnos[i])){
+            if(strcmp(t.getMatricula(), turnos[i].getMatricula()) == 0){
                 delete [] turnos;
                 return true;
             }
@@ -994,6 +1014,10 @@ bool validarExisteTurno(Fecha f,  int h){
     delete [] turnos;
     return false;
 }
+
+
+
+
 
 void mostrarTodosTurnosEliminados()
 {
