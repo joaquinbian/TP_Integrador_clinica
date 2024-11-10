@@ -660,7 +660,7 @@ void mostrarTodasEspecialidadesActivas(){
     especialidades = new Especialidad[cantidad];
     ea.leerTodos(especialidades, cantidad);
 
-    // Ordenar especialidades alfab∩┐╜ticamente por nombre, sin cambiar los IDs
+    // Ordenar especialidades alfabΓê⌐ΓöÉΓò£ticamente por nombre, sin cambiar los IDs
     for (int i = 0; i < cantidad - 1; i++)
     {
         for (int j = i + 1; j < cantidad; j++)
@@ -808,7 +808,7 @@ Turno cargarTurno(){
         cin >> fechaTurno;
 
         do {
-            cout << "Ingrese la hora del turno (8-20 hs): ";
+            cout << "Ingrese la hora del turno (9-16 hs): ";
             cin >> horaTurno;
         }while(horaTurno < 8 || horaTurno > 20);
 
@@ -993,4 +993,72 @@ bool validarExisteTurno(Fecha f,  int h){
 
     delete [] turnos;
     return false;
+}
+
+void mostrarTodosTurnosEliminados()
+{
+    Turno *turnos;
+    TurnosArchivo ta;
+    int cantidad = ta.getCantidad();
+    turnos = new Turno [cantidad];
+    ta.leerTodos(turnos, cantidad);
+
+
+    ///Inicio ordenamiento por fecha ascendente
+    for (int i = 0; i < cantidad - 1; i++) {
+        for (int j = 0; j < cantidad - 1; j++) {
+            Fecha fecha1 = turnos[j].getFecha();
+            Fecha fecha2 = turnos[j + 1].getFecha();
+            if (fecha1.getAnio() > fecha2.getAnio() ||
+                (fecha1.getAnio() == fecha2.getAnio() && fecha1.getMes() > fecha2.getMes()) ||
+                (fecha1.getAnio() == fecha2.getAnio() && fecha1.getMes() == fecha2.getMes() && fecha1.getDia() > fecha2.getDia()))
+            {
+                Turno aux = turnos[j];
+                turnos[j] = turnos[j + 1];
+                turnos[j + 1] = aux;
+            }
+        }
+    }
+    ///Final ordenamiento por fecha ascendente
+
+    for(int k = 0; k < cantidad; k++)
+    {
+
+        if(turnos[k].getEliminado() == true)
+
+        {
+            cout<<"------------------------ "<< "TURNO " << k + 1 << " -----------------------"<<endl;
+            turnos[k].mostrar();
+
+
+        }
+    }
+    delete [] turnos;
+}
+
+void restaurarTurno()
+{
+    Turno turno;
+    TurnosArchivo ta;
+
+    ///
+    mostrarTodosTurnosEliminados();
+    char dni[20];
+    cout<<endl<<"Ingrese el DNI/paciente del turno a restaurar : ";
+    cin.ignore();
+    cin.getline(dni, 20);
+
+    int pos = ta.buscar(dni);
+    if(pos != -1)
+    {
+        turno = ta.Leer(pos);
+        turno.setEliminado(false);
+        ta.guardar(pos,turno);
+        cout << endl;
+        cout<<"Turno restaurado con �xito" <<endl<<endl;
+    }
+    else
+    {
+        cout<<endl<<"No se pudo restaurar el turno"<<endl<<endl;
+    }
 }
