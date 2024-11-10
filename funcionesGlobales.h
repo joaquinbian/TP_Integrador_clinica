@@ -792,7 +792,7 @@ void restaurarEspecialidad()
 
 Especialidad buscarEspecialidad(int id){
     EspecialidadesArchivo espFile;
-
+    
     return espFile.buscarEspecalidad(id);
 }
 

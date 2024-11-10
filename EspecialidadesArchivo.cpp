@@ -80,9 +80,10 @@ int EspecialidadesArchivo::buscar(int id)
         if(registro.getId() == id){
              return pos;
         }
+        pos++;
     }
     fclose(pFile);
-
+    
     return -1;
 }
 
