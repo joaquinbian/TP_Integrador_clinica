@@ -12,6 +12,8 @@
 using namespace std;
 void mostrarTodasEspecialidadesActivas();
 Especialidad buscarEspecialidad(int id);
+bool validarExisteTurno(const Fecha f, const int h);
+
 ///PACIENTES
 Paciente cargarPaciente()
 {
@@ -799,15 +801,23 @@ Turno cargarTurno(){
     Fecha fechaTurno;
     char dniPaciente[50], matricula[50];
     int horaTurno, especialidad;
-    bool existeP;
-
-    cout << "Ingrese la fecha del turno: " << endl;
-    cin >> fechaTurno;
+    bool existeP, existeT;
 
     do {
-        cout << "Ingrese la hora del turno (8-20 hs): ";
-        cin >> horaTurno;
-    }while(horaTurno < 8 || horaTurno > 20);
+        cout << "Ingrese la fecha del turno: " << endl;
+        cin >> fechaTurno;
+
+        do {
+            cout << "Ingrese la hora del turno (8-20 hs): ";
+            cin >> horaTurno;
+        }while(horaTurno < 8 || horaTurno > 20);
+
+        existeT = validarExisteTurno(fechaTurno, horaTurno);
+        if(existeT){
+             cout << "Ya hay un turno asignado para el " << fechaTurno.toString() << " a las " << horaTurno << " ingrese otro horario " << endl;
+         }
+    } while(existeT);
+
 
     mostrarTodasEspecialidadesActivas();
     cout << "Ingrese el codigo de la especialidad ";
@@ -852,6 +862,7 @@ void guardarTurno()
     Turno turno;
     TurnosArchivo ta;
     turno = cargarTurno();
+
 
     if(ta.Guardar(turno))
     {
@@ -898,12 +909,18 @@ void mostrarTodosTurnosActivos()
     turnos = new Turno [cantidad];
     ta.leerTodos(turnos, cantidad);
 
-
+    if(cantidad == 0){
+        cout << "No hay turnos asignados por el momento " << endl;
+        delete [] turnos;
+        return;
+    }
     ///Inicio ordenamiento por fecha ascendente
     for (int i = 0; i < cantidad - 1; i++) {
         for (int j = 0; j < cantidad - 1; j++) {
             Fecha fecha1 = turnos[j].getFecha();
             Fecha fecha2 = turnos[j + 1].getFecha();
+            cout << "FECHA 1 " << fecha1.toString() << endl;
+            cout << "FECHA 2 " << fecha2.toString() << endl;
             if (fecha1.getAnio() > fecha2.getAnio() ||
                 (fecha1.getAnio() == fecha2.getAnio() && fecha1.getMes() > fecha2.getMes()) ||
                 (fecha1.getAnio() == fecha2.getAnio() && fecha1.getMes() == fecha2.getMes() && fecha1.getDia() > fecha2.getDia()))
@@ -918,9 +935,9 @@ void mostrarTodosTurnosActivos()
 
     for(int k = 0; k < cantidad; k++)
     {
-        
+
         if(turnos[k].getEliminado() == false)
-        
+
         {
             cout<<"------------------------ "<< "TURNO " << k + 1 << " -----------------------"<<endl;
             turnos[k].mostrar();
@@ -956,3 +973,24 @@ void eliminarTurno()
     }
 }
 
+bool validarExisteTurno(Fecha f,  int h){
+
+    Turno *turnos;
+    TurnosArchivo ta;
+
+    int cantidad = ta.getCantidad();
+    turnos = new Turno [cantidad];
+    ta.leerTodos(turnos, cantidad);
+    for(int i = 0; i < cantidad; i++){
+        Fecha fechaTurnoActual = turnos[i].getFecha();
+        if(fechaTurnoActual.getDia() == f.getDia() && fechaTurnoActual.getMes() == f.getMes() && fechaTurnoActual.getAnio() == f.getAnio()){
+            if(turnos[i].getHoraTurno() == h){
+                delete [] turnos;
+                return true;
+            }
+        }
+    }
+
+    delete [] turnos;
+    return false;
+}
