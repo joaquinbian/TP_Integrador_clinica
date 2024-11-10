@@ -13,6 +13,7 @@ Turno::Turno(Fecha fechaTurno, int horaTurno, int especialidad, std::string dniP
     setEspecialidad(especialidad);
     setDniPaciente(dniPaciente);
     setMatricula(matricula);
+    setEliminado(false);
 }
 
 void Turno::setFecha(Fecha fechaTurno)
@@ -62,7 +63,7 @@ const char* Turno::getDniPaciente() const{
 void Turno::setMatricula(string matriucla)
 {
     strncpy(_matricula, matriucla.c_str(), sizeof(_matricula) - 1);
-    _matricula[sizeof(_matricula) - 1] = '\0';
+    
 }
 
 const char* Turno::getMatricula() const{

@@ -898,12 +898,12 @@ void mostrarTodosTurnosActivos()
     turnos = new Turno [cantidad];
     ta.leerTodos(turnos, cantidad);
 
+
     ///Inicio ordenamiento por fecha ascendente
     for (int i = 0; i < cantidad - 1; i++) {
         for (int j = 0; j < cantidad - 1; j++) {
             Fecha fecha1 = turnos[j].getFecha();
             Fecha fecha2 = turnos[j + 1].getFecha();
-
             if (fecha1.getAnio() > fecha2.getAnio() ||
                 (fecha1.getAnio() == fecha2.getAnio() && fecha1.getMes() > fecha2.getMes()) ||
                 (fecha1.getAnio() == fecha2.getAnio() && fecha1.getMes() == fecha2.getMes() && fecha1.getDia() > fecha2.getDia()))
@@ -918,9 +918,14 @@ void mostrarTodosTurnosActivos()
 
     for(int k = 0; k < cantidad; k++)
     {
+        
         if(turnos[k].getEliminado() == false)
+        
         {
+            cout<<"------------------------ "<< "TURNO " << k + 1 << " -----------------------"<<endl;
             turnos[k].mostrar();
+
+
         }
     }
     delete [] turnos;
@@ -943,7 +948,7 @@ void eliminarTurno()
         turno = ta.Leer(pos);
         turno.setEliminado(true);
         ta.guardar(pos,turno);
-        cout << endl <<"Turno eliminado con �xito" <<endl << endl;
+        cout << endl <<"Turno eliminado con exito" <<endl << endl;
     }
     else
     {

@@ -28,15 +28,9 @@ int Fecha::getAnio()
 {
     return _anio;
 }
-string Fecha::toString()
-{
-//return to_string(_dia) + "/" + to_string(_mes) + "/" + to_string(_anio);
-    std::stringstream ss;
-    // Formatear día, mes y año
-    ss << std::setw(2) << std::setfill('0') << _dia << "/"
-       << std::setw(2) << std::setfill('0') << _mes << "/"
-       << _anio;
-    return ss.str();//similar al toString()
+
+string Fecha::toString(){
+    return to_string(this->_dia) + "/" + to_string(this->_mes) + "/" + to_string(this->_anio);
 }
 
 ///SOBRECARGA CIN
@@ -79,7 +73,7 @@ bool Fecha::esValidoDia()
     {
         if(esBisiesto())
         {
-            diasMeses[1] ++;
+            diasMeses[1]++;
         }
     }
     return _dia >= 1 && _dia <= diasMeses[_mes - 1];
