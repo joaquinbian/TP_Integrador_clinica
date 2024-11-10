@@ -5,7 +5,7 @@ class Turno
 {
 public:
     Turno();
-    Turno(Fecha fechaTurno, int horaTurno, int especialidad, std::string dniPaciente, std::string matricula);
+    Turno(Fecha fechaTurno, int horaTurno, int especialidad, std::string dniPaciente, std::string matricula, bool eliminado = false);
     void cargar();
     void mostrar();
 
@@ -19,6 +19,8 @@ public:
     void setMatricula(std::string matricula);
     const char* getMatricula() const;
     const int getHoraTurno() const;
+    void setEliminado(bool estado);
+    const bool getEliminado() const;
 
 private:
     Fecha _fechaTurno;
@@ -26,4 +28,5 @@ private:
     int _idEspecialidad;
     char _dniPaciente[50];
     char _matricula[50];
+    bool _eliminado;
 };

@@ -791,10 +791,9 @@ Turno cargarTurno(){
     cout << "Ingrese la fecha del turno: " << endl;
     cin >> fechaTurno;
 
-    cout << "Ingrese la hora del turno (Entero): ";
+    cout << "Ingrese la hora del turno (8-20 hs): ";
     cin >> horaTurno;
 
-    cout << "Especialidades: " << endl;
     mostrarTodasEspecialidadesActivas();
     cout << "Ingrese el codigo de la especialidad ";
     cin >> especialidad;
@@ -866,6 +865,67 @@ void editarTurno(){
         cout << "El turno ha sido editado correctamente";
     } else {
         cout << "Ocurrio un error al editar el turno";
+    }
+}
+
+void mostrarTodosTurnosActivos()
+{
+    Turno *turnos;
+    TurnosArchivo ta;
+    int cantidad = ta.getCantidad();
+    turnos = new Turno [cantidad];
+    ta.leerTodos(turnos, cantidad);
+
+    ///Inicio ordenamiento por fecha ascendente
+    for (int i = 0; i < cantidad - 1; i++) {
+        for (int j = 0; j < cantidad - 1; j++) {
+            Fecha fecha1 = turnos[j].getFecha();
+            Fecha fecha2 = turnos[j + 1].getFecha();
+
+            if (fecha1.getAnio() > fecha2.getAnio() ||
+                (fecha1.getAnio() == fecha2.getAnio() && fecha1.getMes() > fecha2.getMes()) ||
+                (fecha1.getAnio() == fecha2.getAnio() && fecha1.getMes() == fecha2.getMes() && fecha1.getDia() > fecha2.getDia()))
+            {
+                Turno aux = turnos[j];
+                turnos[j] = turnos[j + 1];
+                turnos[j + 1] = aux;
+            }
+        }
+    }
+    ///Final ordenamiento por fecha ascendente
+
+    for(int k = 0; k < cantidad; k++)
+    {
+        if(turnos[k].getEliminado() == false)
+        {
+            turnos[k].mostrar();
+        }
+    }
+    delete [] turnos;
+}
+
+void eliminarTurno()
+{
+    Turno turno;
+    TurnosArchivo ta;
+
+    mostrarTodosTurnosActivos();
+    char dni[20];
+    cout<<endl<<"Ingrese DNI/paciente del turno a eliminar : ";
+    cin.ignore();
+    cin.getline(dni, 20);
+
+    int pos = ta.buscar(dni);
+    if(pos != -1)
+    {
+        turno = ta.Leer(pos);
+        turno.setEliminado(true);
+        ta.guardar(pos,turno);
+        cout << endl <<"Turno eliminado con �xito" <<endl << endl;
+    }
+    else
+    {
+        cout << endl << "No se pudo eliminar el turno" << endl << endl;
     }
 }
 

@@ -691,7 +691,7 @@
 1731137867 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\tp_integrador_clinica\fecha.h
 	<string>
 
-1731139338 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\tp_integrador_clinica\main.cpp
+1731188194 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\tp_integrador_clinica\main.cpp
 	<iostream>
 	<cstdlib>
 	"Persona.h"
@@ -707,7 +707,7 @@
 	"Persona.h"
 	"Fecha.h"
 
-1731139578 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\tp_integrador_clinica\funcionesglobales.h
+1731193246 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\tp_integrador_clinica\funcionesglobales.h
 	<iostream>
 	<cstring>
 	"PacientesArchivo.h"
@@ -730,7 +730,7 @@
 1731137867 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\tp_integrador_clinica\profesionalesarchivo.h
 	"Profesional.h"
 
-1731138965 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\tp_integrador_clinica\turno.h
+1731188312 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\tp_integrador_clinica\turno.h
 	"Fecha.h"
 
 1731140215 d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\tp_integrador_clinica\turnosarchivo.h
@@ -763,7 +763,7 @@
 	<iostream>
 	"ProfesionalesArchivo.h"
 
-1731139013 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\tp_integrador_clinica\turno.cpp
+1731188312 source:d:\santiago\archivo general\programacion\utn\ingresante\segundocuatrimestre\materias\programación ii\tpi\tp_integrador_clinica\tp_integrador_clinica\turno.cpp
 	<iostream>
 	<cstring>
 	<string>
