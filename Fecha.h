@@ -22,8 +22,7 @@ private:
     int _anio;
 
     ///METODOS PARA VALIDAR LA FECHA
-    void validar();
-    void fechaDefault();
+    bool validar();
     bool esValidoDia();
     bool esValidoMes();
     bool esValidoAnio();
