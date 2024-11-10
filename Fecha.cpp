@@ -35,6 +35,15 @@ string Fecha::toString(){
 
 ///SOBRECARGA CIN
 std::istream& operator>>(std::istream& in, Fecha& fecha) {
+
+    bool fechaValida=true;
+
+    do{
+
+    if(!fechaValida){
+        std::cout << std::endl << "Fecha inválida, intente nuevamente" << std::endl << std::endl;
+    }
+
     int dia, mes, anio;
     std::cout << "Ingrese el dia: ";
     in >> dia;
@@ -47,24 +56,23 @@ std::istream& operator>>(std::istream& in, Fecha& fecha) {
     fecha.setMes(mes);
     fecha.setAnio(anio);
 
-    fecha.validar();
+    fechaValida=fecha.validar();
+
+    }while(!fechaValida);
+
     return in;
 }
 
 ///METODOS PRIVADOS
-void Fecha::validar()
+bool Fecha::validar()
 {
     if(!esValidoDia() || !esValidoMes() || !esValidoAnio())
     {
-        fechaDefault();
+        return false;
     }
+    return true;
 }
-void Fecha::fechaDefault()
-{
-    _dia = 1;
-    _mes = 1;
-    _anio = 1111;
-}
+
 bool Fecha::esValidoDia()
 {
     int diasMeses[12] {31,28,31,30,31,30,31,31,30,31,30,31};
