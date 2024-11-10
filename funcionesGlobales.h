@@ -11,6 +11,7 @@
 
 using namespace std;
 void mostrarTodasEspecialidadesActivas();
+Especialidad buscarEspecialidad(int id);
 ///PACIENTES
 Paciente cargarPaciente()
 {
