@@ -775,3 +775,113 @@
 	"TurnosArchivo.h"
 	<cstring>
 
+1731197086 source:c:\users\fedef\desktop\tp_integrador_clinica\especialidad.cpp
+	<iostream>
+	<cstring>
+	"Especialidad.h"
+
+1731197086 c:\users\fedef\desktop\tp_integrador_clinica\especialidad.h
+	<string>
+
+1731197086 source:c:\users\fedef\desktop\tp_integrador_clinica\especialidadesarchivo.cpp
+	<iostream>
+	"EspecialidadesArchivo.h"
+	<cstring>
+
+1731197086 c:\users\fedef\desktop\tp_integrador_clinica\especialidadesarchivo.h
+	"Especialidad.h"
+
+1731197086 source:c:\users\fedef\desktop\tp_integrador_clinica\fecha.cpp
+	"Fecha.h"
+	<iostream>
+	<sstream>
+	<iomanip>
+	<string>
+
+1731197086 c:\users\fedef\desktop\tp_integrador_clinica\fecha.h
+	<string>
+
+1731197086 source:c:\users\fedef\desktop\tp_integrador_clinica\main.cpp
+	<iostream>
+	<cstdlib>
+	"Persona.h"
+	"Paciente.h"
+	"funcionesGlobales.h"
+	"Turno.h"
+
+1731197086 c:\users\fedef\desktop\tp_integrador_clinica\persona.h
+	<string>
+
+1731197086 c:\users\fedef\desktop\tp_integrador_clinica\paciente.h
+	<string>
+	"Persona.h"
+	"Fecha.h"
+
+1731197233 c:\users\fedef\desktop\tp_integrador_clinica\funcionesglobales.h
+	<iostream>
+	<cstring>
+	"PacientesArchivo.h"
+	"Paciente.h"
+	"Profesional.h"
+	"ProfesionalesArchivo.h"
+	"Especialidad.h"
+	"EspecialidadesArchivo.h"
+	"Turno.h"
+	"TurnosArchivo.h"
+	<cstring>
+
+1731197086 c:\users\fedef\desktop\tp_integrador_clinica\pacientesarchivo.h
+	"Paciente.h"
+
+1731197086 c:\users\fedef\desktop\tp_integrador_clinica\profesional.h
+	<cstring>
+	"Persona.h"
+
+1731197086 c:\users\fedef\desktop\tp_integrador_clinica\profesionalesarchivo.h
+	"Profesional.h"
+
+1731197086 c:\users\fedef\desktop\tp_integrador_clinica\turno.h
+	"Fecha.h"
+
+1731197086 c:\users\fedef\desktop\tp_integrador_clinica\turnosarchivo.h
+	"Turno.h"
+
+1731197086 source:c:\users\fedef\desktop\tp_integrador_clinica\paciente.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Paciente.h"
+	"Fecha.h"
+
+1731197086 source:c:\users\fedef\desktop\tp_integrador_clinica\pacientesarchivo.cpp
+	<iostream>
+	"PacientesArchivo.h"
+	<cstring>
+
+1731197086 source:c:\users\fedef\desktop\tp_integrador_clinica\persona.cpp
+	"Persona.h"
+	<cstring>
+	<iostream>
+
+1731197086 source:c:\users\fedef\desktop\tp_integrador_clinica\profesional.cpp
+	<iostream>
+	<cstring>
+	"Profesional.h"
+	"Persona.h"
+
+1731197086 source:c:\users\fedef\desktop\tp_integrador_clinica\profesionalesarchivo.cpp
+	<iostream>
+	"ProfesionalesArchivo.h"
+
+1731197086 source:c:\users\fedef\desktop\tp_integrador_clinica\turno.cpp
+	<iostream>
+	<cstring>
+	<string>
+	"Turno.h"
+	"Fecha.h"
+
+1731197086 source:c:\users\fedef\desktop\tp_integrador_clinica\turnosarchivo.cpp
+	<iostream>
+	"TurnosArchivo.h"
+	<cstring>
+

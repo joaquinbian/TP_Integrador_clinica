@@ -615,12 +615,12 @@ void mostrarTodasEspecialidadesActivas()
     {
         for (int j = i + 1; j < cantidad; j++)
         {
-            const char *nombre1 = especialidades[i].getNombreEspecialidad();
-            const char *nombre2 = especialidades[j].getNombreEspecialidad();
+            int id1 = especialidades[i].getId();
+            int id2 = especialidades[j].getId();
 
-            if (nombre1 && nombre2 && strcmp(nombre1, nombre2) > 0)
+            if (id1 > id2)
             {
-                // Intercambiar especialidades, los IDs permanecen iguales
+
                 Especialidad temp = especialidades[i];
                 especialidades[i] = especialidades[j];
                 especialidades[j] = temp;
@@ -628,7 +628,7 @@ void mostrarTodasEspecialidadesActivas()
         }
     }
 
-    // Mostrar especialidades activas
+
     for (int i = 0; i < cantidad; i++)
     {
         if (!especialidades[i].getEliminado())
