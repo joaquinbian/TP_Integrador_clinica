@@ -4,7 +4,7 @@
 #include "Persona.h"
 using namespace std;
 Profesional::Profesional(){}
-Profesional::Profesional(string nombre, string apellido, string telefono, string direccion, string ciudad, string email, string matricula, string especialidad, float valorConsulta, bool soloParticular, bool eliminado ):Persona(nombre, apellido, telefono, direccion, ciudad, email)
+Profesional::Profesional(string nombre, string apellido, string telefono, string direccion, string ciudad, string email, string matricula, int especialidad, float valorConsulta, bool soloParticular, bool eliminado ):Persona(nombre, apellido, telefono, direccion, ciudad, email)
 {
     setMatricula(matricula);
     setEspecialidad(especialidad);
@@ -15,9 +15,9 @@ void Profesional::setMatricula(string matricula)
 {
     strcpy(_matricula, matricula.c_str());
 }
-void Profesional::setEspecialidad(string especialidad)
+void Profesional::setEspecialidad(int especialidad)
 {
-    strcpy(_especialidad,especialidad.c_str());
+    idEspecialidad = especialidad;
 }
 void Profesional::setValorConsulta(float valorConsulta)
 {
@@ -42,9 +42,9 @@ const char* Profesional::getMatricula() const
 {
     return _matricula;
 }
-const char* Profesional::getEspecialidad() const
+const int Profesional::getEspecialidad() const
 {
-    return _especialidad;
+    return idEspecialidad;
 }
 const float Profesional::getValorConsulta() const
 {

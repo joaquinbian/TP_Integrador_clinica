@@ -6,7 +6,7 @@
 using namespace std;
 
 Turno::Turno(){}
-Turno::Turno(Fecha fechaTurno, int horaTurno, std::string especialidad, std::string dniPaciente, std::string matricula, bool eliminado)
+Turno::Turno(Fecha fechaTurno, int horaTurno, int especialidad, std::string dniPaciente, std::string matricula, bool eliminado)
 {
     setFecha(fechaTurno);
     setHoraTurno(horaTurno);
@@ -38,14 +38,14 @@ const int Turno::getHoraTurno() const{
     return _horaTurno;
 }
 
-void Turno::setEspecialidad(std::string especialidad)
+void Turno::setEspecialidad(int especialidad)
 {
-    strcpy(_especialidad, especialidad.c_str());
+    _idEspecialidad = especialidad;
 }
 
-const char* Turno::getEspecialidad() const{
+const int Turno::getEspecialidad() const{
 
-    return _especialidad;
+    return _idEspecialidad;
 }
 
 void Turno::setDniPaciente(string dniPaciente)

@@ -10,6 +10,8 @@
 #include "TurnosArchivo.h"
 
 using namespace std;
+void mostrarTodasEspecialidadesActivas();
+Especialidad buscarEspecialidad(int id);
 ///PACIENTES
 Paciente cargarPaciente()
 {
@@ -288,12 +290,13 @@ void buscarPacientesPorObraSocial(){
 ///PROFESIONALES
 Profesional cargarProfesional()
 {
-    char nombre[50], apellido[50], direccion[50], telefono[50], ciudad[50], email[50], matricula[15], especialidad[50], soloParticularChar;
+    char nombre[50], apellido[50], direccion[50], telefono[50], ciudad[50], email[50], matricula[50], soloParticularChar;
     float valorConsulta;
+    int especialidad;
     bool soloParticular = false;
 
+
     cout << "Ingrese el nombre: ";
-    cin.ignore();
     cin.getline(nombre, 50);
 
     cout << "Ingrese el apellido: ";
@@ -311,10 +314,13 @@ Profesional cargarProfesional()
     cout << "Ingrese el correo electronico: ";
     cin.getline(email, 50);
 
-    cout << "Ingrese la especialidad: ";
-    cin.getline(especialidad, 50);
+    cout << "Especialidades: " << endl;
+    mostrarTodasEspecialidadesActivas();
+    cout << "Ingrese el codigo de la especialidad ";
+    cin >> especialidad;
 
     cout << "Ingrese el numero de matricula: ";
+    cin.ignore();
     cin.getline(matricula, 50);
 
     cout << "Ingrese el valor de la consulta: $";
@@ -359,7 +365,7 @@ void mostrarProfesional(Profesional profesional)
     cout<<"Telefono : " <<profesional.getTelefono() <<endl;
     cout<<"Email : " <<profesional.getEmail() <<endl;
     cout<<"Matricula : " <<profesional.getMatricula() <<endl;
-    cout<<"Especialidad : " <<profesional.getEspecialidad() <<endl;
+    cout<<"Especialidad : " << buscarEspecialidad(profesional.getEspecialidad()).getNombreEspecialidad() <<endl;
     cout<<"Valor de la consulta : $" <<profesional.getValorConsulta() <<endl;
     cout<<"Atiende obras sociales y prepagas : " <<profesional.getSoloParticular() <<endl;
     cout<<"-----------------------------------------------"<<endl;
@@ -369,7 +375,7 @@ void mostrarProfesionalResumido(Profesional profesional)
     cout<<"Nombre : " <<profesional.getNombre() <<endl;
     cout<<"Apellido : " <<profesional.getApellido() <<endl;
     cout<<"Matricula : " <<profesional.getMatricula() <<endl;
-    cout<<"Especialidad : " <<profesional.getEspecialidad() <<endl;
+    cout<<"Especialidad : " << buscarEspecialidad(profesional.getEspecialidad()).getNombreEspecialidad() <<endl;
     cout<<"-----------------------------------------------"<<endl;
 }
 void mostrarTodosProfesionalesActivos()
@@ -441,12 +447,12 @@ void mostrarTodosProfesionalesEliminados()
 }
 void editarProfesional()
 {
-    char matricula[20];
+    char matricula[50];
     ProfesionalesArchivo pa;
     mostrarTodosProfesionalesActivos();
     cout <<endl<< "Ingrese la matricula del profesional que quiere editar: ";
     cin.ignore();
-    cin.getline(matricula, 20);
+    cin.getline(matricula, 50);
 
     int pos = pa.buscar(matricula);
     if(pos == -1 )
@@ -462,10 +468,12 @@ void editarProfesional()
     if(res)
     {
         cout <<endl<< "El profesional ha sido editado correctamente"<<endl;
+        return;
     }
     else
     {
         cout <<endl<< "Ocurrio un error al editar el profesional"<<endl;
+        return;
     }
 }
 void eliminarProfesional()
@@ -475,10 +483,10 @@ void eliminarProfesional()
 
     mostrarTodosProfesionalesActivosResumido();
 
-    char matricula[20];
+    char matricula[50];
     cout<<endl<<"Ingrese la matricula del profesional a eliminar : ";
     cin.ignore();
-    cin.getline(matricula, 20);
+    cin.getline(matricula, 50);
 
     int pos = pa.buscar(matricula);
     if(pos != -1)
@@ -500,10 +508,10 @@ void restaurarProfesional()
 
     mostrarTodosProfesionalesEliminados();
 
-    char matricula[20];
+    char matricula[50];
     cout<<endl<<"Ingrese la matricula del profesional a eliminar : ";
     cin.ignore();
-    cin.getline(matricula, 20);
+    cin.getline(matricula, 50);
 
     int pos = pa.buscar(matricula);
     if(pos != -1)
@@ -519,11 +527,11 @@ void restaurarProfesional()
     }
 }
 void buscarProfesional(){
-    char matricula[15];
+    char matricula[50];
     ProfesionalesArchivo pa;
     cout << "Ingrese la matricula del profesional que quiere buscar: ";
     cin.ignore();
-    cin.getline(matricula, 15);
+    cin.getline(matricula, 50);
 
     int pos = pa.buscar(matricula);
     if(pos == -1 ){
@@ -547,13 +555,14 @@ void buscarProfesionalPorEspecialidad(){
     }
 
     pa.leerTodos(profesional, cantidad);
-    char especialidad[50];
+    system("cls");
+    mostrarTodasEspecialidadesActivas();
+    int especialidad;
     cout << "Ingrese la especialidad del profesional que quiere buscar: ";
-    cin.ignore();
-    cin.getline(especialidad, 50);
+    cin >> especialidad;
 
     for(int i = 0; i < cantidad; i++){
-        if(strcmp(profesional[i].getEspecialidad(), especialidad) == 0){
+        if(profesional[i].getEspecialidad() == especialidad){
             encontrado  = true;
             cout << endl;
             mostrarProfesional(profesional[i]);
@@ -561,11 +570,42 @@ void buscarProfesionalPorEspecialidad(){
     }
 
     if(!encontrado){
-        cout << "NO se encontro ningun profesional con esa obra social" << endl;
+        cout << "NO se encontro ningun profesional con esa especialidad" << endl;
     }
 
     delete [] profesional;
 }
+
+void buscarProfesionalesPorEspecialidad(int idEspecialidad){
+    Profesional *profesional;
+    ProfesionalesArchivo pa;
+    int cantidad = pa.getCantidad();
+    profesional = new Profesional[cantidad];
+
+    bool encontrado = false;
+
+    if(profesional == NULL){
+        cout << "No se pudo leer los profesionales" << endl;
+    }
+
+    pa.leerTodos(profesional, cantidad);
+
+    for(int i = 0; i < cantidad; i++){
+        if(profesional[i].getEspecialidad() == idEspecialidad){
+            encontrado  = true;
+            cout << endl;
+            mostrarProfesional(profesional[i]);
+        }
+    }
+
+    if(!encontrado){
+        cout << "NO se encontro ningun profesional con esa especialidad" << endl;
+    }
+
+    delete [] profesional;
+}
+
+
 ///ESPECIALIDADES
 Especialidad cargarEspecialidad()
 {
@@ -595,15 +635,12 @@ void guardarEspecialidad()
         system("cls");
     }
 }
-void mostrarEspecialidades(Especialidad especialidad)
-{
+void mostrarEspecialidades(Especialidad especialidad){
     cout<<especialidad.getId()<< " - " <<especialidad.getNombreEspecialidad() <<endl;
     cout<<"-----------------------------------------------"<<endl;
 }
-#include <cstring> // Para usar strcmp
 
-void mostrarTodasEspecialidadesActivas()
-{
+void mostrarTodasEspecialidadesActivas(){
     Especialidad *especialidades;
     EspecialidadesArchivo ea;
     int cantidad = ea.getCantidad();
@@ -739,12 +776,18 @@ void restaurarEspecialidad()
 
 }
 
+Especialidad buscarEspecialidad(int id){
+    EspecialidadesArchivo espFile;
+
+    return espFile.buscarEspecalidad(id);
+}
+
 ///TURNOS
 Turno cargarTurno(){
 
     Fecha fechaTurno;
-    char especialidad[50], dniPaciente[50], matricula[50];
-    int horaTurno;
+    char dniPaciente[50], matricula[50];
+    int horaTurno, especialidad;
 
     cout << "Ingrese la fecha del turno: " << endl;
     cin >> fechaTurno;
@@ -752,13 +795,16 @@ Turno cargarTurno(){
     cout << "Ingrese la hora del turno (8-20 hs): ";
     cin >> horaTurno;
 
-    cout << "Ingrese la especialidad (minúsc., sin espacios ni tildes): ";
+    mostrarTodasEspecialidadesActivas();
+    cout << "Ingrese el codigo de la especialidad ";
     cin >> especialidad;
 
     cout << "Ingrese el DNI del paciente: ";
     cin >> dniPaciente;
 
-    cout << "Ingrese la matr�cula del profesional: ";
+    cout << "Profesionales de " << buscarEspecialidad(especialidad).getNombreEspecialidad() << endl;
+    buscarProfesionalesPorEspecialidad(especialidad);
+    cout << "Ingrese la matricula del profesional: ";
     cin >> matricula;
 
     return Turno(fechaTurno, horaTurno, especialidad, dniPaciente, matricula);

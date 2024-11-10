@@ -80,12 +80,12 @@ int EspecialidadesArchivo::buscar(int id)
         if(registro.getId() == id){
              return pos;
         }
-        pos++;
     }
     fclose(pFile);
 
     return -1;
 }
+
 Especialidad EspecialidadesArchivo::Leer(int pos)
 {
     Especialidad registro;
@@ -99,4 +99,14 @@ Especialidad EspecialidadesArchivo::Leer(int pos)
     fread(&registro, sizeof(Especialidad), 1, pFile);
     fclose(pFile);
     return registro;
+}
+
+Especialidad EspecialidadesArchivo::buscarEspecalidad(int id){
+    Especialidad especialidad;
+    int pos = buscar(id);
+    if(pos == -1){
+        return Especialidad();
+    }    
+    especialidad = Leer(pos);
+    return especialidad;
 }

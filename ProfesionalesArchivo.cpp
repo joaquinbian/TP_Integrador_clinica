@@ -62,6 +62,8 @@ Profesional ProfesionalesArchivo::Leer(int pos)
     fclose(pFile);
     return registro;
 }
+
+
 bool ProfesionalesArchivo::guardar(int pos, const Profesional &registro)
 {
     bool resultado;
@@ -76,11 +78,14 @@ bool ProfesionalesArchivo::guardar(int pos, const Profesional &registro)
     fclose(pFile);
     return resultado;
 }
+
+
 int ProfesionalesArchivo::buscar(char* matricula)
 {
     Profesional registro;
     ProfesionalesArchivo pa;
     int pos = 0;
+    bool encontrado = false;
     FILE *pFile;
     pFile = fopen(_filename.c_str(), "rb");
     if(pFile == nullptr)
@@ -90,13 +95,13 @@ int ProfesionalesArchivo::buscar(char* matricula)
     while(fread(&registro, sizeof(Profesional), 1, pFile) == 1)
     {
         if(strcmp(registro.getMatricula(), matricula) == 0){
-             return pos;
+            encontrado = true;
+            break;
         }
         pos++;
     }
     fclose(pFile);
-    if(registro.getMatricula() == matricula)
-    {
+    if(encontrado){
         return pos;
     }
     return -1;
