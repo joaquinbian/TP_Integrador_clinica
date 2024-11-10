@@ -9,7 +9,7 @@ using namespace std;
 
 int main()
 {
-    int opcion, opcionPaciente, opcionProfesional, opcionTurno, opcionEspecialidad;
+    int opcion, opcionPaciente, opcionProfesional, opcionTurno, opcionEspecialidad, opcionInforme;
     char salir;
     Paciente p1;
     Profesional pr1;
@@ -25,6 +25,7 @@ int main()
         cout<<"2 - PROFESIONALES " <<endl;
         cout<<"3 - TURNOS " <<endl;
         cout<<"4 - ESPECIALIDADES " <<endl;
+        cout<<"5 - INFORMES " <<endl;
         cout<<"0 - SALIR " <<endl<<endl;
 
         cout<<"Ingrese una opcion : ";
@@ -271,7 +272,6 @@ int main()
                 cout << "2 - MODIFICAR TURNO" << endl;
                 cout << "3 - ELIMINAR TURNO" << endl;
                 cout << "4 - LISTAR TURNOS" << endl;
-                cout << "5 - RESTAURAR TURNOS" << endl;
                 cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
 
                 cout << "Ingrese una opcion: ";
@@ -311,19 +311,11 @@ int main()
                     mostrarTodosTurnosActivos();
                     system("pause");
                     break;
-                    case 5:
-                    system("cls");
-                    cout << "\033[4m";  // Comienza subrayado
-                    cout<<"RESTAURAR TURNOS" <<endl<<endl;
-                    cout << "\033[0m";  // Detiene subrayado
-                    restaurarTurno();
-                    system("pause");
-                    break;
                 case 0:
                     system("cls");
                     break;
                 default:
-                    cout << "Opci¢n no v lida." << endl;
+                    cout << "Opciï¿½n no vï¿½lida." << endl;
                 }
 
                 if (opcionTurno == 0)
@@ -399,13 +391,73 @@ int main()
                     system("cls");
                     break;
                 default:
-                    cout << "Opci¢n no v lida." << endl;
+                    cout << "Opciï¿½n no vï¿½lida." << endl;
                 }
 
                 if (opcionEspecialidad == 0)
                 {
                     break;
                 }
+            }
+            break;
+
+            case 5:
+            while (true)
+            {
+                system("cls");
+                cout << "\033[4m";  // Comienza subrayado
+                cout<<"INFORMES " <<endl<<endl;
+                cout << "\033[0m";  // Detiene subrayado
+
+                cout << "1 - PROFESIONAL QUE MAS RECAUDO DE FORMA PARTICULAR" << endl;
+                cout << "2 - PROFESIONAL QUE MAS PACIENTES ATENDIO" << endl;
+                cout << "3 - ESPECIALIDAD MAS SOLICITADA" << endl;
+                cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
+
+                cout << "Ingrese una opcion: ";
+                cin >> opcionInforme;
+
+                switch(opcionInforme)
+                {
+                case 1:
+                    system("cls");
+                    cout << "\033[4m";  // Comienza subrayado
+                    cout<<"PROFESIONAL QUE MAS RECAUDO DE FORMA PARTICULAR" <<endl<<endl;
+                    cout << "\033[0m";  // Detiene subrayado
+
+                    system("pause");
+                    system("cls");
+                    break;
+                case 2:
+                    system("cls");
+                    cout << "\033[4m";  // Comienza subrayado
+                    cout<<"PROFESIONAL QUE MAS PACIENTES ATENDIO" <<endl<<endl;
+                    cout << "\033[0m";  // Detiene subrayado
+
+                    system("pause");
+                    system("cls");
+                    break;
+                case 3:
+                    system("cls");
+                    cout << "\033[4m";  // Comienza subrayado
+                    cout<<"ESPECIALIDAD MAS SOLICITADA" <<endl<<endl;
+                    cout << "\033[0m";  // Detiene subrayado
+
+                    system("pause");
+                    system("cls");
+                break;
+                case 0:
+                    system("cls");
+                    break;
+                default:
+                    cout << "Opcion no valida." << endl;
+                }
+
+                if (opcionInforme == 0)
+                {
+                    break;
+                }
+
             }
             break;
 
@@ -448,5 +500,3 @@ int main()
 
     return 0;
 }
-
-
