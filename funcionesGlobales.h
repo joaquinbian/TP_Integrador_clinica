@@ -253,6 +253,17 @@ void buscarPaciente(){
     mostrarPaciente(p);
 }
 
+bool existePaciente(char* dni){
+    PacientesArchivo pa;
+
+    int pos = pa.buscar(dni);
+
+    if(pos >= 0){
+        return true;
+    }
+    return false;
+}
+
 void buscarPacientesPorObraSocial(){
     Paciente *pacientes;
     PacientesArchivo pa;
@@ -788,19 +799,29 @@ Turno cargarTurno(){
     Fecha fechaTurno;
     char dniPaciente[50], matricula[50];
     int horaTurno, especialidad;
+    bool existeP;
 
     cout << "Ingrese la fecha del turno: " << endl;
     cin >> fechaTurno;
 
-    cout << "Ingrese la hora del turno (8-20 hs): ";
-    cin >> horaTurno;
+    do {
+        cout << "Ingrese la hora del turno (8-20 hs): ";
+        cin >> horaTurno;
+    }while(horaTurno < 8 || horaTurno > 20);
 
     mostrarTodasEspecialidadesActivas();
     cout << "Ingrese el codigo de la especialidad ";
     cin >> especialidad;
 
-    cout << "Ingrese el DNI del paciente: ";
-    cin >> dniPaciente;
+    do {
+
+        cout << "Ingrese el DNI del paciente: ";
+        cin >> dniPaciente;
+        existeP = existePaciente(dniPaciente);
+        if(!existeP){
+            cout << "No encontramos un paciente con ese DNI " << endl;
+        }
+    }while(!existeP);
 
     cout << "Profesionales de " << buscarEspecialidad(especialidad).getNombreEspecialidad() << endl;
     buscarProfesionalesPorEspecialidad(especialidad);
