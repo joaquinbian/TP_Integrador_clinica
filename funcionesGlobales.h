@@ -13,13 +13,15 @@ using namespace std;
 void mostrarTodasEspecialidadesActivas();
 Especialidad buscarEspecialidad(int id);
 bool validarExisteTurno(Turno t);
-
+bool existePaciente(char *dni);
+bool existeProfesional(char *matricula);
 ///PACIENTES
 Paciente cargarPaciente()
 {
     char nombre[50], apellido[50], direccion[50], telefono[50], ciudad[50], email[50];
     char obraSocial[20], dni[20];
     Fecha fechaNacimiento;
+    bool existeP;
 
     cout << "Ingrese el nombre: ";
     cin.ignore();
@@ -43,9 +45,16 @@ Paciente cargarPaciente()
     cout<<"Fecha de nacimiento "<<endl;
     cin>>fechaNacimiento;
 
-    cout << "Ingrese el DNI del paciente: ";
-    cin.ignore();
-    cin.getline(dni, 20);
+    do {
+
+        cout << "Ingrese el DNI del paciente: ";
+        cin.ignore();
+        cin.getline(dni, 20);
+        existeP = existePaciente(dni);
+        if(existeP){
+            cout << "El paciente ya ha sido ingresado en el sistema " << endl;
+        }
+    } while(existeP);
 
     cout << "Ingrese la obra social: ";
     cin.getline(obraSocial, 20);
@@ -306,7 +315,7 @@ Profesional cargarProfesional()
     char nombre[50], apellido[50], direccion[50], telefono[50], ciudad[50], email[50], matricula[50], soloParticularChar;
     float valorConsulta;
     int especialidad;
-    bool soloParticular = false;
+    bool soloParticular = false, existeProf;
 
 
     cout << "Ingrese el nombre: ";
@@ -333,9 +342,16 @@ Profesional cargarProfesional()
     cout << "Ingrese el codigo de la especialidad ";
     cin >> especialidad;
 
-    cout << "Ingrese el numero de matricula: ";
-    cin.ignore();
-    cin.getline(matricula, 50);
+    do {
+
+        cout << "Ingrese el numero de matricula: ";
+        cin.ignore();
+        cin.getline(matricula, 50);
+        existeProf = existeProfesional(matricula);
+        if(existeProf){
+            cout << "Ya existe un profesional con esta matricula, ingrese otra" << endl;
+        }
+    } while(existeProf);
 
     cout << "Ingrese el valor de la consulta: $";
     cin >> valorConsulta;
@@ -555,6 +571,15 @@ void buscarProfesional(){
     Profesional p = pa.Leer(pos);
     cout << endl;
     mostrarProfesional(p);
+}
+
+bool existeProfesional(char *matricula){
+    ProfesionalesArchivo pa;
+    int pos = pa.buscar(matricula);
+    if(pos == -1 ){
+        return false;
+    }
+    return true;
 }
 void buscarProfesionalPorEspecialidad(){
     Profesional *profesional;

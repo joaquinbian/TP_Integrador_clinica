@@ -63,7 +63,7 @@ const char* Turno::getDniPaciente() const{
 void Turno::setMatricula(string matriucla)
 {
     strncpy(_matricula, matriucla.c_str(), sizeof(_matricula) - 1);
-    
+
 }
 
 const char* Turno::getMatricula() const{
