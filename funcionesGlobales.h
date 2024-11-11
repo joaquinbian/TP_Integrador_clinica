@@ -10,27 +10,24 @@
 #include "Turno.h"
 #include "TurnosArchivo.h"
 
-bool validarExisteTurno(Turno t);
-bool existeProfesional(char *matricula);
 
-
+//PACIENTES
 bool existePaciente(char* dni);
 
 ///PROFESIONALES
 void mostrarProfesional(Profesional profesional);
-
-//se queda aca
 void buscarProfesionalesPorEspecialidad(int idEspecialidad);
+bool existeProfesional(char *matricula);
 
-//se queda aca
+//TURNOS
+bool validarExisteTurno(Turno t);
+
 ///ESPECIALIDADES
 void mostrarTodasEspecialidadesActivas();
 void mostrarEspecialidades(Especialidad especialidad);
-
-
-
-
-//se queda aca
 Especialidad buscarEspecialidad(int id);
 
-///TURNOS
+
+
+
+

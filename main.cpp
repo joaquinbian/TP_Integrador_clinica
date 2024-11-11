@@ -5,9 +5,6 @@
 #include "FuncionesProfesional.h"
 #include "funcionesGlobales.h"
 #include "FuncionesEspecialidades.h"
-#include "Persona.h"
-#include "Paciente.h"
-#include "Turno.h"
 
 using namespace std;
 
