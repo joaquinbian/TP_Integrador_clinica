@@ -17,7 +17,7 @@ bool EspecialidadesArchivo::Guardar(const Especialidad &registro)
     {
         return false;
     }
-    resultado = fwrite(&registro, sizeof(Especialidad), 1, pFile);
+    resultado = fwrite(&registro, sizeof(Especialidad), 1, pFile) == 1;
     fclose(pFile);
     return resultado;
 }
@@ -83,7 +83,7 @@ int EspecialidadesArchivo::buscar(int id)
         pos++;
     }
     fclose(pFile);
-    
+
     return -1;
 }
 
@@ -107,7 +107,7 @@ Especialidad EspecialidadesArchivo::buscarEspecalidad(int id){
     int pos = buscar(id);
     if(pos == -1){
         return Especialidad();
-    }    
+    }
     especialidad = Leer(pos);
     return especialidad;
 }

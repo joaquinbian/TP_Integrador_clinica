@@ -17,7 +17,7 @@ bool TurnosArchivo::Guardar(const Turno &registro)
     {
         return false;
     }
-    resultado = fwrite(&registro, sizeof(Turno), 1, pFile);
+    resultado = fwrite(&registro, sizeof(Turno), 1, pFile) == 1;
     fclose(pFile);
     return resultado;
 }
@@ -46,7 +46,7 @@ bool TurnosArchivo::guardar(int pos, const Turno &registro)
         return false;
     }
     fseek(pFile, sizeof(Turno) * pos, SEEK_SET);
-    resultado = fwrite(&registro, sizeof(Turno), 1, pFile);
+    resultado = fwrite(&registro, sizeof(Turno), 1, pFile) == 1;
     fclose(pFile);
     return resultado;
 }

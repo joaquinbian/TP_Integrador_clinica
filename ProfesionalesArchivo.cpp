@@ -15,7 +15,7 @@ bool ProfesionalesArchivo::Guardar(const Profesional &registro)
     {
         return false;
     }
-    resultado = fwrite(&registro, sizeof(Profesional), 1, pFile);
+    resultado = fwrite(&registro, sizeof(Profesional), 1, pFile) == 1;
     fclose(pFile);
     return resultado;
 }
@@ -74,7 +74,7 @@ bool ProfesionalesArchivo::guardar(int pos, const Profesional &registro)
         return false;
     }
     fseek(pFile, sizeof(Profesional) * pos, SEEK_SET);
-    resultado = fwrite(&registro, sizeof(Profesional), 1, pFile);
+    resultado = fwrite(&registro, sizeof(Profesional), 1, pFile) == 1;
     fclose(pFile);
     return resultado;
 }

@@ -16,7 +16,7 @@ bool PacientesArchivo::Guardar(const Paciente &registro)
     {
         return false;
     }
-    resultado = fwrite(&registro, sizeof(Paciente), 1, pFile);
+    resultado = fwrite(&registro, sizeof(Paciente), 1, pFile) == 1;
     fclose(pFile);
     return resultado;
 }
@@ -73,7 +73,7 @@ bool PacientesArchivo::guardar(int pos, const Paciente &registro)
         return false;
     }
     fseek(pFile, sizeof(Paciente) * pos, SEEK_SET);
-    resultado = fwrite(&registro, sizeof(Paciente), 1, pFile);
+    resultado = fwrite(&registro, sizeof(Paciente), 1, pFile) == 1;
     fclose(pFile);
     return resultado;
 }

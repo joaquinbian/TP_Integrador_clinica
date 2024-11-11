@@ -11,6 +11,17 @@ bool existePaciente(char* dni){
     return false;
 }
 
+bool existeEspecialidad(int Id){
+    EspecialidadesArchivo ea;
+
+    int pos = ea.buscar(Id);
+
+    if(pos >= 0){
+        return true;
+    }
+    return false;
+}
+
 void buscarProfesionalesPorEspecialidad(int idEspecialidad){
     Profesional *profesional;
     ProfesionalesArchivo pa;
@@ -98,6 +109,6 @@ void mostrarTodasEspecialidadesActivas(){
 }
 Especialidad buscarEspecialidad(int id){
     EspecialidadesArchivo espFile;
-    
+
     return espFile.buscarEspecalidad(id);
 }
