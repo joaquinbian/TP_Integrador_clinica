@@ -410,9 +410,7 @@ int main()
                 cout<<"INFORMES " <<endl<<endl;
                 cout << "\033[0m";  // Detiene subrayado
 
-                cout << "1 - PROFESIONAL QUE MAS RECAUDO DE FORMA PARTICULAR" << endl;
-                cout << "2 - PROFESIONAL QUE MAS PACIENTES ATENDIO" << endl;
-                cout << "3 - ESPECIALIDAD MAS SOLICITADA" << endl;
+                cout << "1 - ESPECIALIDAD MAS SOLICITADA" << endl;
                 cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
 
                 cout << "Ingrese una opcion: ";
@@ -420,16 +418,7 @@ int main()
 
                 switch(opcionInforme)
                 {
-                case 1:
-                    system("cls");
-                    cout << "\033[4m";  // Comienza subrayado
-                    cout<<"PROFESIONAL QUE MAS RECAUDO DE FORMA PARTICULAR" <<endl<<endl;
-                    cout << "\033[0m";  // Detiene subrayado
-
-                    system("pause");
-                    system("cls");
-                    break;
-                case 2:
+               case 1:
                     system("cls");
                     cout << "\033[4m";  // Comienza subrayado
                     cout<<"PROFESIONAL QUE MAS PACIENTES ATENDIO" <<endl<<endl;
@@ -438,15 +427,6 @@ int main()
                     system("pause");
                     system("cls");
                     break;
-                case 3:
-                    system("cls");
-                    cout << "\033[4m";  // Comienza subrayado
-                    cout<<"ESPECIALIDAD MAS SOLICITADA" <<endl<<endl;
-                    cout << "\033[0m";  // Detiene subrayado
-
-                    system("pause");
-                    system("cls");
-                break;
                 case 0:
                     system("cls");
                     break;
