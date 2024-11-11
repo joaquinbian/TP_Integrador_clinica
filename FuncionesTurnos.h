@@ -11,3 +11,4 @@ bool validarFechaTurno(Turno t1, Turno t2);
 bool validarExisteTurno(Turno t);
 void mostrarTodosTurnosEliminados();
 void restaurarTurno();
+void informarProfesionalQueMasPacientesAtendio();

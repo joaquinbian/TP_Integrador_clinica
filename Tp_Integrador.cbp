@@ -40,6 +40,15 @@
 		<Unit filename="EspecialidadesArchivo.h" />
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
+		<Unit filename="FuncionesEspecialidades.cpp" />
+		<Unit filename="FuncionesEspecialidades.h" />
+		<Unit filename="FuncionesGlobales.cpp" />
+		<Unit filename="FuncionesPacientes.cpp" />
+		<Unit filename="FuncionesPacientes.h" />
+		<Unit filename="FuncionesProfesional.cpp" />
+		<Unit filename="FuncionesProfesional.h" />
+		<Unit filename="FuncionesTurnos.cpp" />
+		<Unit filename="FuncionesTurnos.h" />
 		<Unit filename="Paciente.cpp" />
 		<Unit filename="Paciente.h" />
 		<Unit filename="PacientesArchivo.cpp" />
