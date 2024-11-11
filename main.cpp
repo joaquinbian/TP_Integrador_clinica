@@ -1,8 +1,12 @@
 #include <iostream>
 #include <cstdlib>
+#include "FuncionesPacientes.h"
+#include "FuncionesTurnos.h"
+#include "FuncionesProfesional.h"
+#include "funcionesGlobales.h"
+#include "FuncionesEspecialidades.h"
 #include "Persona.h"
 #include "Paciente.h"
-#include "funcionesGlobales.h"
 #include "Turno.h"
 
 using namespace std;
