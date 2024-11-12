@@ -32,7 +32,8 @@ Turno cargarTurno()
             std::cout << "Ingrese el codigo de la especialidad ";
             std::cin >> especialidad;
 
-            existeE = existeEspecialidad(especialidad);
+            existeE = existeEspecialidad(especialidad)
+            ;
 
             if(!existeE)
             {
@@ -365,7 +366,7 @@ void informarProfesionalQueMasPacientesAtendio()
 
     for(int k = 0; k < cantidadProfesionales; k++)
     {
-        if(ind=0)
+        if(ind == 0)
         {
             maximo=pacientesAtendidos[k];
         }

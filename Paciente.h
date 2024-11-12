@@ -17,13 +17,9 @@ public:
     const char* getDni() const;
     const char* getObraSocial() const;
     const bool getEliminado() const;
-    //void cargar();
-    //void mostrar();
-
 
 private:
     Fecha _fechaNacimiento;
-    Fecha _fechaTurno;
     char _dni[20];
     char _obraSocial[20];
     bool _eliminado;

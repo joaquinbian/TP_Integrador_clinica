@@ -9,6 +9,26 @@ Profesional cargarProfesional()
     int especialidad;
     bool soloParticular = false, existeProf;
 
+    do {
+
+        std::cout << "Ingrese el numero de matricula: ";
+        std::cin.ignore();
+        std::cin.getline(matricula, 50);
+
+         do
+        {
+            std::cout << "Error: La matricula  no puede estar vacía. Intente nuevamente." << std::endl;
+
+            std::cout << "Ingrese nuevamente la matricula: ";
+            std::cin.ignore();
+            std::cin.getline(matricula, 20);
+        }
+        while (strlen(matricula) == 0);
+        existeProf = existeProfesional(matricula);
+        if(existeProf){
+            std::cout << "Ya existe un profesional con esta matricula, ingrese otra" << std::endl;
+        }
+    } while(existeProf);
 
     std::cout << "Ingrese el nombre: ";
     std::cin.ignore();
@@ -34,16 +54,7 @@ Profesional cargarProfesional()
     std::cout << "Ingrese el codigo de la especialidad ";
     std::cin >> especialidad;
 
-    do {
 
-        std::cout << "Ingrese el numero de matricula: ";
-        std::cin.ignore();
-        std::cin.getline(matricula, 50);
-        existeProf = existeProfesional(matricula);
-        if(existeProf){
-            std::cout << "Ya existe un profesional con esta matricula, ingrese otra" << std::endl;
-        }
-    } while(existeProf);
 
     std::cout << "Ingrese el valor de la consulta: $";
     std::cin >> valorConsulta;

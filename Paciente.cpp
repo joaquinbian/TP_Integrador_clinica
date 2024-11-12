@@ -31,7 +31,6 @@ void Paciente::setEliminado(bool estado){
 
     _eliminado = estado;
 }
-
 Fecha Paciente::getFechaNacimiento() const
 {
     return _fechaNacimiento;

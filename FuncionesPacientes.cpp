@@ -11,6 +11,38 @@ Paciente cargarPaciente()
     Fecha fechaNacimiento;
     bool existeP;
 
+    do
+    {
+
+        std::cout << "Ingrese el DNI del paciente: ";
+        std::cin.ignore();
+        std::cin.getline(dni, 20);
+
+        if (strcmp(dni, "cancel") == 0)
+        {
+            std::cout << "Carga de paciente cancelada." << std::endl;
+
+        }
+
+        do
+        {
+            std::cout << "Error: El DNI no puede estar vacío. Intente nuevamente." << std::endl;
+
+            std::cout << "Ingrese nuevamente el DNI del paciente: ";
+            std::cin.ignore();
+            std::cin.getline(dni, 20);
+        }
+        while (strlen(dni) == 0);
+
+        existeP = existePaciente(dni);
+        if(existeP)
+        {
+            std::cout << "El paciente ya ha sido ingresado en el sistema " << std::endl;
+
+        }
+    }
+    while(existeP);
+
     std::cout << "Ingrese el nombre: ";
     std::cin.ignore();
     std::cin.getline(nombre, 50);
@@ -33,16 +65,7 @@ Paciente cargarPaciente()
     std::cout<<"Fecha de nacimiento "<<std::endl;
     std::cin>>fechaNacimiento;
 
-    do {
 
-        std::cout << "Ingrese el DNI del paciente: ";
-        std::cin.ignore();
-        std::cin.getline(dni, 20);
-        existeP = existePaciente(dni);
-        if(existeP){
-            std::cout << "El paciente ya ha sido ingresado en el sistema " << std::endl;
-        }
-    } while(existeP);
 
     std::cout << "Ingrese la obra social: ";
     std::cin.getline(obraSocial, 20);
@@ -235,7 +258,8 @@ void restaurarPaciente()
     }
 }
 
-void buscarPaciente(){
+void buscarPaciente()
+{
     char DNI[20];
     PacientesArchivo pa;
     std::cout << "Ingrese el DNI del paciente que quiere buscar: ";
@@ -243,7 +267,8 @@ void buscarPaciente(){
     std::cin.getline(DNI, 20);
 
     int pos = pa.buscar(DNI);
-    if(pos == -1 ){
+    if(pos == -1 )
+    {
         std::cout << std::endl << "El paciente no ha sido encontrado." << std::endl <<std::endl;
         return;
     }
@@ -254,7 +279,8 @@ void buscarPaciente(){
 
 
 
-void buscarPacientesPorObraSocial(){
+void buscarPacientesPorObraSocial()
+{
     Paciente *pacientes;
     PacientesArchivo pa;
     int cantidad = pa.getCantidad();
@@ -262,7 +288,8 @@ void buscarPacientesPorObraSocial(){
 
     bool encontrado = false;
 
-    if(pacientes == NULL){
+    if(pacientes == NULL)
+    {
         std::cout << std::endl <<"No se pudo leer los pacientes" << std::endl <<std::endl;
     }
 
@@ -272,15 +299,18 @@ void buscarPacientesPorObraSocial(){
     std::cin.ignore();
     std::cin.getline(obraSocial, 20);
 
-    for(int i = 0; i < cantidad; i++){
-        if(strcmp(pacientes[i].getObraSocial(), obraSocial) == 0){
+    for(int i = 0; i < cantidad; i++)
+    {
+        if(strcmp(pacientes[i].getObraSocial(), obraSocial) == 0)
+        {
             encontrado  = true;
             std::cout << std::endl;
             mostrarPaciente(pacientes[i]);
         }
     }
 
-    if(!encontrado){
+    if(!encontrado)
+    {
         std::cout << "NO se encontro ningun paciente con esa obra social" << std::endl;
     }
 

@@ -801,7 +801,7 @@
 1731340051 c:\users\fedef\desktop\tp_integrador_clinica\fecha.h
 	<string>
 
-1731340051 source:c:\users\fedef\desktop\tp_integrador_clinica\main.cpp
+1731361556 source:c:\users\fedef\desktop\tp_integrador_clinica\main.cpp
 	<iostream>
 	<cstdlib>
 	"FuncionesPacientes.h"
@@ -813,7 +813,7 @@
 1731340051 c:\users\fedef\desktop\tp_integrador_clinica\persona.h
 	<string>
 
-1731340051 c:\users\fedef\desktop\tp_integrador_clinica\paciente.h
+1731371537 c:\users\fedef\desktop\tp_integrador_clinica\paciente.h
 	<string>
 	"Persona.h"
 	"Fecha.h"
@@ -840,13 +840,13 @@
 1731340051 c:\users\fedef\desktop\tp_integrador_clinica\profesionalesarchivo.h
 	"Profesional.h"
 
-1731340051 c:\users\fedef\desktop\tp_integrador_clinica\turno.h
+1731371598 c:\users\fedef\desktop\tp_integrador_clinica\turno.h
 	"Fecha.h"
 
 1731340051 c:\users\fedef\desktop\tp_integrador_clinica\turnosarchivo.h
 	"Turno.h"
 
-1731340051 source:c:\users\fedef\desktop\tp_integrador_clinica\paciente.cpp
+1731371569 source:c:\users\fedef\desktop\tp_integrador_clinica\paciente.cpp
 	<iostream>
 	<cstring>
 	<string>
@@ -1044,7 +1044,7 @@
 1731340051 c:\users\fedef\desktop\tp_integrador_clinica\funcionesespecialidades.h
 	"Especialidad.h"
 
-1731340051 source:c:\users\fedef\desktop\tp_integrador_clinica\funcionespacientes.cpp
+1731372562 source:c:\users\fedef\desktop\tp_integrador_clinica\funcionespacientes.cpp
 	<iostream>
 	<cstring>
 	"FuncionesPacientes.h"
@@ -1054,7 +1054,7 @@
 1731340051 c:\users\fedef\desktop\tp_integrador_clinica\funcionespacientes.h
 	"Paciente.h"
 
-1731340051 source:c:\users\fedef\desktop\tp_integrador_clinica\funcionesprofesional.cpp
+1731372646 source:c:\users\fedef\desktop\tp_integrador_clinica\funcionesprofesional.cpp
 	<iostream>
 	"FuncionesProfesional.h"
 	"funcionesGlobales.h"
@@ -1062,7 +1062,7 @@
 1731340051 c:\users\fedef\desktop\tp_integrador_clinica\funcionesprofesional.h
 	"Profesional.h"
 
-1731340999 source:c:\users\fedef\desktop\tp_integrador_clinica\funcionesturnos.cpp
+1731371641 source:c:\users\fedef\desktop\tp_integrador_clinica\funcionesturnos.cpp
 	<iostream>
 	"FuncionesTurnos.h"
 	"TurnosArchivo.h"
