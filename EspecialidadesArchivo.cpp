@@ -31,7 +31,7 @@ bool EspecialidadesArchivo::guardar(int pos, const Especialidad &registro)
         return false;
     }
     fseek(pFile, sizeof(Especialidad) * pos, SEEK_SET);
-    resultado = fwrite(&registro, sizeof(Especialidad), 1, pFile);
+    resultado = fwrite(&registro, sizeof(Especialidad), 1, pFile) == 1;
     fclose(pFile);
     return resultado;
 }

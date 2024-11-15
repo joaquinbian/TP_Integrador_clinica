@@ -9,29 +9,30 @@ Profesional cargarProfesional()
     int especialidad;
     bool soloParticular = false, existeProf;
 
-    do {
-
+    do
+    {
         std::cout << "Ingrese el numero de matricula: ";
         std::cin.ignore();
         std::cin.getline(matricula, 50);
 
-         do
+        // Verificar si la matrícula ingresada está vacía
+        while (strlen(matricula) == 0)
         {
-            std::cout << "Error: La matricula  no puede estar vacía. Intente nuevamente." << std::endl;
+            std::cout << "La matricula no puede estar vacía, ingrese nuevamente: ";
+            std::cin.getline(matricula, 50);
+        }
 
-            std::cout << "Ingrese nuevamente la matricula: ";
-            std::cin.ignore();
-            std::cin.getline(matricula, 20);
-        }
-        while (strlen(matricula) == 0);
         existeProf = existeProfesional(matricula);
-        if(existeProf){
-            std::cout << "Ya existe un profesional con esta matricula, ingrese otra" << std::endl;
+        if (existeProf)
+        {
+            std::cout << "Ya existe un profesional con esta matricula, ingrese otra." << std::endl;
         }
-    } while(existeProf);
+    }
+    while (existeProf);
+
 
     std::cout << "Ingrese el nombre: ";
-    std::cin.ignore();
+    //std::cin.ignore();
     std::cin.getline(nombre, 50);
 
     std::cout << "Ingrese el apellido: ";
@@ -258,7 +259,8 @@ void restaurarProfesional()
     }
 }
 
-void buscarProfesional(){
+void buscarProfesional()
+{
     char matricula[50];
     ProfesionalesArchivo pa;
     std::cout << "Ingrese la matricula del profesional que quiere buscar: ";
@@ -266,7 +268,8 @@ void buscarProfesional(){
     std::cin.getline(matricula, 50);
 
     int pos = pa.buscar(matricula);
-    if(pos == -1 ){
+    if(pos == -1 )
+    {
         std::cout << "El profesional no ha sido encontrado." << std::endl;
         return;
     }
@@ -275,15 +278,18 @@ void buscarProfesional(){
     mostrarProfesional(p);
 }
 
-bool existeProfesional(char *matricula){
+bool existeProfesional(char *matricula)
+{
     ProfesionalesArchivo pa;
     int pos = pa.buscar(matricula);
-    if(pos == -1 ){
+    if(pos == -1 )
+    {
         return false;
     }
     return true;
 }
-void buscarProfesionalPorEspecialidad(){
+void buscarProfesionalPorEspecialidad()
+{
     Profesional *profesional;
     ProfesionalesArchivo pa;
     int cantidad = pa.getCantidad();
@@ -291,7 +297,8 @@ void buscarProfesionalPorEspecialidad(){
 
     bool encontrado = false;
 
-    if(profesional == NULL){
+    if(profesional == NULL)
+    {
         std::cout << "No se pudo leer los profesionales" << std::endl;
     }
 
@@ -302,15 +309,18 @@ void buscarProfesionalPorEspecialidad(){
     std::cout << "Ingrese la especialidad del profesional que quiere buscar: ";
     std::cin >> especialidad;
 
-    for(int i = 0; i < cantidad; i++){
-        if(profesional[i].getEspecialidad() == especialidad){
+    for(int i = 0; i < cantidad; i++)
+    {
+        if(profesional[i].getEspecialidad() == especialidad)
+        {
             encontrado  = true;
             std::cout << std::endl;
             mostrarProfesional(profesional[i]);
         }
     }
 
-    if(!encontrado){
+    if(!encontrado)
+    {
         std::cout << "NO se encontro ningun profesional con esa especialidad" << std::endl;
     }
 
