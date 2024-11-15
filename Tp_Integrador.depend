@@ -801,7 +801,7 @@
 1731669592 c:\users\fedef\desktop\tp_integrador_clinica\fecha.h
 	<string>
 
-1731669592 source:c:\users\fedef\desktop\tp_integrador_clinica\main.cpp
+1731673373 source:c:\users\fedef\desktop\tp_integrador_clinica\main.cpp
 	<iostream>
 	<cstdlib>
 	"FuncionesPacientes.h"
@@ -853,7 +853,7 @@
 	"Paciente.h"
 	"Fecha.h"
 
-1731672901 source:c:\users\fedef\desktop\tp_integrador_clinica\pacientesarchivo.cpp
+1731680418 source:c:\users\fedef\desktop\tp_integrador_clinica\pacientesarchivo.cpp
 	<iostream>
 	"PacientesArchivo.h"
 	<cstring>
@@ -1044,7 +1044,7 @@
 1731669592 c:\users\fedef\desktop\tp_integrador_clinica\funcionesespecialidades.h
 	"Especialidad.h"
 
-1731673211 source:c:\users\fedef\desktop\tp_integrador_clinica\funcionespacientes.cpp
+1731681085 source:c:\users\fedef\desktop\tp_integrador_clinica\funcionespacientes.cpp
 	<iostream>
 	<cstring>
 	"FuncionesPacientes.h"

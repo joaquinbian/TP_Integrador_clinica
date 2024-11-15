@@ -3,22 +3,73 @@
 #include "FuncionesPacientes.h"
 #include "PacientesArchivo.h"
 #include "funcionesGlobales.h"
+Paciente cargarPaciente(char* Dni)
+{
+    char nombre[50], apellido[50], direccion[50], telefono[50], ciudad[50], email[50];
+    char obraSocial[20], dni[20];
+    Fecha fechaNacimiento;
+    bool existeP;
 
+    do
+    {
+        std::cout << "Ingrese el DNI del paciente: ";
+        //8std::cin.ignore();
+        std::cin.getline(dni, 20);
+
+        if(strlen(dni) == 0)
+        {
+            std::cout << "Debe completar el campo " << std::endl;
+        }
+
+    }
+    while(strlen(dni) == 0);
+
+    std::cout << "Ingrese el nombre: ";
+    //std::cin.ignore();
+    std::cin.getline(nombre, 50);
+
+    std::cout << "Ingrese el apellido: ";
+    std::cin.getline(apellido, 50);
+
+    std::cout << "Ingrese el domicilio: ";
+    std::cin.getline(direccion, 50);
+
+    std::cout << "Ingrese la ciudad: ";
+    std::cin.getline(ciudad, 50);
+
+    std::cout << "Ingrese el telefono: ";
+    std::cin.getline(telefono, 50);
+
+    std::cout << "Ingrese el correo electronico: ";
+    std::cin.getline(email, 50);
+
+    std::cout<<"Fecha de nacimiento "<<std::endl;
+    std::cin>>fechaNacimiento;
+
+    std::cout << "Ingrese la obra social: ";
+    std::cin.ignore();
+    std::cin.getline(obraSocial, 20);
+    return Paciente( nombre,  apellido, telefono,  direccion,  ciudad,  email, fechaNacimiento,  obraSocial,  dni);
+
+}
 Paciente cargarPaciente()
 {
     char nombre[50], apellido[50], direccion[50], telefono[50], ciudad[50], email[50];
     char obraSocial[20], dni[20];
     Fecha fechaNacimiento;
     bool existeP;
-    do {
+    do
+    {
         std::cout << "Ingrese el DNI del paciente: ";
-        //8std::cin.ignore();
+        std::cin.ignore();
         std::cin.getline(dni, 20);
         existeP = existePaciente(dni);
-        if(existeP){
+        if(existeP)
+        {
             std::cout << "El paciente ya ha sido ingresado en el sistema " << std::endl;
         }
-    } while(existeP);
+    }
+    while(existeP);
 
     std::cout << "Ingrese el nombre: ";
     //std::cin.ignore();
@@ -47,7 +98,6 @@ Paciente cargarPaciente()
     std::cin.getline(obraSocial, 20);
     return Paciente( nombre,  apellido, telefono,  direccion,  ciudad,  email, fechaNacimiento,  obraSocial,  dni);
 }
-
 void mostrarPaciente(Paciente paciente)
 {
     std::cout<<"Apellido : " <<paciente.getApellido() <<std::endl;
@@ -68,8 +118,6 @@ void mostrarPacienteResumido(Paciente paciente)
     std::cout<<"DNI : " <<paciente.getDni() <<std::endl;
     std::cout<<"-----------------------------------------------"<<std::endl;
 }
-
-
 void mostrarTodosPacientesActivos()
 {
     Paciente *pacientes;
@@ -102,7 +150,6 @@ void mostrarTodosPacientesActivos()
 
     delete[] pacientes;
 }
-
 void mostrarTodosPacientesActivosResumidos()
 {
     Paciente *pacientes;
@@ -172,7 +219,7 @@ void editarPaciente()
 
     Paciente paciente;
     std::cout << std::endl;
-    paciente = cargarPaciente();
+    paciente = cargarPaciente(DNI);
     bool res = pa.guardar(pos, paciente);
     if(res)
     {
@@ -233,7 +280,6 @@ void restaurarPaciente()
         std::cout<<std::endl<<"No se logro restaurar el paciente con exito"<<std::endl<<std::endl;
     }
 }
-
 void buscarPaciente()
 {
     char DNI[20];
@@ -252,7 +298,6 @@ void buscarPaciente()
     std::cout << std::endl;
     mostrarPaciente(p);
 }
-
 void buscarPacientesPorObraSocial()
 {
     Paciente *pacientes;
