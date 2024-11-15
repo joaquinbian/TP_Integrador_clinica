@@ -31,10 +31,6 @@ void guardarEspecialidad()
         system("cls");
     }
 }
-
-
-
-
 void mostrarTodasEspeciaidadesEliminadas()
 {
     Especialidad *especialidades;

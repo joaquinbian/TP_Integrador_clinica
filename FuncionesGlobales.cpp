@@ -1,6 +1,7 @@
 #include "funcionesGlobales.h"
 #include <iostream>
-bool existePaciente(char* dni){
+bool existePaciente(char* dni)
+{
 
     PacientesArchivo pa;
 
@@ -11,8 +12,8 @@ bool existePaciente(char* dni){
     }
     return false;
 }
-
-bool existeEspecialidad(int Id){
+bool existeEspecialidad(int Id)
+{
     EspecialidadesArchivo ea;
 
     int pos = ea.buscar(Id);
@@ -22,8 +23,8 @@ bool existeEspecialidad(int Id){
     }
     return false;
 }
-
-void buscarProfesionalesPorEspecialidad(int idEspecialidad){
+void buscarProfesionalesPorEspecialidad(int idEspecialidad)
+{
     Profesional *profesional;
     ProfesionalesArchivo pa;
     int cantidad = pa.getCantidad();
@@ -51,7 +52,6 @@ void buscarProfesionalesPorEspecialidad(int idEspecialidad){
 
     delete [] profesional;
 }
-
 void mostrarProfesional(Profesional profesional)
 {
     std::cout<<"Nombre : " <<profesional.getNombre() <<std::endl;
@@ -66,13 +66,13 @@ void mostrarProfesional(Profesional profesional)
     std::cout<<"Atiende obras sociales y prepagas : " <<profesional.getSoloParticular() <<std::endl;
     std::cout<<"-----------------------------------------------"<<std::endl;
 }
-
-void mostrarEspecialidades(Especialidad especialidad){
+void mostrarEspecialidades(Especialidad especialidad)
+{
     std::cout<<especialidad.getId()<< " - " <<especialidad.getNombreEspecialidad() <<std::endl;
     std::cout<<"-----------------------------------------------"<<std::endl;
 }
-
-void mostrarTodasEspecialidadesActivas(){
+void mostrarTodasEspecialidadesActivas()
+{
     Especialidad *especialidades;
     EspecialidadesArchivo ea;
     int cantidad = ea.getCantidad();
@@ -108,7 +108,8 @@ void mostrarTodasEspecialidadesActivas(){
 
     delete[] especialidades;
 }
-Especialidad buscarEspecialidad(int id){
+Especialidad buscarEspecialidad(int id)
+{
     EspecialidadesArchivo espFile;
 
     return espFile.buscarEspecalidad(id);

@@ -775,12 +775,12 @@
 	"TurnosArchivo.h"
 	<cstring>
 
-1731669592 source:c:\users\fedef\desktop\tp_integrador_clinica\especialidad.cpp
+1731682744 source:c:\users\fedef\desktop\tp_integrador_clinica\especialidad.cpp
 	<iostream>
 	<cstring>
 	"Especialidad.h"
 
-1731669592 c:\users\fedef\desktop\tp_integrador_clinica\especialidad.h
+1731682735 c:\users\fedef\desktop\tp_integrador_clinica\especialidad.h
 	<string>
 
 1731671224 source:c:\users\fedef\desktop\tp_integrador_clinica\especialidadesarchivo.cpp
@@ -1035,7 +1035,7 @@
 	"funcionesGlobales.h"
 	<iostream>
 
-1731669592 source:c:\users\fedef\desktop\tp_integrador_clinica\funcionesespecialidades.cpp
+1731682112 source:c:\users\fedef\desktop\tp_integrador_clinica\funcionesespecialidades.cpp
 	<iostream>
 	"FuncionesEspecialidades.h"
 	"EspecialidadesArchivo.h"
@@ -1044,7 +1044,7 @@
 1731669592 c:\users\fedef\desktop\tp_integrador_clinica\funcionesespecialidades.h
 	"Especialidad.h"
 
-1731681085 source:c:\users\fedef\desktop\tp_integrador_clinica\funcionespacientes.cpp
+1731682769 source:c:\users\fedef\desktop\tp_integrador_clinica\funcionespacientes.cpp
 	<iostream>
 	<cstring>
 	"FuncionesPacientes.h"
@@ -1071,7 +1071,7 @@
 1731669592 c:\users\fedef\desktop\tp_integrador_clinica\funcionesturnos.h
 	"Turno.h"
 
-1731672733 source:c:\users\fedef\desktop\tp_integrador_clinica\funcionesglobales.cpp
+1731682028 source:c:\users\fedef\desktop\tp_integrador_clinica\funcionesglobales.cpp
 	"funcionesGlobales.h"
 	<iostream>
 

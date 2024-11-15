@@ -3,55 +3,6 @@
 #include "FuncionesPacientes.h"
 #include "PacientesArchivo.h"
 #include "funcionesGlobales.h"
-Paciente cargarPaciente(char* Dni)
-{
-    char nombre[50], apellido[50], direccion[50], telefono[50], ciudad[50], email[50];
-    char obraSocial[20], dni[20];
-    Fecha fechaNacimiento;
-    bool existeP;
-
-    do
-    {
-        std::cout << "Ingrese el DNI del paciente: ";
-        //8std::cin.ignore();
-        std::cin.getline(dni, 20);
-
-        if(strlen(dni) == 0)
-        {
-            std::cout << "Debe completar el campo " << std::endl;
-        }
-
-    }
-    while(strlen(dni) == 0);
-
-    std::cout << "Ingrese el nombre: ";
-    //std::cin.ignore();
-    std::cin.getline(nombre, 50);
-
-    std::cout << "Ingrese el apellido: ";
-    std::cin.getline(apellido, 50);
-
-    std::cout << "Ingrese el domicilio: ";
-    std::cin.getline(direccion, 50);
-
-    std::cout << "Ingrese la ciudad: ";
-    std::cin.getline(ciudad, 50);
-
-    std::cout << "Ingrese el telefono: ";
-    std::cin.getline(telefono, 50);
-
-    std::cout << "Ingrese el correo electronico: ";
-    std::cin.getline(email, 50);
-
-    std::cout<<"Fecha de nacimiento "<<std::endl;
-    std::cin>>fechaNacimiento;
-
-    std::cout << "Ingrese la obra social: ";
-    std::cin.ignore();
-    std::cin.getline(obraSocial, 20);
-    return Paciente( nombre,  apellido, telefono,  direccion,  ciudad,  email, fechaNacimiento,  obraSocial,  dni);
-
-}
 Paciente cargarPaciente()
 {
     char nombre[50], apellido[50], direccion[50], telefono[50], ciudad[50], email[50];
@@ -97,6 +48,54 @@ Paciente cargarPaciente()
     std::cin.ignore();
     std::cin.getline(obraSocial, 20);
     return Paciente( nombre,  apellido, telefono,  direccion,  ciudad,  email, fechaNacimiento,  obraSocial,  dni);
+}
+Paciente cargarPaciente(char* Dni)
+{
+    char nombre[50], apellido[50], direccion[50], telefono[50], ciudad[50], email[50];
+    char obraSocial[20], dni[20];
+    Fecha fechaNacimiento;
+
+    do
+    {
+        std::cout << "Ingrese el DNI del paciente: ";
+        //8std::cin.ignore();
+        std::cin.getline(dni, 20);
+
+        if(strlen(dni) == 0)
+        {
+            std::cout << "Debe completar el campo " << std::endl;
+        }
+
+    }
+    while(strlen(dni) == 0);
+
+    std::cout << "Ingrese el nombre: ";
+    //std::cin.ignore();
+    std::cin.getline(nombre, 50);
+
+    std::cout << "Ingrese el apellido: ";
+    std::cin.getline(apellido, 50);
+
+    std::cout << "Ingrese el domicilio: ";
+    std::cin.getline(direccion, 50);
+
+    std::cout << "Ingrese la ciudad: ";
+    std::cin.getline(ciudad, 50);
+
+    std::cout << "Ingrese el telefono: ";
+    std::cin.getline(telefono, 50);
+
+    std::cout << "Ingrese el correo electronico: ";
+    std::cin.getline(email, 50);
+
+    std::cout<<"Fecha de nacimiento "<<std::endl;
+    std::cin>>fechaNacimiento;
+
+    std::cout << "Ingrese la obra social: ";
+    std::cin.ignore();
+    std::cin.getline(obraSocial, 20);
+    return Paciente( nombre,  apellido, telefono,  direccion,  ciudad,  email, fechaNacimiento,  obraSocial,  dni);
+
 }
 void mostrarPaciente(Paciente paciente)
 {
