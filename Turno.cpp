@@ -6,11 +6,10 @@
 using namespace std;
 
 Turno::Turno(){}
-Turno::Turno(Fecha fechaTurno, int horaTurno, int especialidad, std::string dniPaciente, std::string matricula, bool eliminado)
+Turno::Turno(Fecha fechaTurno, int horaTurno, std::string dniPaciente, std::string matricula, bool eliminado)
 {
     setFecha(fechaTurno);
     setHoraTurno(horaTurno);
-    setEspecialidad(especialidad);
     setDniPaciente(dniPaciente);
     setMatricula(matricula);
     setEliminado(false);
@@ -39,16 +38,6 @@ const int Turno::getHoraTurno() const{
     return _horaTurno;
 }
 
-void Turno::setEspecialidad(int especialidad)
-{
-    _idEspecialidad = especialidad;
-}
-
-const int Turno::getEspecialidad() const{
-
-    return _idEspecialidad;
-}
-
 void Turno::setDniPaciente(string dniPaciente)
 {
     strncpy(_dniPaciente, dniPaciente.c_str(), sizeof(_dniPaciente) - 1);
@@ -74,7 +63,6 @@ const char* Turno::getMatricula() const{
 void Turno::mostrar(){
     cout<<"Fecha : " <<this->getFecha().toString() <<endl;
     cout<<"Hora : " <<this->getHoraTurno() <<endl;
-    cout<<"Especialidad : " <<this->getEspecialidad() <<endl;
     cout<<"DNI Paciente : " <<this->getDniPaciente() <<endl;
     cout<<"Matricula : " <<this->getMatricula() <<endl;
 }
