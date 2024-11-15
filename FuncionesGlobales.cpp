@@ -1,6 +1,7 @@
 #include "funcionesGlobales.h"
 #include <iostream>
 bool existePaciente(char* dni){
+
     PacientesArchivo pa;
 
     int pos = pa.buscar(dni);

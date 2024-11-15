@@ -12,7 +12,7 @@ Paciente cargarPaciente()
     bool existeP;
     do {
         std::cout << "Ingrese el DNI del paciente: ";
-        std::cin.ignore();
+        //8std::cin.ignore();
         std::cin.getline(dni, 20);
         existeP = existePaciente(dni);
         if(existeP){
@@ -21,7 +21,7 @@ Paciente cargarPaciente()
     } while(existeP);
 
     std::cout << "Ingrese el nombre: ";
-    std::cin.ignore();
+    //std::cin.ignore();
     std::cin.getline(nombre, 50);
 
     std::cout << "Ingrese el apellido: ";
@@ -42,16 +42,8 @@ Paciente cargarPaciente()
     std::cout<<"Fecha de nacimiento "<<std::endl;
     std::cin>>fechaNacimiento;
 
-    do {
-        std::cout << "Ingrese el DNI del paciente: ";
-        std::cin.ignore();
-        std::cin.getline(dni, 20);
-        existeP = existePaciente(dni);
-        if(existeP){
-            std::cout << "El paciente ya ha sido ingresado en el sistema " << std::endl;
-        }
-    } while(existeP);
     std::cout << "Ingrese la obra social: ";
+    std::cin.ignore();
     std::cin.getline(obraSocial, 20);
     return Paciente( nombre,  apellido, telefono,  direccion,  ciudad,  email, fechaNacimiento,  obraSocial,  dni);
 }

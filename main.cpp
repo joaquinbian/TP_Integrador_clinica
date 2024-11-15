@@ -105,6 +105,7 @@ int main()
                     cout << "\033[4m";  // Comienza subrayado
                     cout << "MODIFICAR PACIENTE" << endl<<endl;
                     cout << "\033[0m";  // Detiene subrayado
+                    mostrarTodosPacientesActivosResumidos();
                     editarPaciente();
                     system("pause");
                     break;

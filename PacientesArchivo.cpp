@@ -86,11 +86,12 @@ int PacientesArchivo::buscar(char* dni)
     pFile = fopen(_filename.c_str(), "rb");
     if(pFile == nullptr)
     {
-        return false;
+        return -1;
     }
     while(fread(&registro, sizeof(Paciente), 1, pFile) == 1)
     {
         if(strcmp(registro.getDni(), dni) == 0){
+             fclose(pFile);
              return pos;
         }
         pos++;
