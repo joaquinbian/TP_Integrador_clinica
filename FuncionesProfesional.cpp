@@ -15,7 +15,6 @@ Profesional cargarProfesional()
         std::cin.ignore();
         std::cin.getline(matricula, 50);
 
-        // Verificar si la matrícula ingresada está vacía
         while (strlen(matricula) == 0)
         {
             std::cout << "La matricula no puede estar vacía, ingrese nuevamente: ";
@@ -30,13 +29,14 @@ Profesional cargarProfesional()
     }
     while (existeProf);
 
+    std::cout << "Ingrese el apellido: ";
+    std::cin.getline(apellido, 50);
 
     std::cout << "Ingrese el nombre: ";
     //std::cin.ignore();
     std::cin.getline(nombre, 50);
 
-    std::cout << "Ingrese el apellido: ";
-    std::cin.getline(apellido, 50);
+
 
     std::cout << "Ingrese el domicilio: ";
     std::cin.getline(direccion, 50);

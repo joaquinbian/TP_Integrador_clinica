@@ -783,7 +783,7 @@
 1731669592 c:\users\fedef\desktop\tp_integrador_clinica\especialidad.h
 	<string>
 
-1731669592 source:c:\users\fedef\desktop\tp_integrador_clinica\especialidadesarchivo.cpp
+1731671224 source:c:\users\fedef\desktop\tp_integrador_clinica\especialidadesarchivo.cpp
 	<iostream>
 	"EspecialidadesArchivo.h"
 	<cstring>
@@ -1044,7 +1044,7 @@
 1731669592 c:\users\fedef\desktop\tp_integrador_clinica\funcionesespecialidades.h
 	"Especialidad.h"
 
-1731669592 source:c:\users\fedef\desktop\tp_integrador_clinica\funcionespacientes.cpp
+1731672130 source:c:\users\fedef\desktop\tp_integrador_clinica\funcionespacientes.cpp
 	<iostream>
 	<cstring>
 	"FuncionesPacientes.h"
@@ -1054,7 +1054,7 @@
 1731669592 c:\users\fedef\desktop\tp_integrador_clinica\funcionespacientes.h
 	"Paciente.h"
 
-1731670779 source:c:\users\fedef\desktop\tp_integrador_clinica\funcionesprofesional.cpp
+1731671409 source:c:\users\fedef\desktop\tp_integrador_clinica\funcionesprofesional.cpp
 	<iostream>
 	"FuncionesProfesional.h"
 	"funcionesGlobales.h"

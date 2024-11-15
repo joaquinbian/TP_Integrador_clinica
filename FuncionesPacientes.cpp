@@ -10,38 +10,15 @@ Paciente cargarPaciente()
     char obraSocial[20], dni[20];
     Fecha fechaNacimiento;
     bool existeP;
-
-    do
-    {
-
+    do {
         std::cout << "Ingrese el DNI del paciente: ";
         std::cin.ignore();
         std::cin.getline(dni, 20);
-
-        if (strcmp(dni, "cancel") == 0)
-        {
-            std::cout << "Carga de paciente cancelada." << std::endl;
-
-        }
-
-        do
-        {
-            std::cout << "Error: El DNI no puede estar vacío. Intente nuevamente." << std::endl;
-
-            std::cout << "Ingrese nuevamente el DNI del paciente: ";
-            std::cin.ignore();
-            std::cin.getline(dni, 20);
-        }
-        while (strlen(dni) == 0);
-
         existeP = existePaciente(dni);
-        if(existeP)
-        {
+        if(existeP){
             std::cout << "El paciente ya ha sido ingresado en el sistema " << std::endl;
-
         }
-    }
-    while(existeP);
+    } while(existeP);
 
     std::cout << "Ingrese el nombre: ";
     std::cin.ignore();
@@ -65,13 +42,20 @@ Paciente cargarPaciente()
     std::cout<<"Fecha de nacimiento "<<std::endl;
     std::cin>>fechaNacimiento;
 
-
-
+    do {
+        std::cout << "Ingrese el DNI del paciente: ";
+        std::cin.ignore();
+        std::cin.getline(dni, 20);
+        existeP = existePaciente(dni);
+        if(existeP){
+            std::cout << "El paciente ya ha sido ingresado en el sistema " << std::endl;
+        }
+    } while(existeP);
     std::cout << "Ingrese la obra social: ";
     std::cin.getline(obraSocial, 20);
-
     return Paciente( nombre,  apellido, telefono,  direccion,  ciudad,  email, fechaNacimiento,  obraSocial,  dni);
 }
+
 void mostrarPaciente(Paciente paciente)
 {
     std::cout<<"Apellido : " <<paciente.getApellido() <<std::endl;
@@ -276,8 +260,6 @@ void buscarPaciente()
     std::cout << std::endl;
     mostrarPaciente(p);
 }
-
-
 
 void buscarPacientesPorObraSocial()
 {
