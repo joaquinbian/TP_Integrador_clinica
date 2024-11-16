@@ -6,12 +6,17 @@
 Especialidad cargarEspecialidad()
 {
     char nombreEspecialidad[50];
+    int id;
+
+    static int contadorId = 1;
 
     std::cout<<"Ingrese el nombre de la especialidad : ";
     std::cin.ignore();
     std::cin.getline(nombreEspecialidad, 50);
 
-    return Especialidad(nombreEspecialidad);
+    id = contadorId++;
+
+    return Especialidad(nombreEspecialidad,id ,false);
 }
 void guardarEspecialidad()
 {

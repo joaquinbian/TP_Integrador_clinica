@@ -5,13 +5,14 @@
 using namespace std;
 
 Especialidad::Especialidad() {
-    _id = _contadorId;
+    //_id = _contadorId;
     _nombreEspecialidad[0] = '\0';
     _eliminado = false;
 }
 
-Especialidad::Especialidad(string nombreEspecialidad, bool eliminado) {
-    _id = ++_contadorId;
+Especialidad::Especialidad(string nombreEspecialidad,int id, bool eliminado) {
+    //_id = ++_contadorId;
+    setId(id);
     setNombreEspecialidad(nombreEspecialidad);
     _eliminado = eliminado;
 }
@@ -40,4 +41,4 @@ const int Especialidad::getId() const {
     return _id;
 }
 
-int Especialidad::_contadorId = 0;
+//int Especialidad::_contadorId = 0;
