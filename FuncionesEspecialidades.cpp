@@ -9,10 +9,19 @@ Especialidad cargarEspecialidad()
     int id;
 
     static int contadorId = 1;
-
+    std::cout << "Carga especialidad" << std::endl;
+    std::cout << "Ingrese 0 en cualquier campo para cancelar" << std::endl;
+    std::cout << "------------------------------------" << std::endl;
+    
     std::cout<<"Ingrese el nombre de la especialidad : ";
     std::cin.ignore();
     std::cin.getline(nombreEspecialidad, 50);
+
+    if(validateCancelValueString(nombreEspecialidad))
+    {
+        return Especialidad();
+    }   
+
 
     id = contadorId++;
 
@@ -23,6 +32,14 @@ void guardarEspecialidad()
     Especialidad especialidad;
     EspecialidadesArchivo ea;
     especialidad = cargarEspecialidad();
+
+    if(estaStringVacio(especialidad.getNombreEspecialidad()))
+    {
+        std::cout<<"Carga de especialidad cancelada " <<std::endl;
+        
+        return;
+    }
+
     if(ea.Guardar(especialidad))
     {
         std::cout<<"Especialidad guardada exitosamente" <<std::endl;
