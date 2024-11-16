@@ -27,8 +27,3 @@ void mostrarTodasEspecialidadesActivas();
 void mostrarEspecialidades(Especialidad especialidad);
 Especialidad buscarEspecialidad(int id);
 bool existeEspecialidad(int Id);
-
-
-
-
-

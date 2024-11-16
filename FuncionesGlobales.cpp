@@ -79,7 +79,7 @@ void mostrarTodasEspecialidadesActivas()
     especialidades = new Especialidad[cantidad];
     ea.leerTodos(especialidades, cantidad);
 
-    // Ordenar especialidades alfabΓê⌐ΓöÉΓò£ticamente por nombre, sin cambiar los IDs
+    // Ordenar especialidades alfab∩┐╜ticamente por nombre, sin cambiar los IDs
     for (int i = 0; i < cantidad - 1; i++)
     {
         for (int j = i + 1; j < cantidad; j++)

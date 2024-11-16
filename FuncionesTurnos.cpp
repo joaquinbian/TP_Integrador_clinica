@@ -8,8 +8,8 @@ Turno cargarTurno()
     Turno turno;
     Fecha fechaTurno;
     char dniPaciente[50], matricula[50];
-    int horaTurno, especialidad;
-    bool existeP, existeT, existeE;
+    int horaTurno;
+    bool existeP, existeT;
 
     do
     {
@@ -22,26 +22,6 @@ Turno cargarTurno()
             std::cin >> horaTurno;
         }
         while(horaTurno < 8 || horaTurno > 20);
-
-
-
-        do
-        {
-
-            mostrarTodasEspecialidadesActivas();
-            std::cout << "Ingrese el codigo de la especialidad ";
-            std::cin >> especialidad;
-
-            existeE = existeEspecialidad(especialidad)
-            ;
-
-            if(!existeE)
-            {
-                std::cout<<"No se encontro la especialidad .." <<std::endl;
-            }
-
-        }
-        while(!existeE);
 
         do
         {
@@ -56,12 +36,12 @@ Turno cargarTurno()
         }
         while(!existeP);
 
-        std::cout << "Profesionales de " << buscarEspecialidad(especialidad).getNombreEspecialidad() << std::endl;
-        buscarProfesionalesPorEspecialidad(especialidad);
+//        std::cout << "Profesionales de " << buscarEspecialidad(especialidad).getNombreEspecialidad() << std::endl;
+//        buscarProfesionalesPorEspecialidad(especialidad);
         std::cout << "Ingrese la matricula del profesional: ";
         std::cin >> matricula;
 
-        turno = Turno(fechaTurno, horaTurno, especialidad, dniPaciente, matricula);
+        turno = Turno(fechaTurno, horaTurno, dniPaciente, matricula);
 
         existeT = validarExisteTurno(turno);
 
@@ -329,7 +309,7 @@ void restaurarTurno()
 
 void informarProfesionalQueMasPacientesAtendio()
 {
-    ///Profesional que m s pacientes atendi¢:
+    ///Profesional que mï¿½s pacientes atendiï¿½:
     int ind=0, maximo;
 
     ///Profesionales activos e inactivos
@@ -338,7 +318,7 @@ void informarProfesionalQueMasPacientesAtendio()
     int cantidadProfesionales = pa.getCantidad();
     profesionales = new Profesional[cantidadProfesionales];
     pa.leerTodos(profesionales, cantidadProfesionales);
-    ///Vector acumulador de pacientes atendidos por profesional. Comparte el ¡ndice con el de profesionales
+    ///Vector acumulador de pacientes atendidos por profesional. Comparte el ï¿½ndice con el de profesionales
     int* pacientesAtendidos = new int[cantidadProfesionales] {};
     ///Vector Turnos
     Turno *turnos;
@@ -378,7 +358,7 @@ void informarProfesionalQueMasPacientesAtendio()
     }
 
     std::cout << profesionales[ind].getApellido() << ", " << profesionales[ind].getNombre() <<
-              " (Matr¡cula: " << profesionales[ind].getMatricula() << ") - " << pacientesAtendidos[ind] <<
+              " (Matrï¿½cula: " << profesionales[ind].getMatricula() << ") - " << pacientesAtendidos[ind] <<
               " pacientes atendidos" << std::endl << std::endl;
 
     delete[] profesionales;
