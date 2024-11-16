@@ -13,7 +13,10 @@ Paciente cargarPaciente()
     bool existeP;
     int dia, mes, anio;
 
-    std::cout << "Para cancelar la carga, ingrese 0 en uno de los campos "<< std::endl;
+    std::cout << "Ingrese los datos del paciente " << std::endl;
+    std::cout << "Ingrese 0 en cualquier campo para cancelar" << std::endl;
+    std::cout << "------------------------------------" << std::endl;   
+    
     do
     {
         std::cout << "Ingrese el DNI del paciente: ";
