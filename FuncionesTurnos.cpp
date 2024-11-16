@@ -2,6 +2,8 @@
 #include "FuncionesTurnos.h"
 #include "TurnosArchivo.h"
 #include "funcionesGlobales.h"
+#include <ctime> ///Para menejar fechas
+
 Turno cargarTurno()
 {
 
@@ -9,12 +11,37 @@ Turno cargarTurno()
     Fecha fechaTurno;
     char dniPaciente[50], matricula[50];
     int horaTurno;
-    bool existeP, existeT;
+    bool existeP, existeT, fechaFutura;
 
     do
     {
+        /// Inicio implementació manejo fecha >= Actual
+
+        do
+        {
+
         std::cout << "Ingrese la fecha del turno: " << std::endl;
         std::cin >> fechaTurno;
+
+        // Obtener la fecha actual
+        std::time_t tiempoActual = std::time(0);  ///Obtiene el tiempo actual
+        std::tm* now = std::localtime(&tiempoActual); ///Convierte el tiempo actual a una estructura time
+
+        ///Comprobar si la fecha ingresada es anterior a la fecha actual
+        if (fechaTurno.getAnio() < (1900 + now->tm_year) ||  /// Compara el año
+            (fechaTurno.getAnio() == (1900 + now->tm_year) && fechaTurno.getMes() < (now->tm_mon + 1)) ||  /// Compara el mes
+            (fechaTurno.getAnio() == (1900 + now->tm_year) && fechaTurno.getMes() == (now->tm_mon + 1) && fechaTurno.getDia() < now->tm_mday))/// Compara el día
+        {
+            std::cout << "La fecha ingresada es anterior a la fecha actual. Por favor ingrese una fecha válida." << std::endl;
+            fechaFutura=false;
+        }else{
+            fechaFutura=true;
+        }
+
+        }
+        while(!fechaFutura);
+
+        /// Final implementació manejo fecha >= Actual
 
         do
         {
@@ -299,7 +326,7 @@ void restaurarTurno()
         turno.setEliminado(false);
         ta.guardar(pos,turno);
         std::cout << std::endl;
-        std::cout<<"Turno restaurado con �xito" <<std::endl<<std::endl;
+        std::cout<<"Turno restaurado con ∩┐╜xito" <<std::endl<<std::endl;
     }
     else
     {
@@ -309,7 +336,7 @@ void restaurarTurno()
 
 void informarProfesionalQueMasPacientesAtendio()
 {
-    ///Profesional que m�s pacientes atendi�:
+    ///Profesional que m∩┐╜s pacientes atendi∩┐╜:
     int ind=0, maximo;
 
     ///Profesionales activos e inactivos
@@ -318,7 +345,7 @@ void informarProfesionalQueMasPacientesAtendio()
     int cantidadProfesionales = pa.getCantidad();
     profesionales = new Profesional[cantidadProfesionales];
     pa.leerTodos(profesionales, cantidadProfesionales);
-    ///Vector acumulador de pacientes atendidos por profesional. Comparte el �ndice con el de profesionales
+    ///Vector acumulador de pacientes atendidos por profesional. Comparte el ∩┐╜ndice con el de profesionales
     int* pacientesAtendidos = new int[cantidadProfesionales] {};
     ///Vector Turnos
     Turno *turnos;
@@ -358,7 +385,7 @@ void informarProfesionalQueMasPacientesAtendio()
     }
 
     std::cout << profesionales[ind].getApellido() << ", " << profesionales[ind].getNombre() <<
-              " (Matr�cula: " << profesionales[ind].getMatricula() << ") - " << pacientesAtendidos[ind] <<
+              " (Matr∩┐╜cula: " << profesionales[ind].getMatricula() << ") - " << pacientesAtendidos[ind] <<
               " pacientes atendidos" << std::endl << std::endl;
 
     delete[] profesionales;
