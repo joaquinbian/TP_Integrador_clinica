@@ -3,7 +3,12 @@
 #include "Profesional.h"
 #include "Persona.h"
 using namespace std;
-Profesional::Profesional(){}
+Profesional::Profesional():Persona(){
+    strcpy(_matricula, "");
+    idEspecialidad = 0;
+    _valorConsulta = 0.0;
+    _soloParticular = false;
+}
 Profesional::Profesional(string nombre, string apellido, string telefono, string direccion, string ciudad, string email, string matricula, int especialidad, float valorConsulta, bool soloParticular, bool eliminado ):Persona(nombre, apellido, telefono, direccion, ciudad, email)
 {
     setMatricula(matricula);

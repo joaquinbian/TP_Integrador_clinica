@@ -3,7 +3,14 @@
 #include<iostream>
 
 using namespace std;
-Persona::Persona(){}
+Persona::Persona(){
+    strcpy(_nombre, "");
+    strcpy(_apellido, "");
+    strcpy(_telefono, "");
+    strcpy(_direccion, "");
+    strcpy(_ciudad, "");
+    strcpy(_email, "");
+}
 Persona::Persona(std::string nombre, std::string apellido, std::string telefono, std::string direccion, std::string ciudad, std::string email)
 {
 

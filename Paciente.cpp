@@ -6,7 +6,13 @@
 #include "Fecha.h"
 
 using namespace std;
-Paciente::Paciente(){}
+
+Paciente::Paciente():Persona(){
+    strcpy(_dni,"");
+    strcpy(_obraSocial,"");
+    _fechaNacimiento = Fecha();
+}
+
 Paciente::Paciente(string nombre, string apellido, string telefono, string direccion, string ciudad, string email, Fecha fechaNacimiento, std::string obraSocial, std::string dni, bool eliminado):Persona(nombre, apellido, telefono, direccion, ciudad, email)
 {
     setFechaNacimiento(fechaNacimiento);

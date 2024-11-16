@@ -33,7 +33,6 @@ private:
     void setFechaDefault();
     bool esBisiesto();
     bool esBisiesto(int anio);
-    void setFechaDefault();
 
 
 
