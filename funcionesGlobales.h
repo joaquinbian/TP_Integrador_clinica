@@ -20,11 +20,11 @@ bool validateCancelValueFloat(float num);
 bool estaStringVacio(const char *str);
 
 
-//PARA CREAR FECHAS
+//FECHAS
 int pedirDiaFechaCancelable();
 int pedirMesFechaCancelable();
 int pedirAnioFechaCancelable();
-
+Fecha obtenerFechaActual();
 
 
 //PACIENTES

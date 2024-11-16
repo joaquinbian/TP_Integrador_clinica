@@ -1,5 +1,7 @@
 #include "funcionesGlobales.h"
 #include <iostream>
+#include <ctime>
+
 
 
 
@@ -177,4 +179,16 @@ Especialidad buscarEspecialidad(int id)
     EspecialidadesArchivo espFile;
 
     return espFile.buscarEspecalidad(id);
+}
+
+Fecha obtenerFechaActual()
+{
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+    
+    int dia = ltm->tm_mday;
+    int mes = 1 + ltm->tm_mon; //meses del 1 al 11
+    int anio = 1900 + ltm->tm_year; // +1900 porque empieza a contar desde 1900
+
+    return Fecha(dia, mes, anio);
 }
