@@ -121,12 +121,29 @@ std::istream& operator>>(std::istream& in, Fecha& fecha) {
     return in;
 }
 
-bool operator==(Fecha &f1,  Fecha &f2) {
-    if(f1.getDia() == f2.getDia() && f1.getMes() == f2.getMes() && f1.getAnio() == f2.getAnio()){
+bool Fecha::operator==(Fecha& f1)  {
+    f1.getDia();
+    if(this->getDia() == f1.getDia() && this->getMes() == f1.getMes() && this->getAnio() == f1.getAnio()){
             return true;
     }
     return false;
 }
+
+bool Fecha::operator>(Fecha &f1){
+    if(this->getAnio() > f1.getAnio()){
+        return true;
+    } else if(this->getAnio() == f1.getAnio()){
+        if(this->getMes() > f1.getMes()){
+            return true;
+        } else if(this->getMes() == f1.getMes()){
+            if(this->getDia() > f1.getDia()){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 
 
 ///METODOS PRIVADOS
