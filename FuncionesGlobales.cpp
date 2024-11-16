@@ -2,9 +2,19 @@
 #include <iostream>
 
 
+
+bool estaStringVacio(const char *str) {
+    return strlen(str) == 0;
+}
+
 bool validateCancelValueString(std::string str){
     return strcmp(str.c_str(), "0") == 0;
 }
+
+bool validateCancelValueChar(char c){
+    return c == '0';
+}
+
 bool validateCancelValueInt(int n){
     return n == 0;
 }

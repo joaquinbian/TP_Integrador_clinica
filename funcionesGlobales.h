@@ -14,12 +14,18 @@
 
 //TODOS 
 bool validateCancelValueString(std::string str);
+bool validateCancelValueChar(char c);
 bool validateCancelValueInt(int num);
 bool validateCancelValueFloat(float num);
-//CREAR FUNCIONES PARA CREAR FECHA (PEDIR DIA, MES, ANIO)
+bool estaStringVacio(const char *str);
+
+
+//PARA CREAR FECHAS
 int pedirDiaFechaCancelable();
 int pedirMesFechaCancelable();
 int pedirAnioFechaCancelable();
+
+
 
 //PACIENTES
 bool existePaciente(char* dni);
