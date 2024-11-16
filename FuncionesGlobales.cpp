@@ -1,5 +1,59 @@
 #include "funcionesGlobales.h"
 #include <iostream>
+
+
+bool validateCancelValueString(std::string str){
+    return strcmp(str.c_str(), "0") == 0;
+}
+bool validateCancelValueInt(int n){
+    return n == 0;
+}
+bool validateCancelValueFloat(float num){
+    return num == 0.0;
+}
+bool validateCancelValueFecha(Fecha fecha){
+    return fecha.validar();
+}
+
+int pedirDiaFechaCancelable(){
+    int dia;
+    do {
+        std::cout << "Ingrese el dia (1-31) (0 para cancelar): ";
+        std::cin >> dia;
+        if(dia < 0 || dia > 31){
+            std::cout << "Dia invalido" << std::endl;
+        }
+    }while(dia < 0 || dia > 31);
+
+    return dia;
+}
+
+int pedirMesFechaCancelable(){
+    int mes;
+    do {
+        std::cout << "Ingrese el mes (1-12) (0 para cancelar): ";
+        std::cin >> mes;
+        if(mes < 0 || mes > 12){
+            std::cout << "Mes invalido" << std::endl;
+        }
+    }while(mes < 0 || mes > 12);
+
+    return mes;
+}
+
+int pedirAnioFechaCancelable(){
+    int anio;
+    do {
+        std::cout << "Ingrese el anio (1-12) (0 para cancelar): ";
+        std::cin >> anio;
+        if(anio < 0){
+            std::cout << "Anio invalido" << std::endl;
+        }
+    }while(anio < 0);
+
+    return anio;
+}
+
 bool existePaciente(char* dni)
 {
 

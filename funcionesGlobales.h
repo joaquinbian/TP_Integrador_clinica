@@ -11,6 +11,16 @@
 #include "TurnosArchivo.h"
 
 
+
+//TODOS 
+bool validateCancelValueString(std::string str);
+bool validateCancelValueInt(int num);
+bool validateCancelValueFloat(float num);
+//CREAR FUNCIONES PARA CREAR FECHA (PEDIR DIA, MES, ANIO)
+int pedirDiaFechaCancelable();
+int pedirMesFechaCancelable();
+int pedirAnioFechaCancelable();
+
 //PACIENTES
 bool existePaciente(char* dni);
 
