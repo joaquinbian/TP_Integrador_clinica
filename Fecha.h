@@ -6,6 +6,7 @@ class Fecha
 public:
     Fecha();
     Fecha(int dia, int mes, int anio);
+    bool esValida;
     void setDia(int dia);
     void setMes(int mes);
     void setAnio(int anio);

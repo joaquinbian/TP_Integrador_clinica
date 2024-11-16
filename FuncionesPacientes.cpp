@@ -77,25 +77,31 @@ Paciente cargarPaciente()
     
     std::cout<<"Fecha de nacimiento "<<std::endl;
     
-    dia = pedirDiaFechaCancelable();
+    do {
+        dia = pedirDiaFechaCancelable();
 
-    if(validateCancelValueInt(dia)){
-        return Paciente();
-    }
+        if(validateCancelValueInt(dia)){
+            return Paciente();
+        }
 
-    mes = pedirMesFechaCancelable();
+        mes = pedirMesFechaCancelable();
     
-    if(validateCancelValueInt(mes)){
-        return Paciente();
-    }
+        if(validateCancelValueInt(mes)){
+            return Paciente();
+        }
 
-    anio = pedirAnioFechaCancelable();
+        anio = pedirAnioFechaCancelable();
 
-    if(validateCancelValueInt(anio)){
-        return Paciente();
-    }
+        if(validateCancelValueInt(anio)){
+            return Paciente();
+        }
 
-    fechaNacimiento = Fecha(dia, mes, anio);    //std::cin>>fechaNacimiento;
+        fechaNacimiento = Fecha(dia, mes, anio);    //std::cin>>fechaNacimiento;
+        if(!fechaNacimiento.esValida){
+            std::cout << "La fecha ingresada es invalida, ingrese otra por favor " << std::endl;
+        }
+    } while(!fechaNacimiento.esValida);
+   
     
 
     std::cout << "Ingrese la obra social: ";

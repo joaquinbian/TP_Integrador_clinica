@@ -8,6 +8,7 @@ using namespace std;
 
 Fecha::Fecha(){
     this->setFechaDefault();
+    this->esValida = true;
 }
 
 Fecha::Fecha(int dia, int mes, int anio){
@@ -20,7 +21,9 @@ Fecha::Fecha(int dia, int mes, int anio){
         this->_dia = dia;
         this->_mes = mes;
         this->_anio = anio;
+        this->esValida = true;
     } else {
+        this->esValida = false;
         this->setFechaDefault();
     }
 }
@@ -49,7 +52,7 @@ void Fecha::setDia(int dia){
         this->_dia = dia;
     } else {
         this->_dia = 1;
-        std::cout << "El dia no es valido" << std::endl;
+        std::cout << "El dia no es valido, se seteo un dia por defecto" << std::endl;
     }
 }
 
@@ -58,7 +61,7 @@ void Fecha::setMes(int mes){
         this->_mes = mes;
     } else {
         this->_mes = 1;
-        std::cout << "El mes no es valido" << std::endl;
+        std::cout << "El mes no es valido, se seteo un mes por defecto" << std::endl;
     }
 }
 
@@ -70,8 +73,8 @@ void Fecha::setAnio(int anio){
             _meses[1] = 29;
         }
     } else {
-        this->_anio = anio;
-        std::cout << "El anio no es valido" << std::endl;
+        this->_anio = 2024;
+        std::cout << "El anio no es valido, se seteo un anio por defecto" << std::endl;
     }
 }
 void Fecha::setFechaDefault(){
