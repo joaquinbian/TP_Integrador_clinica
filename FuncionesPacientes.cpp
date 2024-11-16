@@ -176,6 +176,8 @@ void mostrarPaciente(Paciente paciente)
     std::cout<<"Fecha de nacimiento : " << paciente.getFechaNacimiento().toString()<<std::endl;
     std::cout<<"DNI : " <<paciente.getDni() <<std::endl;
     std::cout<<"Obra Social : " <<paciente.getObraSocial() <<std::endl;
+    ///Prueba edad
+    std::cout<<"Prueba getEdad: " <<paciente.getEdad()<< " años" <<std::endl;
     std::cout<<"-----------------------------------------------"<<std::endl;
 }
 void mostrarPacienteResumido(Paciente paciente)
