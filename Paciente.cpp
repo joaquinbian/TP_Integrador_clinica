@@ -1,9 +1,9 @@
 #include<iostream>
 #include <cstring>
 #include <string>
-
 #include "Paciente.h"
 #include "Fecha.h"
+#include <ctime> ///Para menejar fechas
 
 using namespace std;
 
@@ -54,4 +54,17 @@ const bool Paciente::getEliminado() const{
 
 }
 
+int Paciente::getEdad(){
+    /// Obtener la fecha actual
+    std::time_t tiempoActual = std::time(0);  ///Obtiene el tiempo actual
+    std::tm* now = std::localtime(&tiempoActual); ///Convierte el tiempo actual a una estructura time
 
+    int edad = (1900 + now->tm_year) - getFechaNacimiento().getAnio();  /// Calcula la diferencia de años
+
+    if (now->tm_mon + 1 < getFechaNacimiento().getMes() ||  /// Si el mes actual es menor que el de nacimiento
+        (now->tm_mon + 1 == getFechaNacimiento().getMes() && now->tm_mday < getFechaNacimiento().getDia())) {  /// ..o si el mes es igual pero el día aún no pasó
+         edad--;  /// Resta un año por que aún no cumplió
+    }
+
+    return edad;
+}
