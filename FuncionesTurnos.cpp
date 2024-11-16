@@ -2,26 +2,60 @@
 #include "FuncionesTurnos.h"
 #include "TurnosArchivo.h"
 #include "funcionesGlobales.h"
+
 Turno cargarTurno()
 {
 
     Turno turno;
     Fecha fechaTurno;
     char dniPaciente[50], matricula[50];
-    int horaTurno;
+    int horaTurno, dia, mes, anio;
     bool existeP, existeT;
+
+    std::cout << "Cargar turno" << std::endl;
+    std::cout << "Para cancelar la carga de turno, ingrese 0 en cualquier campo" << std::endl;
+    std::cout << "--------------------------------" << std::endl;
 
     do
     {
         std::cout << "Ingrese la fecha del turno: " << std::endl;
-        std::cin >> fechaTurno;
+        
+        do {
+            dia = pedirDiaFechaCancelable();
+
+            if(validateCancelValueInt(dia)){
+                return Turno();
+            }
+
+            mes = pedirMesFechaCancelable();
+    
+            if(validateCancelValueInt(mes)){
+                return Turno();
+            }
+
+            anio = pedirAnioFechaCancelable();
+
+            if(validateCancelValueInt(anio)){
+                return Turno();
+            }
+
+            fechaTurno = Fecha(dia, mes, anio);    //std::cin>>fechaTurno;
+            if(!fechaTurno.esValida){
+                std::cout << "La fecha ingresada es invalida, ingrese otra por favor " << std::endl;
+            }
+        } while(!fechaTurno.esValida);
 
         do
         {
             std::cout << "Ingrese la hora del turno (9-16 hs): ";
             std::cin >> horaTurno;
+            if(validateCancelValueInt(horaTurno)){
+                return Turno();
+            }
         }
         while(horaTurno < 8 || horaTurno > 20);
+
+
 
         do
         {
@@ -29,6 +63,10 @@ Turno cargarTurno()
             std::cout << "Ingrese el DNI del paciente: ";
             std::cin >> dniPaciente;
             existeP = existePaciente(dniPaciente);
+            if(validateCancelValueString(dniPaciente)){
+                return Turno();
+            }
+
             if(!existeP)
             {
                 std::cout << "No encontramos un paciente con ese DNI " << std::endl;
@@ -36,10 +74,15 @@ Turno cargarTurno()
         }
         while(!existeP);
 
+
 //        std::cout << "Profesionales de " << buscarEspecialidad(especialidad).getNombreEspecialidad() << std::endl;
 //        buscarProfesionalesPorEspecialidad(especialidad);
         std::cout << "Ingrese la matricula del profesional: ";
         std::cin >> matricula;
+
+        if(validateCancelValueString(matricula)){
+            return Turno();
+        }
 
         turno = Turno(fechaTurno, horaTurno, dniPaciente, matricula);
 
@@ -80,6 +123,11 @@ void guardarTurno()
     TurnosArchivo ta;
     turno = cargarTurno();
 
+
+    if(estaStringVacio(turno.getMatricula())){
+        std::cout << "Carga de turno cancelada" << std::endl;
+        return;
+    }
 
     if(ta.Guardar(turno))
     {

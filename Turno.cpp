@@ -5,7 +5,14 @@
 #include "Fecha.h"
 using namespace std;
 
-Turno::Turno(){}
+Turno::Turno(){
+    setFecha(Fecha());
+    setHoraTurno(0);
+    setDniPaciente("");
+    setMatricula("");
+    setEliminado(false);
+}
+
 Turno::Turno(Fecha fechaTurno, int horaTurno, std::string dniPaciente, std::string matricula, bool eliminado)
 {
     setFecha(fechaTurno);
