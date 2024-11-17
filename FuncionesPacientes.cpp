@@ -15,8 +15,8 @@ Paciente cargarPaciente()
 
     std::cout << "Ingrese los datos del paciente " << std::endl;
     std::cout << "Ingrese 0 en cualquier campo para cancelar" << std::endl;
-    std::cout << "------------------------------------" << std::endl;   
-    
+    std::cout << "------------------------------------" << std::endl;
+
     do
     {
         std::cout << "Ingrese el DNI del paciente: ";
@@ -44,7 +44,7 @@ Paciente cargarPaciente()
 
     std::cout << "Ingrese el apellido: ";
     std::cin.getline(apellido, 50);
-    
+
     if(validateCancelValueString(apellido)){
         return Paciente();
     }
@@ -77,9 +77,9 @@ Paciente cargarPaciente()
     if(validateCancelValueString(email)){
         return Paciente();
     }
-    
+
     std::cout<<"Fecha de nacimiento "<<std::endl;
-    
+
     do {
         dia = pedirDiaFechaCancelable();
 
@@ -88,7 +88,7 @@ Paciente cargarPaciente()
         }
 
         mes = pedirMesFechaCancelable();
-    
+
         if(validateCancelValueInt(mes)){
             return Paciente();
         }
@@ -104,8 +104,8 @@ Paciente cargarPaciente()
             std::cout << "La fecha ingresada es invalida, ingrese otra por favor " << std::endl;
         }
     } while(!fechaNacimiento.esValida);
-   
-    
+
+
 
     std::cout << "Ingrese la obra social: ";
     std::cin.ignore();
@@ -263,7 +263,7 @@ void guardarPaciente()
         std::cout << "Carga de paciente cancelada " << std::endl;
         return;
     }
-    
+
     if(pa.Guardar(paciente))
     {
         std::cout<<std::endl<<"Paciente guardado exitosamente" <<std::endl<<std::endl;

@@ -23,7 +23,7 @@ public:
 private:
     Fecha _fechaTurno;
     int _horaTurno; ///CADA UNA HORA
-    char _dniPaciente[50];
+    char _dniPaciente[20];
     char _matricula[50];
     bool _eliminado;
 };

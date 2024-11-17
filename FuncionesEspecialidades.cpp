@@ -12,7 +12,7 @@ Especialidad cargarEspecialidad()
     std::cout << "Carga especialidad" << std::endl;
     std::cout << "Ingrese 0 en cualquier campo para cancelar" << std::endl;
     std::cout << "------------------------------------" << std::endl;
-    
+
     std::cout<<"Ingrese el nombre de la especialidad : ";
     std::cin.ignore();
     std::cin.getline(nombreEspecialidad, 50);
@@ -20,7 +20,7 @@ Especialidad cargarEspecialidad()
     if(validateCancelValueString(nombreEspecialidad))
     {
         return Especialidad();
-    }   
+    }
 
 
     id = contadorId++;
@@ -36,7 +36,7 @@ void guardarEspecialidad()
     if(estaStringVacio(especialidad.getNombreEspecialidad()))
     {
         std::cout<<"Carga de especialidad cancelada " <<std::endl;
-        
+
         return;
     }
 

@@ -54,7 +54,7 @@ int pedirMesFechaCancelable(){
 int pedirAnioFechaCancelable(){
     int anio;
     do {
-        std::cout << "Ingrese el anio (1-12) (0 para cancelar): ";
+        std::cout << "Ingrese el anio (0 para cancelar): ";
         std::cin >> anio;
         if(anio < 0){
             std::cout << "Anio invalido" << std::endl;
