@@ -24,7 +24,7 @@ bool estaStringVacio(const char *str);
 int pedirDiaFechaCancelable();
 int pedirMesFechaCancelable();
 int pedirAnioFechaCancelable();
-
+Fecha obtenerFechaActual();
 
 
 //PACIENTES
