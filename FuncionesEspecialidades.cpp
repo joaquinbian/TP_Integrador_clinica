@@ -7,8 +7,7 @@ Especialidad cargarEspecialidad()
 {
     char nombreEspecialidad[50];
     int id;
-
-    static int contadorId = 1;
+    
     std::cout << "Carga especialidad" << std::endl;
     std::cout << "Ingrese 0 en cualquier campo para cancelar" << std::endl;
     std::cout << "------------------------------------" << std::endl;
@@ -22,8 +21,7 @@ Especialidad cargarEspecialidad()
         return Especialidad();
     }
 
-
-    id = contadorId++;
+    id = EspecialidadesArchivo().getCantidad()+1;
 
     return Especialidad(nombreEspecialidad,id ,false);
 }
