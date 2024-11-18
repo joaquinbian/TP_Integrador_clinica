@@ -24,31 +24,30 @@ Turno cargarTurno()
         std::cout << "Ingrese 0 en cualquier campo para cancelar" << std::endl;
         std::cout << "------------------------------------" << std::endl;
         //std::cin >> fechaTurno;
+            do {
+                dia = pedirDiaFechaCancelable();
 
-    do {
-        dia = pedirDiaFechaCancelable();
+                if(validateCancelValueInt(dia)){
+                    return Turno();
+                }
 
-        if(validateCancelValueInt(dia)){
-            return Turno();
-        }
+                mes = pedirMesFechaCancelable();
 
-        mes = pedirMesFechaCancelable();
+                if(validateCancelValueInt(mes)){
+                    return Turno();
+                }
 
-        if(validateCancelValueInt(mes)){
-            return Turno();
-        }
+                anio = pedirAnioFechaCancelable();
 
-        anio = pedirAnioFechaCancelable();
+                if(validateCancelValueInt(anio)){
+                    return Turno();
+                }
 
-        if(validateCancelValueInt(anio)){
-            return Turno();
-        }
-
-        fechaTurno = Fecha(dia, mes, anio);
-        if(!fechaTurno.esValida){
-            std::cout << "La fecha ingresada es invalida, ingrese otra por favor " << std::endl;
-        }
-    }while(!fechaTurno.esValida);
+                fechaTurno = Fecha(dia, mes, anio);
+                if(!fechaTurno.esValida){
+                    std::cout << "La fecha ingresada es invalida, ingrese otra por favor " << std::endl;
+                }
+            }while(!fechaTurno.esValida);
 
         // Obtener la fecha actual
         std::time_t tiempoActual = std::time(0);  ///Obtiene el tiempo actual
@@ -72,7 +71,7 @@ Turno cargarTurno()
 
         do
         {
-            std::cout << "Ingrese la hora del turno (9-16 hs): ";
+            std::cout << "Ingrese la hora del turno (8-20 hs): ";
             std::cin >> horaTurno;
 
             if(validateCancelValueInt(horaTurno)){
