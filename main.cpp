@@ -365,7 +365,7 @@ int main()
                 case 3:
                     system("cls");
                     cout << "\033[4m";  // Comienza subrayado
-                    cout<<"ELIMINAR ESPECILIALIDAD" <<endl<<endl;
+                    cout<<"ELIMINAR ESPECIALIDAD" <<endl<<endl;
                     cout << "\033[0m";  // Detiene subrayado
                     eliminarEspecialidad();
                     system("pause");

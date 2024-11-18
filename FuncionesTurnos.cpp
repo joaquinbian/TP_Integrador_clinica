@@ -170,9 +170,14 @@ void editarTurno()
 {
     char DNI[20];
     TurnosArchivo ta;
+    std::cout << "Digite 0 para cancelar" << std::endl;
     std::cout << "DNI del paciente para editar turno: ";
     std::cin.ignore();
     std::cin.getline(DNI, 20);
+
+    if(validateCancelValueString(DNI)){
+        return;
+    }
 
     int pos = ta.buscar(DNI);
     if(pos == -1 )
@@ -249,9 +254,14 @@ void eliminarTurno()
 
     mostrarTodosTurnosActivos();
     char dni[20];
-    std::cout<<std::endl<<"Ingrese DNI/paciente del turno a eliminar : ";
+    std::cout<<std::endl<<"Digite 0 para cancelar" << std::endl;
+    std::cout<<"Ingrese DNI/paciente del turno a eliminar : ";
     std::cin.ignore();
     std::cin.getline(dni, 20);
+
+    if(validateCancelValueString(dni)){
+        return;
+    }
 
     int pos = ta.buscar(dni);
     if(pos != -1)

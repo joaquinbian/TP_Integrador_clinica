@@ -7,7 +7,7 @@ Especialidad cargarEspecialidad()
 {
     char nombreEspecialidad[50];
     int id;
-    
+
     std::cout << "Carga especialidad" << std::endl;
     std::cout << "Ingrese 0 en cualquier campo para cancelar" << std::endl;
     std::cout << "------------------------------------" << std::endl;
@@ -76,12 +76,21 @@ void editarEspecialidad()
     Especialidad especialidad;
     EspecialidadesArchivo ea;
     mostrarTodasEspecialidadesActivas();
+    std::cout<<std::endl<<"Digite 0 para cancelar" << std::endl;
     std::cout << "Ingrese el ID de la especialidad que desea editar: ";
     std::cin>>id;
     std::cin.ignore();
 
-    std::cout<<"Ingrese el nombre de la especialidad : ";
+    if(validateCancelValueInt(id)){
+        return;
+    }
+
+    std::cout<<std::endl<<"Ingrese el nombre de la especialidad : ";
     std::cin.getline(nombreEspecialidad, 50);
+
+    if(validateCancelValueString(nombreEspecialidad)){
+        return;
+    }
 
     int pos = ea.buscar(id);
     if(pos != -1)
@@ -102,8 +111,14 @@ void eliminarEspecialidad()
     EspecialidadesArchivo ea;
     mostrarTodasEspecialidadesActivas();
     int codigo;
+    std::cout<<std::endl<<"Digite 0 para cancelar" << std::endl;
     std::cout<<"Ingrese el codigo a eliminar : ";
     std::cin>>codigo;
+
+    if(validateCancelValueInt(codigo)){
+        return;
+    }
+
     int pos = ea.buscar(codigo);
     if(pos != -1)
     {
@@ -123,8 +138,14 @@ void restaurarEspecialidad()
     EspecialidadesArchivo ea;
     int codigo;
     mostrarTodasEspeciaidadesEliminadas();
+    std::cout<<std::endl<<"Digite 0 para cancelar" << std::endl;
     std::cout<<"Ingrese el codigo de la especialidad a restaurar : ";
     std::cin>>codigo;
+
+    if(validateCancelValueInt(codigo)){
+        return;
+    }
+
     int pos = ea.buscar(codigo);
     if(pos != -1)
     {

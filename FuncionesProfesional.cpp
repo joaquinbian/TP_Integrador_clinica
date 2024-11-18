@@ -125,7 +125,7 @@ void guardarProfesional()
 
     }
 
-    
+
     if(pa.Guardar(profesional))
     {
         std::cout<<std::endl<<"Profesional guardado exitosamente" <<std::endl<<std::endl;
@@ -227,9 +227,14 @@ void editarProfesional()
     char matricula[50];
     ProfesionalesArchivo pa;
     mostrarTodosProfesionalesActivos();
-    std::cout <<std::endl<< "Ingrese la matricula del profesional que quiere editar: ";
+    std::cout << "Digite 0 para cancelar" << std::endl;
+    std::cout <<"Ingrese la matricula del profesional que quiere editar: ";
     std::cin.ignore();
     std::cin.getline(matricula, 50);
+
+    if(validateCancelValueString(matricula)){
+        return;
+    }
 
     int pos = pa.buscar(matricula);
     if(pos == -1 )
@@ -262,9 +267,14 @@ void eliminarProfesional()
     mostrarTodosProfesionalesActivosResumido();
 
     char matricula[50];
-    std::cout<<std::endl<<"Ingrese la matricula del profesional a eliminar : ";
+    std::cout << "Digite 0 para cancelar" << std::endl;
+    std::cout<<"Ingrese la matricula del profesional a eliminar : ";
     std::cin.ignore();
     std::cin.getline(matricula, 50);
+
+    if(validateCancelValueString(matricula)){
+        return;
+    }
 
     int pos = pa.buscar(matricula);
     if(pos != -1)
@@ -289,9 +299,14 @@ void restaurarProfesional()
     mostrarTodosProfesionalesEliminados();
 
     char matricula[50];
-    std::cout<<std::endl<<"Ingrese la matricula del profesional a eliminar : ";
+    std::cout << "Digite 0 para cancelar" << std::endl;
+    std::cout<<"Ingrese la matricula del profesional a restaurar : ";
     std::cin.ignore();
     std::cin.getline(matricula, 50);
+
+    if(validateCancelValueString(matricula)){
+        return;
+    }
 
     int pos = pa.buscar(matricula);
     if(pos != -1)
@@ -311,9 +326,14 @@ void buscarProfesional()
 {
     char matricula[50];
     ProfesionalesArchivo pa;
+    std::cout << "Digite 0 para cancelar" << std::endl;
     std::cout << "Ingrese la matricula del profesional que quiere buscar: ";
     std::cin.ignore();
     std::cin.getline(matricula, 50);
+
+    if(validateCancelValueString(matricula)){
+        return;
+    }
 
     int pos = pa.buscar(matricula);
     if(pos == -1 )
@@ -354,8 +374,13 @@ void buscarProfesionalPorEspecialidad()
     system("cls");
     mostrarTodasEspecialidadesActivas();
     int especialidad;
+    std::cout << "Digite 0 para cancelar" << std::endl;
     std::cout << "Ingrese la especialidad del profesional que quiere buscar: ";
     std::cin >> especialidad;
+
+    if(validateCancelValueInt(especialidad)){
+        return;
+    }
 
     for(int i = 0; i < cantidad; i++)
     {

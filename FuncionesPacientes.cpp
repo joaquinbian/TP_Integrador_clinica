@@ -281,9 +281,14 @@ void editarPaciente()
 {
     char DNI[20];
     PacientesArchivo pa;
+    std::cout << "Digite 0 para cancelar" << std::endl;
     std::cout << "Ingrese el DNI del paciente que quiere editar: ";
     std::cin.ignore();
     std::cin.getline(DNI, 20);
+
+    if(validateCancelValueString(DNI)){
+        return;
+    }
 
     int pos = pa.buscar(DNI);
     if(pos == -1 )
@@ -313,9 +318,14 @@ void eliminarPaciente()
 
     mostrarTodosPacientesActivosResumidos();
     char dni[20];
-    std::cout<<std::endl<<"Ingrese el DNI del paciente a eliminar : ";
+    std::cout << "Digite 0 para cancelar" << std::endl;
+    std::cout<<"Ingrese el DNI del paciente a eliminar : ";
     std::cin.ignore();
     std::cin.getline(dni, 20);
+
+    if(validateCancelValueString(dni)){
+        return;
+    }
 
     int pos = pa.buscar(dni);
     if(pos != -1)
@@ -337,9 +347,14 @@ void restaurarPaciente()
 
     mostrarTodosPacientesEliminados();
     char dni[20];
-    std::cout<<std::endl<<"Ingrese el DNI del paciente a restaurar : ";
+    std::cout << "Digite 0 para cancelar" << std::endl;
+    std::cout<<"Ingrese el DNI del paciente a restaurar : ";
     std::cin.ignore();
     std::cin.getline(dni, 20);
+
+    if(validateCancelValueString(dni)){
+        return;
+    }
 
     int pos = pa.buscar(dni);
     if(pos != -1)
@@ -359,9 +374,14 @@ void buscarPaciente()
 {
     char DNI[20];
     PacientesArchivo pa;
+    std::cout << "Digite 0 para cancelar" << std::endl;
     std::cout << "Ingrese el DNI del paciente que quiere buscar: ";
     std::cin.ignore();
     std::cin.getline(DNI, 20);
+
+    if(validateCancelValueString(DNI)){
+        return;
+    }
 
     int pos = pa.buscar(DNI);
     if(pos == -1 )
@@ -389,9 +409,14 @@ void buscarPacientesPorObraSocial()
 
     pa.leerTodos(pacientes, cantidad);
     char obraSocial[20];
+    std::cout << "Digite 0 para cancelar" << std::endl;
     std::cout << "Ingrese la obra social del paciente que quiere buscar: ";
     std::cin.ignore();
     std::cin.getline(obraSocial, 20);
+
+    if(validateCancelValueString(obraSocial)){
+        return;
+    }
 
     for(int i = 0; i < cantidad; i++)
     {
