@@ -117,51 +117,115 @@ Paciente cargarPaciente()
     return Paciente( nombre,  apellido, telefono,  direccion,  ciudad,  email, fechaNacimiento,  obraSocial,  dni);
 }
 
-Paciente cargarPaciente(char* Dni)
+Paciente cargarPacienteAEditar(char* Dni)
 {
     char nombre[50], apellido[50], direccion[50], telefono[50], ciudad[50], email[50];
     char obraSocial[20], dni[20];
     Fecha fechaNacimiento;
+    bool existeP;
+    int dia, mes, anio;
+
+    std::cout << "Ingrese los datos del paciente " << std::endl;
+    std::cout << "Ingrese 0 en cualquier campo para cancelar" << std::endl;
+    std::cout << "------------------------------------" << std::endl;
 
     do
     {
         std::cout << "Ingrese el DNI del paciente: ";
-        //8std::cin.ignore();
+        //std::cin.ignore();
         std::cin.getline(dni, 20);
-
-        if(strlen(dni) == 0)
+        existeP = existePaciente(dni) && strcmp(dni, Dni) != 0; //chequea si el paciente existe y si el dni es distinto al que se quiere editar
+        if(existeP)
         {
-            std::cout << "Debe completar el campo " << std::endl;
+            std::cout << "El paciente ya ha sido ingresado en el sistema " << std::endl;
         }
-
     }
-    while(strlen(dni) == 0);
+    while(existeP);
+
+    if(validateCancelValueString(dni)){
+        return Paciente();
+    }
 
     std::cout << "Ingrese el nombre: ";
     //std::cin.ignore();
     std::cin.getline(nombre, 50);
 
+    if(validateCancelValueString(nombre)){
+        return Paciente();
+    }
+
     std::cout << "Ingrese el apellido: ";
     std::cin.getline(apellido, 50);
+
+    if(validateCancelValueString(apellido)){
+        return Paciente();
+    }
 
     std::cout << "Ingrese el domicilio: ";
     std::cin.getline(direccion, 50);
 
+    if(validateCancelValueString(direccion)){
+        return Paciente();
+    }
+
     std::cout << "Ingrese la ciudad: ";
     std::cin.getline(ciudad, 50);
+
+    if(validateCancelValueString(ciudad)){
+        return Paciente();
+    }
 
     std::cout << "Ingrese el telefono: ";
     std::cin.getline(telefono, 50);
 
+    if(validateCancelValueString(telefono)){
+        return Paciente();
+    }
+
+
     std::cout << "Ingrese el correo electronico: ";
     std::cin.getline(email, 50);
 
+    if(validateCancelValueString(email)){
+        return Paciente();
+    }
+
     std::cout<<"Fecha de nacimiento "<<std::endl;
-    std::cin>>fechaNacimiento;
+
+    do {
+        dia = pedirDiaFechaCancelable();
+
+        if(validateCancelValueInt(dia)){
+            return Paciente();
+        }
+
+        mes = pedirMesFechaCancelable();
+
+        if(validateCancelValueInt(mes)){
+            return Paciente();
+        }
+
+        anio = pedirAnioFechaCancelable();
+
+        if(validateCancelValueInt(anio)){
+            return Paciente();
+        }
+
+        fechaNacimiento = Fecha(dia, mes, anio);    //std::cin>>fechaNacimiento;
+        if(!fechaNacimiento.esValida){
+            std::cout << "La fecha ingresada es invalida, ingrese otra por favor " << std::endl;
+        }
+    } while(!fechaNacimiento.esValida);
+
+
 
     std::cout << "Ingrese la obra social: ";
     std::cin.ignore();
     std::cin.getline(obraSocial, 20);
+    if(validateCancelValueString(obraSocial)){
+        return Paciente();
+    }
+
     return Paciente( nombre,  apellido, telefono,  direccion,  ciudad,  email, fechaNacimiento,  obraSocial,  dni);
 
 }
@@ -299,7 +363,13 @@ void editarPaciente()
 
     Paciente paciente;
     std::cout << std::endl;
-    paciente = cargarPaciente(DNI);
+    paciente = cargarPacienteAEditar(DNI);
+
+    if(strlen(paciente.getDni()) == 0){
+        std::cout << "Edicion de paciente cancelada " << std::endl;
+        return;
+    }
+
     bool res = pa.guardar(pos, paciente);
     if(res)
     {
