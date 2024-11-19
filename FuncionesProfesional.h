@@ -2,6 +2,7 @@
 #include "Profesional.h"
 
 Profesional cargarProfesional();
+Profesional cargarProfesionalAEditar(char *matricula);
 void guardarProfesional();
 void mostrarProfesionalResumido(Profesional profesional);
 void mostrarTodosProfesionalesActivos();
