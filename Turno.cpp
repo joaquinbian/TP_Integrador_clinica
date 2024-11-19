@@ -6,7 +6,11 @@
 using namespace std;
 
 Turno::Turno(){
-    strcpy(_dniPaciente,"");
+    setDniPaciente(""); 
+    setMatricula("");
+    setFecha(Fecha());
+    setHoraTurno(0);
+    setEliminado(false);
 }
 Turno::Turno(Fecha fechaTurno, int horaTurno, std::string dniPaciente, std::string matricula, bool eliminado)
 {

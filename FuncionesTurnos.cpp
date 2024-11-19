@@ -24,55 +24,48 @@ Turno cargarTurno()
         std::cout << "Ingrese 0 en cualquier campo para cancelar" << std::endl;
         std::cout << "------------------------------------" << std::endl;
         //std::cin >> fechaTurno;
+            do {
+                dia = pedirDiaFechaCancelable();
 
-    do {
-        dia = pedirDiaFechaCancelable();
+                if(validateCancelValueInt(dia)){
+                    return Turno();
+                }
 
-        if(validateCancelValueInt(dia)){
-            return Turno();
-        }
+                mes = pedirMesFechaCancelable();
 
-        mes = pedirMesFechaCancelable();
+                if(validateCancelValueInt(mes)){
+                    return Turno();
+                }
 
-        if(validateCancelValueInt(mes)){
-            return Turno();
-        }
+                anio = pedirAnioFechaCancelable();
 
-        anio = pedirAnioFechaCancelable();
+                if(validateCancelValueInt(anio)){
+                    return Turno();
+                }
 
-        if(validateCancelValueInt(anio)){
-            return Turno();
-        }
-
-        fechaTurno = Fecha(dia, mes, anio);
-        if(!fechaTurno.esValida){
-            std::cout << "La fecha ingresada es invalida, ingrese otra por favor " << std::endl;
-        }
-    }while(!fechaTurno.esValida);
+                fechaTurno = Fecha(dia, mes, anio);
+                if(!fechaTurno.esValida){
+                    std::cout << "La fecha ingresada es invalida, ingrese otra por favor " << std::endl;
+                }
+            }while(!fechaTurno.esValida);
 
         // Obtener la fecha actual
-        std::time_t tiempoActual = std::time(0);  ///Obtiene el tiempo actual
-        std::tm* now = std::localtime(&tiempoActual); ///Convierte el tiempo actual a una estructura time
+            if(fechaTurno > obtenerFechaActual() || fechaTurno == obtenerFechaActual()){
+                std::cout << "Fecha válida" << std::endl;
+                fechaFutura=true;
 
-        ///Comprobar si la fecha ingresada es anterior a la fecha actual
-        if (fechaTurno.getAnio() < (1900 + now->tm_year) ||  /// Compara el año
-            (fechaTurno.getAnio() == (1900 + now->tm_year) && fechaTurno.getMes() < (now->tm_mon + 1)) ||  /// Compara el mes
-            (fechaTurno.getAnio() == (1900 + now->tm_year) && fechaTurno.getMes() == (now->tm_mon + 1) && fechaTurno.getDia() < now->tm_mday))/// Compara el día
-        {
-            std::cout << "La fecha ingresada es anterior a la fecha actual. Por favor ingrese una fecha válida." << std::endl;
-            fechaFutura=false;
-        }else{
-            fechaFutura=true;
-        }
+            } else{
+                std::cout << "La fecha ingresada es anterior a la fecha actual. Por favor ingrese una fecha válida." << std::endl;
+                fechaFutura=false;
+            }
 
         }
         while(!fechaFutura);
 
-        /// Final implementació manejo fecha >= Actual
 
         do
         {
-            std::cout << "Ingrese la hora del turno (9-16 hs): ";
+            std::cout << "Ingrese la hora del turno (8-20 hs): ";
             std::cin >> horaTurno;
 
             if(validateCancelValueInt(horaTurno)){
