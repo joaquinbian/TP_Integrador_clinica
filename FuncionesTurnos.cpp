@@ -50,24 +50,18 @@ Turno cargarTurno()
             }while(!fechaTurno.esValida);
 
         // Obtener la fecha actual
-        std::time_t tiempoActual = std::time(0);  ///Obtiene el tiempo actual
-        std::tm* now = std::localtime(&tiempoActual); ///Convierte el tiempo actual a una estructura time
+            if(fechaTurno > obtenerFechaActual() || fechaTurno == obtenerFechaActual()){
+                std::cout << "Fecha válida" << std::endl;
+                fechaFutura=true;
 
-        ///Comprobar si la fecha ingresada es anterior a la fecha actual
-        if (fechaTurno.getAnio() < (1900 + now->tm_year) ||  /// Compara el año
-            (fechaTurno.getAnio() == (1900 + now->tm_year) && fechaTurno.getMes() < (now->tm_mon + 1)) ||  /// Compara el mes
-            (fechaTurno.getAnio() == (1900 + now->tm_year) && fechaTurno.getMes() == (now->tm_mon + 1) && fechaTurno.getDia() < now->tm_mday))/// Compara el día
-        {
-            std::cout << "La fecha ingresada es anterior a la fecha actual. Por favor ingrese una fecha válida." << std::endl;
-            fechaFutura=false;
-        }else{
-            fechaFutura=true;
-        }
+            } else{
+                std::cout << "La fecha ingresada es anterior a la fecha actual. Por favor ingrese una fecha válida." << std::endl;
+                fechaFutura=false;
+            }
 
         }
         while(!fechaFutura);
 
-        /// Final implementació manejo fecha >= Actual
 
         do
         {

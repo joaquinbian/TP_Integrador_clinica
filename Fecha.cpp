@@ -121,7 +121,7 @@ std::istream& operator>>(std::istream& in, Fecha& fecha) {
     return in;
 }
 
-bool Fecha::operator==(Fecha& f1)  {
+bool Fecha::operator==(Fecha f1)  {
     f1.getDia();
     if(this->getDia() == f1.getDia() && this->getMes() == f1.getMes() && this->getAnio() == f1.getAnio()){
             return true;
@@ -129,7 +129,7 @@ bool Fecha::operator==(Fecha& f1)  {
     return false;
 }
 
-bool Fecha::operator>(Fecha &f1){
+bool Fecha::operator>(Fecha f1){
     std::cout << "Comparando fechas" << std::endl;
     if(this->getAnio() > f1.getAnio()){
         return true;

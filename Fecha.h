@@ -16,8 +16,8 @@ public:
     bool validar();
     std::string toString();
     friend std::istream& operator>>(std::istream& in, Fecha& fecha);
-    bool operator>(Fecha &f1);
-    bool operator==(Fecha &f1);
+    bool operator>(Fecha f1);
+    bool operator==(Fecha f1);
 
 private:
 
