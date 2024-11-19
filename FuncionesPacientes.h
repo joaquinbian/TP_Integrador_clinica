@@ -3,6 +3,7 @@
 
 bool existePaciente(char *dni);
 Paciente cargarPaciente();
+Paciente cargarPacienteAEditar(char *dni);
 void mostrarPaciente(Paciente paciente);
 void mostrarPacienteResumido(Paciente paciente);
 void mostrarTodosPacientesActivos();
