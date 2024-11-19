@@ -213,9 +213,7 @@ void mostrarTodosTurnosActivos()
         {
             Fecha fecha1 = turnos[j].getFecha();
             Fecha fecha2 = turnos[j + 1].getFecha();
-            if (fecha1.getAnio() > fecha2.getAnio() ||
-                    (fecha1.getAnio() == fecha2.getAnio() && fecha1.getMes() > fecha2.getMes()) ||
-                    (fecha1.getAnio() == fecha2.getAnio() && fecha1.getMes() == fecha2.getMes() && fecha1.getDia() > fecha2.getDia()))
+            if (fecha1 > fecha2)
             {
                 Turno aux = turnos[j];
                 turnos[j] = turnos[j + 1];
@@ -327,9 +325,7 @@ void mostrarTodosTurnosEliminados()
         {
             Fecha fecha1 = turnos[j].getFecha();
             Fecha fecha2 = turnos[j + 1].getFecha();
-            if (fecha1.getAnio() > fecha2.getAnio() ||
-                    (fecha1.getAnio() == fecha2.getAnio() && fecha1.getMes() > fecha2.getMes()) ||
-                    (fecha1.getAnio() == fecha2.getAnio() && fecha1.getMes() == fecha2.getMes() && fecha1.getDia() > fecha2.getDia()))
+            if (fecha1 > fecha2)
             {
                 Turno aux = turnos[j];
                 turnos[j] = turnos[j + 1];
