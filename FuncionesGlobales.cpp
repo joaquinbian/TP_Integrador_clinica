@@ -1,11 +1,23 @@
 #include "funcionesGlobales.h"
 #include <iostream>
-
+#include <algorithm>
+#include <cctype>
 
 
 bool estaStringVacio(const char *str) {
     return strlen(str) == 0;
 }
+void pedirStringBucle(char* variable, char* mensaje, int longitud){
+    std::cin.ignore();
+    do {
+        std::cout << mensaje;
+        std::cin.getline(variable, longitud);
+
+    }while(estaStringVacio(variable));
+
+}
+
+
 
 bool validateCancelValueString(std::string str){
     return strcmp(str.c_str(), "0") == 0;
@@ -183,7 +195,7 @@ Fecha obtenerFechaActual()
 {
     time_t now = time(0);
     tm *ltm = localtime(&now);
-    
+
     int dia = ltm->tm_mday;
     int mes = 1 + ltm->tm_mon; //meses del 1 al 11
     int anio = 1900 + ltm->tm_year; // +1900 porque empieza a contar desde 1900

@@ -7,8 +7,8 @@
 
 Paciente cargarPaciente()
 {
-    char nombre[50], apellido[50], direccion[50], telefono[50], ciudad[50], email[50];
-    char obraSocial[20], dni[20];
+    char nombre[LONGITUD_NOMBRE], apellido[LONGITUD_APELLIDO], direccion[LONGITUD_DIRECCION], telefono[LONGITUD_TELEFONO], ciudad[LONGITUD_CIUDAD], email[LONGITUD_EMAIL];
+    char obraSocial[LONGITUD_OBRASOCIAL], dni[LONGITUD_DNI];
     Fecha fechaNacimiento;
     bool existeP;
     int dia, mes, anio;
@@ -20,8 +20,11 @@ Paciente cargarPaciente()
     do
     {
         std::cout << "Ingrese el DNI del paciente: ";
-        std::cin.ignore();
         std::cin.getline(dni, 20);
+        while (estaStringVacio(dni))
+    {
+        pedirStringBucle(dni, "El DNI no puede estar vacio, ingrese nuevamente: ", 50);
+    }
         existeP = existePaciente(dni);
         if(existeP)
         {
@@ -37,6 +40,10 @@ Paciente cargarPaciente()
     std::cout << "Ingrese el nombre: ";
     //std::cin.ignore();
     std::cin.getline(nombre, 50);
+    while (estaStringVacio(nombre))
+    {
+        pedirStringBucle(nombre, "El nombre no puede estar vacio, ingrese nuevamente: ", 50);
+    }
 
     if(validateCancelValueString(nombre)){
         return Paciente();
@@ -45,12 +52,25 @@ Paciente cargarPaciente()
     std::cout << "Ingrese el apellido: ";
     std::cin.getline(apellido, 50);
 
+    if (estaStringVacio(apellido))
+    {
+        pedirStringBucle(apellido, "El apellido no puede estar vacio, ingrese nuevamente: ", 50);
+    }
+
+
     if(validateCancelValueString(apellido)){
         return Paciente();
     }
 
     std::cout << "Ingrese el domicilio: ";
     std::cin.getline(direccion, 50);
+
+    if (estaStringVacio(direccion))
+    {
+       pedirStringBucle(direccion, "El domicilio no puede estar vacio, ingrese nuevamente: ", 50);
+    }
+
+
 
     if(validateCancelValueString(direccion)){
         return Paciente();
@@ -59,12 +79,20 @@ Paciente cargarPaciente()
     std::cout << "Ingrese la ciudad: ";
     std::cin.getline(ciudad, 50);
 
+    if(estaStringVacio(ciudad)){
+        pedirStringBucle(ciudad, "La ciudad no puede estar vacia, ingrese nuevamente: ", 50);
+    }
+
     if(validateCancelValueString(ciudad)){
         return Paciente();
     }
 
     std::cout << "Ingrese el telefono: ";
     std::cin.getline(telefono, 50);
+
+    if(estaStringVacio(telefono)){
+        pedirStringBucle(telefono, "El telefono no puede estar vacio, ingrese nuevamente: ", 50);
+    }
 
     if(validateCancelValueString(telefono)){
         return Paciente();
@@ -73,6 +101,10 @@ Paciente cargarPaciente()
 
     std::cout << "Ingrese el correo electronico: ";
     std::cin.getline(email, 50);
+
+    if(estaStringVacio(email)){
+        pedirStringBucle(email, "El email no puede estar vacio, ingrese nuevamente: ", 50);
+    }
 
     if(validateCancelValueString(email)){
         return Paciente();
@@ -83,17 +115,29 @@ Paciente cargarPaciente()
     do {
         dia = pedirDiaFechaCancelable();
 
+        while(estaStringVacio(std::to_string(dia).c_str())){
+            dia = pedirDiaFechaCancelable();
+        }
+
         if(validateCancelValueInt(dia)){
             return Paciente();
         }
 
         mes = pedirMesFechaCancelable();
 
+        while(estaStringVacio(std::to_string(mes).c_str())){
+            mes = pedirMesFechaCancelable();
+        }
+
         if(validateCancelValueInt(mes)){
             return Paciente();
         }
 
         anio = pedirAnioFechaCancelable();
+
+        while(estaStringVacio(std::to_string(anio).c_str())){
+            anio = pedirAnioFechaCancelable();
+        }
 
         if(validateCancelValueInt(anio)){
             return Paciente();
@@ -110,6 +154,12 @@ Paciente cargarPaciente()
     std::cout << "Ingrese la obra social: ";
     std::cin.ignore();
     std::cin.getline(obraSocial, 20);
+
+    while(estaStringVacio(obraSocial)){
+        std::cout << "La obra social no puede estar vacia, ingrese nuevamente: ";
+        std::cin.getline(obraSocial, 20);
+    }
+
     if(validateCancelValueString(obraSocial)){
         return Paciente();
     }
