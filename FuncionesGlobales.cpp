@@ -8,7 +8,7 @@ bool estaStringVacio(const char *str) {
     return strlen(str) == 0;
 }
 void pedirStringBucle(char* variable, char* mensaje, int longitud){
-    std::cin.ignore();
+    //std::cin.ignore();
     do {
         std::cout << mensaje;
         std::cin.getline(variable, longitud);
