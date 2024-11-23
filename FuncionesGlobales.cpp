@@ -2,12 +2,12 @@
 #include <iostream>
 #include <algorithm>
 #include <cctype>
-
+#include <ctime>
 
 bool estaStringVacio(const char *str) {
     return strlen(str) == 0;
 }
-void pedirStringBucle(char* variable, char* mensaje, int longitud){
+void pedirStringBucle(char* variable, std::string mensaje, int longitud){
     //std::cin.ignore();
     do {
         std::cout << mensaje;
