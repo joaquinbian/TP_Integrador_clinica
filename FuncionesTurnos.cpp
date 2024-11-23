@@ -393,8 +393,8 @@ void restaurarTurno()
 
 void informarProfesionalQueMasPacientesAtendio()
 {
-    ///Profesional que m∩┐╜s pacientes atendi∩┐╜:
-    int ind=0, maximo;
+    ///Profesional que mΓê⌐ΓöÉΓò£s pacientes atendiΓê⌐ΓöÉΓò£:
+    int ind=-1, maximo;
 
     ///Profesionales activos e inactivos
     Profesional *profesionales;
@@ -402,7 +402,7 @@ void informarProfesionalQueMasPacientesAtendio()
     int cantidadProfesionales = pa.getCantidad();
     profesionales = new Profesional[cantidadProfesionales];
     pa.leerTodos(profesionales, cantidadProfesionales);
-    ///Vector acumulador de pacientes atendidos por profesional. Comparte el ∩┐╜ndice con el de profesionales
+    ///Vector acumulador de pacientes atendidos por profesional. Comparte el Γê⌐ΓöÉΓò£ndice con el de profesionales
     int* pacientesAtendidos = new int[cantidadProfesionales] {};
     ///Vector Turnos
     Turno *turnos;
@@ -430,9 +430,10 @@ void informarProfesionalQueMasPacientesAtendio()
 
     for(int k = 0; k < cantidadProfesionales; k++)
     {
-        if(ind == 0)
+        if(ind == -1)
         {
             maximo=pacientesAtendidos[k];
+            ind=k;
         }
         else if(pacientesAtendidos[k]>maximo)
         {
@@ -442,11 +443,10 @@ void informarProfesionalQueMasPacientesAtendio()
     }
 
     std::cout << profesionales[ind].getApellido() << ", " << profesionales[ind].getNombre() <<
-              " (Matr∩┐╜cula: " << profesionales[ind].getMatricula() << ") - " << pacientesAtendidos[ind] <<
+              " (MatrΓê⌐ΓöÉΓò£cula: " << profesionales[ind].getMatricula() << ") - " << pacientesAtendidos[ind] <<
               " pacientes atendidos" << std::endl << std::endl;
 
     delete[] profesionales;
     delete[] pacientesAtendidos;
     delete[] turnos;
-
 }
