@@ -1,6 +1,9 @@
 #pragma once
 #include "Profesional.h"
 
+
+
+
 Profesional cargarProfesional();
 Profesional cargarProfesionalAEditar(char *matricula);
 void guardarProfesional();

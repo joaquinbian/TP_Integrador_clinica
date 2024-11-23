@@ -1,6 +1,11 @@
 #pragma once
 #include "Paciente.h"
 
+const int LONGITUD_OBRASOCIAL = 20;
+
+
+
+
 bool existePaciente(char *dni);
 Paciente cargarPaciente();
 Paciente cargarPacienteAEditar(char *dni);

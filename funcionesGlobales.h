@@ -11,6 +11,16 @@
 #include "TurnosArchivo.h"
 
 
+const int LONGITUD_NOMBRE = 50;
+const int LONGITUD_APELLIDO = 50;
+const int LONGITUD_DIRECCION = 50;
+const int LONGITUD_TELEFONO = 50;
+const int LONGITUD_CIUDAD = 50;
+const int LONGITUD_EMAIL = 50;
+const int LONGITUD_DNI = 20;
+const int LONGITUD_MATRICULA = 50;
+
+
 
 //TODOS 
 bool validateCancelValueString(std::string str);
@@ -18,7 +28,7 @@ bool validateCancelValueChar(char c);
 bool validateCancelValueInt(int num);
 bool validateCancelValueFloat(float num);
 bool estaStringVacio(const char *str);
-
+void pedirStringBucle(char* variable, char* mensaje, int longitud);
 
 //PARA CREAR FECHAS
 int pedirDiaFechaCancelable();
