@@ -17,6 +17,9 @@ const int LONGITUD_DIRECCION = 50;
 const int LONGITUD_TELEFONO = 50;
 const int LONGITUD_CIUDAD = 50;
 const int LONGITUD_EMAIL = 50;
+const int LONGITUD_DNI = 20;
+const int LONGITUD_MATRICULA = 50;
+
 
 
 //TODOS 

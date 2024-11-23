@@ -2,7 +2,6 @@
 #include "Paciente.h"
 
 const int LONGITUD_OBRASOCIAL = 20;
-const int LONGITUD_DNI = 20;
 
 
 
