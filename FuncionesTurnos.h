@@ -12,3 +12,4 @@ bool validarExisteTurno(Turno t);
 void mostrarTodosTurnosEliminados();
 void restaurarTurno();
 void informarProfesionalQueMasPacientesAtendio();
+void informarEspecialidadMasSolicitada();
