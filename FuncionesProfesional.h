@@ -1,6 +1,10 @@
 #pragma once
 #include "Profesional.h"
 
+
+const int LONGITUD_MATRICULA = 50;
+
+
 Profesional cargarProfesional();
 Profesional cargarProfesionalAEditar(char *matricula);
 void guardarProfesional();

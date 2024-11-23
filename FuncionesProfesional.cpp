@@ -4,7 +4,7 @@
 
 Profesional cargarProfesional()
 {
-    char nombre[50], apellido[50], direccion[50], telefono[50], ciudad[50], email[50], matricula[50], soloParticularChar;
+    char nombre[LONGITUD_NOMBRE], apellido[LONGITUD_APELLIDO], direccion[LONGITUD_DIRECCION], telefono[LONGITUD_TELEFONO], ciudad[LONGITUD_CIUDAD], email[LONGITUD_EMAIL], matricula[LONGITUD_MATRICULA], soloParticularChar;
     float valorConsulta;
     int especialidad;
     bool soloParticular = false, existeProf;
@@ -15,12 +15,11 @@ Profesional cargarProfesional()
     {
         std::cout << "Ingrese el numero de matricula: ";
         std::cin.ignore();
-        std::cin.getline(matricula, 50);
+        std::cin.getline(matricula, LONGITUD_MATRICULA);
 
         while (estaStringVacio(matricula))
         {
-            std::cout << "La matricula no puede estar vacia, ingrese nuevamente: ";
-            std::cin.getline(matricula, 50);
+            pedirStringBucle(matricula, "La matricula no puede estar vacia, ingrese nuevamente: ", LONGITUD_MATRICULA);
         }
 
         existeProf = existeProfesional(matricula);
@@ -36,7 +35,11 @@ Profesional cargarProfesional()
     }
 
     std::cout << "Ingrese el apellido: ";
-    std::cin.getline(apellido, 50);
+    std::cin.getline(apellido, LONGITUD_APELLIDO);
+
+    while(estaStringVacio(apellido)){
+        pedirStringBucle(apellido, "El apellido no puede estar vacio, ingrese nuevamente: ", LONGITUD_APELLIDO);
+    }
 
     if(validateCancelValueString(apellido)){
         return Profesional();
@@ -44,21 +47,33 @@ Profesional cargarProfesional()
 
     std::cout << "Ingrese el nombre: ";
     //std::cin.ignore();
-    std::cin.getline(nombre, 50);
+    std::cin.getline(nombre, LONGITUD_NOMBRE);
+
+    while(estaStringVacio(nombre)){
+        pedirStringBucle(nombre, "El nombre no puede estar vacio, ingrese nuevamente: ", LONGITUD_NOMBRE);
+    }
 
     if(validateCancelValueString(nombre)){
         return Profesional();
     }
 
     std::cout << "Ingrese el domicilio: ";
-    std::cin.getline(direccion, 50);
+    std::cin.getline(direccion, LONGITUD_DIRECCION);
+
+    while(estaStringVacio(direccion)){
+        pedirStringBucle(direccion, "El domicilio no puede estar vacio, ingrese nuevamente: ", LONGITUD_DIRECCION);
+    }
 
     if(validateCancelValueString(direccion)){
         return Profesional();
     }
 
     std::cout << "Ingrese la ciudad: ";
-    std::cin.getline(ciudad, 50);
+    std::cin.getline(ciudad, LONGITUD_CIUDAD);
+
+    while(estaStringVacio(ciudad)){
+        pedirStringBucle(ciudad, "La ciudad no puede estar vacia, ingrese nuevamente: ", LONGITUD_CIUDAD);
+    }
 
     if(validateCancelValueString(ciudad)){
         return Profesional();
@@ -66,14 +81,22 @@ Profesional cargarProfesional()
 
 
     std::cout << "Ingrese el telefono: ";
-    std::cin.getline(telefono, 50);
+    std::cin.getline(telefono, LONGITUD_TELEFONO);
+
+    while(estaStringVacio(telefono)){
+        pedirStringBucle(telefono, "El telefono no puede estar vacio, ingrese nuevamente: ", LONGITUD_TELEFONO);
+    }
 
     if(validateCancelValueString(telefono)){
         return Profesional();
     }
 
     std::cout << "Ingrese el correo electronico: ";
-    std::cin.getline(email, 50);
+    std::cin.getline(email, LONGITUD_EMAIL);
+
+    while(estaStringVacio(email)){
+        pedirStringBucle(email, "El email no puede estar vacio, ingrese nuevamente: ", LONGITUD_EMAIL);
+    }
 
     if(validateCancelValueString(email)){
         return Profesional();
@@ -98,6 +121,11 @@ Profesional cargarProfesional()
     std::cout << "Atiende solo particulares? (s/n): ";
 
     std::cin >> soloParticularChar;
+
+    while(soloParticularChar != 's' && soloParticularChar != 'S' && soloParticularChar != 'n' && soloParticularChar != 'N'){
+        std::cout << "Ingrese una opcion valida (s/n): ";
+        std::cin >> soloParticularChar;
+    }
 
     if(validateCancelValueChar(soloParticularChar)){
         return Profesional();
@@ -115,7 +143,7 @@ Profesional cargarProfesional()
 
 Profesional cargarProfesionalAEditar(char *matriculaAEditar)
 {
-    char nombre[50], apellido[50], direccion[50], telefono[50], ciudad[50], email[50], matricula[50], soloParticularChar;
+    char nombre[LONGITUD_NOMBRE], apellido[LONGITUD_APELLIDO], direccion[LONGITUD_DIRECCION], telefono[LONGITUD_TELEFONO], ciudad[LONGITUD_CIUDAD], email[LONGITUD_EMAIL], matricula[LONGITUD_MATRICULA], soloParticularChar;
     float valorConsulta;
     int especialidad;
     bool soloParticular = false, existeProf;
@@ -126,12 +154,11 @@ Profesional cargarProfesionalAEditar(char *matriculaAEditar)
     {
         std::cout << "Ingrese el numero de matricula: ";
         //std::cin.ignore();
-        std::cin.getline(matricula, 50);
+        std::cin.getline(matricula, LONGITUD_MATRICULA);
 
         while (estaStringVacio(matricula))
         {
-            std::cout << "La matricula no puede estar vacia, ingrese nuevamente: ";
-            std::cin.getline(matricula, 50);
+            pedirStringBucle(matricula, "La matricula no puede estar vacia, ingrese nuevamente: ", LONGITUD_MATRICULA);
         }
 
         existeProf = existeProfesional(matricula) && strcmp(matricula, matriculaAEditar) != 0;
@@ -147,7 +174,11 @@ Profesional cargarProfesionalAEditar(char *matriculaAEditar)
     }
 
     std::cout << "Ingrese el apellido: ";
-    std::cin.getline(apellido, 50);
+    std::cin.getline(apellido, LONGITUD_APELLIDO);
+
+    while(estaStringVacio(apellido)){
+        pedirStringBucle(apellido, "El apellido no puede estar vacio, ingrese nuevamente: ", LONGITUD_APELLIDO);
+    }
 
     if(validateCancelValueString(apellido)){
         return Profesional();
@@ -155,21 +186,34 @@ Profesional cargarProfesionalAEditar(char *matriculaAEditar)
 
     std::cout << "Ingrese el nombre: ";
     //std::cin.ignore();
-    std::cin.getline(nombre, 50);
+    std::cin.getline(nombre, LONGITUD_NOMBRE);
+
+    while(estaStringVacio(nombre)){
+        pedirStringBucle(nombre, "El nombre no puede estar vacio, ingrese nuevamente: ", LONGITUD_NOMBRE);
+    }
+    
 
     if(validateCancelValueString(nombre)){
         return Profesional();
     }
 
     std::cout << "Ingrese el domicilio: ";
-    std::cin.getline(direccion, 50);
+    std::cin.getline(direccion, LONGITUD_DIRECCION);
+
+    while(estaStringVacio(direccion)){
+        pedirStringBucle(direccion, "El domicilio no puede estar vacio, ingrese nuevamente: ", LONGITUD_DIRECCION);
+    }
 
     if(validateCancelValueString(direccion)){
         return Profesional();
     }
 
     std::cout << "Ingrese la ciudad: ";
-    std::cin.getline(ciudad, 50);
+    std::cin.getline(ciudad, LONGITUD_CIUDAD);
+
+    while(estaStringVacio(ciudad)){
+        pedirStringBucle(ciudad, "La ciudad no puede estar vacia, ingrese nuevamente: ", LONGITUD_CIUDAD);
+    }
 
     if(validateCancelValueString(ciudad)){
         return Profesional();
@@ -177,14 +221,22 @@ Profesional cargarProfesionalAEditar(char *matriculaAEditar)
 
 
     std::cout << "Ingrese el telefono: ";
-    std::cin.getline(telefono, 50);
+    std::cin.getline(telefono, LONGITUD_TELEFONO);
+
+    while(estaStringVacio(telefono)){
+        pedirStringBucle(telefono, "El telefono no puede estar vacio, ingrese nuevamente: ", LONGITUD_TELEFONO);
+    }
 
     if(validateCancelValueString(telefono)){
         return Profesional();
     }
 
     std::cout << "Ingrese el correo electronico: ";
-    std::cin.getline(email, 50);
+    std::cin.getline(email, LONGITUD_EMAIL);
+
+    while(estaStringVacio(email)){
+        pedirStringBucle(email, "El email no puede estar vacio, ingrese nuevamente: ", LONGITUD_EMAIL);
+    }
 
     if(validateCancelValueString(email)){
         return Profesional();
@@ -207,8 +259,12 @@ Profesional cargarProfesionalAEditar(char *matriculaAEditar)
     }
 
     std::cout << "Atiende solo particulares? (s/n): ";
-
     std::cin >> soloParticularChar;
+
+    while(soloParticularChar != 's' && soloParticularChar != 'S' && soloParticularChar != 'n' && soloParticularChar != 'N'){
+        std::cout << "Ingrese una opcion valida (s/n): ";
+        std::cin >> soloParticularChar;
+    }
 
     if(validateCancelValueChar(soloParticularChar)){
         return Profesional();
@@ -346,7 +402,12 @@ void editarProfesional()
     std::cout << "Digite 0 para cancelar" << std::endl;
     std::cout <<"Ingrese la matricula del profesional que quiere editar: ";
     std::cin.ignore();
-    std::cin.getline(matricula, 50);
+    std::cin.getline(matricula, LONGITUD_MATRICULA);
+
+    while(estaStringVacio(matricula)){
+        pedirStringBucle(matricula, "La matricula no puede estar vacia, ingrese nuevamente: ", LONGITUD_MATRICULA);
+    }
+    
 
     if(validateCancelValueString(matricula)){
         return;
