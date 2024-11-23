@@ -450,3 +450,88 @@ void informarProfesionalQueMasPacientesAtendio()
     delete[] pacientesAtendidos;
     delete[] turnos;
 }
+
+void informarEspecialidadMasSolicitada()
+{
+    ///Especialidad mas solicitada:
+    int ind=-1, maximo;
+
+    ///Especialidades activas e inactivas
+    Especialidad *especialidades;
+    EspecialidadesArchivo ea;
+    int cantidadEspecialidades = ea.getCantidad();
+    especialidades = new Especialidad[cantidadEspecialidades];
+    ea.leerTodos(especialidades, cantidadEspecialidades);
+    ///Vector acumulador de pacientes atendidos por especialidad. Comparte el ind con el de especialidades
+    int* pacientesAtendidos = new int[cantidadEspecialidades] {};
+    ///Vector Turnos
+    Turno *turnos;
+    TurnosArchivo ta;
+    int cantidadTurnos = ta.getCantidad();
+    turnos = new Turno [cantidadTurnos];
+    ta.leerTodos(turnos, cantidadTurnos);
+
+    ///Vector de profesionales para comparar la matrícula con la del turno
+    Profesional *profesionales;
+    ProfesionalesArchivo pa;
+    int cantidadProfesionales = pa.getCantidad();
+    profesionales = new Profesional[cantidadProfesionales];
+    pa.leerTodos(profesionales, cantidadProfesionales);
+
+
+
+    for(int j = 0; j < cantidadTurnos; j++)
+    {
+        ///Inicio: Relacionamiento de matricula turno con matricula profesionales para conocer el nombre de la especialidad
+        std::string matriculaTurno = turnos[j].getMatricula();
+        int idEspecialidadTurno;
+        std::string especialidadTurno;
+
+        for(int m = 0; m < cantidadProfesionales; m++){
+            if(matriculaTurno == profesionales[m].getMatricula()){
+                idEspecialidadTurno=profesionales[m].getEspecialidad();
+                break;
+            }
+        }
+        for(int n = 0; n < cantidadEspecialidades; n++){
+            if(idEspecialidadTurno==especialidades[n].getId()){
+                //especialidadTurno=especialidades[n].getNombreEspecialidad();
+                pacientesAtendidos[n]++;
+                break;
+            }
+        }
+
+    }
+    ///Final
+
+    for(int p = 0; p < cantidadEspecialidades; p++)
+    {
+        if(ind == -1)
+        {
+            maximo=pacientesAtendidos[p];
+            ind=p;
+        }
+        else if(pacientesAtendidos[p]>maximo)
+        {
+            maximo=pacientesAtendidos[p];
+            ind=p;
+        }
+    }
+
+    std::cout << especialidades[ind].getNombreEspecialidad() << ", con " << pacientesAtendidos[ind] <<
+            " pacientes atendidos, fue la especialidad mas solicitada " << std::endl << std::endl;
+
+    ///PRUEBA
+    std::cout << "PRUEBA: " << std::endl;
+
+    for(int p = 0; p < cantidadEspecialidades; p++)
+    {
+        std::cout << "Especialidad: " << especialidades[p].getNombreEspecialidad() << " / Atenciones: " << pacientesAtendidos[p] << std::endl;
+
+    }
+
+    delete[] especialidades;
+    delete[] pacientesAtendidos;
+    delete[] turnos;
+    delete[] profesionales;
+}
