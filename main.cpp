@@ -419,7 +419,16 @@ int main()
 
                 switch(opcionInforme)
                 {
-               case 1:
+                             case 1:
+                    system("cls");
+                    cout << "\033[4m";  // Comienza subrayado
+                    cout<<"PROFESIONAL QUE MAS RECAUDO DE MANERA PARTICULAR" <<endl<<endl;
+                    cout << "\033[0m";  // Detiene subrayado
+
+                    system("pause");
+                    system("cls");
+                    break;
+               case 2:
                     system("cls");
                     cout << "\033[4m";  // Comienza subrayado
                     cout<<"PROFESIONAL QUE MAS PACIENTES ATENDIO" <<endl<<endl;
@@ -427,7 +436,16 @@ int main()
                     informarProfesionalQueMasPacientesAtendio();
                     system("pause");
                     system("cls");
-                    break;
+                break;
+               case 3:
+                    system("cls");
+                    cout << "\033[4m";  // Comienza subrayado
+                    cout<<"ESPECIALIDAD MAS SOLICITADA" <<endl<<endl;
+                    cout << "\033[0m";  // Detiene subrayado
+                    informarEspecialidadMasSolicitada();
+                    system("pause");
+                    system("cls");
+                break;
                 case 0:
                     system("cls");
                     break;
