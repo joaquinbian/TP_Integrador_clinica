@@ -20,7 +20,7 @@ void pedirStringBucle(char* variable, std::string mensaje, int longitud){
         std::cout << mensaje;
         std::cin.getline(variable, longitud);
 
-    }while(estaStringVacio(variable));
+    }while(estaStringVacio(variable) || !validateInputString(variable, longitud));
 
 }
 
@@ -31,6 +31,18 @@ bool validarInput(){
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
+    return valid;
+}
+
+bool validateInputInt(){
+    bool valid = true;
+    valid = validarInput();
+
+    if(!valid){
+        std::cout << "Ocurrio un error. Ingrese un numero valido" << std::endl;
+    }
+
+
     return valid;
 }
 
@@ -71,8 +83,10 @@ bool validateCancelValueFecha(Fecha fecha){
 int pedirDiaFechaCancelable(){
     int dia;
     do {
-        std::cout << "Ingrese el dia (1-31) (0 para cancelar): ";
-        std::cin >> dia;
+        do {
+            std::cout << "Ingrese el dia (1-31) (0 para cancelar): ";
+            std::cin >> dia;
+        }while(!validateInputInt());
         if(dia < 0 || dia > 31){
             std::cout << "Dia invalido" << std::endl;
         }
@@ -84,8 +98,10 @@ int pedirDiaFechaCancelable(){
 int pedirMesFechaCancelable(){
     int mes;
     do {
-        std::cout << "Ingrese el mes (1-12) (0 para cancelar): ";
-        std::cin >> mes;
+        do{
+            std::cout << "Ingrese el mes (1-12) (0 para cancelar): ";
+            std::cin >> mes;
+        }while(!validateInputInt());
         if(mes < 0 || mes > 12){
             std::cout << "Mes invalido" << std::endl;
         }
@@ -97,8 +113,11 @@ int pedirMesFechaCancelable(){
 int pedirAnioFechaCancelable(){
     int anio;
     do {
-        std::cout << "Ingrese el anio (0 para cancelar): ";
-        std::cin >> anio;
+        do{
+            std::cout << "Ingrese el anio (0 para cancelar): ";
+            std::cin >> anio;
+        }while(!validateInputInt());
+
         if(anio < 0){
             std::cout << "Anio invalido" << std::endl;
         }

@@ -31,6 +31,7 @@ bool estaStringVacio(const char *str);
 void pedirStringBucle(char* variable, std::string mensaje, int longitud);
 bool validarInput();
 bool validateInputString(char* str, int longitud);
+bool validateInputInt();
 
 //PARA CREAR FECHAS
 int pedirDiaFechaCancelable();

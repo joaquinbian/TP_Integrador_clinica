@@ -474,11 +474,18 @@ void eliminarPaciente()
     PacientesArchivo pa;
 
     mostrarTodosPacientesActivosResumidos();
-    char dni[20];
+    
+    char dni[LONGITUD_DNI];
+    bool inputValid = false;
     std::cout << "Digite 0 para cancelar" << std::endl;
     std::cout<<"Ingrese el DNI del paciente a eliminar : ";
     std::cin.ignore();
-    std::cin.getline(dni, 20);
+    std::cin.getline(dni, LONGITUD_DNI);
+    while(!validateInputString(dni, LONGITUD_DNI)){
+        std::cout << "Ingrese el DNI del paciente que quiere editar: ";
+        std::cin.getline(dni, LONGITUD_DNI);
+    }
+    
 
     if(validateCancelValueString(dni)){
         return;
@@ -503,11 +510,17 @@ void restaurarPaciente()
     PacientesArchivo pa;
 
     mostrarTodosPacientesEliminados();
-    char dni[20];
+    char dni[LONGITUD_DNI];
     std::cout << "Digite 0 para cancelar" << std::endl;
     std::cout<<"Ingrese el DNI del paciente a restaurar : ";
     std::cin.ignore();
-    std::cin.getline(dni, 20);
+    std::cin.getline(dni, LONGITUD_DNI);
+    
+    while(!validateInputString(dni, LONGITUD_DNI)){
+        std::cout << "Ingrese el DNI del paciente que quiere editar: ";
+        std::cin.getline(dni, LONGITUD_DNI);
+    }
+
 
     if(validateCancelValueString(dni)){
         return;
@@ -529,12 +542,17 @@ void restaurarPaciente()
 }
 void buscarPaciente()
 {
-    char DNI[20];
+    char DNI[LONGITUD_DNI];
     PacientesArchivo pa;
     std::cout << "Digite 0 para cancelar" << std::endl;
     std::cout << "Ingrese el DNI del paciente que quiere buscar: ";
     std::cin.ignore();
-    std::cin.getline(DNI, 20);
+    std::cin.getline(DNI, LONGITUD_DNI);
+
+    while(!validateInputString(DNI, LONGITUD_DNI)){
+        std::cout << "Ingrese el DNI del paciente que quiere editar: ";
+        std::cin.getline(DNI, LONGITUD_DNI);
+    }
 
     if(validateCancelValueString(DNI)){
         return;
@@ -565,11 +583,16 @@ void buscarPacientesPorObraSocial()
     }
 
     pa.leerTodos(pacientes, cantidad);
-    char obraSocial[20];
+    char obraSocial[LONGITUD_OBRASOCIAL];
     std::cout << "Digite 0 para cancelar" << std::endl;
     std::cout << "Ingrese la obra social del paciente que quiere buscar: ";
     std::cin.ignore();
-    std::cin.getline(obraSocial, 20);
+    std::cin.getline(obraSocial, LONGITUD_OBRASOCIAL);
+
+    while(!validateInputString(obraSocial, LONGITUD_OBRASOCIAL)){
+        std::cout << "Ingrese la obra social del paciente que quiere buscar: ";
+        std::cin.getline(obraSocial, LONGITUD_OBRASOCIAL);
+    }
 
     if(validateCancelValueString(obraSocial)){
         return;
