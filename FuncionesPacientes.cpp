@@ -10,7 +10,7 @@ Paciente cargarPaciente()
     char nombre[LONGITUD_NOMBRE], apellido[LONGITUD_APELLIDO], direccion[LONGITUD_DIRECCION], telefono[LONGITUD_TELEFONO], ciudad[LONGITUD_CIUDAD], email[LONGITUD_EMAIL];
     char obraSocial[LONGITUD_OBRASOCIAL], dni[LONGITUD_DNI];
     Fecha fechaNacimiento;
-    bool inputFail = false, existeP;
+    bool inputValid = false, existeP;
     int dia, mes, anio;
 
     std::cout << "Ingrese los datos del paciente " << std::endl;
@@ -23,12 +23,12 @@ Paciente cargarPaciente()
         std::cout << "Ingrese el DNI del paciente: ";
         std::cin.ignore();
         std::cin.getline(dni, LONGITUD_DNI);
-        inputFail = validateInputString(dni, LONGITUD_DNI);
+        inputValid = validateInputString(dni, LONGITUD_DNI);
 
-        while(!inputFail){
+        while(!inputValid){
             std::cout << "Ingrese el DNI del paciente: ";
             std::cin.getline(dni, LONGITUD_DNI);
-            inputFail = validateInputString(dni, LONGITUD_DNI);
+            inputValid = validateInputString(dni, LONGITUD_DNI);
         }
 
         existeP = existePaciente(dni);
@@ -47,9 +47,9 @@ Paciente cargarPaciente()
         std::cout << "Ingrese el nombre: ";
         //std::cin.ignore();
         std::cin.getline(nombre, LONGITUD_NOMBRE);
-        inputFail = validateInputString(nombre, LONGITUD_NOMBRE);
+        inputValid = validateInputString(nombre, LONGITUD_NOMBRE);
 
-    }while(!inputFail);
+    }while(!inputValid);
 
 
     if(validateCancelValueString(nombre)){
@@ -58,8 +58,8 @@ Paciente cargarPaciente()
     do {
         std::cout << "Ingrese el apellido: ";
         std::cin.getline(apellido, LONGITUD_APELLIDO);
-        inputFail = validateInputString(apellido, LONGITUD_APELLIDO);
-    }while(!inputFail);
+        inputValid = validateInputString(apellido, LONGITUD_APELLIDO);
+    }while(!inputValid);
 
 
 
@@ -69,8 +69,8 @@ Paciente cargarPaciente()
     do{
         std::cout << "Ingrese el domicilio: ";
         std::cin.getline(direccion, LONGITUD_DIRECCION);
-        inputFail = validateInputString(direccion, LONGITUD_DIRECCION);
-    }while(!inputFail);
+        inputValid = validateInputString(direccion, LONGITUD_DIRECCION);
+    }while(!inputValid);
 
 
     if(validateCancelValueString(direccion)){
@@ -81,8 +81,8 @@ Paciente cargarPaciente()
     do{
         std::cout << "Ingrese la ciudad: ";
         std::cin.getline(ciudad, LONGITUD_CIUDAD);
-        inputFail = validateInputString(ciudad, LONGITUD_CIUDAD);
-    }while(!inputFail);
+        inputValid = validateInputString(ciudad, LONGITUD_CIUDAD);
+    }while(!inputValid);
 
 
     if(validateCancelValueString(ciudad)){
@@ -93,8 +93,8 @@ Paciente cargarPaciente()
     do{
         std::cout << "Ingrese el telefono: ";
         std::cin.getline(telefono, LONGITUD_TELEFONO);
-        inputFail = validateInputString(telefono, LONGITUD_TELEFONO);
-    }while(!inputFail);
+        inputValid = validateInputString(telefono, LONGITUD_TELEFONO);
+    }while(!inputValid);
 
     if(validateCancelValueString(telefono)){
         return Paciente();
@@ -103,8 +103,8 @@ Paciente cargarPaciente()
     do{
         std::cout << "Ingrese el correo electronico: ";
         std::cin.getline(email, LONGITUD_EMAIL);
-        inputFail = validateInputString(email, LONGITUD_EMAIL);
-    }while(!inputFail);
+        inputValid = validateInputString(email, LONGITUD_EMAIL);
+    }while(!inputValid);
 
     if(validateCancelValueString(email)){
         return Paciente();
@@ -145,11 +145,11 @@ Paciente cargarPaciente()
     std::cout << "Ingrese la obra social: ";
     std::cin.ignore();
     std::cin.getline(obraSocial, LONGITUD_OBRASOCIAL);
-    inputFail = validateInputString(obraSocial, LONGITUD_OBRASOCIAL);
-    while(!inputFail){
+    inputValid = validateInputString(obraSocial, LONGITUD_OBRASOCIAL);
+    while(!inputValid){
         std::cout << "Ingrese la obra social: ";
         std::cin.getline(obraSocial, LONGITUD_OBRASOCIAL);
-        inputFail = validateInputString(obraSocial, LONGITUD_OBRASOCIAL);
+        inputValid = validateInputString(obraSocial, LONGITUD_OBRASOCIAL);
     }
 
     if(validateCancelValueString(obraSocial)){
