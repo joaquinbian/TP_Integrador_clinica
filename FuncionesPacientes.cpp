@@ -165,7 +165,7 @@ Paciente cargarPacienteAEditar(char* Dni)
     char nombre[LONGITUD_NOMBRE], apellido[LONGITUD_APELLIDO], direccion[LONGITUD_DIRECCION], telefono[LONGITUD_TELEFONO], ciudad[LONGITUD_CIUDAD], email[LONGITUD_EMAIL];
     char obraSocial[LONGITUD_OBRASOCIAL], dni[LONGITUD_DNI];
     Fecha fechaNacimiento;
-    bool existeP;
+    bool inputValid = false, existeP;
     int dia, mes, anio;
 
     std::cout << "Ingrese los datos del paciente " << std::endl;
@@ -175,13 +175,12 @@ Paciente cargarPacienteAEditar(char* Dni)
     do
     {
 
-        std::cout << "Ingrese el DNI del paciente: ";
-        //std::cin.ignore();
-        std::cin.getline(dni, LONGITUD_DNI);
-
-        while (estaStringVacio(dni)){
-            pedirStringBucle(dni, "El DNI no puede estar vacio, ingrese nuevamente: ", LONGITUD_DNI);
-        }
+        do{
+            std::cout << "Ingrese el DNI del paciente: ";
+            //std::cin.ignore();
+            std::cin.getline(dni, LONGITUD_DNI);
+            inputValid = validateInputString(dni, LONGITUD_DNI);
+        }while(!inputValid);
 
         existeP = existePaciente(dni) && strcmp(dni, Dni) != 0; //chequea si el paciente existe y si el dni es distinto al que se quiere editar
         if(existeP)
@@ -195,75 +194,66 @@ Paciente cargarPacienteAEditar(char* Dni)
         return Paciente();
     }
 
-    std::cout << "Ingrese el nombre: ";
-    //std::cin.ignore();
-    std::cin.getline(nombre, LONGITUD_NOMBRE);
+    do{
+        std::cout << "Ingrese el nombre: ";
+        //std::cin.ignore();
+        std::cin.getline(nombre, LONGITUD_NOMBRE);
+        inputValid = validateInputString(nombre, LONGITUD_NOMBRE);
+    }while(!inputValid);
 
-    while (estaStringVacio(nombre))
-    {
-        pedirStringBucle(nombre, "El nombre no puede estar vacio, ingrese nuevamente: ", LONGITUD_NOMBRE);
-    }
 
     if(validateCancelValueString(nombre)){
         return Paciente();
     }
 
-    std::cout << "Ingrese el apellido: ";
-    std::cin.getline(apellido, LONGITUD_APELLIDO);
-
-    if (estaStringVacio(apellido))
-    {
-        pedirStringBucle(apellido, "El apellido no puede estar vacio, ingrese nuevamente: ", LONGITUD_APELLIDO);
-    }
-
+    do{
+        std::cout << "Ingrese el apellido: ";
+        std::cin.getline(apellido, LONGITUD_APELLIDO);
+        inputValid = validateInputString(apellido, LONGITUD_APELLIDO);
+    }while(!inputValid);
 
     if(validateCancelValueString(apellido)){
         return Paciente();
     }
 
-    std::cout << "Ingrese el domicilio: ";
-    std::cin.getline(direccion, LONGITUD_DIRECCION);
 
-    if (estaStringVacio(direccion))
-    {
-       pedirStringBucle(direccion, "El domicilio no puede estar vacio, ingrese nuevamente: ", LONGITUD_DIRECCION);
-    }
-
-
+    do{
+        std::cout << "Ingrese el domicilio: ";
+        std::cin.getline(direccion, LONGITUD_DIRECCION);
+        inputValid = validateInputString(direccion, LONGITUD_DIRECCION);
+    }while(!inputValid);
 
     if(validateCancelValueString(direccion)){
         return Paciente();
     }
 
-    std::cout << "Ingrese la ciudad: ";
-    std::cin.getline(ciudad, LONGITUD_CIUDAD);
 
-    if(estaStringVacio(ciudad)){
-        pedirStringBucle(ciudad, "La ciudad no puede estar vacia, ingrese nuevamente: ", LONGITUD_CIUDAD);
-    }
+    do{
+        std::cout << "Ingrese la ciudad: ";
+        std::cin.getline(ciudad, LONGITUD_CIUDAD);
+        inputValid = validateInputString(ciudad, LONGITUD_CIUDAD);
+    }while(!inputValid);
 
     if(validateCancelValueString(ciudad)){
         return Paciente();
     }
 
-    std::cout << "Ingrese el telefono: ";
-    std::cin.getline(telefono, LONGITUD_TELEFONO);
-
-    if(estaStringVacio(telefono)){
-        pedirStringBucle(telefono, "El telefono no puede estar vacio, ingrese nuevamente: ", LONGITUD_TELEFONO);
-    }
+    do{
+        std::cout << "Ingrese el telefono: ";
+        std::cin.getline(telefono, LONGITUD_TELEFONO);
+        inputValid = validateInputString(telefono, LONGITUD_TELEFONO);
+    }while(!inputValid);
 
     if(validateCancelValueString(telefono)){
         return Paciente();
     }
 
+    do{
+        std::cout << "Ingrese el correo electronico: ";
+        std::cin.getline(email, LONGITUD_EMAIL);
+        inputValid = validateInputString(email, LONGITUD_EMAIL);
+    }while(!inputValid);
 
-    std::cout << "Ingrese el correo electronico: ";
-    std::cin.getline(email, LONGITUD_EMAIL);
-
-    if(estaStringVacio(email)){
-        pedirStringBucle(email, "El email no puede estar vacio, ingrese nuevamente: ", LONGITUD_EMAIL);
-    }
 
     if(validateCancelValueString(email)){
         return Paciente();
@@ -304,10 +294,11 @@ Paciente cargarPacienteAEditar(char* Dni)
     std::cout << "Ingrese la obra social: ";
     std::cin.ignore();
     std::cin.getline(obraSocial, LONGITUD_OBRASOCIAL);
-
-    while(estaStringVacio(obraSocial)){
-        pedirStringBucle(obraSocial, "La obra social no puede estar vacia, ingrese nuevamente: ", LONGITUD_OBRASOCIAL);
-
+    inputValid = validateInputString(obraSocial, LONGITUD_OBRASOCIAL);
+    while(!inputValid){
+        std::cout << "Ingrese la obra social: ";
+        std::cin.getline(obraSocial, LONGITUD_OBRASOCIAL);
+        inputValid = validateInputString(obraSocial, LONGITUD_OBRASOCIAL);
     }
 
     if(validateCancelValueString(obraSocial)){
@@ -437,6 +428,12 @@ void editarPaciente()
     std::cout << "Ingrese el DNI del paciente que quiere editar: ";
     std::cin.ignore();
     std::cin.getline(DNI, LONGITUD_DNI);
+
+    while(!validateInputString(DNI, LONGITUD_DNI)){
+        std::cout << "Ingrese el DNI del paciente que quiere editar: ";
+        std::cin.getline(DNI, LONGITUD_DNI);
+    }
+    
     while(estaStringVacio(DNI)){
         pedirStringBucle(DNI, "El DNI no puede estar vacio, ingrese nuevamente: ", LONGITUD_DNI);
     }
