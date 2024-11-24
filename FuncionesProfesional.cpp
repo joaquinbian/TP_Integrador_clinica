@@ -7,7 +7,7 @@ Profesional cargarProfesional()
     char nombre[LONGITUD_NOMBRE], apellido[LONGITUD_APELLIDO], direccion[LONGITUD_DIRECCION], telefono[LONGITUD_TELEFONO], ciudad[LONGITUD_CIUDAD], email[LONGITUD_EMAIL], matricula[LONGITUD_MATRICULA], soloParticularChar;
     float valorConsulta;
     int especialidad;
-    bool soloParticular = false, existeProf;
+    bool inputValid = false, soloParticular = false, existeProf;
     std::cout << "Ingrese los datos del profesional " << std::endl;
     std::cout << "Ingrese 0 en cualquier campo para cancelar" << std::endl;
     std::cout << "------------------------------------" << std::endl;
@@ -16,10 +16,11 @@ Profesional cargarProfesional()
         std::cout << "Ingrese el numero de matricula: ";
         std::cin.ignore();
         std::cin.getline(matricula, LONGITUD_MATRICULA);
-
-        while (estaStringVacio(matricula))
-        {
-            pedirStringBucle(matricula, "La matricula no puede estar vacia, ingrese nuevamente: ", LONGITUD_MATRICULA);
+        inputValid = validateInputString(matricula, LONGITUD_MATRICULA);
+        while(!inputValid){
+            std::cout << "Ingrese el numero de matricula: ";
+            std::cin.getline(matricula, LONGITUD_MATRICULA);
+            inputValid = validateInputString(matricula, LONGITUD_MATRICULA);        
         }
 
         existeProf = existeProfesional(matricula);
@@ -34,69 +35,62 @@ Profesional cargarProfesional()
         return Profesional();
     }
 
-    std::cout << "Ingrese el apellido: ";
-    std::cin.getline(apellido, LONGITUD_APELLIDO);
-
-    while(estaStringVacio(apellido)){
-        pedirStringBucle(apellido, "El apellido no puede estar vacio, ingrese nuevamente: ", LONGITUD_APELLIDO);
-    }
+    do{
+        std::cout << "Ingrese el apellido: ";
+        std::cin.getline(apellido, LONGITUD_APELLIDO);
+        inputValid = validateInputString(apellido, LONGITUD_APELLIDO);
+    }while(!inputValid);
 
     if(validateCancelValueString(apellido)){
         return Profesional();
     }
 
-    std::cout << "Ingrese el nombre: ";
-    //std::cin.ignore();
-    std::cin.getline(nombre, LONGITUD_NOMBRE);
-
-    while(estaStringVacio(nombre)){
-        pedirStringBucle(nombre, "El nombre no puede estar vacio, ingrese nuevamente: ", LONGITUD_NOMBRE);
-    }
+    do {
+        std::cout << "Ingrese el nombre: ";
+        //std::cin.ignore();
+        std::cin.getline(nombre, LONGITUD_NOMBRE);
+        inputValid = validateInputString(nombre, LONGITUD_NOMBRE);
+    } while(!inputValid);
 
     if(validateCancelValueString(nombre)){
         return Profesional();
     }
 
-    std::cout << "Ingrese el domicilio: ";
-    std::cin.getline(direccion, LONGITUD_DIRECCION);
-
-    while(estaStringVacio(direccion)){
-        pedirStringBucle(direccion, "El domicilio no puede estar vacio, ingrese nuevamente: ", LONGITUD_DIRECCION);
-    }
+    do{
+        std::cout << "Ingrese el domicilio: ";
+        std::cin.getline(direccion, LONGITUD_DIRECCION);
+        inputValid = validateInputString(direccion, LONGITUD_DIRECCION);
+    }while(!inputValid);
 
     if(validateCancelValueString(direccion)){
         return Profesional();
     }
 
-    std::cout << "Ingrese la ciudad: ";
-    std::cin.getline(ciudad, LONGITUD_CIUDAD);
-
-    while(estaStringVacio(ciudad)){
-        pedirStringBucle(ciudad, "La ciudad no puede estar vacia, ingrese nuevamente: ", LONGITUD_CIUDAD);
-    }
+    do{
+        std::cout << "Ingrese la ciudad: ";
+        std::cin.getline(ciudad, LONGITUD_CIUDAD);
+        inputValid = validateInputString(ciudad, LONGITUD_CIUDAD);
+    }while(!inputValid);
 
     if(validateCancelValueString(ciudad)){
         return Profesional();
     }
 
-
-    std::cout << "Ingrese el telefono: ";
-    std::cin.getline(telefono, LONGITUD_TELEFONO);
-
-    while(estaStringVacio(telefono)){
-        pedirStringBucle(telefono, "El telefono no puede estar vacio, ingrese nuevamente: ", LONGITUD_TELEFONO);
-    }
+    do{
+        std::cout << "Ingrese el telefono: ";
+        std::cin.getline(telefono, LONGITUD_TELEFONO);
+        inputValid = validateInputString(telefono, LONGITUD_TELEFONO);
+    }while(!inputValid);
 
     if(validateCancelValueString(telefono)){
         return Profesional();
     }
 
-    std::cout << "Ingrese el correo electronico: ";
-    std::cin.getline(email, LONGITUD_EMAIL);
-
-    while(estaStringVacio(email)){
-        pedirStringBucle(email, "El email no puede estar vacio, ingrese nuevamente: ", LONGITUD_EMAIL);
-    }
+    do{
+        std::cout << "Ingrese el correo electronico: ";
+        std::cin.getline(email, LONGITUD_EMAIL);
+        inputValid = validateInputString(email, LONGITUD_EMAIL);
+    }while(!inputValid);
 
     if(validateCancelValueString(email)){
         return Profesional();

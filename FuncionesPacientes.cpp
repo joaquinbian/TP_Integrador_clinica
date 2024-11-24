@@ -29,7 +29,6 @@ Paciente cargarPaciente()
             std::cout << "Ingrese el DNI del paciente: ";
             std::cin.getline(dni, LONGITUD_DNI);
             inputFail = validateInputString(dni, LONGITUD_DNI);
-
         }
 
         existeP = existePaciente(dni);
