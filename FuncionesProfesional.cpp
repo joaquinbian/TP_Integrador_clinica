@@ -98,15 +98,19 @@ Profesional cargarProfesional()
 
     std::cout << "Especialidades: " << std::endl;
     mostrarTodasEspecialidadesActivas();
-    std::cout << "Ingrese el codigo de la especialidad ";
-    std::cin >> especialidad;
+    do{
+        std::cout << "Ingrese el codigo de la especialidad ";
+        std::cin >> especialidad;
+    }while(!validateInputInt());
 
     if(validateCancelValueInt(especialidad)){
         return Profesional();
     }
 
-    std::cout << "Ingrese el valor de la consulta: $";
-    std::cin >> valorConsulta;
+    do{
+        std::cout << "Ingrese el valor de la consulta: $";
+        std::cin >> valorConsulta;
+    }while(!validateInputInt());
 
     if(validateCancelValueFloat(valorConsulta)){
         return Profesional();
@@ -443,6 +447,11 @@ void eliminarProfesional()
     std::cin.ignore();
     std::cin.getline(matricula, 50);
 
+    while(!validateInputString(matricula, LONGITUD_MATRICULA)){
+        std::cout<<"Ingrese la matricula del profesional a eliminar : ";
+        std::cin.getline(matricula, LONGITUD_MATRICULA);
+    }
+
     if(validateCancelValueString(matricula)){
         return;
     }
@@ -475,6 +484,11 @@ void restaurarProfesional()
     std::cin.ignore();
     std::cin.getline(matricula, 50);
 
+    while(!validateInputString(matricula, LONGITUD_MATRICULA)){
+        std::cout<<"Ingrese la matricula del profesional a restaurar : ";
+        std::cin.getline(matricula, LONGITUD_MATRICULA);
+    }
+
     if(validateCancelValueString(matricula)){
         return;
     }
@@ -501,6 +515,11 @@ void buscarProfesional()
     std::cout << "Ingrese la matricula del profesional que quiere buscar: ";
     std::cin.ignore();
     std::cin.getline(matricula, 50);
+
+    while(!validateInputString(matricula, LONGITUD_MATRICULA)){
+        std::cout << "Ingrese la matricula del profesional que quiere buscar: ";
+        std::cin.getline(matricula, 50);
+    }
 
     if(validateCancelValueString(matricula)){
         return;
@@ -546,8 +565,12 @@ void buscarProfesionalPorEspecialidad()
     mostrarTodasEspecialidadesActivas();
     int especialidad;
     std::cout << "Digite 0 para cancelar" << std::endl;
-    std::cout << "Ingrese la especialidad del profesional que quiere buscar: ";
-    std::cin >> especialidad;
+    do{
+        std::cout << "Ingrese la especialidad del profesional que quiere buscar: ";
+        std::cin >> especialidad;
+    }while(!validateInputInt());
+
+    
 
     if(validateCancelValueInt(especialidad)){
         return;
