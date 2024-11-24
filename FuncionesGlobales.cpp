@@ -2,12 +2,19 @@
 #include <iostream>
 #include <algorithm>
 #include <cctype>
+#include <ctime>
+#include <limits>
 
 
 bool estaStringVacio(const char *str) {
     return strlen(str) == 0;
 }
-void pedirStringBucle(char* variable, char* mensaje, int longitud){
+
+bool estaStringVacio(char *str) {
+    return strlen(str) == 0;
+}
+
+void pedirStringBucle(char* variable, std::string mensaje, int longitud){
     //std::cin.ignore();
     do {
         std::cout << mensaje;
@@ -17,7 +24,31 @@ void pedirStringBucle(char* variable, char* mensaje, int longitud){
 
 }
 
+bool validarInput(){
+    bool valid = true;
+    if(std::cin.fail()){
+        valid = false;
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+    return valid;
+}
 
+bool validateInputString(char* str, int longitud){
+    bool valid = true;
+    if(estaStringVacio(str)){
+        std::cout << "El campo no puede estar vacio" << std::endl;
+        valid = false;
+        return valid;
+    }
+    valid = validarInput();
+    
+    if(!valid){
+        std::cout << "Ocurrio un error. El campo no puede tener mas de " << longitud - 1 << " caracteres. Intente nuevamente" << std::endl;
+    }
+
+    return valid;
+}
 
 bool validateCancelValueString(std::string str){
     return strcmp(str.c_str(), "0") == 0;

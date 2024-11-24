@@ -28,7 +28,9 @@ bool validateCancelValueChar(char c);
 bool validateCancelValueInt(int num);
 bool validateCancelValueFloat(float num);
 bool estaStringVacio(const char *str);
-void pedirStringBucle(char* variable, char* mensaje, int longitud);
+void pedirStringBucle(char* variable, std::string mensaje, int longitud);
+bool validarInput();
+bool validateInputString(char* str, int longitud);
 
 //PARA CREAR FECHAS
 int pedirDiaFechaCancelable();
