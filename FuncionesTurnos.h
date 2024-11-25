@@ -13,3 +13,4 @@ void mostrarTodosTurnosEliminados();
 void restaurarTurno();
 void informarProfesionalQueMasPacientesAtendio();
 void informarEspecialidadMasSolicitada();
+void informarProfesionalMayoresAtencionesParticulares();

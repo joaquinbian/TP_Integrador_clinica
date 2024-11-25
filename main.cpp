@@ -426,7 +426,7 @@ int main()
                     cout << "\033[4m";  // Comienza subrayado
                     cout<<"PROFESIONAL QUE MAS RECAUDO DE MANERA PARTICULAR" <<endl<<endl;
                     cout << "\033[0m";  // Detiene subrayado
-
+                    informarProfesionalMayoresAtencionesParticulares();
                     system("pause");
                     system("cls");
                     break;

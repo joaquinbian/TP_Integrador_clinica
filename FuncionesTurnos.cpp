@@ -535,3 +535,71 @@ void informarEspecialidadMasSolicitada()
     delete[] turnos;
     delete[] profesionales;
 }
+
+void informarProfesionalMayoresAtencionesParticulares(){
+    ///MAYOR RECAUDACION PARTICULAR
+    int ind=-1, maximo;
+    ///VECTOR CON TODOS LOS PROFESIONALES
+    Profesional *profesionales;
+    ProfesionalesArchivo pa;
+    int cantidadProfesionales = pa.getCantidad();
+    profesionales = new Profesional[cantidadProfesionales];
+    pa.leerTodos(profesionales, cantidadProfesionales);
+
+    ///VECTOR ACUMULADOR PARALELO A PROFESIONALES
+    float *atencionesParticulares = new float[cantidadProfesionales] {};
+
+    ///VECTOR CON TODOS LOS TURNOS
+    Turno *turnos;
+    TurnosArchivo ta;
+    int cantidadTurnos = ta.getCantidad();
+    turnos = new Turno [cantidadTurnos];
+    ta.leerTodos(turnos, cantidadTurnos);
+
+    ///RECORRIDO DE TURNOS PARA SABER SI NO FUE ELIMINADO Y OBTENER LA MATRICULA
+    for(int a=0; a<cantidadTurnos; a++){
+        std::string matriculaTurno;
+        if(!turnos[a].getEliminado()){
+            matriculaTurno = std::string(turnos[a].getMatricula());
+            ///RECORRO EL VECTOR DE PROFESIONALES QUE ATIENDAN DE MANERA PARTICULAR
+            ///BUSCANDO POR MatriculaTurno PARA INCREMENTAR ATENCIONES
+            for(int b=0; b<cantidadProfesionales; b++){
+                if(matriculaTurno == std::string(profesionales[b].getMatricula()) && profesionales[b].getSoloParticular()){
+                    atencionesParticulares[b]+=profesionales[b].getValorConsulta();
+                }
+            }
+        }
+    }
+
+    ///CON EL ACUMULADOR CARGADO, SE ESTABLECE POR INDICE, LA MAYOR RECAUDACION Y SE IDENTIFICA AL PROFESIONAL
+    for(int c = 0; c < cantidadProfesionales; c++)
+    {
+        if(ind == -1)
+        {
+            maximo=atencionesParticulares[c];
+            ind=c;
+        }
+        else if(atencionesParticulares[c]>maximo)
+        {
+            maximo=atencionesParticulares[c];
+            ind=c;
+        }
+    }
+
+    ///PRUEBA
+    std::cout << "PRUEBA: " << std::endl;
+
+    for(int d = 0; d < cantidadProfesionales; d++)
+    {
+        std::cout << "Profesional: " << std::string(profesionales[d].getApellido()) << ", " << std::string(profesionales[d].getNombre()) <<
+        " / Recaudacion: $" << atencionesParticulares[d] << std::endl;
+
+    }
+
+        std::cout << std::endl << std::string(profesionales[ind].getApellido()) << ", " << std::string(profesionales[ind].getNombre()) <<
+        " registra la mayor recaudacion por atenciones particulares ($" << atencionesParticulares[ind] << ")" << std::endl;
+
+    delete[] profesionales;
+    delete[] atencionesParticulares;
+    delete[] turnos;
+}
