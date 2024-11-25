@@ -15,7 +15,7 @@ Turno cargarTurno()
 
     do
     {
-        /// Inicio implementació manejo fecha >= Actual
+        /// Inicio implementaci├│ manejo fecha >= Actual
 
         do
         {
@@ -51,11 +51,11 @@ Turno cargarTurno()
 
         // Obtener la fecha actual
             if(fechaTurno > obtenerFechaActual() || fechaTurno == obtenerFechaActual()){
-                std::cout << "Fecha válida" << std::endl;
+                std::cout << "Fecha v├ílida" << std::endl;
                 fechaFutura=true;
 
             } else{
-                std::cout << "La fecha ingresada es anterior a la fecha actual. Por favor ingrese una fecha válida." << std::endl;
+                std::cout << "La fecha ingresada es anterior a la fecha actual. Por favor ingrese una fecha v├ílida." << std::endl;
                 fechaFutura=false;
             }
 
@@ -383,7 +383,7 @@ void restaurarTurno()
         turno.setEliminado(false);
         ta.guardar(pos,turno);
         std::cout << std::endl;
-        std::cout<<"Turno restaurado con ∩┐╜xito" <<std::endl<<std::endl;
+        std::cout<<"Turno restaurado con Γê⌐ΓöÉΓò£xito" <<std::endl<<std::endl;
     }
     else
     {
@@ -393,7 +393,7 @@ void restaurarTurno()
 
 void informarProfesionalQueMasPacientesAtendio()
 {
-    ///Profesional que mΓê⌐ΓöÉΓò£s pacientes atendiΓê⌐ΓöÉΓò£:
+    ///Profesional que m╬ô├¬ΓîÉ╬ô├╢├ë╬ô├▓┬ús pacientes atendi╬ô├¬ΓîÉ╬ô├╢├ë╬ô├▓┬ú:
     int ind=-1, maximo;
 
     ///Profesionales activos e inactivos
@@ -402,7 +402,7 @@ void informarProfesionalQueMasPacientesAtendio()
     int cantidadProfesionales = pa.getCantidad();
     profesionales = new Profesional[cantidadProfesionales];
     pa.leerTodos(profesionales, cantidadProfesionales);
-    ///Vector acumulador de pacientes atendidos por profesional. Comparte el Γê⌐ΓöÉΓò£ndice con el de profesionales
+    ///Vector acumulador de pacientes atendidos por profesional. Comparte el ╬ô├¬ΓîÉ╬ô├╢├ë╬ô├▓┬úndice con el de profesionales
     int* pacientesAtendidos = new int[cantidadProfesionales] {};
     ///Vector Turnos
     Turno *turnos;
@@ -443,7 +443,7 @@ void informarProfesionalQueMasPacientesAtendio()
     }
 
     std::cout << profesionales[ind].getApellido() << ", " << profesionales[ind].getNombre() <<
-              " (MatrΓê⌐ΓöÉΓò£cula: " << profesionales[ind].getMatricula() << ") - " << pacientesAtendidos[ind] <<
+              " (Matr╬ô├¬ΓîÉ╬ô├╢├ë╬ô├▓┬úcula: " << profesionales[ind].getMatricula() << ") - " << pacientesAtendidos[ind] <<
               " pacientes atendidos" << std::endl << std::endl;
 
     delete[] profesionales;
@@ -471,7 +471,7 @@ void informarEspecialidadMasSolicitada()
     turnos = new Turno [cantidadTurnos];
     ta.leerTodos(turnos, cantidadTurnos);
 
-    ///Vector de profesionales para comparar la matrícula con la del turno
+    ///Vector de profesionales para comparar la matr├¡cula con la del turno
     Profesional *profesionales;
     ProfesionalesArchivo pa;
     int cantidadProfesionales = pa.getCantidad();
@@ -496,7 +496,7 @@ void informarEspecialidadMasSolicitada()
         for(int n = 0; n < cantidadEspecialidades; n++){
             if(idEspecialidadTurno==especialidades[n].getId()){
                 //especialidadTurno=especialidades[n].getNombreEspecialidad();
-                pacientesAtendidos[n]++;
+                if(!turnos[j].getEliminado()){pacientesAtendidos[n]++; }
                 break;
             }
         }
