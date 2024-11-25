@@ -411,7 +411,7 @@ int main()
                 cout<<"INFORMES " <<endl<<endl;
                 cout << "\033[0m";  // Detiene subrayado
 
-                cout << "1 - PROFESIONAL QUE MAS RECAUDO DE MANERA PARTICULAR (PENDIENTE)" << endl;
+                cout << "1 - PROFESIONAL QUE MAS RECAUDO DE MANERA PARTICULAR" << endl;
                 cout << "2 - PROFESIONAL QUE MAS PACIENTES ATENDIO" << endl;
                 cout << "3 - ESPECIALIDAD MAS SOLICITADA" << endl;
                 cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
