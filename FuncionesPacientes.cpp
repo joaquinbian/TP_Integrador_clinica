@@ -432,10 +432,6 @@ void editarPaciente()
         std::cout << "Ingrese el DNI del paciente que quiere editar: ";
         std::cin.getline(DNI, LONGITUD_DNI);
     }
-    
-    while(estaStringVacio(DNI)){
-        pedirStringBucle(DNI, "El DNI no puede estar vacio, ingrese nuevamente: ", LONGITUD_DNI);
-    }
 
     if(validateCancelValueString(DNI)){
         return;

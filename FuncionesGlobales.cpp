@@ -34,12 +34,15 @@ bool validarInput(){
     return valid;
 }
 
+
 bool validateInputInt(){
     bool valid = true;
+
     valid = validarInput();
 
     if(!valid){
         std::cout << "Ocurrio un error. Ingrese un numero valido" << std::endl;
+        return valid;
     }
 
 
