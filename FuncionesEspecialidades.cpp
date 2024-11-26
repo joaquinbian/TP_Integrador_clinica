@@ -5,7 +5,7 @@
 
 Especialidad cargarEspecialidad()
 {
-    char nombreEspecialidad[50];
+    char nombreEspecialidad[LONGITUD_ESPECIALIDAD];
     int id;
 
     std::cout << "Carga especialidad" << std::endl;
@@ -14,7 +14,13 @@ Especialidad cargarEspecialidad()
 
     std::cout<<"Ingrese el nombre de la especialidad : ";
     std::cin.ignore();
-    std::cin.getline(nombreEspecialidad, 50);
+    std::cin.getline(nombreEspecialidad, LONGITUD_ESPECIALIDAD);
+
+    while(!validateInputString(nombreEspecialidad, LONGITUD_ESPECIALIDAD))
+    {
+        std::cout<<"Ingrese el nombre de la especialidad : ";
+        std::cin.getline(nombreEspecialidad, LONGITUD_ESPECIALIDAD);
+    }
 
     if(validateCancelValueString(nombreEspecialidad))
     {
@@ -31,7 +37,7 @@ void guardarEspecialidad()
     EspecialidadesArchivo ea;
     especialidad = cargarEspecialidad();
 
-    if(estaStringVacio(especialidad.getNombreEspecialidad()))
+    if(estaStringVacio(especialidad.getNombreEspecialidad(), LONGITUD_ESPECIALIDAD))
     {
         std::cout<<"Carga de especialidad cancelada " <<std::endl;
 
