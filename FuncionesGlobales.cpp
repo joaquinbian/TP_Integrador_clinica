@@ -187,6 +187,31 @@ bool existeEspecialidad(int Id)
     }
     return false;
 }
+
+bool existeEspecialidadActiva(int Id)
+{
+    Especialidad *especialidades = nullptr;
+    EspecialidadesArchivo ea;
+    int cantidad = ea.getCantidad();
+    especialidades = new Especialidad[cantidad];
+    ea.leerTodos(especialidades, cantidad);
+
+    if(especialidades == NULL){
+        std::cout << "No se pudo leer las especialidades" << std::endl;
+        return false;
+    }
+    for(int i = 0; i < cantidad; i++){
+        if(especialidades[i].getId() == Id && especialidades[i].getEliminado() == false){
+            delete [] especialidades;
+            return true;
+        }
+    }
+
+    delete [] especialidades;
+
+    return false;
+}
+
 void buscarProfesionalesPorEspecialidad(int idEspecialidad)
 {
     Profesional *profesional;

@@ -31,6 +31,7 @@ Especialidad cargarEspecialidad()
 
     return Especialidad(nombreEspecialidad,id ,false);
 }
+
 void guardarEspecialidad()
 {
     Especialidad especialidad;
@@ -88,11 +89,11 @@ void editarEspecialidad()
     do{
         std::cout << "Ingrese el codigo de la especialidad que desea editar: ";
         std::cin>>id;
-        existeEsp = existeEspecialidad(id) || validateCancelValueInt(id); //si ingresa 0, dejamos que avance para que cancele
+        existeEsp = existeEspecialidadActiva(id) || validateCancelValueInt(id); //si ingresa 0, dejamos que avance para que cancele
         if(!existeEsp){
             std::cout << "No se encontro la especialidad" << std::endl;
         }
-    }while(!validateInputInt()  || !existeEsp);
+    }while(!validateInputInt());
 
     std::cin.ignore();
 
@@ -111,40 +112,52 @@ void editarEspecialidad()
         return;
     }
 
-    int pos = ea.buscar(id);
-    if(pos != -1)
-    {
-        especialidad = ea.Leer(pos);
-        especialidad.setNombreEspecialidad(nombreEspecialidad);
-        ea.guardar(pos,especialidad);
-        std::cout<<"especialidad modificada " <<std::endl;
+    if(existeEsp){
+        int pos = ea.buscar(id);
+        if(pos != -1)
+        {
+            especialidad = ea.Leer(pos);
+            especialidad.setNombreEspecialidad(nombreEspecialidad);
+            ea.guardar(pos,especialidad);
+            std::cout<<"especialidad modificada " <<std::endl;
+        }
     }
     else
     {
         std::cout<<"No se encontro la especialidad "<<std::endl;
     }
 }
+
 void eliminarEspecialidad()
 {
     Especialidad especialidad;
     EspecialidadesArchivo ea;
     mostrarTodasEspecialidadesActivas();
     int codigo;
+    bool existeEsp = false;
     std::cout<<std::endl<<"Digite 0 para cancelar" << std::endl;
-    std::cout<<"Ingrese el codigo a eliminar : ";
-    std::cin>>codigo;
+    do{
+        std::cout << "Ingrese el codigo de la especialidad que desea eliminar: ";
+        std::cin>>codigo;
+        existeEsp = existeEspecialidadActiva(codigo) || validateCancelValueInt(codigo); //si ingresa 0, dejamos que avance para que cancele
+        if(!existeEsp){
+            std::cout << "No se encontro la especialidad" << std::endl;
+        }
+    }while(!validateInputInt());
 
     if(validateCancelValueInt(codigo)){
         return;
     }
 
-    int pos = ea.buscar(codigo);
-    if(pos != -1)
-    {
-        especialidad = ea.Leer(pos);
-        especialidad.setEliminado(true);
-        ea.guardar(pos,especialidad);
-        std::cout<<"especialidad eliminada " <<std::endl;
+    if(existeEsp){
+        int pos = ea.buscar(codigo);
+        if(pos != -1)
+        {
+            especialidad = ea.Leer(pos);
+            especialidad.setEliminado(true);
+            ea.guardar(pos,especialidad);
+            std::cout<<"especialidad eliminada " <<std::endl;
+        }
     }
     else
     {
@@ -167,29 +180,32 @@ void restaurarEspecialidad()
             std::cout << "No se encontro la especialidad" << std::endl;
         }
 
-    }while(!validateInputInt() || !existeEsp);
+    }while(!validateInputInt());
 
 
     if(validateCancelValueInt(codigo)){
         return;
     }
 
-    int pos = ea.buscar(codigo);
-    if(pos != -1)
-    {
-        especialidad = ea.Leer(pos);
+    if(existeEsp){
 
-        if(especialidad.getEliminado())
+        int pos = ea.buscar(codigo);
+        if(pos != -1)
         {
-            especialidad.setEliminado(false);
-            ea.guardar(pos, especialidad);
-            std::cout<<"Especialidad restaurada " <<std::endl;
-        }
-        else
-        {
-            std::cout<<"La especialidad ya se encuentra en el listado" <<std::endl;
-        }
+            especialidad = ea.Leer(pos);
 
+            if(especialidad.getEliminado())
+            {
+                especialidad.setEliminado(false);
+                ea.guardar(pos, especialidad);
+                std::cout<<"Especialidad restaurada " <<std::endl;
+            }
+            else
+            {
+                std::cout<<"La especialidad ya se encuentra en el listado" <<std::endl;
+            }
+
+        }
     }
     else
     {
