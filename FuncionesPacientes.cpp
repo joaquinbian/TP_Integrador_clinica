@@ -472,7 +472,6 @@ void eliminarPaciente()
     mostrarTodosPacientesActivosResumidos();
     
     char dni[LONGITUD_DNI];
-    bool inputValid = false;
     std::cout << "Digite 0 para cancelar" << std::endl;
     std::cout<<"Ingrese el DNI del paciente a eliminar : ";
     std::cin.ignore();
