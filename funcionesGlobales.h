@@ -33,6 +33,7 @@ bool validarInput();
 bool validateInputString(char* str, int longitud);
 bool validateInputInt();
 char *trim(char *s);
+int pedirIntValido(std::string msj);
 
 //PARA CREAR FECHAS
 int pedirDiaFechaCancelable();

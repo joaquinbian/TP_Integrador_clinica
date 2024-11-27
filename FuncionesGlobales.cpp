@@ -110,6 +110,16 @@ bool validateCancelValueFecha(Fecha fecha){
     return fecha.validar();
 }
 
+int pedirIntValido(std::string msj){
+    int num;
+    do {
+        std::cout << msj;
+        std::cin >> num;
+    }while(!validateInputInt());
+
+    return num;
+}
+
 int pedirDiaFechaCancelable(){
     int dia;
     do {
