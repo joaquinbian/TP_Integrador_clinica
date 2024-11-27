@@ -20,7 +20,7 @@ Profesional cargarProfesional()
         while(!inputValid){
             std::cout << "Ingrese el numero de matricula: ";
             std::cin.getline(matricula, LONGITUD_MATRICULA);
-            inputValid = validateInputString(matricula, LONGITUD_MATRICULA);        
+            inputValid = validateInputString(matricula, LONGITUD_MATRICULA);
         }
 
         existeProf = existeProfesional(matricula);
@@ -283,7 +283,7 @@ void guardarProfesional()
     profesional = cargarProfesional();
 
 
-    if(estaStringVacio(profesional.getMatricula())){
+    if(estaStringVacio((char *)profesional.getMatricula())){
         std::cout << "Carga de profesional cancelada " << std::endl;
         return;
 
@@ -419,7 +419,7 @@ void editarProfesional()
 
     if(strlen(profesional.getMatricula()) == 0){
         std::cout << "Edicion de profesional cancelada " << std::endl;
-        return; 
+        return;
     }
     bool res = pa.guardar(pos, profesional);
     if(res)
@@ -570,7 +570,7 @@ void buscarProfesionalPorEspecialidad()
         std::cin >> especialidad;
     }while(!validateInputInt());
 
-    
+
 
     if(validateCancelValueInt(especialidad)){
         return;
