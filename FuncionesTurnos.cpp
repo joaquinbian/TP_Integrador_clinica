@@ -15,7 +15,7 @@ Turno cargarTurno()
 
     do
     {
-        /// Inicio implementació manejo fecha >= Actual
+        /// Inicio implementaci├│ manejo fecha >= Actual
 
         do
         {
@@ -51,11 +51,11 @@ Turno cargarTurno()
 
         // Obtener la fecha actual
             if(fechaTurno > obtenerFechaActual() || fechaTurno == obtenerFechaActual()){
-                std::cout << "Fecha válida" << std::endl;
+                std::cout << "Fecha v├ílida" << std::endl;
                 fechaFutura=true;
 
             } else{
-                std::cout << "La fecha ingresada es anterior a la fecha actual. Por favor ingrese una fecha válida." << std::endl;
+                std::cout << "La fecha ingresada es anterior a la fecha actual. Por favor ingrese una fecha v├ílida." << std::endl;
                 fechaFutura=false;
             }
 
@@ -405,7 +405,7 @@ void restaurarTurno()
         turno.setEliminado(false);
         ta.guardar(pos,turno);
         std::cout << std::endl;
-        std::cout<<"Turno restaurado con ∩┐╜xito" <<std::endl<<std::endl;
+        std::cout<<"Turno restaurado con Γê⌐ΓöÉΓò£xito" <<std::endl<<std::endl;
     }
     else
     {
@@ -415,8 +415,8 @@ void restaurarTurno()
 
 void informarProfesionalQueMasPacientesAtendio()
 {
-    ///Profesional que m∩┐╜s pacientes atendi∩┐╜:
-    int ind=0, maximo;
+    ///Profesional que m╬ô├¬ΓîÉ╬ô├╢├ë╬ô├▓┬ús pacientes atendi╬ô├¬ΓîÉ╬ô├╢├ë╬ô├▓┬ú:
+    int ind=-1, maximo;
 
     ///Profesionales activos e inactivos
     Profesional *profesionales;
@@ -424,7 +424,7 @@ void informarProfesionalQueMasPacientesAtendio()
     int cantidadProfesionales = pa.getCantidad();
     profesionales = new Profesional[cantidadProfesionales];
     pa.leerTodos(profesionales, cantidadProfesionales);
-    ///Vector acumulador de pacientes atendidos por profesional. Comparte el ∩┐╜ndice con el de profesionales
+    ///Vector acumulador de pacientes atendidos por profesional. Comparte el ╬ô├¬ΓîÉ╬ô├╢├ë╬ô├▓┬úndice con el de profesionales
     int* pacientesAtendidos = new int[cantidadProfesionales] {};
     ///Vector Turnos
     Turno *turnos;
@@ -452,9 +452,10 @@ void informarProfesionalQueMasPacientesAtendio()
 
     for(int k = 0; k < cantidadProfesionales; k++)
     {
-        if(ind == 0)
+        if(ind == -1)
         {
             maximo=pacientesAtendidos[k];
+            ind=k;
         }
         else if(pacientesAtendidos[k]>maximo)
         {
@@ -464,11 +465,163 @@ void informarProfesionalQueMasPacientesAtendio()
     }
 
     std::cout << profesionales[ind].getApellido() << ", " << profesionales[ind].getNombre() <<
-              " (Matr∩┐╜cula: " << profesionales[ind].getMatricula() << ") - " << pacientesAtendidos[ind] <<
+              " (Matr╬ô├¬ΓîÉ╬ô├╢├ë╬ô├▓┬úcula: " << profesionales[ind].getMatricula() << ") - " << pacientesAtendidos[ind] <<
               " pacientes atendidos" << std::endl << std::endl;
 
     delete[] profesionales;
     delete[] pacientesAtendidos;
     delete[] turnos;
+}
 
+void informarEspecialidadMasSolicitada()
+{
+    ///Especialidad mas solicitada:
+    int ind=-1, maximo;
+
+    ///Especialidades activas e inactivas
+    Especialidad *especialidades;
+    EspecialidadesArchivo ea;
+    int cantidadEspecialidades = ea.getCantidad();
+    especialidades = new Especialidad[cantidadEspecialidades];
+    ea.leerTodos(especialidades, cantidadEspecialidades);
+    ///Vector acumulador de pacientes atendidos por especialidad. Comparte el ind con el de especialidades
+    int* pacientesAtendidos = new int[cantidadEspecialidades] {};
+    ///Vector Turnos
+    Turno *turnos;
+    TurnosArchivo ta;
+    int cantidadTurnos = ta.getCantidad();
+    turnos = new Turno [cantidadTurnos];
+    ta.leerTodos(turnos, cantidadTurnos);
+
+    ///Vector de profesionales para comparar la matr├¡cula con la del turno
+    Profesional *profesionales;
+    ProfesionalesArchivo pa;
+    int cantidadProfesionales = pa.getCantidad();
+    profesionales = new Profesional[cantidadProfesionales];
+    pa.leerTodos(profesionales, cantidadProfesionales);
+
+
+
+    for(int j = 0; j < cantidadTurnos; j++)
+    {
+        ///Inicio: Relacionamiento de matricula turno con matricula profesionales para conocer el nombre de la especialidad
+        std::string matriculaTurno = turnos[j].getMatricula();
+        int idEspecialidadTurno;
+        std::string especialidadTurno;
+
+        for(int m = 0; m < cantidadProfesionales; m++){
+            if(matriculaTurno == profesionales[m].getMatricula()){
+                idEspecialidadTurno=profesionales[m].getEspecialidad();
+                break;
+            }
+        }
+        for(int n = 0; n < cantidadEspecialidades; n++){
+            if(idEspecialidadTurno==especialidades[n].getId()){
+                //especialidadTurno=especialidades[n].getNombreEspecialidad();
+                if(!turnos[j].getEliminado()){pacientesAtendidos[n]++; }
+                break;
+            }
+        }
+
+    }
+    ///Final
+
+    for(int p = 0; p < cantidadEspecialidades; p++)
+    {
+        if(ind == -1)
+        {
+            maximo=pacientesAtendidos[p];
+            ind=p;
+        }
+        else if(pacientesAtendidos[p]>maximo)
+        {
+            maximo=pacientesAtendidos[p];
+            ind=p;
+        }
+    }
+
+    std::cout << especialidades[ind].getNombreEspecialidad() << ", con " << pacientesAtendidos[ind] <<
+            " pacientes atendidos, fue la especialidad mas solicitada " << std::endl << std::endl;
+
+    ///PRUEBA
+    std::cout << "PRUEBA: " << std::endl;
+
+    for(int p = 0; p < cantidadEspecialidades; p++)
+    {
+        std::cout << "Especialidad: " << especialidades[p].getNombreEspecialidad() << " / Atenciones: " << pacientesAtendidos[p] << std::endl;
+
+    }
+
+    delete[] especialidades;
+    delete[] pacientesAtendidos;
+    delete[] turnos;
+    delete[] profesionales;
+}
+
+void informarProfesionalMayoresAtencionesParticulares(){
+    ///MAYOR RECAUDACION PARTICULAR
+    int ind=-1, maximo;
+    ///VECTOR CON TODOS LOS PROFESIONALES
+    Profesional *profesionales;
+    ProfesionalesArchivo pa;
+    int cantidadProfesionales = pa.getCantidad();
+    profesionales = new Profesional[cantidadProfesionales];
+    pa.leerTodos(profesionales, cantidadProfesionales);
+
+    ///VECTOR ACUMULADOR PARALELO A PROFESIONALES
+    float *atencionesParticulares = new float[cantidadProfesionales] {};
+
+    ///VECTOR CON TODOS LOS TURNOS
+    Turno *turnos;
+    TurnosArchivo ta;
+    int cantidadTurnos = ta.getCantidad();
+    turnos = new Turno [cantidadTurnos];
+    ta.leerTodos(turnos, cantidadTurnos);
+
+    ///RECORRIDO DE TURNOS PARA SABER SI NO FUE ELIMINADO Y OBTENER LA MATRICULA
+    for(int a=0; a<cantidadTurnos; a++){
+        std::string matriculaTurno;
+        if(!turnos[a].getEliminado()){
+            matriculaTurno = std::string(turnos[a].getMatricula());
+            ///RECORRO EL VECTOR DE PROFESIONALES QUE ATIENDAN DE MANERA PARTICULAR
+            ///BUSCANDO POR MatriculaTurno PARA INCREMENTAR ATENCIONES
+            for(int b=0; b<cantidadProfesionales; b++){
+                if(matriculaTurno == std::string(profesionales[b].getMatricula()) && profesionales[b].getSoloParticular()){
+                    atencionesParticulares[b]+=profesionales[b].getValorConsulta();
+                }
+            }
+        }
+    }
+
+    ///CON EL ACUMULADOR CARGADO, SE ESTABLECE POR INDICE, LA MAYOR RECAUDACION Y SE IDENTIFICA AL PROFESIONAL
+    for(int c = 0; c < cantidadProfesionales; c++)
+    {
+        if(ind == -1)
+        {
+            maximo=atencionesParticulares[c];
+            ind=c;
+        }
+        else if(atencionesParticulares[c]>maximo)
+        {
+            maximo=atencionesParticulares[c];
+            ind=c;
+        }
+    }
+
+    ///PRUEBA
+    std::cout << "PRUEBA: " << std::endl;
+
+    for(int d = 0; d < cantidadProfesionales; d++)
+    {
+        std::cout << "Profesional: " << std::string(profesionales[d].getApellido()) << ", " << std::string(profesionales[d].getNombre()) <<
+        " / Recaudacion: $" << atencionesParticulares[d] << std::endl;
+
+    }
+
+        std::cout << std::endl << std::string(profesionales[ind].getApellido()) << ", " << std::string(profesionales[ind].getNombre()) <<
+        " registra la mayor recaudacion por atenciones particulares ($" << atencionesParticulares[ind] << ")" << std::endl;
+
+    delete[] profesionales;
+    delete[] atencionesParticulares;
+    delete[] turnos;
 }

@@ -402,14 +402,25 @@ int main()
                 cout<<"INFORMES " <<endl<<endl;
                 cout << "\033[0m";  // Detiene subrayado
 
-                cout << "1 - ESPECIALIDAD MAS SOLICITADA" << endl;
+                cout << "1 - PROFESIONAL QUE MAS RECAUDO DE MANERA PARTICULAR" << endl;
+                cout << "2 - PROFESIONAL QUE MAS PACIENTES ATENDIO" << endl;
+                cout << "3 - ESPECIALIDAD MAS SOLICITADA" << endl;
                 cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
 
 
                 opcionInforme = pedirIntValido("Ingrese una opcion: ");
                 switch(opcionInforme)
                 {
-               case 1:
+                    case 1:
+                    system("cls");
+                    cout << "\033[4m";  // Comienza subrayado
+                    cout<<"PROFESIONAL QUE MAS RECAUDO DE MANERA PARTICULAR" <<endl<<endl;
+                    cout << "\033[0m";  // Detiene subrayado
+                    informarProfesionalMayoresAtencionesParticulares();
+                    system("pause");
+                    system("cls");
+                    break;
+               case 2:
                     system("cls");
                     cout << "\033[4m";  // Comienza subrayado
                     cout<<"PROFESIONAL QUE MAS PACIENTES ATENDIO" <<endl<<endl;
@@ -417,7 +428,16 @@ int main()
                     informarProfesionalQueMasPacientesAtendio();
                     system("pause");
                     system("cls");
-                    break;
+                break;
+               case 3:
+                    system("cls");
+                    cout << "\033[4m";  // Comienza subrayado
+                    cout<<"ESPECIALIDAD MAS SOLICITADA" <<endl<<endl;
+                    cout << "\033[0m";  // Detiene subrayado
+                    informarEspecialidadMasSolicitada();
+                    system("pause");
+                    system("cls");
+                break;
                 case 0:
                     system("cls");
                     break;

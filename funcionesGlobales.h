@@ -35,6 +35,7 @@ bool validateInputInt();
 char *trim(char *s);
 int pedirIntValido(std::string msj);
 
+
 //PARA CREAR FECHAS
 int pedirDiaFechaCancelable();
 int pedirMesFechaCancelable();

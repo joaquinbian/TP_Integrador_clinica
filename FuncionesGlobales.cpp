@@ -6,7 +6,6 @@
 #include <limits>
 
 //FUNCIONES GENERALES USADAS EN TODA LA APP
-
 char* trim(char* s) {
     int len = strlen(s);
     char* d = new char[len + 1];
@@ -27,7 +26,6 @@ char* trim(char* s) {
 
     return d;
 }
-
 
 
 bool estaStringVacio(char *str) {
