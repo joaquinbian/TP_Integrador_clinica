@@ -6,12 +6,37 @@
 #include <limits>
 
 
-bool estaStringVacio(const char *str) {
-    return strlen(str) == 0;
+char* trim(char* s) {
+    int len = strlen(s);
+    char* d = new char[len + 1];  
+    if(d == NULL){
+        std::cout << "No se pudo reservar memoria para validar el string" << std::endl;
+        return NULL;
+    }
+
+    int count = 0;
+    for (int i = 0; i < len; i++) {
+        std::cout << "El elemento iterando es " << s[i] << std::endl;
+        if (!(isspace(s[i]))) {
+            d[count] = s[i]; 
+            count++;
+        }
+    }    
+
+    d[count] = '\0';
+    
+    return d;
 }
 
+
+
 bool estaStringVacio(char *str) {
-    return strlen(str) == 0;
+   char *sinEspacios = trim(str);
+    bool isEmpty = strlen(sinEspacios) == 0;
+
+    delete[] sinEspacios;
+
+    return isEmpty;
 }
 
 void pedirStringBucle(char* variable, std::string mensaje, int longitud){
@@ -51,15 +76,17 @@ bool validateInputInt(){
 
 bool validateInputString(char* str, int longitud){
     bool valid = true;
+    valid = validarInput();
+
+    if(!valid){
+        std::cout << "Ocurrio un error. El campo no puede tener mas de " << longitud - 1 << " caracteres. Intente nuevamente" << std::endl;
+        return valid;
+    }
+
     if(estaStringVacio(str)){
         std::cout << "El campo no puede estar vacio" << std::endl;
         valid = false;
         return valid;
-    }
-    valid = validarInput();
-    
-    if(!valid){
-        std::cout << "Ocurrio un error. El campo no puede tener mas de " << longitud - 1 << " caracteres. Intente nuevamente" << std::endl;
     }
 
     return valid;
