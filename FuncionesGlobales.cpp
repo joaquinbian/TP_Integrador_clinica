@@ -8,7 +8,7 @@
 
 char* trim(char* s) {
     int len = strlen(s);
-    char* d = new char[len + 1];  
+    char* d = new char[len + 1];
     if(d == NULL){
         std::cout << "No se pudo reservar memoria para validar el string" << std::endl;
         return NULL;
@@ -16,15 +16,14 @@ char* trim(char* s) {
 
     int count = 0;
     for (int i = 0; i < len; i++) {
-        std::cout << "El elemento iterando es " << s[i] << std::endl;
         if (!(isspace(s[i]))) {
-            d[count] = s[i]; 
+            d[count] = s[i];
             count++;
         }
-    }    
+    }
 
     d[count] = '\0';
-    
+
     return d;
 }
 
