@@ -103,7 +103,7 @@ Profesional cargarProfesional()
         std::cin >> especialidad;
         existeEsp = existeEspecialidad(especialidad) || validateCancelValueInt(especialidad); //si ingresa 0, dejamos que avance para que cancele
         if(!existeEsp){
-            std::cout << "Especialidad invalida" << std::endl;
+            std::cout << "No se encontro la especialidad" << std::endl;
         }
 
     }while(!validateInputInt() || !existeEsp);
@@ -246,7 +246,7 @@ Profesional cargarProfesionalAEditar(char *matriculaAEditar)
         std::cin >> especialidad;
         existeEsp = existeEspecialidad(especialidad) || validateCancelValueInt(especialidad); //si ingresa 0, dejamos que avance para que cancele
         if(!existeEsp){
-            std::cout << "Especialidad invalida" << std::endl;
+            std::cout << "No se encontro la especialidad" << std::endl;
         }
 
     }while(!validateInputInt() || !existeEsp);
