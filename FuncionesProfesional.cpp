@@ -7,7 +7,7 @@ Profesional cargarProfesional()
     char nombre[LONGITUD_NOMBRE], apellido[LONGITUD_APELLIDO], direccion[LONGITUD_DIRECCION], telefono[LONGITUD_TELEFONO], ciudad[LONGITUD_CIUDAD], email[LONGITUD_EMAIL], matricula[LONGITUD_MATRICULA], soloParticularChar;
     float valorConsulta;
     int especialidad;
-    bool inputValid = false, soloParticular = false, existeProf;
+    bool inputValid, soloParticular, existeProf, existeEsp = false;
     std::cout << "Ingrese los datos del profesional " << std::endl;
     std::cout << "Ingrese 0 en cualquier campo para cancelar" << std::endl;
     std::cout << "------------------------------------" << std::endl;
@@ -101,7 +101,12 @@ Profesional cargarProfesional()
     do{
         std::cout << "Ingrese el codigo de la especialidad ";
         std::cin >> especialidad;
-    }while(!validateInputInt());
+        existeEsp = existeEspecialidad(especialidad) || validateCancelValueInt(especialidad); //si ingresa 0, dejamos que avance para que cancele
+        if(!existeEsp){
+            std::cout << "Especialidad invalida" << std::endl;
+        }
+
+    }while(!validateInputInt() || !existeEsp);
 
     if(validateCancelValueInt(especialidad)){
         return Profesional();
@@ -144,7 +149,7 @@ Profesional cargarProfesionalAEditar(char *matriculaAEditar)
     char nombre[LONGITUD_NOMBRE], apellido[LONGITUD_APELLIDO], direccion[LONGITUD_DIRECCION], telefono[LONGITUD_TELEFONO], ciudad[LONGITUD_CIUDAD], email[LONGITUD_EMAIL], matricula[LONGITUD_MATRICULA], soloParticularChar;
     float valorConsulta;
     int especialidad;
-    bool inputValid = false, soloParticular = false, existeProf;
+    bool inputValid, soloParticular, existeProf, existeEsp = false;
     std::cout << "Ingrese los datos del profesional " << std::endl;
     std::cout << "Ingrese 0 en cualquier campo para cancelar" << std::endl;
     std::cout << "------------------------------------" << std::endl;
@@ -236,15 +241,26 @@ Profesional cargarProfesionalAEditar(char *matriculaAEditar)
 
     std::cout << "Especialidades: " << std::endl;
     mostrarTodasEspecialidadesActivas();
-    std::cout << "Ingrese el codigo de la especialidad ";
-    std::cin >> especialidad;
+    do{
+        std::cout << "Ingrese el codigo de la especialidad ";
+        std::cin >> especialidad;
+        existeEsp = existeEspecialidad(especialidad) || validateCancelValueInt(especialidad); //si ingresa 0, dejamos que avance para que cancele
+        if(!existeEsp){
+            std::cout << "Especialidad invalida" << std::endl;
+        }
+
+    }while(!validateInputInt() || !existeEsp);
+
 
     if(validateCancelValueInt(especialidad)){
         return Profesional();
     }
 
+    do {
+
     std::cout << "Ingrese el valor de la consulta: $";
     std::cin >> valorConsulta;
+    }while(!validateInputInt());
 
     if(validateCancelValueFloat(valorConsulta)){
         return Profesional();

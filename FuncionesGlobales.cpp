@@ -5,6 +5,7 @@
 #include <ctime>
 #include <limits>
 
+//FUNCIONES GENERALES USADAS EN TODA LA APP
 
 char* trim(char* s) {
     int len = strlen(s);
