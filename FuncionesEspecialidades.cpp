@@ -37,7 +37,7 @@ void guardarEspecialidad()
     EspecialidadesArchivo ea;
     especialidad = cargarEspecialidad();
 
-    if(estaStringVacio(especialidad.getNombreEspecialidad(), LONGITUD_ESPECIALIDAD))
+    if(estaStringVacio((char *)especialidad.getNombreEspecialidad()))
     {
         std::cout<<"Carga de especialidad cancelada " <<std::endl;
 
@@ -78,21 +78,29 @@ void mostrarTodasEspeciaidadesEliminadas()
 void editarEspecialidad()
 {
     int id;
-    char nombreEspecialidad[50];
+    char nombreEspecialidad[LONGITUD_ESPECIALIDAD];
     Especialidad especialidad;
     EspecialidadesArchivo ea;
     mostrarTodasEspecialidadesActivas();
     std::cout<<std::endl<<"Digite 0 para cancelar" << std::endl;
-    std::cout << "Ingrese el ID de la especialidad que desea editar: ";
-    std::cin>>id;
+
+    do{
+        std::cout << "Ingrese el ID de la especialidad que desea editar: ";
+        std::cin>>id;
+    }while(!validateInputInt());
+
     std::cin.ignore();
 
     if(validateCancelValueInt(id)){
         return;
     }
 
-    std::cout<<std::endl<<"Ingrese el nombre de la especialidad : ";
-    std::cin.getline(nombreEspecialidad, 50);
+    std::cout<<std::endl;
+
+    do{
+        std::cout<<"Ingrese el nombre de la especialidad : ";
+        std::cin.getline(nombreEspecialidad, LONGITUD_ESPECIALIDAD);
+    }while(!validateInputString(nombreEspecialidad, LONGITUD_ESPECIALIDAD));
 
     if(validateCancelValueString(nombreEspecialidad)){
         return;
