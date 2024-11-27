@@ -11,7 +11,7 @@ Turno cargarTurno()
     Fecha fechaTurno;
     char dniPaciente[LONGITUD_DNI], matricula[LONGITUD_MATRICULA];
     int horaTurno, dia, mes, anio;
-    bool existeP, existeT, fechaFutura;
+    bool inputValido = false, existeP, existeT, fechaFutura;
 
     do
     {
@@ -69,8 +69,8 @@ Turno cargarTurno()
             std::cin >> horaTurno;
 
             if(validateCancelValueInt(horaTurno)){
-            return Turno();
-    }
+                return Turno();
+            }
         }
         while(horaTurno < 8 || horaTurno > 20);
 
@@ -80,15 +80,17 @@ Turno cargarTurno()
             std::cout << "Ingrese el DNI del paciente: ";
             std::cin.ignore();
             std::cin.getline(dniPaciente, LONGITUD_DNI);
+            inputValido  = validateInputString(dniPaciente, LONGITUD_DNI);
 
-            while(estaStringVacio(dniPaciente))
-            {
-                pedirStringBucle(dniPaciente, "El DNI del paciente no puede estar vacio, ingrese nuevamente: ", LONGITUD_DNI);
+            while(!inputValido){
+                std::cout << "Ingrese el DNI del paciente: ";
+                std::cin.getline(dniPaciente, LONGITUD_DNI);
+                inputValido = validateInputString(dniPaciente, LONGITUD_DNI);
             }
 
             if(validateCancelValueString(dniPaciente)){
-            return Turno();
-    }
+                return Turno();
+            }
 
             existeP = existePaciente(dniPaciente);
             if(!existeP)
@@ -100,12 +102,13 @@ Turno cargarTurno()
 
 //        std::cout << "Profesionales de " << buscarEspecialidad(especialidad).getNombreEspecialidad() << std::endl;
 //        buscarProfesionalesPorEspecialidad(especialidad);
-        std::cout << "Ingrese la matricula del profesional: ";
-        std::cin.getline(matricula, LONGITUD_MATRICULA);
-        while(estaStringVacio(matricula))
-        {
-            pedirStringBucle(matricula, "La matricula del profesional no puede estar vacia, ingrese nuevamente: ", LONGITUD_MATRICULA);
-        }
+
+        do{
+            std::cout << "Ingrese la matricula del profesional: ";
+            std::cin.getline(matricula, LONGITUD_MATRICULA);
+            inputValido = validateInputString(matricula, LONGITUD_MATRICULA);
+
+        }while(!inputValido);
 
         if(validateCancelValueString(matricula)){
         return Turno();
@@ -172,14 +175,24 @@ void guardarTurno()
 void editarTurno()
 {
     char DNI[20];
+    bool inputValido = false;
     TurnosArchivo ta;
+    //si no hay ningun turno asignado retornamos
+    if(ta.getCantidad() == 0){
+        std::cout << "No hay turnos asignados por el momento " << std::endl;
+        return;
+    }
+
     std::cout << "Digite 0 para cancelar" << std::endl;
     std::cout << "DNI del paciente para editar turno: ";
     std::cin.ignore();
     std::cin.getline(DNI, LONGITUD_DNI);
-    while(estaStringVacio(DNI))
-    {
-        pedirStringBucle(DNI, "El DNI del paciente no puede estar vacio, ingrese nuevamente: ", LONGITUD_DNI);
+    inputValido = validateInputString(DNI, LONGITUD_DNI);
+
+    while(!inputValido){
+        std::cout << "DNI del paciente para editar turno: ";
+        std::cin.getline(DNI, LONGITUD_DNI);
+        inputValido = validateInputString(DNI, LONGITUD_DNI);
     }
 
     if(validateCancelValueString(DNI)){
@@ -258,17 +271,26 @@ void eliminarTurno()
     TurnosArchivo ta;
 
     mostrarTodosTurnosActivos();
+    if(ta.getCantidad() == 0){
+        return;
+    }
+
     char dni[20];
     std::cout<<std::endl<<"Digite 0 para cancelar" << std::endl;
     std::cout<<"Ingrese DNI/paciente del turno a eliminar : ";
     std::cin.ignore();
     std::cin.getline(dni, 20);
 
+
+    std::cout << "DNI: " << dni << std::endl;
+
     if(validateCancelValueString(dni)){
         return;
     }
 
     int pos = ta.buscar(dni);
+
+    std::cout << "Pos: " << pos << std::endl;
     if(pos != -1)
     {
         turno = ta.Leer(pos);

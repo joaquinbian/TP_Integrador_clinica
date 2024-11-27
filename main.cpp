@@ -10,7 +10,7 @@ using namespace std;
 
 int main()
 {
-    int opcion, opcionPaciente, opcionProfesional, opcionTurno, opcionEspecialidad, opcionInforme;
+    int opcion, opcionPaciente, opcionBuscarPaciente, opcionProfesional, opcionBuscarProfesional, opcionTurno, opcionEspecialidad, opcionInforme;
     char salir;
     Paciente p1;
     Profesional pr1;
@@ -29,8 +29,7 @@ int main()
         cout<<"5 - INFORMES " <<endl;
         cout<<"0 - SALIR " <<endl<<endl;
 
-        cout<<"Ingrese una opcion : ";
-        cin>>opcion;
+        opcion = pedirIntValido("Ingrese una opcion : ");
 
         switch(opcion)
         {
@@ -51,8 +50,7 @@ int main()
                 cout << "6 - RESTAURAR PACIENTES" << endl;
                 cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
 
-                cout << "Ingrese una opcion: ";
-                cin >> opcionPaciente;
+                opcionPaciente = pedirIntValido("Ingrese una opcion: ");
 
                 switch (opcionPaciente)
                 {
@@ -74,9 +72,7 @@ int main()
                     cout << "1 - POR DNI" << endl;
                     cout << "2 - POR OBRA SOCIAL" << endl;
                     cout << "0 - VOLVER AL MENU PRINCIPAL" << endl<< endl;
-                    int opcionBuscarPaciente;
-                    cout << "Ingrese una opcion: ";
-                    cin >> opcionBuscarPaciente;
+                    opcionBuscarPaciente = pedirIntValido("Ingrese una opcion: ");
                     switch (opcionBuscarPaciente){
                     case 1:
                         system("cls");
@@ -163,9 +159,7 @@ int main()
                 cout << "6 - RESTAURAR PROFESIONALES" << endl;
                 cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
 
-                cout << "Ingrese una opcion: ";
-                cin >> opcionProfesional;
-
+                opcionProfesional = pedirIntValido("Ingrese una opcion: ");
                 switch(opcionProfesional)
                 {
                 case 1:
@@ -184,10 +178,9 @@ int main()
                     cout << "1 - POR MATRICULA" << endl;
                     cout << "2 - POR ESPECIALIDAD" << endl;
                     cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
-                    int opcionBuscarProfesional;
 
-                    cout << "Ingrese una opcion: ";
-                    cin >> opcionBuscarProfesional;
+                    opcionBuscarProfesional = pedirIntValido("Ingrese una opcion: ");
+
                     switch (opcionBuscarProfesional){
                     case 1:
                         system("cls");
@@ -276,8 +269,7 @@ int main()
                 cout << "4 - LISTAR TURNOS" << endl;
                 cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
 
-                cout << "Ingrese una opcion: ";
-                cin >> opcionTurno;
+                opcionTurno = pedirIntValido("Ingrese una opcion: ");
 
                 switch(opcionTurno)
                 {
@@ -341,9 +333,8 @@ int main()
                 cout << "5 - RESTAURAR ESPECIALIDADES" << endl;
                 cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
 
-                cout << "Ingrese una opcion: ";
-                cin >> opcionEspecialidad;
 
+                opcionEspecialidad = pedirIntValido("Ingrese una opcion: ");
                 switch(opcionEspecialidad)
                 {
                 case 1:
@@ -416,9 +407,8 @@ int main()
                 cout << "3 - ESPECIALIDAD MAS SOLICITADA" << endl;
                 cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
 
-                cout << "Ingrese una opcion: ";
-                cin >> opcionInforme;
 
+                opcionInforme = pedirIntValido("Ingrese una opcion: ");
                 switch(opcionInforme)
                 {
                     case 1:

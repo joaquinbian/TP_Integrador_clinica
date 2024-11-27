@@ -3,21 +3,92 @@
 #include <algorithm>
 #include <cctype>
 #include <ctime>
+#include <limits>
 
-bool estaStringVacio(const char *str) {
-    return strlen(str) == 0;
+//FUNCIONES GENERALES USADAS EN TODA LA APP
+char* trim(char* s) {
+    int len = strlen(s);
+    char* d = new char[len + 1];
+    if(d == NULL){
+        std::cout << "No se pudo reservar memoria para validar el string" << std::endl;
+        return NULL;
+    }
+
+    int count = 0;
+    for (int i = 0; i < len; i++) {
+        if (!(isspace(s[i]))) {
+            d[count] = s[i];
+            count++;
+        }
+    }
+
+    d[count] = '\0';
+
+    return d;
 }
+
+
+bool estaStringVacio(char *str) {
+   char *sinEspacios = trim(str);
+    bool isEmpty = strlen(sinEspacios) == 0;
+
+    delete[] sinEspacios;
+
+    return isEmpty;
+}
+
 void pedirStringBucle(char* variable, std::string mensaje, int longitud){
     //std::cin.ignore();
     do {
         std::cout << mensaje;
         std::cin.getline(variable, longitud);
 
-    }while(estaStringVacio(variable));
+    }while(estaStringVacio(variable) || !validateInputString(variable, longitud));
 
 }
 
+bool validarInput(){
+    bool valid = true;
+    if(std::cin.fail()){
+        valid = false;
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+    return valid;
+}
 
+
+bool validateInputInt(){
+    bool valid = true;
+
+    valid = validarInput();
+
+    if(!valid){
+        std::cout << "Ocurrio un error. Ingrese un numero valido" << std::endl;
+        return valid;
+    }
+
+
+    return valid;
+}
+
+bool validateInputString(char* str, int longitud){
+    bool valid = true;
+    valid = validarInput();
+
+    if(!valid){
+        std::cout << "Ocurrio un error. El campo no puede tener mas de " << longitud - 1 << " caracteres. Intente nuevamente" << std::endl;
+        return valid;
+    }
+
+    if(estaStringVacio(str)){
+        std::cout << "El campo no puede estar vacio" << std::endl;
+        valid = false;
+        return valid;
+    }
+
+    return valid;
+}
 
 bool validateCancelValueString(std::string str){
     return strcmp(str.c_str(), "0") == 0;
@@ -37,11 +108,23 @@ bool validateCancelValueFecha(Fecha fecha){
     return fecha.validar();
 }
 
+int pedirIntValido(std::string msj){
+    int num;
+    do {
+        std::cout << msj;
+        std::cin >> num;
+    }while(!validateInputInt());
+
+    return num;
+}
+
 int pedirDiaFechaCancelable(){
     int dia;
     do {
-        std::cout << "Ingrese el dia (1-31) (0 para cancelar): ";
-        std::cin >> dia;
+        do {
+            std::cout << "Ingrese el dia (1-31) (0 para cancelar): ";
+            std::cin >> dia;
+        }while(!validateInputInt());
         if(dia < 0 || dia > 31){
             std::cout << "Dia invalido" << std::endl;
         }
@@ -53,8 +136,10 @@ int pedirDiaFechaCancelable(){
 int pedirMesFechaCancelable(){
     int mes;
     do {
-        std::cout << "Ingrese el mes (1-12) (0 para cancelar): ";
-        std::cin >> mes;
+        do{
+            std::cout << "Ingrese el mes (1-12) (0 para cancelar): ";
+            std::cin >> mes;
+        }while(!validateInputInt());
         if(mes < 0 || mes > 12){
             std::cout << "Mes invalido" << std::endl;
         }
@@ -66,8 +151,11 @@ int pedirMesFechaCancelable(){
 int pedirAnioFechaCancelable(){
     int anio;
     do {
-        std::cout << "Ingrese el anio (0 para cancelar): ";
-        std::cin >> anio;
+        do{
+            std::cout << "Ingrese el anio (0 para cancelar): ";
+            std::cin >> anio;
+        }while(!validateInputInt());
+
         if(anio < 0){
             std::cout << "Anio invalido" << std::endl;
         }

@@ -22,13 +22,19 @@ const int LONGITUD_MATRICULA = 50;
 
 
 
-//TODOS 
+//TODOS
 bool validateCancelValueString(std::string str);
 bool validateCancelValueChar(char c);
 bool validateCancelValueInt(int num);
 bool validateCancelValueFloat(float num);
-bool estaStringVacio(const char *str);
+bool estaStringVacio(char *str);
 void pedirStringBucle(char* variable, std::string mensaje, int longitud);
+bool validarInput();
+bool validateInputString(char* str, int longitud);
+bool validateInputInt();
+char *trim(char *s);
+int pedirIntValido(std::string msj);
+
 
 //PARA CREAR FECHAS
 int pedirDiaFechaCancelable();

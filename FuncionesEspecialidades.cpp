@@ -5,7 +5,7 @@
 
 Especialidad cargarEspecialidad()
 {
-    char nombreEspecialidad[50];
+    char nombreEspecialidad[LONGITUD_ESPECIALIDAD];
     int id;
 
     std::cout << "Carga especialidad" << std::endl;
@@ -14,7 +14,13 @@ Especialidad cargarEspecialidad()
 
     std::cout<<"Ingrese el nombre de la especialidad : ";
     std::cin.ignore();
-    std::cin.getline(nombreEspecialidad, 50);
+    std::cin.getline(nombreEspecialidad, LONGITUD_ESPECIALIDAD);
+
+    while(!validateInputString(nombreEspecialidad, LONGITUD_ESPECIALIDAD))
+    {
+        std::cout<<"Ingrese el nombre de la especialidad : ";
+        std::cin.getline(nombreEspecialidad, LONGITUD_ESPECIALIDAD);
+    }
 
     if(validateCancelValueString(nombreEspecialidad))
     {
@@ -31,7 +37,7 @@ void guardarEspecialidad()
     EspecialidadesArchivo ea;
     especialidad = cargarEspecialidad();
 
-    if(estaStringVacio(especialidad.getNombreEspecialidad()))
+    if(estaStringVacio((char *)especialidad.getNombreEspecialidad()))
     {
         std::cout<<"Carga de especialidad cancelada " <<std::endl;
 
@@ -72,21 +78,34 @@ void mostrarTodasEspeciaidadesEliminadas()
 void editarEspecialidad()
 {
     int id;
-    char nombreEspecialidad[50];
+    char nombreEspecialidad[LONGITUD_ESPECIALIDAD];
+    bool existeEsp = false;
     Especialidad especialidad;
     EspecialidadesArchivo ea;
     mostrarTodasEspecialidadesActivas();
     std::cout<<std::endl<<"Digite 0 para cancelar" << std::endl;
-    std::cout << "Ingrese el ID de la especialidad que desea editar: ";
-    std::cin>>id;
+
+    do{
+        std::cout << "Ingrese el codigo de la especialidad que desea editar: ";
+        std::cin>>id;
+        existeEsp = existeEspecialidad(id) || validateCancelValueInt(id); //si ingresa 0, dejamos que avance para que cancele
+        if(!existeEsp){
+            std::cout << "No se encontro la especialidad" << std::endl;
+        }
+    }while(!validateInputInt()  || !existeEsp);
+
     std::cin.ignore();
 
     if(validateCancelValueInt(id)){
         return;
     }
 
-    std::cout<<std::endl<<"Ingrese el nombre de la especialidad : ";
-    std::cin.getline(nombreEspecialidad, 50);
+    std::cout<<std::endl;
+
+    do{
+        std::cout<<"Ingrese el nombre de la especialidad : ";
+        std::cin.getline(nombreEspecialidad, LONGITUD_ESPECIALIDAD);
+    }while(!validateInputString(nombreEspecialidad, LONGITUD_ESPECIALIDAD));
 
     if(validateCancelValueString(nombreEspecialidad)){
         return;
@@ -137,10 +156,19 @@ void restaurarEspecialidad()
     Especialidad especialidad;
     EspecialidadesArchivo ea;
     int codigo;
+    bool existeEsp = false;
     mostrarTodasEspeciaidadesEliminadas();
     std::cout<<std::endl<<"Digite 0 para cancelar" << std::endl;
-    std::cout<<"Ingrese el codigo de la especialidad a restaurar : ";
-    std::cin>>codigo;
+     do{
+        std::cout << "Ingrese el codigo de la especialidad ";
+        std::cin >> codigo;
+        existeEsp = existeEspecialidad(codigo) || validateCancelValueInt(codigo); //si ingresa 0, dejamos que avance para que cancele
+        if(!existeEsp){
+            std::cout << "No se encontro la especialidad" << std::endl;
+        }
+
+    }while(!validateInputInt() || !existeEsp);
+
 
     if(validateCancelValueInt(codigo)){
         return;
