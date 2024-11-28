@@ -90,29 +90,27 @@ void editarEspecialidad()
         std::cout << "Ingrese el codigo de la especialidad que desea editar: ";
         std::cin>>id;
         existeEsp = existeEspecialidadActiva(id) || validateCancelValueInt(id); //si ingresa 0, dejamos que avance para que cancele
-        if(!existeEsp){
-            std::cout << "No se encontro la especialidad" << std::endl;
-        }
     }while(!validateInputInt());
 
     std::cin.ignore();
 
     if(validateCancelValueInt(id)){
+        std::cout << "Edicion de especialidad cancelada" << std::endl;
         return;
     }
 
     std::cout<<std::endl;
 
-    do{
-        std::cout<<"Ingrese el nombre de la especialidad : ";
-        std::cin.getline(nombreEspecialidad, LONGITUD_ESPECIALIDAD);
-    }while(!validateInputString(nombreEspecialidad, LONGITUD_ESPECIALIDAD));
-
-    if(validateCancelValueString(nombreEspecialidad)){
-        return;
-    }
-
     if(existeEsp){
+        do{
+            std::cout<<"Ingrese el nombre de la especialidad : ";
+            std::cin.getline(nombreEspecialidad, LONGITUD_ESPECIALIDAD);
+        }while(!validateInputString(nombreEspecialidad, LONGITUD_ESPECIALIDAD));
+
+        if(validateCancelValueString(nombreEspecialidad)){
+            return;
+        }
+
         int pos = ea.buscar(id);
         if(pos != -1)
         {
@@ -140,12 +138,11 @@ void eliminarEspecialidad()
         std::cout << "Ingrese el codigo de la especialidad que desea eliminar: ";
         std::cin>>codigo;
         existeEsp = existeEspecialidadActiva(codigo) || validateCancelValueInt(codigo); //si ingresa 0, dejamos que avance para que cancele
-        if(!existeEsp){
-            std::cout << "No se encontro la especialidad" << std::endl;
-        }
+       
     }while(!validateInputInt());
 
     if(validateCancelValueInt(codigo)){
+        std::cout << "Eliminacion de especialidad cancelada" << std::endl;
         return;
     }
 
@@ -176,14 +173,12 @@ void restaurarEspecialidad()
         std::cout << "Ingrese el codigo de la especialidad ";
         std::cin >> codigo;
         existeEsp = existeEspecialidad(codigo) || validateCancelValueInt(codigo); //si ingresa 0, dejamos que avance para que cancele
-        if(!existeEsp){
-            std::cout << "No se encontro la especialidad" << std::endl;
-        }
 
     }while(!validateInputInt());
 
 
     if(validateCancelValueInt(codigo)){
+        std::cout << "Restauracion de especialidad cancelada" << std::endl;
         return;
     }
 
