@@ -68,7 +68,7 @@ int TurnosArchivo::getCantidad()
 
 }
 
-int TurnosArchivo::buscar(char* dni)
+int TurnosArchivo::buscar(char* dni, Fecha fechaTurno, int horaTurno)
 {
     Turno registro;
     TurnosArchivo ta;
@@ -81,7 +81,7 @@ int TurnosArchivo::buscar(char* dni)
     }
     while(fread(&registro, sizeof(Turno), 1, pFile) == 1)
     {
-        if(strcmp(registro.getDniPaciente(), dni) == 0){
+        if(strcmp(registro.getDniPaciente(), dni) == 0 && registro.getFecha() == fechaTurno && registro.getHoraTurno() == horaTurno){
              return pos;
         }
         pos++;

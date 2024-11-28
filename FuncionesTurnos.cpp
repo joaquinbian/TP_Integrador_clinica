@@ -132,12 +132,20 @@ Turno cargarTurno()
 void buscarTurno()
 {
     char DNI[20];
+    Fecha fechaTurno;
+    int horaTurno;
     TurnosArchivo ta;
     std::cout << "Ingrese DNI del paciente para buscar turno: ";
     std::cin.ignore();
     std::cin.getline(DNI, 20);
 
-    int pos = ta.buscar(DNI);
+    std::cout << "Ingrese fecha del turno a buscar: ";
+    std::cin >> fechaTurno;
+
+    std::cout << "Ingrese hora del turno a buscar: ";
+    std::cin >> horaTurno;
+
+    int pos = ta.buscar(DNI, fechaTurno, horaTurno);
     if(pos == -1 )
     {
         std::cout << "El turno no ha sido encontrado." << std::endl;
@@ -175,6 +183,7 @@ void guardarTurno()
 void editarTurno()
 {
     char DNI[20];
+    int horaTurno;
     bool inputValido = false;
     TurnosArchivo ta;
     //si no hay ningun turno asignado retornamos
@@ -198,8 +207,23 @@ void editarTurno()
     if(validateCancelValueString(DNI)){
         return;
     }
+//
+//    std::cout << "Fecha del turno a buscar: " << std::endl;
+//    std::cin >> fechaTurno;
+    int dia, mes, anio;
+    dia = pedirDiaFechaCancelable();
+    if(validateCancelValueInt(dia)) {return; }
+    mes = pedirMesFechaCancelable();
+    if(validateCancelValueInt(mes)) {return; }
+    anio = pedirAnioFechaCancelable();
+    if(validateCancelValueInt(anio)) {return; }
+    Fecha fechaTurno(dia, mes, anio);
+//
+    std::cout << "Ingrese hora del turno a buscar: ";
+    std::cin >> horaTurno;
+    if(validateCancelValueInt(horaTurno)) {return; }
 
-    int pos = ta.buscar(DNI);
+    int pos = ta.buscar(DNI, fechaTurno, horaTurno);
     if(pos == -1 )
     {
         std::cout << "El turno que quiere editar no ha sido encontrado." << std::endl;
@@ -209,13 +233,14 @@ void editarTurno()
     Turno turno;
     turno = cargarTurno();
     bool res = ta.guardar(pos, turno);
-    if(res)
+    if(res && turno.getHoraTurno()!=0)
+    ///(Saber si el Turno esta vacio)
     {
-        std::cout << "El turno ha sido editado correctamente";
+        std::cout << "El turno ha sido editado correctamente" << std::endl;
     }
     else
     {
-        std::cout << "Ocurrio un error al editar el turno";
+        std::cout << "Ocurrio un error al editar el turno" << std::endl;
     }
 }
 
@@ -276,21 +301,34 @@ void eliminarTurno()
     }
 
     char dni[20];
+    int horaTurno;
     std::cout<<std::endl<<"Digite 0 para cancelar" << std::endl;
     std::cout<<"Ingrese DNI/paciente del turno a eliminar : ";
     std::cin.ignore();
     std::cin.getline(dni, 20);
 
-
-    std::cout << "DNI: " << dni << std::endl;
-
     if(validateCancelValueString(dni)){
         return;
     }
 
-    int pos = ta.buscar(dni);
+    std::cout << "Fecha del turno a eliminar: " <<std::endl;
+    int dia, mes, anio;
+    dia = pedirDiaFechaCancelable();
+    if(validateCancelValueInt(dia)) {return; }
+    mes = pedirMesFechaCancelable();
+    if(validateCancelValueInt(mes)) {return; }
+    anio = pedirAnioFechaCancelable();
+    if(validateCancelValueInt(anio)) {return; }
+    Fecha fechaTurno(dia, mes, anio);
 
-    std::cout << "Pos: " << pos << std::endl;
+    std::cout << "Ingrese hora del turno a eliminar: ";
+    std::cin >> horaTurno;
+
+    int pos = ta.buscar(dni, fechaTurno, horaTurno);
+
+//    std::cout << "DNI: " << dni << std::endl;
+//    std::cout << "Pos: " << pos << std::endl;
+
     if(pos != -1)
     {
         turno = ta.Leer(pos);
@@ -394,11 +432,13 @@ void restaurarTurno()
     ///
     mostrarTodosTurnosEliminados();
     char dni[20];
+    Fecha fechaTurno;
+    int horaTurno;
     std::cout<<std::endl<<"Ingrese el DNI/paciente del turno a restaurar : ";
     std::cin.ignore();
     std::cin.getline(dni, 20);
 
-    int pos = ta.buscar(dni);
+    int pos = ta.buscar(dni, fechaTurno, horaTurno);
     if(pos != -1)
     {
         turno = ta.Leer(pos);
