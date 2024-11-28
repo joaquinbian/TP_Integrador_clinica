@@ -34,6 +34,7 @@ bool validateInputString(char* str, int longitud);
 bool validateInputInt();
 char *trim(char *s);
 int pedirIntValido(std::string msj);
+bool sonStringsIguales(char* str1, char* str2);
 
 
 //PARA CREAR FECHAS

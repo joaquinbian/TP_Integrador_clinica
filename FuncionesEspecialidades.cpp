@@ -3,6 +3,48 @@
 #include "EspecialidadesArchivo.h"
 #include "funcionesGlobales.h"
 
+
+bool existeEspecialidad(char *nombreEspecialidad)
+{
+    EspecialidadesArchivo ea;
+    int cantidad = ea.getCantidad();
+    Especialidad *especialidades = new Especialidad[cantidad];
+    ea.leerTodos(especialidades, cantidad);
+
+    for(int i = 0; i < cantidad; i++)
+    {
+        if(sonStringsIguales((char *)especialidades[i].getNombreEspecialidad(), nombreEspecialidad))
+        {
+            delete [] especialidades;
+            return true;
+        }
+    }
+
+    delete [] especialidades;
+
+    return false;
+}
+bool existeEspecialidad(char *nombreEspecialidad, int codigo)
+{
+    EspecialidadesArchivo ea;
+    int cantidad = ea.getCantidad();
+    Especialidad *especialidades = new Especialidad[cantidad];
+    ea.leerTodos(especialidades, cantidad);
+
+    for(int i = 0; i < cantidad; i++)
+    {
+        if(sonStringsIguales((char *)especialidades[i].getNombreEspecialidad(), nombreEspecialidad) && especialidades[i].getId() != codigo)
+        {
+            delete [] especialidades;
+            return true;
+        }
+    }
+
+    delete [] especialidades;
+
+    return false;
+}
+
 Especialidad cargarEspecialidad()
 {
     char nombreEspecialidad[LONGITUD_ESPECIALIDAD];
@@ -20,6 +62,13 @@ Especialidad cargarEspecialidad()
     {
         std::cout<<"Ingrese el nombre de la especialidad : ";
         std::cin.getline(nombreEspecialidad, LONGITUD_ESPECIALIDAD);
+    }
+
+    if(existeEspecialidad(nombreEspecialidad))
+    {
+        std::cout<<"La especialidad ya existe " <<std::endl;
+        return Especialidad();
+
     }
 
     if(validateCancelValueString(nombreEspecialidad))
@@ -94,6 +143,8 @@ void editarEspecialidad()
 
     std::cin.ignore();
 
+    
+
     if(validateCancelValueInt(id)){
         std::cout << "Edicion de especialidad cancelada" << std::endl;
         return;
@@ -111,6 +162,11 @@ void editarEspecialidad()
             return;
         }
 
+        if(existeEspecialidad(nombreEspecialidad, id)){
+            std::cout<<"La especialidad ya existe " <<std::endl;
+            return;
+        }
+        
         int pos = ea.buscar(id);
         if(pos != -1)
         {

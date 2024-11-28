@@ -6,6 +6,11 @@
 #include <limits>
 
 //FUNCIONES GENERALES USADAS EN TODA LA APP
+
+bool sonStringsIguales(char* str1, char* str2){
+    return strcmp(str1, str2) == 0;
+}
+
 char* trim(char* s) {
     int len = strlen(s);
     char* d = new char[len + 1];

@@ -9,3 +9,5 @@ void mostrarTodasEspeciaidadesEliminadas();
 void editarEspecialidad();
 void eliminarEspecialidad();
 void restaurarEspecialidad();
+bool existeEspecialidad(char *nombreEspecialidad);
+bool existeEspecialidad(char *nombreEspecialidad, int id);
