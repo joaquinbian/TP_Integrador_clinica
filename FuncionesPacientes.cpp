@@ -18,10 +18,10 @@ Paciente cargarPaciente()
     std::cout << "------------------------------------" << std::endl;
 
 
+    //std::cin.ignore();
     do
     {
         std::cout << "Ingrese el DNI del paciente: ";
-        std::cin.ignore();
         std::cin.getline(dni, LONGITUD_DNI);
         inputValid = validateInputString(dni, LONGITUD_DNI);
 
@@ -452,11 +452,11 @@ void editarPaciente()
         return;
     }
 
-    
+
 
 
     if(existePaciente(DNI) && estaPacienteActivo(DNI)){
-        
+
         Paciente paciente;
         std::cout << std::endl;
         paciente = cargarPacienteAEditar(DNI);
@@ -483,7 +483,7 @@ void editarPaciente()
     else
     {
         std::cout << std::endl <<"El paciente que quiere editar no ha sido encontrado." << std::endl<<std::endl;
-        return;    
+        return;
     }
 }
 
@@ -493,7 +493,7 @@ void eliminarPaciente()
     PacientesArchivo pa;
 
     mostrarTodosPacientesActivosResumidos();
-    
+
     char dni[LONGITUD_DNI];
     std::cout << "Digite 0 para cancelar" << std::endl;
     std::cout<<"Ingrese el DNI del paciente a eliminar : ";
@@ -503,7 +503,7 @@ void eliminarPaciente()
         std::cout << "Ingrese el DNI del paciente que quiere editar: ";
         std::cin.getline(dni, LONGITUD_DNI);
     }
-    
+
 
     if(validateCancelValueString(dni)){
         std::cout << "Eliminacion de paciente cancelada" << std::endl;
@@ -511,7 +511,7 @@ void eliminarPaciente()
     }
 
 
-    
+
     if(existePaciente(dni) && estaPacienteActivo(dni)){
         int pos = pa.buscar(dni);
         if(pos != -1)
@@ -538,7 +538,7 @@ void restaurarPaciente()
     std::cout<<"Ingrese el DNI del paciente a restaurar : ";
     std::cin.ignore();
     std::cin.getline(dni, LONGITUD_DNI);
-    
+
     while(!validateInputString(dni, LONGITUD_DNI)){
         std::cout << "Ingrese el DNI del paciente que quiere editar: ";
         std::cin.getline(dni, LONGITUD_DNI);
