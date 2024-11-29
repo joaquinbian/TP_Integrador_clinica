@@ -181,6 +181,19 @@ bool existePaciente(char* dni)
     }
     return false;
 }
+
+bool estaPacienteActivo(char *dni){
+    PacientesArchivo pa;
+
+    int pos = pa.buscar(dni);
+
+    if(pos >= 0){
+        Paciente paciente = pa.Leer(pos);
+        return !paciente.getEliminado();
+    }
+    return false;
+}
+
 bool existeEspecialidad(int Id)
 {
     EspecialidadesArchivo ea;

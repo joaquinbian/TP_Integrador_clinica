@@ -46,6 +46,7 @@ Fecha obtenerFechaActual();
 
 //PACIENTES
 bool existePaciente(char* dni);
+bool estaPacienteActivo(char* dni);
 
 ///PROFESIONALES
 void mostrarProfesional(Profesional profesional);

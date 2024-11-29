@@ -18,6 +18,7 @@ Paciente::Paciente(string nombre, string apellido, string telefono, string direc
     setFechaNacimiento(fechaNacimiento);
     setDni(dni);
     setObraSocial(obraSocial);
+    setEliminado(false);
 }
 void Paciente::setFechaNacimiento(Fecha fechaNacimiento)
 {
