@@ -293,7 +293,14 @@ Paciente cargarPacienteAEditar(char* Dni)
         if(!fechaNacimiento.esValida){
             std::cout << "La fecha ingresada es invalida, ingrese otra por favor " << std::endl;
         }
-    } while(!fechaNacimiento.esValida);
+
+         if(fechaNacimiento > obtenerFechaActual()){
+            std::cout << std::endl;
+            std::cout << "La fecha ingresada es posterior a la fecha actual, ingrese otra por favor " << std::endl;
+            std::cout << std::endl;
+        }
+
+    } while(!fechaNacimiento.esValida || fechaNacimiento > obtenerFechaActual());
 
 
 
@@ -441,27 +448,23 @@ void editarPaciente()
     }
 
     if(validateCancelValueString(DNI)){
+        std::cout << "Edicion de paciente cancelada " << std::endl;
         return;
     }
 
     
 
-    Paciente paciente;
-    std::cout << std::endl;
-    paciente = cargarPacienteAEditar(DNI);
 
-    if(strlen(paciente.getDni()) == 0){
-        std::cout << "Edicion de paciente cancelada " << std::endl;
-        return;
-    }
-
-    /* if(!existePaciente(DNI) || !estaPacienteActivo(DNI))
-    {
-        std::cout << std::endl <<"El paciente que quiere editar no ha sido encontrado." << std::endl<<std::endl;
-        return;
-    }
-  */
     if(existePaciente(DNI) && estaPacienteActivo(DNI)){
+        
+        Paciente paciente;
+        std::cout << std::endl;
+        paciente = cargarPacienteAEditar(DNI);
+
+        if(strlen(paciente.getDni()) == 0){
+            std::cout << "Edicion de paciente cancelada " << std::endl;
+            return;
+        }
 
         int pos = pa.buscar(DNI);
         bool res = pa.guardar(pos, paciente);
@@ -580,18 +583,21 @@ void buscarPaciente()
     }
 
     if(validateCancelValueString(DNI)){
+        std::cout << "Busqueda de paciente cancelada" << std::endl;
         return;
     }
 
-    int pos = pa.buscar(DNI);
-    if(pos == -1 )
-    {
+    if(existePaciente(DNI) && estaPacienteActivo(DNI)){
+
+        int pos = pa.buscar(DNI);
+        Paciente p = pa.Leer(pos);
+        std::cout << std::endl;
+        mostrarPaciente(p);
+
+    } else {
         std::cout << std::endl << "El paciente no ha sido encontrado." << std::endl <<std::endl;
         return;
     }
-    Paciente p = pa.Leer(pos);
-    std::cout << std::endl;
-    mostrarPaciente(p);
 }
 void buscarPacientesPorObraSocial()
 {
@@ -605,6 +611,8 @@ void buscarPacientesPorObraSocial()
     if(pacientes == NULL)
     {
         std::cout << std::endl <<"No se pudo leer los pacientes" << std::endl <<std::endl;
+        delete [] pacientes;
+        return;
     }
 
     pa.leerTodos(pacientes, cantidad);
@@ -620,6 +628,8 @@ void buscarPacientesPorObraSocial()
     }
 
     if(validateCancelValueString(obraSocial)){
+        delete [] pacientes;
+        std::cout << "Busqueda de pacientes por obra social cancelada" << std::endl;
         return;
     }
 
