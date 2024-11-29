@@ -15,6 +15,7 @@ Profesional::Profesional(string nombre, string apellido, string telefono, string
     setEspecialidad(especialidad);
     setValorConsulta(valorConsulta);
     setSoloParticular(soloParticular);
+    setEliminado(false);
 }
 void Profesional::setMatricula(string matricula)
 {

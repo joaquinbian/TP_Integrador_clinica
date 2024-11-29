@@ -20,7 +20,7 @@ Persona::Persona(std::string nombre, std::string apellido, std::string telefono,
     setDireccion(direccion);
     setCiudad(ciudad);
     setEmail(email);
-
+    
 
 }
 void Persona::setNombre(std::string nombre)
