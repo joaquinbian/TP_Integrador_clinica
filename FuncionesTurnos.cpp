@@ -241,7 +241,7 @@ void editarTurno()
         int horaTurno = turnos[indEditar-1].getHoraTurno();
         Fecha fechaTurno = turnos[indEditar-1].getFecha();
 
-        std::cout << "PRUEBA" << "DNI: " << DNI << ", Fecha: " << fechaTurno.toString() << ", Hora: " << horaTurno << std::endl;
+        std::cout << "PRUEBA --> " << "DNI: " << DNI << ", Fecha: " << fechaTurno.toString() << ", Hora: " << horaTurno << std::endl;
 
 
         int pos = ta.buscar(DNI, fechaTurno, horaTurno);
