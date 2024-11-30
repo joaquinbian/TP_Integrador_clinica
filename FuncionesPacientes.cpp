@@ -18,7 +18,7 @@ Paciente cargarPaciente()
     std::cout << "------------------------------------" << std::endl;
 
 
-    //std::cin.ignore();
+    std::cin.ignore();
     do
     {
         std::cout << "Ingrese el DNI del paciente: ";
