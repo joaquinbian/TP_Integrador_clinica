@@ -52,7 +52,7 @@ bool estaPacienteActivo(char* dni);
 void mostrarProfesional(Profesional profesional);
 void buscarProfesionalesPorEspecialidad(int idEspecialidad);
 bool existeProfesional(char *matricula);
-
+bool estaProfesionalActivo(char *matricula);
 //TURNOS
 bool validarExisteTurno(Turno t);
 

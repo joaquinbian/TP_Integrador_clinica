@@ -101,7 +101,7 @@ Profesional cargarProfesional()
     do{
         std::cout << "Ingrese el codigo de la especialidad ";
         std::cin >> especialidad;
-        existeEsp = existeEspecialidad(especialidad) || validateCancelValueInt(especialidad); //si ingresa 0, dejamos que avance para que cancele
+        existeEsp = existeEspecialidadActiva(especialidad) || validateCancelValueInt(especialidad); //si ingresa 0, dejamos que avance para que cancele
         if(!existeEsp){
             std::cout << "No se encontro la especialidad" << std::endl;
         }
@@ -236,6 +236,7 @@ Profesional cargarProfesionalAEditar(char *matriculaAEditar)
     }while(!inputValid);
 
     if(validateCancelValueString(email)){
+        std::cout << "Carga de profesional cancelada " << std::endl;
         return Profesional();
     }
 
@@ -244,7 +245,7 @@ Profesional cargarProfesionalAEditar(char *matriculaAEditar)
     do{
         std::cout << "Ingrese el codigo de la especialidad ";
         std::cin >> especialidad;
-        existeEsp = existeEspecialidad(especialidad) || validateCancelValueInt(especialidad); //si ingresa 0, dejamos que avance para que cancele
+        existeEsp = existeEspecialidadActiva(especialidad) || validateCancelValueInt(especialidad); //si ingresa 0, dejamos que avance para que cancele
         if(!existeEsp){
             std::cout << "No se encontro la especialidad" << std::endl;
         }
@@ -358,7 +359,7 @@ void mostrarTodosProfesionalesActivos()
     // Mostrar pacientes activos
     for (int i = 0; i < cantidad; i++)
     {
-        if (!profesionales[i].getEliminado())
+        if (estaProfesionalActivo((char*)profesionales[i].getMatricula()))
         {
             mostrarProfesional(profesionales[i]);
         }
@@ -376,7 +377,7 @@ void mostrarTodosProfesionalesActivosResumido()
     pa.leerTodos(profesionales, cantidad);
     for(int i = 0; i < cantidad; i++)
     {
-        if(profesionales[i].getEliminado() == false)
+        if(estaProfesionalActivo((char*)profesionales[i].getMatricula()))
         {
 
             mostrarProfesionalResumido(profesionales[i]);
@@ -394,7 +395,7 @@ void mostrarTodosProfesionalesEliminados()
     pa.leerTodos(profesionales, cantidad);
     for(int i = 0; i < cantidad; i++)
     {
-        if(profesionales[i].getEliminado() == true)
+        if(estaProfesionalActivo((char*)profesionales[i].getMatricula()) == false)
         {
 
             mostrarProfesionalResumido(profesionales[i]);
@@ -405,7 +406,6 @@ void mostrarTodosProfesionalesEliminados()
 void editarProfesional()
 {
     char matricula[50];
-    bool inputValid = false;
     ProfesionalesArchivo pa;
     mostrarTodosProfesionalesActivos();
     std::cout << "Digite 0 para cancelar" << std::endl;
@@ -413,41 +413,45 @@ void editarProfesional()
     std::cin.ignore();
     std::cin.getline(matricula, LONGITUD_MATRICULA);
 
-    while(!inputValid){
+    while(!validateInputString(matricula, LONGITUD_MATRICULA)){
         std::cout << "Ingrese la matricula del profesional que quiere editar: ";
         std::cin.getline(matricula, LONGITUD_MATRICULA);
-        inputValid = validateInputString(matricula, LONGITUD_MATRICULA);
+        validateInputString(matricula, LONGITUD_MATRICULA);
     }
 
     if(validateCancelValueString(matricula)){
+        std::cout << "Edicion de profesional cancelada" << std::endl;
         return;
     }
 
-    int pos = pa.buscar(matricula);
-    if(pos == -1 )
-    {
+
+    if(existeProfesional(matricula) && estaProfesionalActivo(matricula)){
+        Profesional profesional;
+        profesional = cargarProfesionalAEditar(matricula);
+
+        if(strlen(profesional.getMatricula()) == 0){
+            std::cout << "Edicion de profesional cancelada " << std::endl;
+            return;
+        }
+
+        int pos = pa.buscar(matricula);
+        bool res = pa.guardar(pos, profesional);
+        if(res)
+        {
+            std::cout <<std::endl<< "El profesional ha sido editado correctamente"<<std::endl;
+            return;
+        }
+        else
+        {
+            std::cout <<std::endl<< "Ocurrio un error al editar el profesional"<<std::endl;
+            return;
+        }
+    } else {
         std::cout << std::endl <<"El profesional que quiere editar no ha sido encontrado." <<std::endl<< std::endl;
         return;
     }
 
-    Profesional profesional;
-    profesional = cargarProfesionalAEditar(matricula);
-
-    if(strlen(profesional.getMatricula()) == 0){
-        std::cout << "Edicion de profesional cancelada " << std::endl;
-        return;
-    }
-    bool res = pa.guardar(pos, profesional);
-    if(res)
-    {
-        std::cout <<std::endl<< "El profesional ha sido editado correctamente"<<std::endl;
-        return;
-    }
-    else
-    {
-        std::cout <<std::endl<< "Ocurrio un error al editar el profesional"<<std::endl;
-        return;
-    }
+    
 }
 
 void eliminarProfesional()
@@ -468,19 +472,22 @@ void eliminarProfesional()
         std::cin.getline(matricula, LONGITUD_MATRICULA);
     }
 
+
     if(validateCancelValueString(matricula)){
+        std::cout << "Eliminacion de profesional cancelada" << std::endl;
         return;
     }
 
-    int pos = pa.buscar(matricula);
-    if(pos != -1)
-    {
-        profesional = pa.Leer(pos);
-        profesional.setEliminado(true);
-        pa.guardar(pos,profesional);
-        std::cout<<std::endl<<"profesional eliminado " <<std::endl<<std::endl;
-    }
-    else
+    if(existeProfesional(matricula) && estaProfesionalActivo(matricula)){
+        int pos = pa.buscar(matricula);
+        if(pos != -1)
+        {
+            profesional = pa.Leer(pos);
+            profesional.setEliminado(true);
+            pa.guardar(pos,profesional);
+            std::cout<<std::endl<<"profesional eliminado " <<std::endl<<std::endl;
+        }
+    } else
     {
         std::cout<<std::endl<<"No se encontro el profesional "<<std::endl<<std::endl;
     }
@@ -506,18 +513,21 @@ void restaurarProfesional()
     }
 
     if(validateCancelValueString(matricula)){
+        std::cout << "Restauracion de profesional cancelada" << std::endl;
         return;
     }
 
-    int pos = pa.buscar(matricula);
-    if(pos != -1)
-    {
-        profesional = pa.Leer(pos);
-        profesional.setEliminado(false);
-        pa.guardar(pos,profesional);
-        std::cout<<std::endl<<"Profesional restaurado con exito" <<std::endl<<std::endl;
-    }
-    else
+    if(existeProfesional(matricula) && estaProfesionalActivo(matricula) == false){
+
+        int pos = pa.buscar(matricula);
+        if(pos != -1)
+        {
+            profesional = pa.Leer(pos);
+            profesional.setEliminado(false);
+            pa.guardar(pos,profesional);
+            std::cout<<std::endl<<"Profesional restaurado con exito" <<std::endl<<std::endl;
+        }
+    } else
     {
         std::cout<<std::endl<<"No se encontro el profesional "<<std::endl<<std::endl;
     }
@@ -538,18 +548,19 @@ void buscarProfesional()
     }
 
     if(validateCancelValueString(matricula)){
+        std::cout << "Busqueda de profesional cancelada" << std::endl;
         return;
     }
 
-    int pos = pa.buscar(matricula);
-    if(pos == -1 )
-    {
+
+    if(existeProfesional(matricula) && estaProfesionalActivo(matricula)){
+        int pos = pa.buscar(matricula);
+        Profesional p = pa.Leer(pos);
+        std::cout << std::endl;
+        mostrarProfesional(p);
+    } else {
         std::cout << "El profesional no ha sido encontrado." << std::endl;
-        return;
     }
-    Profesional p = pa.Leer(pos);
-    std::cout << std::endl;
-    mostrarProfesional(p);
 }
 
 bool existeProfesional(char *matricula)
@@ -570,6 +581,7 @@ void buscarProfesionalPorEspecialidad()
     profesional = new Profesional[cantidad];
 
     bool encontrado = false;
+    int especialidad;
 
     if(profesional == NULL)
     {
@@ -579,14 +591,11 @@ void buscarProfesionalPorEspecialidad()
     pa.leerTodos(profesional, cantidad);
     system("cls");
     mostrarTodasEspecialidadesActivas();
-    int especialidad;
     std::cout << "Digite 0 para cancelar" << std::endl;
     do{
         std::cout << "Ingrese la especialidad del profesional que quiere buscar: ";
         std::cin >> especialidad;
     }while(!validateInputInt());
-
-
 
     if(validateCancelValueInt(especialidad)){
         return;
@@ -594,7 +603,7 @@ void buscarProfesionalPorEspecialidad()
 
     for(int i = 0; i < cantidad; i++)
     {
-        if(profesional[i].getEspecialidad() == especialidad)
+        if(profesional[i].getEspecialidad() == especialidad && estaProfesionalActivo((char*)profesional[i].getMatricula()) && existeEspecialidadActiva(especialidad))
         {
             encontrado  = true;
             std::cout << std::endl;

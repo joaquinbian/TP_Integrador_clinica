@@ -194,6 +194,19 @@ bool estaPacienteActivo(char *dni){
     return false;
 }
 
+
+bool estaProfesionalActivo(char *matricula){
+    ProfesionalesArchivo pa;
+
+    int pos = pa.buscar(matricula);
+
+    if(pos >= 0){
+        Profesional profesional = pa.Leer(pos);
+        return !profesional.getEliminado();
+    }
+    return false;
+}
+
 bool existeEspecialidad(int Id)
 {
     EspecialidadesArchivo ea;
