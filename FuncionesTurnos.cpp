@@ -502,7 +502,7 @@ void restaurarTurno()
 void informarProfesionalQueMasPacientesAtendio()
 {
     ///Profesional que m╬ô├¬ΓîÉ╬ô├╢├ë╬ô├▓┬ús pacientes atendi╬ô├¬ΓîÉ╬ô├╢├ë╬ô├▓┬ú:
-    int ind=-1, maximo;
+    int ind=-1, maximo = 0;
 
     ///Profesionales activos e inactivos
     Profesional *profesionales;
@@ -525,7 +525,7 @@ void informarProfesionalQueMasPacientesAtendio()
         for(int j = 0; j < cantidadTurnos; j++)
         {
 
-            if(std::string(profesionales[i].getMatricula()) == std::string(turnos[j].getMatricula()) && !turnos[j].getEliminado())
+            if(std::string(profesionales[i].getMatricula()) == std::string(turnos[j].getMatricula()) && !turnos[j].getEliminado() && estaProfesionalActivo((char *)profesionales[i].getMatricula()))
             {
 
                 pacientesAtendidos[i]++;
@@ -550,9 +550,16 @@ void informarProfesionalQueMasPacientesAtendio()
         }
     }
 
-    std::cout << profesionales[ind].getApellido() << ", " << profesionales[ind].getNombre() <<
-              " (Matr╬ô├¬ΓîÉ╬ô├╢├ë╬ô├▓┬úcula: " << profesionales[ind].getMatricula() << ") - " << pacientesAtendidos[ind] <<
+    if(maximo < 1)
+    {
+        std::cout << "No hay turnos cargados" << std::endl;
+        return;
+    } else {
+
+        std::cout << profesionales[ind].getApellido() << ", " << profesionales[ind].getNombre() <<
+              " (Matricula: " << profesionales[ind].getMatricula() << ") - " << pacientesAtendidos[ind] <<
               " pacientes atendidos" << std::endl << std::endl;
+    }
 
     delete[] profesionales;
     delete[] pacientesAtendidos;
