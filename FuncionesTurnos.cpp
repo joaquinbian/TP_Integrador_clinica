@@ -11,11 +11,11 @@ Turno cargarTurno()
     Fecha fechaTurno;
     char dniPaciente[LONGITUD_DNI], matricula[LONGITUD_MATRICULA];
     int horaTurno, dia, mes, anio;
-    bool inputValido = false, existeP, existeT, fechaFutura;
+    bool inputValido = false, existeP, existeT, fechaFutura, existeMatricula;
 
     do
     {
-        /// Inicio implementaci├│ manejo fecha >= Actual
+        /// Inicio implementaciΓö£Γöé manejo fecha >= Actual
 
         do
         {
@@ -51,11 +51,11 @@ Turno cargarTurno()
 
         // Obtener la fecha actual
             if(fechaTurno > obtenerFechaActual() || fechaTurno == obtenerFechaActual()){
-                std::cout << "Fecha v├ílida" << std::endl;
+                std::cout << "Fecha vΓö£├¡lida" << std::endl;
                 fechaFutura=true;
 
             } else{
-                std::cout << "La fecha ingresada es anterior a la fecha actual. Por favor ingrese una fecha v├ílida." << std::endl;
+                std::cout << "La fecha ingresada es anterior a la fecha actual. Por favor ingrese una fecha vΓö£├¡lida." << std::endl;
                 fechaFutura=false;
             }
 
@@ -76,15 +76,20 @@ Turno cargarTurno()
 
         do
         {
-
-            std::cout << "Ingrese el DNI del paciente: ";
+            ///Aca, al ingresar dni incorrecto, la segunda vez elimina el primer caracter
             std::cin.ignore();
+            std::cout << "1 Ingrese el DNI del paciente: ";
             std::cin.getline(dniPaciente, LONGITUD_DNI);
+            ///PRUEBA
+            std::cout << "PRUEBA --> DNI del paciente:" << dniPaciente << std::endl;
             inputValido  = validateInputString(dniPaciente, LONGITUD_DNI);
 
             while(!inputValido){
-                std::cout << "Ingrese el DNI del paciente: ";
+                std::cin.ignore();
+                std::cout << "2 Ingrese el DNI del paciente: ";
                 std::cin.getline(dniPaciente, LONGITUD_DNI);
+                ///PRUEBA
+                std::cout << "PRUEBA --> DNI del paciente:" << dniPaciente << std::endl;
                 inputValido = validateInputString(dniPaciente, LONGITUD_DNI);
             }
 
@@ -104,15 +109,19 @@ Turno cargarTurno()
 //        buscarProfesionalesPorEspecialidad(especialidad);
 
         do{
+            std::cin.ignore();
             std::cout << "Ingrese la matricula del profesional: ";
             std::cin.getline(matricula, LONGITUD_MATRICULA);
             inputValido = validateInputString(matricula, LONGITUD_MATRICULA);
 
-        }while(!inputValido);
+            existeMatricula = existeProfesional(matricula);
 
         if(validateCancelValueString(matricula)){
         return Turno();
-    }
+        }
+
+        }while(!inputValido || !existeMatricula);
+
 
         turno = Turno(fechaTurno, horaTurno, dniPaciente, matricula);
 
@@ -227,8 +236,9 @@ void editarTurno()
     int indEditar;
 
     do{
-        std::cout << "Ingrese el nro. de turno a editar: ";
+        std::cout << std::endl << "Ingrese el nro. de turno a editar: ";
         std::cin >> indEditar;
+        std::cout << std::endl;
         if(validateCancelValueInt(indEditar)){ return; }
     }while(turnos[indEditar-1].getEliminado() || indEditar<1 || indEditar>cantidad);
 
@@ -241,7 +251,7 @@ void editarTurno()
         int horaTurno = turnos[indEditar-1].getHoraTurno();
         Fecha fechaTurno = turnos[indEditar-1].getFecha();
 
-        std::cout << "PRUEBA --> " << "DNI: " << DNI << ", Fecha: " << fechaTurno.toString() << ", Hora: " << horaTurno << std::endl;
+        //std::cout << "PRUEBA --> " << "DNI: " << DNI << ", Fecha: " << fechaTurno.toString() << ", Hora: " << horaTurno << std::endl;
 
 
         int pos = ta.buscar(DNI, fechaTurno, horaTurno);
@@ -381,7 +391,7 @@ void eliminarTurno()
     bool res = ta.guardar(pos, turno);
 
     if(res){
-        std::cout << std::endl << "Turno eliminado con éxito" << std::endl;
+        std::cout << std::endl << "Turno eliminado con ├⌐xito" << std::endl;
     }
 
     delete [] turnos;
@@ -491,7 +501,7 @@ void restaurarTurno()
         turno.setEliminado(false);
         ta.guardar(pos,turno);
         std::cout << std::endl;
-        std::cout<<"Turno restaurado con Γê⌐ΓöÉΓò£xito" <<std::endl<<std::endl;
+        std::cout<<"Turno restaurado con ╬ô├¬ΓîÉ╬ô├╢├ë╬ô├▓┬úxito" <<std::endl<<std::endl;
     }
     else
     {
@@ -501,7 +511,7 @@ void restaurarTurno()
 
 void informarProfesionalQueMasPacientesAtendio()
 {
-    ///Profesional que m╬ô├¬ΓîÉ╬ô├╢├ë╬ô├▓┬ús pacientes atendi╬ô├¬ΓîÉ╬ô├╢├ë╬ô├▓┬ú:
+    ///Profesional que mΓò¼├┤Γö£┬¼╬ô├«├ëΓò¼├┤Γö£ΓòóΓö£├½Γò¼├┤Γö£ΓûôΓö¼├║s pacientes atendiΓò¼├┤Γö£┬¼╬ô├«├ëΓò¼├┤Γö£ΓòóΓö£├½Γò¼├┤Γö£ΓûôΓö¼├║:
     int ind=-1, maximo = 0;
 
     ///Profesionales activos e inactivos
@@ -510,7 +520,7 @@ void informarProfesionalQueMasPacientesAtendio()
     int cantidadProfesionales = pa.getCantidad();
     profesionales = new Profesional[cantidadProfesionales];
     pa.leerTodos(profesionales, cantidadProfesionales);
-    ///Vector acumulador de pacientes atendidos por profesional. Comparte el ╬ô├¬ΓîÉ╬ô├╢├ë╬ô├▓┬úndice con el de profesionales
+    ///Vector acumulador de pacientes atendidos por profesional. Comparte el Γò¼├┤Γö£┬¼╬ô├«├ëΓò¼├┤Γö£ΓòóΓö£├½Γò¼├┤Γö£ΓûôΓö¼├║ndice con el de profesionales
     int* pacientesAtendidos = new int[cantidadProfesionales] {};
     ///Vector Turnos
     Turno *turnos;
@@ -586,7 +596,7 @@ void informarEspecialidadMasSolicitada()
     turnos = new Turno [cantidadTurnos];
     ta.leerTodos(turnos, cantidadTurnos);
 
-    ///Vector de profesionales para comparar la matr├¡cula con la del turno
+    ///Vector de profesionales para comparar la matrΓö£┬ícula con la del turno
     Profesional *profesionales;
     ProfesionalesArchivo pa;
     int cantidadProfesionales = pa.getCantidad();
@@ -721,7 +731,7 @@ void informarProfesionalMayoresAtencionesParticulares(){
     } else {
 
         std::cout << std::endl << std::string(profesionales[ind].getApellido()) << ", " << std::string(profesionales[ind].getNombre()) <<
-        " registra la mayor recaudacion por atenciones particulares ($" << atencionesParticulares[ind] << ")" << std::endl;
+        " registra la mayor recaudacion por atenciones particulares ($" << atencionesParticulares[ind] << ")" << std::endl << std::endl;
     }
 
     delete[] profesionales;
