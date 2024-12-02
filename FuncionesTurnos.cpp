@@ -26,17 +26,19 @@ Turno cargarTurno()
             std::cin.getline(dniPaciente, LONGITUD_DNI);
             inputValido  = validateInputString(dniPaciente, LONGITUD_DNI);
 
-            while(!inputValido){
+            while(!inputValido)
+            {
                 std::cout << "Ingrese el DNI del paciente: ";
                 std::cin.getline(dniPaciente, LONGITUD_DNI);
                 inputValido = validateInputString(dniPaciente, LONGITUD_DNI);
             }
 
-            if(validateCancelValueString(dniPaciente)){
+            if(validateCancelValueString(dniPaciente))
+            {
                 return Turno();
             }
 
-            existeP = existePaciente(dniPaciente);
+            existeP = estaPacienteActivo(dniPaciente);
             if(!existeP)
             {
                 std::cout << "No encontramos un paciente con ese DNI " << std::endl;
@@ -52,56 +54,75 @@ Turno cargarTurno()
         std::cout << "\n";
 
 
-        do{
+        do
+        {
             std::cout << "Ingrese la matricula del profesional: ";
             std::cin.getline(matricula, LONGITUD_MATRICULA);
             inputValido = validateInputString(matricula, LONGITUD_MATRICULA);
 
-            if(validateCancelValueString(matricula)){
+            if(validateCancelValueString(matricula))
+            {
                 return Turno();
             }
 
             existeMatricula = existeProfesional(matricula) && estaProfesionalActivo(matricula);
 
-        }while(!inputValido || !existeMatricula);
+            if(!existeMatricula)
+            {
+
+                std::cout<<"La matricula ingresada son se encuentra registrada";
+                std::cout<<"\n";
+            }
+
+        }
+        while(!inputValido || !existeMatricula);
 
         do
         {
 
-        std::cout << "Ingrese la fecha del turno: " << std::endl;
-        std::cout << "Ingrese 0 en cualquier campo para cancelar" << std::endl;
-        std::cout << "------------------------------------------" << std::endl;
-        //std::cin >> fechaTurno;
-            do {
+            std::cout << "Ingrese la fecha del turno: " << std::endl;
+            std::cout << "Ingrese 0 en cualquier campo para cancelar" << std::endl;
+            std::cout << "------------------------------------------" << std::endl;
+            //std::cin >> fechaTurno;
+            do
+            {
                 dia = pedirDiaFechaCancelable();
 
-                if(validateCancelValueInt(dia)){
+                if(validateCancelValueInt(dia))
+                {
                     return Turno();
                 }
 
                 mes = pedirMesFechaCancelable();
 
-                if(validateCancelValueInt(mes)){
+                if(validateCancelValueInt(mes))
+                {
                     return Turno();
                 }
 
                 anio = pedirAnioFechaCancelable();
 
-                if(validateCancelValueInt(anio)){
+                if(validateCancelValueInt(anio))
+                {
                     return Turno();
                 }
 
                 fechaTurno = Fecha(dia, mes, anio);
-                if(!fechaTurno.esValida){
+                if(!fechaTurno.esValida)
+                {
                     std::cout << "La fecha ingresada es invalida, ingrese otra por favor " << std::endl;
                 }
-            }while(!fechaTurno.esValida);
+            }
+            while(!fechaTurno.esValida);
 
-        // Obtener la fecha actual
-            if(fechaTurno > obtenerFechaActual() || fechaTurno == obtenerFechaActual()){
+            // Obtener la fecha actual
+            if(fechaTurno > obtenerFechaActual() || fechaTurno == obtenerFechaActual())
+            {
                 fechaFutura=true;
 
-            } else{
+            }
+            else
+            {
                 std::cout << "La fecha ingresada es anterior a la fecha actual. Por favor ingrese una fecha valida." << std::endl;
                 fechaFutura=false;
             }
@@ -115,7 +136,8 @@ Turno cargarTurno()
             std::cout << "Ingrese la hora del turno (8-20 hs): ";
             std::cin >> horaTurno;
 
-            if(validateCancelValueInt(horaTurno)){
+            if(validateCancelValueInt(horaTurno))
+            {
                 return Turno();
             }
         }
@@ -141,7 +163,6 @@ Turno cargarTurno()
 
     return turno;
 }
-
 void buscarTurno()
 {
     char DNI[20];
@@ -153,41 +174,49 @@ void buscarTurno()
     std::cin.getline(DNI, 20);
 
     std::cout << "Ingrese fecha del turno a buscar: ";
-    do {
-                dia = pedirDiaFechaCancelable();
+    do
+    {
+        dia = pedirDiaFechaCancelable();
 
-                if(validateCancelValueInt(dia)){
-                    std::cout << "Busqueda de turno cancelada" << std::endl;
-                    return;
-                }
+        if(validateCancelValueInt(dia))
+        {
+            std::cout << "Busqueda de turno cancelada" << std::endl;
+            return;
+        }
 
-                mes = pedirMesFechaCancelable();
+        mes = pedirMesFechaCancelable();
 
-                if(validateCancelValueInt(mes)){
-                    std::cout << "Busqueda de turno cancelada" << std::endl;
+        if(validateCancelValueInt(mes))
+        {
+            std::cout << "Busqueda de turno cancelada" << std::endl;
 
-                    return ;
-                }
+            return ;
+        }
 
-                anio = pedirAnioFechaCancelable();
+        anio = pedirAnioFechaCancelable();
 
-                if(validateCancelValueInt(anio)){
-                    std::cout << "Busqueda de turno cancelada" << std::endl;
+        if(validateCancelValueInt(anio))
+        {
+            std::cout << "Busqueda de turno cancelada" << std::endl;
 
-                    return ;
-                }
+            return ;
+        }
 
-                fechaTurno = Fecha(dia, mes, anio);
-                if(!fechaTurno.esValida){
-                    std::cout << "La fecha ingresada es invalida, ingrese otra por favor " << std::endl;
-                }
-    }while(!fechaTurno.esValida);
+        fechaTurno = Fecha(dia, mes, anio);
+        if(!fechaTurno.esValida)
+        {
+            std::cout << "La fecha ingresada es invalida, ingrese otra por favor " << std::endl;
+        }
+    }
+    while(!fechaTurno.esValida);
 
-    do {
+    do
+    {
 
-    std::cout << "Ingrese hora del turno a buscar (8hs - 20hs): ";
-    std::cin >> horaTurno;
-    }while(horaTurno < 8 || horaTurno > 20);
+        std::cout << "Ingrese hora del turno a buscar (8hs - 20hs): ";
+        std::cin >> horaTurno;
+    }
+    while(horaTurno < 8 || horaTurno > 20);
 
     int pos = ta.buscar(DNI, fechaTurno, horaTurno);
     if(pos == -1 )
@@ -205,14 +234,14 @@ void buscarTurno()
 
     t.mostrar();
 }
-
 void guardarTurno()
 {
     Turno turno;
     TurnosArchivo ta;
     turno = cargarTurno();
 
-    if(strlen(turno.getDniPaciente()) == 0){
+    if(strlen(turno.getDniPaciente()) == 0)
+    {
         std::cout << "Carga de turno cancelada " << std::endl;
         return;
     }
@@ -230,13 +259,19 @@ void guardarTurno()
         system("cls");
     }
 }
-
 void editarTurno()
 {
     Turno *turnos;
     TurnosArchivo ta;
     int cantidad = ta.getCantidad();
     turnos = new Turno [cantidad];
+
+    if(turnos == nullptr)
+    {
+        std::cout<<"No se pudo asignar memoria ";
+
+    }
+
     ta.leerTodos(turnos, cantidad);
 
     if(cantidad == 0)
@@ -278,15 +313,23 @@ void editarTurno()
     int indEditar;
 
     std::cout << "\n";
-    do{
+    do
+    {
         indEditar = pedirIntValido("Ingrese el nro. de turno a editar: ");
         std::cout << std::endl;
-        if(validateCancelValueInt(indEditar)){ return; }
-    }while(turnos[indEditar-1].getEliminado() || indEditar<1 || indEditar>cantidad);
+        if(validateCancelValueInt(indEditar))
+        {
+            return;
+        }
+    }
+    while(turnos[indEditar-1].getEliminado() || indEditar<1 || indEditar>cantidad);
 
-    if(turnos[indEditar-1].getEliminado()){
+    if(turnos[indEditar-1].getEliminado())
+    {
         std::cout << "Turno inexistente " << std::endl;
-    }else{
+    }
+    else
+    {
         char DNI[20];
         strncpy(DNI, turnos[indEditar-1].getDniPaciente(), sizeof(DNI) - 1);
         DNI[sizeof(DNI) - 1] = '\0';
@@ -302,7 +345,8 @@ void editarTurno()
         turno = cargarTurno();
         bool res = false;
         ///Saber si el Turno esta vacio:
-        if(turno.getHoraTurno()!=0){
+        if(turno.getHoraTurno()!=0)
+        {
             res = ta.guardar(pos, turno);
         }
         if(res)
@@ -318,13 +362,19 @@ void editarTurno()
     delete [] turnos;
 
 }
-
 void mostrarTodosTurnosActivos()
 {
     Turno *turnos;
     TurnosArchivo ta;
     int cantidad = ta.getCantidad();
     turnos = new Turno [cantidad];
+
+    if(turnos == nullptr)
+    {
+        std::cout<<"No se pudo asignar memoria ";
+
+    }
+
     ta.leerTodos(turnos, cantidad);
 
     if(cantidad == 0)
@@ -364,13 +414,19 @@ void mostrarTodosTurnosActivos()
     }
     delete [] turnos;
 }
-
 void eliminarTurno()
 {
     Turno *turnos;
     TurnosArchivo ta;
     int cantidad = ta.getCantidad();
     turnos = new Turno [cantidad];
+
+    if(turnos == nullptr)
+    {
+        std::cout<<"No se pudo asignar memoria ";
+
+    }
+
     ta.leerTodos(turnos, cantidad);
 
     if(cantidad == 0)
@@ -411,13 +467,16 @@ void eliminarTurno()
 
     int indEliminar;
 
-    do{
+    do
+    {
         indEliminar = pedirIntValido("Ingrese el nro. de turno a eliminar: ");
-        if(validateCancelValueInt(indEliminar)){
+        if(validateCancelValueInt(indEliminar))
+        {
             std::cout << "Eliminacion de turno cancelada" << std::endl;
             return;
         }
-    }while(turnos[indEliminar-1].getEliminado() || indEliminar<1 || indEliminar>cantidad);
+    }
+    while(turnos[indEliminar-1].getEliminado() || indEliminar<1 || indEliminar>cantidad);
 
     char DNI[20];
     strncpy(DNI, turnos[indEliminar-1].getDniPaciente(), sizeof(DNI) - 1);
@@ -433,26 +492,25 @@ void eliminarTurno()
 
     bool res = ta.guardar(pos, turno);
 
-    if(res){
+    if(res)
+    {
         std::cout << std::endl << "Turno eliminado con exito" << std::endl;
     }
 
     delete [] turnos;
 }
-
-
 bool validarFechaTurno(Turno t1, Turno t2)
 {
     //if(t1.getFecha() == t2.getFecha() && t1.getHoraTurno() == t2.getHoraTurno()){
     Fecha f1 = t1.getFecha();
     Fecha f2 = t2.getFecha();
-    if(f1 == f2){
+    if(f1 == f2)
+    {
         return true;
     }
 
     return false;
 }
-
 bool validarExisteTurno(Turno t)
 {
 
@@ -461,6 +519,13 @@ bool validarExisteTurno(Turno t)
 
     int cantidad = ta.getCantidad();
     turnos = new Turno [cantidad];
+
+    if(turnos == nullptr)
+    {
+        std::cout<<"No se pudo asignar memoria ";
+
+    }
+
     ta.leerTodos(turnos, cantidad);
     for(int i = 0; i < cantidad; i++)
     {
@@ -477,13 +542,19 @@ bool validarExisteTurno(Turno t)
     delete [] turnos;
     return false;
 }
-
 void mostrarTodosTurnosEliminados()
 {
     Turno *turnos;
     TurnosArchivo ta;
     int cantidad = ta.getCantidad();
     turnos = new Turno [cantidad];
+
+    if(turnos == nullptr)
+    {
+        std::cout<<"No se pudo asignar memoria ";
+
+    }
+
     ta.leerTodos(turnos, cantidad);
 
 
@@ -518,7 +589,6 @@ void mostrarTodosTurnosEliminados()
     }
     delete [] turnos;
 }
-
 void restaurarTurno()
 {
     Turno *turnos;
@@ -526,6 +596,13 @@ void restaurarTurno()
     int cantidad = ta.getCantidad();
     bool hayTurnoEliminado = false;
     turnos = new Turno [cantidad];
+
+    if(turnos == nullptr)
+    {
+        std::cout<<"No se pudo asignar memoria ";
+
+    }
+
     ta.leerTodos(turnos, cantidad);
 
     if(cantidad == 0)
@@ -574,13 +651,16 @@ void restaurarTurno()
 
     int indRestauar;
 
-    do{
+    do
+    {
         indRestauar = pedirIntValido("Ingrese el nro. de turno a restaurar: ");
-        if(validateCancelValueInt(indRestauar)){
+        if(validateCancelValueInt(indRestauar))
+        {
             std::cout << "Restauracion de turno cancelada" << std::endl;
             return;
         }
-    }while(turnos[indRestauar-1].getEliminado() == false || indRestauar<1 || indRestauar>cantidad );
+    }
+    while(turnos[indRestauar-1].getEliminado() == false || indRestauar<1 || indRestauar>cantidad );
 
     char DNI[20];
     strncpy(DNI, turnos[indRestauar-1].getDniPaciente(), sizeof(DNI) - 1);
@@ -596,13 +676,13 @@ void restaurarTurno()
 
     bool res = ta.guardar(pos, turno);
 
-    if(res){
+    if(res)
+    {
         std::cout << std::endl << "Turno restaurado con exito" << std::endl;
     }
 
     delete [] turnos;
 }
-
 void informarProfesionalQueMasPacientesAtendio()
 {
     ///Profesional que mas pacientes atendiio:
@@ -613,14 +693,34 @@ void informarProfesionalQueMasPacientesAtendio()
     ProfesionalesArchivo pa;
     int cantidadProfesionales = pa.getCantidad();
     profesionales = new Profesional[cantidadProfesionales];
+
+    if(profesionales == nullptr)
+    {
+        std::cout<<"No se pudo asignar memoria ";
+
+    }
+
     pa.leerTodos(profesionales, cantidadProfesionales);
     ///Vector acumulador de pacientes atendidos por profesional. Comparte el indice con el de profesionales
     int* pacientesAtendidos = new int[cantidadProfesionales] {};
+    if(pacientesAtendidos == nullptr)
+    {
+        std::cout<<"No se pudo asignar memoria ";
+
+    }
+
     ///Vector Turnos
     Turno *turnos;
     TurnosArchivo ta;
     int cantidadTurnos = ta.getCantidad();
     turnos = new Turno [cantidadTurnos];
+
+    if(turnos == nullptr)
+    {
+        std::cout<<"No se pudo asignar memoria ";
+
+    }
+
     ta.leerTodos(turnos, cantidadTurnos);
 
     for(int i = 0; i < cantidadProfesionales; i++)
@@ -658,18 +758,19 @@ void informarProfesionalQueMasPacientesAtendio()
     {
         std::cout << "No hay turnos cargados" << std::endl;
         return;
-    } else {
+    }
+    else
+    {
 
         std::cout << profesionales[ind].getApellido() << ", " << profesionales[ind].getNombre() <<
-              " (Matricula: " << profesionales[ind].getMatricula() << ") - " << pacientesAtendidos[ind] <<
-              " pacientes atendidos" << std::endl << std::endl;
+                  " (Matricula: " << profesionales[ind].getMatricula() << ") - " << pacientesAtendidos[ind] <<
+                  " pacientes atendidos" << std::endl << std::endl;
     }
 
     delete[] profesionales;
     delete[] pacientesAtendidos;
     delete[] turnos;
 }
-
 void informarEspecialidadMasSolicitada()
 {
     ///Especialidad mas solicitada:
@@ -680,14 +781,36 @@ void informarEspecialidadMasSolicitada()
     EspecialidadesArchivo ea;
     int cantidadEspecialidades = ea.getCantidad();
     especialidades = new Especialidad[cantidadEspecialidades];
+
+    if(especialidades == nullptr)
+    {
+        std::cout<<"No se pudo asignar memoria ";
+
+    }
+
     ea.leerTodos(especialidades, cantidadEspecialidades);
     ///Vector acumulador de pacientes atendidos por especialidad. Comparte el ind con el de especialidades
     int* pacientesAtendidos = new int[cantidadEspecialidades] {};
+
+    if(pacientesAtendidos == nullptr)
+    {
+        std::cout<<"No se pudo asignar memoria ";
+
+    }
+
     ///Vector Turnos
     Turno *turnos;
     TurnosArchivo ta;
     int cantidadTurnos = ta.getCantidad();
     turnos = new Turno [cantidadTurnos];
+
+    if(turnos == nullptr)
+    {
+        std::cout<<"No se pudo asignar memoria ";
+
+
+    }
+
     ta.leerTodos(turnos, cantidadTurnos);
 
     ///Vector de profesionales para comparar la matrΓö£┬ícula con la del turno
@@ -695,6 +818,13 @@ void informarEspecialidadMasSolicitada()
     ProfesionalesArchivo pa;
     int cantidadProfesionales = pa.getCantidad();
     profesionales = new Profesional[cantidadProfesionales];
+
+    if(profesionales == nullptr)
+    {
+        std::cout<<"No se pudo asignar memoria ";
+
+    }
+
     pa.leerTodos(profesionales, cantidadProfesionales);
 
 
@@ -706,16 +836,23 @@ void informarEspecialidadMasSolicitada()
         int idEspecialidadTurno;
         std::string especialidadTurno;
 
-        for(int m = 0; m < cantidadProfesionales; m++){
-            if(matriculaTurno == profesionales[m].getMatricula()){
+        for(int m = 0; m < cantidadProfesionales; m++)
+        {
+            if(matriculaTurno == profesionales[m].getMatricula())
+            {
                 idEspecialidadTurno=profesionales[m].getEspecialidad();
                 break;
             }
         }
-        for(int n = 0; n < cantidadEspecialidades; n++){
-            if(idEspecialidadTurno==especialidades[n].getId() && existeEspecialidadActiva(idEspecialidadTurno)){
+        for(int n = 0; n < cantidadEspecialidades; n++)
+        {
+            if(idEspecialidadTurno==especialidades[n].getId() && existeEspecialidadActiva(idEspecialidadTurno))
+            {
                 //especialidadTurno=especialidades[n].getNombreEspecialidad();
-                if(!turnos[j].getEliminado()){pacientesAtendidos[n]++; }
+                if(!turnos[j].getEliminado())
+                {
+                    pacientesAtendidos[n]++;
+                }
                 break;
             }
         }
@@ -736,31 +873,34 @@ void informarEspecialidadMasSolicitada()
             ind=p;
         }
     }
-    if(maximo < 1 ){
+    if(maximo < 1 )
+    {
         std::cout << "No hay turnos cargados" << std::endl;
         return;
-    } else {
+    }
+    else
+    {
 
         std::cout << especialidades[ind].getNombreEspecialidad() << ", con " << pacientesAtendidos[ind] <<
-            " pacientes atendidos, fue la especialidad mas solicitada " << std::endl << std::endl;
+                  " pacientes atendidos, fue la especialidad mas solicitada " << std::endl << std::endl;
     }
 
-  /*   ///PRUEBA
-    std::cout << "PRUEBA: " << std::endl;
+    /*   ///PRUEBA
+      std::cout << "PRUEBA: " << std::endl;
 
-    for(int p = 0; p < cantidadEspecialidades; p++)
-    {
-        std::cout << "Especialidad: " << especialidades[p].getNombreEspecialidad() << " / Atenciones: " << pacientesAtendidos[p] << std::endl;
+      for(int p = 0; p < cantidadEspecialidades; p++)
+      {
+          std::cout << "Especialidad: " << especialidades[p].getNombreEspecialidad() << " / Atenciones: " << pacientesAtendidos[p] << std::endl;
 
-    } */
+      } */
 
     delete[] especialidades;
     delete[] pacientesAtendidos;
     delete[] turnos;
     delete[] profesionales;
 }
-
-void informarProfesionalMayoresAtencionesParticulares(){
+void informarProfesionalMayoresAtencionesParticulares()
+{
     ///MAYOR RECAUDACION PARTICULAR
     int ind=-1, maximo = 0;
     ///VECTOR CON TODOS LOS PROFESIONALES
@@ -778,17 +918,28 @@ void informarProfesionalMayoresAtencionesParticulares(){
     TurnosArchivo ta;
     int cantidadTurnos = ta.getCantidad();
     turnos = new Turno [cantidadTurnos];
+
+    if(turnos == nullptr)
+    {
+        std::cout<<"No se pudo asignar memoria ";
+
+    }
+
     ta.leerTodos(turnos, cantidadTurnos);
 
     ///RECORRIDO DE TURNOS PARA SABER SI NO FUE ELIMINADO Y OBTENER LA MATRICULA
-    for(int a=0; a<cantidadTurnos; a++){
+    for(int a=0; a<cantidadTurnos; a++)
+    {
         std::string matriculaTurno;
-        if(!turnos[a].getEliminado()){
+        if(!turnos[a].getEliminado())
+        {
             matriculaTurno = std::string(turnos[a].getMatricula());
             ///RECORRO EL VECTOR DE PROFESIONALES QUE ATIENDAN DE MANERA PARTICULAR
             ///BUSCANDO POR MatriculaTurno PARA INCREMENTAR ATENCIONES
-            for(int b=0; b<cantidadProfesionales; b++){
-                if(matriculaTurno == std::string(profesionales[b].getMatricula()) && profesionales[b].getSoloParticular() && estaProfesionalActivo((char *)profesionales[b].getMatricula())){
+            for(int b=0; b<cantidadProfesionales; b++)
+            {
+                if(matriculaTurno == std::string(profesionales[b].getMatricula()) && profesionales[b].getSoloParticular() && estaProfesionalActivo((char *)profesionales[b].getMatricula()))
+                {
                     atencionesParticulares[b]+=profesionales[b].getValorConsulta();
                 }
             }
@@ -810,22 +961,25 @@ void informarProfesionalMayoresAtencionesParticulares(){
         }
     }
 
-        ///PRUEBA
-/*     std::cout << "PRUEBA: " << std::endl;
+    ///PRUEBA
+    /*     std::cout << "PRUEBA: " << std::endl;
 
-    for(int d = 0; d < cantidadProfesionales; d++)
+        for(int d = 0; d < cantidadProfesionales; d++)
+        {
+            std::cout << "Profesional: " << std::string(profesionales[d].getApellido()) << ", " << std::string(profesionales[d].getNombre()) <<
+            " / Recaudacion: $" << atencionesParticulares[d] << std::endl;
+
+        }  */
+
+    if(maximo < 1)
     {
-        std::cout << "Profesional: " << std::string(profesionales[d].getApellido()) << ", " << std::string(profesionales[d].getNombre()) <<
-        " / Recaudacion: $" << atencionesParticulares[d] << std::endl;
-
-    }  */
-
-    if(maximo < 1){
         std::cout << "No se registraron atenciones particulares" << std::endl;
-    } else {
+    }
+    else
+    {
 
         std::cout << std::endl << std::string(profesionales[ind].getApellido()) << ", " << std::string(profesionales[ind].getNombre()) <<
-        " registra la mayor recaudacion por atenciones particulares ($" << atencionesParticulares[ind] << ")" << std::endl << std::endl;
+                  " registra la mayor recaudacion por atenciones particulares ($" << atencionesParticulares[ind] << ")" << std::endl << std::endl;
     }
 
     delete[] profesionales;

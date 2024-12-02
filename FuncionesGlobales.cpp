@@ -283,7 +283,7 @@ void mostrarProfesional(Profesional profesional)
     std::cout<<"Matricula : " <<profesional.getMatricula() <<std::endl;
     std::cout<<"Especialidad : " << buscarEspecialidad(profesional.getEspecialidad()).getNombreEspecialidad() <<std::endl;
     std::cout<<"Valor de la consulta : $" <<profesional.getValorConsulta() <<std::endl;
-    std::cout<<"Atiende obras sociales y prepagas : " <<profesional.getSoloParticular() <<std::endl;
+    std::cout<<"Atiende obras sociales y prepagas : " <<profesional.getSoloParticular() << " (1 - Si / 0 - No) " <<std::endl;
     std::cout<<"-----------------------------------------------"<<std::endl;
 }
 void mostrarEspecialidades(Especialidad especialidad)

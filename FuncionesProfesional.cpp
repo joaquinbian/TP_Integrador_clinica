@@ -17,7 +17,8 @@ Profesional cargarProfesional()
         std::cin.ignore();
         std::cin.getline(matricula, LONGITUD_MATRICULA);
         inputValid = validateInputString(matricula, LONGITUD_MATRICULA);
-        while(!inputValid){
+        while(!inputValid)
+        {
             std::cout << "Ingrese el numero de matricula: ";
             std::cin.getline(matricula, LONGITUD_MATRICULA);
             inputValid = validateInputString(matricula, LONGITUD_MATRICULA);
@@ -31,68 +32,87 @@ Profesional cargarProfesional()
     }
     while (existeProf);
 
-    if(validateCancelValueString(matricula)){
+    if(validateCancelValueString(matricula))
+    {
         return Profesional();
     }
 
-    do{
+    do
+    {
         std::cout << "Ingrese el apellido: ";
         std::cin.getline(apellido, LONGITUD_APELLIDO);
         inputValid = validateInputString(apellido, LONGITUD_APELLIDO);
-    }while(!inputValid);
+    }
+    while(!inputValid);
 
-    if(validateCancelValueString(apellido)){
+    if(validateCancelValueString(apellido))
+    {
         return Profesional();
     }
 
-    do {
+    do
+    {
         std::cout << "Ingrese el nombre: ";
         //std::cin.ignore();
         std::cin.getline(nombre, LONGITUD_NOMBRE);
         inputValid = validateInputString(nombre, LONGITUD_NOMBRE);
-    } while(!inputValid);
+    }
+    while(!inputValid);
 
-    if(validateCancelValueString(nombre)){
+    if(validateCancelValueString(nombre))
+    {
         return Profesional();
     }
 
-    do{
+    do
+    {
         std::cout << "Ingrese el domicilio: ";
         std::cin.getline(direccion, LONGITUD_DIRECCION);
         inputValid = validateInputString(direccion, LONGITUD_DIRECCION);
-    }while(!inputValid);
+    }
+    while(!inputValid);
 
-    if(validateCancelValueString(direccion)){
+    if(validateCancelValueString(direccion))
+    {
         return Profesional();
     }
 
-    do{
+    do
+    {
         std::cout << "Ingrese la ciudad: ";
         std::cin.getline(ciudad, LONGITUD_CIUDAD);
         inputValid = validateInputString(ciudad, LONGITUD_CIUDAD);
-    }while(!inputValid);
+    }
+    while(!inputValid);
 
-    if(validateCancelValueString(ciudad)){
+    if(validateCancelValueString(ciudad))
+    {
         return Profesional();
     }
 
-    do{
+    do
+    {
         std::cout << "Ingrese el telefono: ";
         std::cin.getline(telefono, LONGITUD_TELEFONO);
         inputValid = validateInputString(telefono, LONGITUD_TELEFONO);
-    }while(!inputValid);
+    }
+    while(!inputValid);
 
-    if(validateCancelValueString(telefono)){
+    if(validateCancelValueString(telefono))
+    {
         return Profesional();
     }
 
-    do{
+    do
+    {
         std::cout << "Ingrese el correo electronico: ";
         std::cin.getline(email, LONGITUD_EMAIL);
         inputValid = validateInputString(email, LONGITUD_EMAIL);
-    }while(!inputValid);
+    }
+    while(!inputValid);
 
-    if(validateCancelValueString(email)){
+    if(validateCancelValueString(email))
+    {
         return Profesional();
     }
 
@@ -101,26 +121,38 @@ Profesional cargarProfesional()
     std::cout << "\n";
 
     mostrarTodasEspecialidadesActivas();
-    do{
+    do
+    {
         std::cout << "Ingrese el codigo de la especialidad ";
         std::cin >> especialidad;
         existeEsp = existeEspecialidadActiva(especialidad) || validateCancelValueInt(especialidad); //si ingresa 0, dejamos que avance para que cancele
-        if(!existeEsp){
+        if(!existeEsp)
+        {
             std::cout << "No se encontro la especialidad" << std::endl;
         }
 
-    }while(!validateInputInt() || !existeEsp);
+    }
+    while(!validateInputInt() || !existeEsp);
 
-    if(validateCancelValueInt(especialidad)){
+    if(validateCancelValueInt(especialidad))
+    {
         return Profesional();
     }
 
-    do{
+    do
+    {
         std::cout << "Ingrese el valor de la consulta: $";
         std::cin >> valorConsulta;
-    }while(!validateInputInt());
+        if(valorConsulta < 0 )
+        {
+            std::cout<<"El valor de la consulta no puede ser 0 " ;
+            std::cout<<"\n";
+        }
+    }
+    while(!validateInputInt()|| valorConsulta <= 0);
 
-    if(validateCancelValueFloat(valorConsulta)){
+    if(validateCancelValueFloat(valorConsulta))
+    {
         return Profesional();
     }
 
@@ -128,12 +160,14 @@ Profesional cargarProfesional()
 
     std::cin >> soloParticularChar;
 
-    while(soloParticularChar != 's' && soloParticularChar != 'S' && soloParticularChar != 'n' && soloParticularChar != 'N'){
+    while(soloParticularChar != 's' && soloParticularChar != 'S' && soloParticularChar != 'n' && soloParticularChar != 'N')
+    {
         std::cout << "Ingrese una opcion valida (s/n): ";
         std::cin >> soloParticularChar;
     }
 
-    if(validateCancelValueChar(soloParticularChar)){
+    if(validateCancelValueChar(soloParticularChar))
+    {
         return Profesional();
     }
 
@@ -158,12 +192,14 @@ Profesional cargarProfesionalAEditar(char *matriculaAEditar)
     std::cout << "------------------------------------" << std::endl;
     do
     {
-        do{
+        do
+        {
             std::cout << "Ingrese el numero de matricula: ";
             //std::cin.ignore();
             std::cin.getline(matricula, LONGITUD_MATRICULA);
             inputValid = validateInputString(matricula, LONGITUD_MATRICULA);
-        }while(!inputValid);
+        }
+        while(!inputValid);
 
 
         existeProf = existeProfesional(matricula) && strcmp(matricula, matriculaAEditar) != 0;
@@ -174,71 +210,90 @@ Profesional cargarProfesionalAEditar(char *matriculaAEditar)
     }
     while (existeProf);
 
-    if(validateCancelValueString(matricula)){
+    if(validateCancelValueString(matricula))
+    {
         return Profesional();
     }
 
 
 
-    do{
+    do
+    {
         std::cout << "Ingrese el apellido: ";
         std::cin.getline(apellido, LONGITUD_APELLIDO);
         inputValid = validateInputString(apellido, LONGITUD_APELLIDO);
-    }while(!inputValid);
+    }
+    while(!inputValid);
 
 
-    if(validateCancelValueString(apellido)){
+    if(validateCancelValueString(apellido))
+    {
         return Profesional();
     }
 
-    do {
+    do
+    {
         std::cout << "Ingrese el nombre: ";
         //std::cin.ignore();
         std::cin.getline(nombre, LONGITUD_NOMBRE);
         inputValid = validateInputString(nombre, LONGITUD_NOMBRE);
-    } while(!inputValid);
+    }
+    while(!inputValid);
 
-    if(validateCancelValueString(nombre)){
+    if(validateCancelValueString(nombre))
+    {
         return Profesional();
     }
 
-    do{
+    do
+    {
         std::cout << "Ingrese el domicilio: ";
         std::cin.getline(direccion, LONGITUD_DIRECCION);
         inputValid = validateInputString(direccion, LONGITUD_DIRECCION);
-    }while(!inputValid);
+    }
+    while(!inputValid);
 
-    if(validateCancelValueString(direccion)){
+    if(validateCancelValueString(direccion))
+    {
         return Profesional();
     }
 
-    do{
+    do
+    {
         std::cout << "Ingrese la ciudad: ";
         std::cin.getline(ciudad, LONGITUD_CIUDAD);
         inputValid = validateInputString(ciudad, LONGITUD_CIUDAD);
-    }while(!inputValid);
+    }
+    while(!inputValid);
 
-    if(validateCancelValueString(ciudad)){
+    if(validateCancelValueString(ciudad))
+    {
         return Profesional();
     }
 
 
-    do{
+    do
+    {
         std::cout << "Ingrese el telefono: ";
         std::cin.getline(telefono, LONGITUD_TELEFONO);
         inputValid = validateInputString(telefono, LONGITUD_TELEFONO);
-    }while(!inputValid);
+    }
+    while(!inputValid);
 
-    if(validateCancelValueString(telefono)){
+    if(validateCancelValueString(telefono))
+    {
         return Profesional();
     }
-    do{
+    do
+    {
         std::cout << "Ingrese el correo electronico: ";
         std::cin.getline(email, LONGITUD_EMAIL);
         inputValid = validateInputString(email, LONGITUD_EMAIL);
-    }while(!inputValid);
+    }
+    while(!inputValid);
 
-    if(validateCancelValueString(email)){
+    if(validateCancelValueString(email))
+    {
         std::cout << "Carga de profesional cancelada " << std::endl;
         return Profesional();
     }
@@ -246,40 +301,49 @@ Profesional cargarProfesionalAEditar(char *matriculaAEditar)
     std::cout << "Especialidades: " << std::endl;
     std::cout << "\n";
     mostrarTodasEspecialidadesActivas();
-    do{
+    do
+    {
         std::cout << "Ingrese el codigo de la especialidad ";
         std::cin >> especialidad;
         existeEsp = existeEspecialidadActiva(especialidad) || validateCancelValueInt(especialidad); //si ingresa 0, dejamos que avance para que cancele
-        if(!existeEsp){
+        if(!existeEsp)
+        {
             std::cout << "No se encontro la especialidad" << std::endl;
         }
 
-    }while(!validateInputInt() || !existeEsp);
+    }
+    while(!validateInputInt() || !existeEsp);
 
 
-    if(validateCancelValueInt(especialidad)){
+    if(validateCancelValueInt(especialidad))
+    {
         return Profesional();
     }
 
-    do {
+    do
+    {
 
-    std::cout << "Ingrese el valor de la consulta: $";
-    std::cin >> valorConsulta;
-    }while(!validateInputInt());
+        std::cout << "Ingrese el valor de la consulta: $";
+        std::cin >> valorConsulta;
+    }
+    while(!validateInputInt());
 
-    if(validateCancelValueFloat(valorConsulta)){
+    if(validateCancelValueFloat(valorConsulta))
+    {
         return Profesional();
     }
 
     std::cout << "Atiende solo particulares? (s/n): ";
     std::cin >> soloParticularChar;
 
-    while(soloParticularChar != 's' && soloParticularChar != 'S' && soloParticularChar != 'n' && soloParticularChar != 'N'){
+    while(soloParticularChar != 's' && soloParticularChar != 'S' && soloParticularChar != 'n' && soloParticularChar != 'N')
+    {
         std::cout << "Ingrese una opcion valida (s/n): ";
         std::cin >> soloParticularChar;
     }
 
-    if(validateCancelValueChar(soloParticularChar)){
+    if(validateCancelValueChar(soloParticularChar))
+    {
         return Profesional();
     }
 
@@ -300,7 +364,8 @@ void guardarProfesional()
     profesional = cargarProfesional();
 
 
-    if(estaStringVacio((char *)profesional.getMatricula())){
+    if(estaStringVacio((char *)profesional.getMatricula()))
+    {
         std::cout << "Carga de profesional cancelada " << std::endl;
         return;
 
@@ -413,23 +478,27 @@ void editarProfesional()
     std::cin.ignore();
     std::cin.getline(matricula, LONGITUD_MATRICULA);
 
-    while(!validateInputString(matricula, LONGITUD_MATRICULA)){
+    while(!validateInputString(matricula, LONGITUD_MATRICULA))
+    {
         std::cout << "Ingrese la matricula del profesional que quiere editar: ";
         std::cin.getline(matricula, LONGITUD_MATRICULA);
         validateInputString(matricula, LONGITUD_MATRICULA);
     }
 
-    if(validateCancelValueString(matricula)){
+    if(validateCancelValueString(matricula))
+    {
         std::cout << "Edicion de profesional cancelada" << std::endl;
         return;
     }
 
 
-    if(existeProfesional(matricula) && estaProfesionalActivo(matricula)){
+    if(existeProfesional(matricula) && estaProfesionalActivo(matricula))
+    {
         Profesional profesional;
         profesional = cargarProfesionalAEditar(matricula);
 
-        if(strlen(profesional.getMatricula()) == 0){
+        if(strlen(profesional.getMatricula()) == 0)
+        {
             std::cout << "Edicion de profesional cancelada " << std::endl;
             return;
         }
@@ -446,7 +515,9 @@ void editarProfesional()
             std::cout <<std::endl<< "Ocurrio un error al editar el profesional"<<std::endl;
             return;
         }
-    } else {
+    }
+    else
+    {
         std::cout << std::endl <<"El profesional que quiere editar no ha sido encontrado." <<std::endl<< std::endl;
         return;
     }
@@ -467,18 +538,21 @@ void eliminarProfesional()
     std::cin.ignore();
     std::cin.getline(matricula, 50);
 
-    while(!validateInputString(matricula, LONGITUD_MATRICULA)){
+    while(!validateInputString(matricula, LONGITUD_MATRICULA))
+    {
         std::cout<<"Ingrese la matricula del profesional a eliminar : ";
         std::cin.getline(matricula, LONGITUD_MATRICULA);
     }
 
 
-    if(validateCancelValueString(matricula)){
+    if(validateCancelValueString(matricula))
+    {
         std::cout << "Eliminacion de profesional cancelada" << std::endl;
         return;
     }
 
-    if(existeProfesional(matricula) && estaProfesionalActivo(matricula)){
+    if(existeProfesional(matricula) && estaProfesionalActivo(matricula))
+    {
         int pos = pa.buscar(matricula);
         if(pos != -1)
         {
@@ -487,7 +561,8 @@ void eliminarProfesional()
             pa.guardar(pos,profesional);
             std::cout<<std::endl<<"profesional eliminado " <<std::endl<<std::endl;
         }
-    } else
+    }
+    else
     {
         std::cout<<std::endl<<"No se encontro el profesional "<<std::endl<<std::endl;
     }
@@ -507,17 +582,20 @@ void restaurarProfesional()
     std::cin.ignore();
     std::cin.getline(matricula, 50);
 
-    while(!validateInputString(matricula, LONGITUD_MATRICULA)){
+    while(!validateInputString(matricula, LONGITUD_MATRICULA))
+    {
         std::cout<<"Ingrese la matricula del profesional a restaurar : ";
         std::cin.getline(matricula, LONGITUD_MATRICULA);
     }
 
-    if(validateCancelValueString(matricula)){
+    if(validateCancelValueString(matricula))
+    {
         std::cout << "Restauracion de profesional cancelada" << std::endl;
         return;
     }
 
-    if(existeProfesional(matricula) && estaProfesionalActivo(matricula) == false){
+    if(existeProfesional(matricula) && estaProfesionalActivo(matricula) == false)
+    {
 
         int pos = pa.buscar(matricula);
         if(pos != -1)
@@ -527,7 +605,8 @@ void restaurarProfesional()
             pa.guardar(pos,profesional);
             std::cout<<std::endl<<"Profesional restaurado con exito" <<std::endl<<std::endl;
         }
-    } else
+    }
+    else
     {
         std::cout<<std::endl<<"No se encontro el profesional "<<std::endl<<std::endl;
     }
@@ -542,23 +621,28 @@ void buscarProfesional()
     std::cin.ignore();
     std::cin.getline(matricula, 50);
 
-    while(!validateInputString(matricula, LONGITUD_MATRICULA)){
+    while(!validateInputString(matricula, LONGITUD_MATRICULA))
+    {
         std::cout << "Ingrese la matricula del profesional que quiere buscar: ";
         std::cin.getline(matricula, 50);
     }
 
-    if(validateCancelValueString(matricula)){
+    if(validateCancelValueString(matricula))
+    {
         std::cout << "Busqueda de profesional cancelada" << std::endl;
         return;
     }
 
 
-    if(existeProfesional(matricula) && estaProfesionalActivo(matricula)){
+    if(existeProfesional(matricula) && estaProfesionalActivo(matricula))
+    {
         int pos = pa.buscar(matricula);
         Profesional p = pa.Leer(pos);
         std::cout << std::endl;
         mostrarProfesional(p);
-    } else {
+    }
+    else
+    {
         std::cout << "El profesional no ha sido encontrado." << std::endl;
     }
 }
@@ -592,12 +676,15 @@ void buscarProfesionalPorEspecialidad()
     system("cls");
     mostrarTodasEspecialidadesActivas();
     std::cout << "Digite 0 para cancelar" << std::endl;
-    do{
+    do
+    {
         std::cout << "Ingrese la especialidad del profesional que quiere buscar: ";
         std::cin >> especialidad;
-    }while(!validateInputInt());
+    }
+    while(!validateInputInt());
 
-    if(validateCancelValueInt(especialidad)){
+    if(validateCancelValueInt(especialidad))
+    {
         return;
     }
 
