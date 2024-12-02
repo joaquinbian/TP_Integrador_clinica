@@ -646,7 +646,7 @@ void informarEspecialidadMasSolicitada()
 
 void informarProfesionalMayoresAtencionesParticulares(){
     ///MAYOR RECAUDACION PARTICULAR
-    int ind=-1, maximo;
+    int ind=-1, maximo = 0;
     ///VECTOR CON TODOS LOS PROFESIONALES
     Profesional *profesionales;
     ProfesionalesArchivo pa;
