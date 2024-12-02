@@ -267,6 +267,7 @@ int main()
                 cout << "2 - MODIFICAR TURNO" << endl;
                 cout << "3 - ELIMINAR TURNO" << endl;
                 cout << "4 - LISTAR TURNOS" << endl;
+                cout << "5 - RESTAURAR TURNOS" << endl;
                 cout << "0 - VOLVER AL MENU PRINCIPAL" << endl << endl;
 
                 opcionTurno = pedirIntValido("Ingrese una opcion: ");
@@ -303,6 +304,14 @@ int main()
                     cout<<"LISTAR TURNOS" <<endl<<endl;
                     cout << "\033[0m";  // Detiene subrayado
                     mostrarTodosTurnosActivos();
+                    system("pause");
+                    break;
+                case 5:
+                    system("cls");
+                    cout << "\033[4m";  // Comienza subrayado
+                    cout<<"RESTAURAR TURNOS" <<endl<<endl;
+                    cout << "\033[0m";  // Detiene subrayado
+                    restaurarTurno();
                     system("pause");
                     break;
                 case 0:
@@ -384,7 +393,7 @@ int main()
                     system("cls");
                     break;
                 default:
-                    cout << "Opci�n no v�lida." << endl;
+                    cout << "Opcion no valida." << endl;
                 }
 
                 if (opcionEspecialidad == 0)

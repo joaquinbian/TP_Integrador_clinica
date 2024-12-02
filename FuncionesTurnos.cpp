@@ -15,7 +15,47 @@ Turno cargarTurno()
 
     do
     {
-        /// Inicio implementaciΓö£Γöé manejo fecha >= Actual
+        /// Inicio implementacion manejo fecha >= Actual
+
+        std::cin.ignore();
+        do
+        {
+            ///Aca, al ingresar dni incorrecto, la segunda vez elimina el primer caracter
+            std::cout << "Ingrese el DNI del paciente: ";
+            std::cin.getline(dniPaciente, LONGITUD_DNI);
+            inputValido  = validateInputString(dniPaciente, LONGITUD_DNI);
+
+            while(!inputValido){
+                std::cout << "Ingrese el DNI del paciente: ";
+                std::cin.getline(dniPaciente, LONGITUD_DNI);
+                inputValido = validateInputString(dniPaciente, LONGITUD_DNI);
+            }
+
+            if(validateCancelValueString(dniPaciente)){
+                return Turno();
+            }
+
+            existeP = existePaciente(dniPaciente);
+            if(!existeP)
+            {
+                std::cout << "No encontramos un paciente con ese DNI " << std::endl;
+            }
+        }
+        while(!existeP);
+
+        
+        do{
+            std::cout << "Ingrese la matricula del profesional: ";
+            std::cin.getline(matricula, LONGITUD_MATRICULA);
+            inputValido = validateInputString(matricula, LONGITUD_MATRICULA);
+
+            if(validateCancelValueString(matricula)){
+                return Turno();
+            }
+
+            existeMatricula = existeProfesional(matricula) && estaProfesionalActivo(matricula);
+
+        }while(!inputValido || !existeMatricula);
 
         do
         {
@@ -51,11 +91,10 @@ Turno cargarTurno()
 
         // Obtener la fecha actual
             if(fechaTurno > obtenerFechaActual() || fechaTurno == obtenerFechaActual()){
-                std::cout << "Fecha vΓö£├¡lida" << std::endl;
                 fechaFutura=true;
 
             } else{
-                std::cout << "La fecha ingresada es anterior a la fecha actual. Por favor ingrese una fecha vΓö£├¡lida." << std::endl;
+                std::cout << "La fecha ingresada es anterior a la fecha actual. Por favor ingrese una fecha valida." << std::endl;
                 fechaFutura=false;
             }
 
@@ -74,53 +113,9 @@ Turno cargarTurno()
         }
         while(horaTurno < 8 || horaTurno > 20);
 
-        do
-        {
-            ///Aca, al ingresar dni incorrecto, la segunda vez elimina el primer caracter
-            std::cin.ignore();
-            std::cout << "1 Ingrese el DNI del paciente: ";
-            std::cin.getline(dniPaciente, LONGITUD_DNI);
-            ///PRUEBA
-            std::cout << "PRUEBA --> DNI del paciente:" << dniPaciente << std::endl;
-            inputValido  = validateInputString(dniPaciente, LONGITUD_DNI);
-
-            while(!inputValido){
-                std::cin.ignore();
-                std::cout << "2 Ingrese el DNI del paciente: ";
-                std::cin.getline(dniPaciente, LONGITUD_DNI);
-                ///PRUEBA
-                std::cout << "PRUEBA --> DNI del paciente:" << dniPaciente << std::endl;
-                inputValido = validateInputString(dniPaciente, LONGITUD_DNI);
-            }
-
-            if(validateCancelValueString(dniPaciente)){
-                return Turno();
-            }
-
-            existeP = existePaciente(dniPaciente);
-            if(!existeP)
-            {
-                std::cout << "No encontramos un paciente con ese DNI " << std::endl;
-            }
-        }
-        while(!existeP);
 
 //        std::cout << "Profesionales de " << buscarEspecialidad(especialidad).getNombreEspecialidad() << std::endl;
 //        buscarProfesionalesPorEspecialidad(especialidad);
-
-        do{
-            std::cin.ignore();
-            std::cout << "Ingrese la matricula del profesional: ";
-            std::cin.getline(matricula, LONGITUD_MATRICULA);
-            inputValido = validateInputString(matricula, LONGITUD_MATRICULA);
-
-            existeMatricula = existeProfesional(matricula);
-
-        if(validateCancelValueString(matricula)){
-        return Turno();
-        }
-
-        }while(!inputValido || !existeMatricula);
 
 
         turno = Turno(fechaTurno, horaTurno, dniPaciente, matricula);
@@ -142,17 +137,48 @@ void buscarTurno()
 {
     char DNI[20];
     Fecha fechaTurno;
-    int horaTurno;
+    int horaTurno, dia, mes, anio;
     TurnosArchivo ta;
     std::cout << "Ingrese DNI del paciente para buscar turno: ";
     std::cin.ignore();
     std::cin.getline(DNI, 20);
 
     std::cout << "Ingrese fecha del turno a buscar: ";
-    std::cin >> fechaTurno;
+    do {
+                dia = pedirDiaFechaCancelable();
 
-    std::cout << "Ingrese hora del turno a buscar: ";
+                if(validateCancelValueInt(dia)){
+                    std::cout << "Busqueda de turno cancelada" << std::endl;
+                    return;
+                }
+
+                mes = pedirMesFechaCancelable();
+
+                if(validateCancelValueInt(mes)){
+                    std::cout << "Busqueda de turno cancelada" << std::endl;
+
+                    return ;
+                }
+
+                anio = pedirAnioFechaCancelable();
+
+                if(validateCancelValueInt(anio)){
+                    std::cout << "Busqueda de turno cancelada" << std::endl;
+
+                    return ;
+                }
+
+                fechaTurno = Fecha(dia, mes, anio);
+                if(!fechaTurno.esValida){
+                    std::cout << "La fecha ingresada es invalida, ingrese otra por favor " << std::endl;
+                }
+    }while(!fechaTurno.esValida);
+
+    do {
+
+    std::cout << "Ingrese hora del turno a buscar (8hs - 20hs): ";
     std::cin >> horaTurno;
+    }while(horaTurno < 8 || horaTurno > 20);
 
     int pos = ta.buscar(DNI, fechaTurno, horaTurno);
     if(pos == -1 )
@@ -161,6 +187,13 @@ void buscarTurno()
         return;
     }
     Turno t = ta.Leer(pos);
+
+    if(t.getEliminado())
+    {
+        std::cout << "El turno no ha sido encontrado." << std::endl;
+        return;
+    }
+
     t.mostrar();
 }
 
@@ -281,7 +314,7 @@ void mostrarTodosTurnosActivos()
 {
     Turno *turnos;
     TurnosArchivo ta;
-    int cantidad = ta.getCantidad(), contNumeracion=0;
+    int cantidad = ta.getCantidad();
     turnos = new Turno [cantidad];
     ta.leerTodos(turnos, cantidad);
 
@@ -314,8 +347,7 @@ void mostrarTodosTurnosActivos()
         if(turnos[k].getEliminado() == false)
 
         {
-            contNumeracion++;
-            std::cout<<"------------------------ "<< "TURNO " << contNumeracion << " -----------------------"<<std::endl;
+            std::cout<<"------------------------ "<< "TURNO " << k + 1 << " -----------------------"<<std::endl;
             turnos[k].mostrar();
 
 
@@ -371,9 +403,11 @@ void eliminarTurno()
     int indEliminar;
 
     do{
-        std::cout << "Ingrese el nro. de turno a eliminar: ";
-        std::cin >> indEliminar;
-        if(validateCancelValueInt(indEliminar)){ return; }
+        indEliminar = pedirIntValido("Ingrese el nro. de turno a eliminar: ");
+        if(validateCancelValueInt(indEliminar)){ 
+            std::cout << "Eliminacion de turno cancelada" << std::endl;
+            return; 
+        }
     }while(turnos[indEliminar-1].getEliminado() || indEliminar<1 || indEliminar>cantidad);
 
     char DNI[20];
@@ -391,7 +425,7 @@ void eliminarTurno()
     bool res = ta.guardar(pos, turno);
 
     if(res){
-        std::cout << std::endl << "Turno eliminado con ├⌐xito" << std::endl;
+        std::cout << std::endl << "Turno eliminado con exito" << std::endl;
     }
 
     delete [] turnos;
@@ -403,12 +437,8 @@ bool validarFechaTurno(Turno t1, Turno t2)
     //if(t1.getFecha() == t2.getFecha() && t1.getHoraTurno() == t2.getHoraTurno()){
     Fecha f1 = t1.getFecha();
     Fecha f2 = t2.getFecha();
-    if(f1.getDia() == f2.getDia() && f1.getMes() == f2.getMes() && f1.getAnio() == f2.getAnio())
-    {
-        if(t1.getHoraTurno() == t2.getHoraTurno())
-        {
-            return true;
-        }
+    if(f1 == f2){
+        return true;
     }
 
     return false;
@@ -425,7 +455,7 @@ bool validarExisteTurno(Turno t)
     ta.leerTodos(turnos, cantidad);
     for(int i = 0; i < cantidad; i++)
     {
-        if(validarFechaTurno(t, turnos[i]))
+        if(validarFechaTurno(t, turnos[i]) && t.getHoraTurno() == turnos[i].getHoraTurno())
         {
             if(strcmp(t.getMatricula(), turnos[i].getMatricula()) == 0)
             {
@@ -482,31 +512,86 @@ void mostrarTodosTurnosEliminados()
 
 void restaurarTurno()
 {
-    Turno turno;
+    Turno *turnos;
     TurnosArchivo ta;
+    int cantidad = ta.getCantidad();
+    bool hayTurnoEliminado = false;
+    turnos = new Turno [cantidad];
+    ta.leerTodos(turnos, cantidad);
 
-    ///
-    mostrarTodosTurnosEliminados();
-    char dni[20];
-    Fecha fechaTurno;
-    int horaTurno;
-    std::cout<<std::endl<<"Ingrese el DNI/paciente del turno a restaurar : ";
-    std::cin.ignore();
-    std::cin.getline(dni, 20);
+    if(cantidad == 0)
+    {
+        std::cout << "No hay turnos asignados por el momento " << std::endl;
+        delete [] turnos;
+        return;
+    }
+    ///Inicio ordenamiento por fecha ascendente
+    for (int i = 0; i < cantidad - 1; i++)
+    {
+        for (int j = 0; j < cantidad - 1; j++)
+        {
+            Fecha fecha1 = turnos[j].getFecha();
+            Fecha fecha2 = turnos[j + 1].getFecha();
+            if (fecha1 > fecha2)
+            {
+                Turno aux = turnos[j];
+                turnos[j] = turnos[j + 1];
+                turnos[j + 1] = aux;
+            }
+        }
+    }
+    ///Final ordenamiento por fecha ascendente
 
-    int pos = ta.buscar(dni, fechaTurno, horaTurno);
-    if(pos != -1)
+    for(int k = 0; k < cantidad; k++)
     {
-        turno = ta.Leer(pos);
-        turno.setEliminado(false);
-        ta.guardar(pos,turno);
-        std::cout << std::endl;
-        std::cout<<"Turno restaurado con ╬ô├¬ΓîÉ╬ô├╢├ë╬ô├▓┬úxito" <<std::endl<<std::endl;
+
+        if(turnos[k].getEliminado())
+        {
+            hayTurnoEliminado = true;
+            std::cout<<"------------------------ "<< "TURNO " << k + 1 << " -----------------------"<<std::endl;
+            turnos[k].mostrar();
+
+
+        }
     }
-    else
+
+    if(!hayTurnoEliminado)
     {
-        std::cout<<std::endl<<"No se pudo restaurar el turno"<<std::endl<<std::endl;
+        std::cout << "No hay turnos eliminados" << std::endl;
+        delete [] turnos;
+        return;
     }
+
+
+    int indRestauar;
+
+    do{
+        indRestauar = pedirIntValido("Ingrese el nro. de turno a restaurar: ");
+        if(validateCancelValueInt(indRestauar)){ 
+            std::cout << "Restauracion de turno cancelada" << std::endl;
+            return; 
+        }
+    }while(turnos[indRestauar-1].getEliminado() == false || indRestauar<1 || indRestauar>cantidad );
+
+    char DNI[20];
+    strncpy(DNI, turnos[indRestauar-1].getDniPaciente(), sizeof(DNI) - 1);
+    DNI[sizeof(DNI) - 1] = '\0';
+    int horaTurno = turnos[indRestauar-1].getHoraTurno();
+    Fecha fechaTurno = turnos[indRestauar-1].getFecha();
+
+    int pos = ta.buscar(DNI, fechaTurno, horaTurno);
+
+    Turno turno = ta.Leer(pos);
+
+    turno.setEliminado(false);
+
+    bool res = ta.guardar(pos, turno);
+
+    if(res){
+        std::cout << std::endl << "Turno restaurado con exito" << std::endl;
+    }
+
+    delete [] turnos;
 }
 
 void informarProfesionalQueMasPacientesAtendio()
