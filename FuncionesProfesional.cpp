@@ -96,7 +96,10 @@ Profesional cargarProfesional()
         return Profesional();
     }
 
+    std::cout << "\n";
     std::cout << "Especialidades: " << std::endl;
+    std::cout << "\n";
+
     mostrarTodasEspecialidadesActivas();
     do{
         std::cout << "Ingrese el codigo de la especialidad ";
@@ -239,8 +242,9 @@ Profesional cargarProfesionalAEditar(char *matriculaAEditar)
         std::cout << "Carga de profesional cancelada " << std::endl;
         return Profesional();
     }
-
+    std::cout << "\n";
     std::cout << "Especialidades: " << std::endl;
+    std::cout << "\n";
     mostrarTodasEspecialidadesActivas();
     do{
         std::cout << "Ingrese el codigo de la especialidad ";
@@ -287,10 +291,6 @@ Profesional cargarProfesionalAEditar(char *matriculaAEditar)
 
     return Profesional(nombre, apellido, telefono, direccion, ciudad, email, matricula, especialidad, valorConsulta, soloParticular);
 }
-
-
-
-
 
 
 void guardarProfesional()
@@ -451,7 +451,7 @@ void editarProfesional()
         return;
     }
 
-    
+
 }
 
 void eliminarProfesional()

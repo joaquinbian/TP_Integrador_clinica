@@ -2,6 +2,7 @@
 #include "FuncionesTurnos.h"
 #include "TurnosArchivo.h"
 #include "funcionesGlobales.h"
+#include "funcionesProfesional.h"
 #include <ctime> ///Para menejar fechas
 
 Turno cargarTurno()
@@ -43,7 +44,14 @@ Turno cargarTurno()
         }
         while(!existeP);
 
-        
+        std::cout << "\n";
+        std::cout << "PROFESIONALES";
+        std::cout << "\n";
+        std::cout << "\n";
+        mostrarTodosProfesionalesActivosResumido();
+        std::cout << "\n";
+
+
         do{
             std::cout << "Ingrese la matricula del profesional: ";
             std::cin.getline(matricula, LONGITUD_MATRICULA);
@@ -116,6 +124,7 @@ Turno cargarTurno()
 
 //        std::cout << "Profesionales de " << buscarEspecialidad(especialidad).getNombreEspecialidad() << std::endl;
 //        buscarProfesionalesPorEspecialidad(especialidad);
+
 
 
         turno = Turno(fechaTurno, horaTurno, dniPaciente, matricula);
@@ -268,6 +277,7 @@ void editarTurno()
 
     int indEditar;
 
+    std::cout << "\n";
     do{
         indEditar = pedirIntValido("Ingrese el nro. de turno a editar: ");
         std::cout << std::endl;
@@ -403,9 +413,9 @@ void eliminarTurno()
 
     do{
         indEliminar = pedirIntValido("Ingrese el nro. de turno a eliminar: ");
-        if(validateCancelValueInt(indEliminar)){ 
+        if(validateCancelValueInt(indEliminar)){
             std::cout << "Eliminacion de turno cancelada" << std::endl;
-            return; 
+            return;
         }
     }while(turnos[indEliminar-1].getEliminado() || indEliminar<1 || indEliminar>cantidad);
 
@@ -566,9 +576,9 @@ void restaurarTurno()
 
     do{
         indRestauar = pedirIntValido("Ingrese el nro. de turno a restaurar: ");
-        if(validateCancelValueInt(indRestauar)){ 
+        if(validateCancelValueInt(indRestauar)){
             std::cout << "Restauracion de turno cancelada" << std::endl;
-            return; 
+            return;
         }
     }while(turnos[indRestauar-1].getEliminado() == false || indRestauar<1 || indRestauar>cantidad );
 
@@ -595,7 +605,7 @@ void restaurarTurno()
 
 void informarProfesionalQueMasPacientesAtendio()
 {
-    ///Profesional que mΓò¼├┤Γö£┬¼╬ô├«├ëΓò¼├┤Γö£ΓòóΓö£├½Γò¼├┤Γö£ΓûôΓö¼├║s pacientes atendiΓò¼├┤Γö£┬¼╬ô├«├ëΓò¼├┤Γö£ΓòóΓö£├½Γò¼├┤Γö£ΓûôΓö¼├║:
+    ///Profesional que mas pacientes atendiio:
     int ind=-1, maximo = 0;
 
     ///Profesionales activos e inactivos
@@ -604,7 +614,7 @@ void informarProfesionalQueMasPacientesAtendio()
     int cantidadProfesionales = pa.getCantidad();
     profesionales = new Profesional[cantidadProfesionales];
     pa.leerTodos(profesionales, cantidadProfesionales);
-    ///Vector acumulador de pacientes atendidos por profesional. Comparte el Γò¼├┤Γö£┬¼╬ô├«├ëΓò¼├┤Γö£ΓòóΓö£├½Γò¼├┤Γö£ΓûôΓö¼├║ndice con el de profesionales
+    ///Vector acumulador de pacientes atendidos por profesional. Comparte el indice con el de profesionales
     int* pacientesAtendidos = new int[cantidadProfesionales] {};
     ///Vector Turnos
     Turno *turnos;

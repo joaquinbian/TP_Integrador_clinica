@@ -6,7 +6,7 @@
 using namespace std;
 
 Turno::Turno(){
-    setDniPaciente(""); 
+    setDniPaciente("");
     setMatricula("");
     setFecha(Fecha());
     setHoraTurno(0);
