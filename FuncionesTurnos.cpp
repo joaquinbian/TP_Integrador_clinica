@@ -269,8 +269,7 @@ void editarTurno()
     int indEditar;
 
     do{
-        std::cout << std::endl << "Ingrese el nro. de turno a editar: ";
-        std::cin >> indEditar;
+        indEditar = pedirIntValido("Ingrese el nro. de turno a editar: ");
         std::cout << std::endl;
         if(validateCancelValueInt(indEditar)){ return; }
     }while(turnos[indEditar-1].getEliminado() || indEditar<1 || indEditar>cantidad);
