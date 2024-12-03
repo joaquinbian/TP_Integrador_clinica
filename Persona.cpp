@@ -3,7 +3,8 @@
 #include<iostream>
 
 using namespace std;
-Persona::Persona(){
+Persona::Persona()
+{
     strcpy(_nombre, "");
     strcpy(_apellido, "");
     strcpy(_telefono, "");
@@ -20,7 +21,7 @@ Persona::Persona(std::string nombre, std::string apellido, std::string telefono,
     setDireccion(direccion);
     setCiudad(ciudad);
     setEmail(email);
-    
+
 
 }
 void Persona::setNombre(std::string nombre)
@@ -45,7 +46,6 @@ void Persona::setCiudad(std::string ciudad)
 }
 void Persona::setEmail(std::string email)
 {
-
     strcpy(_email, email.c_str());
 }
 const char* Persona::getNombre() const

@@ -2,8 +2,10 @@
 #include <cstring>
 #include "Profesional.h"
 #include "Persona.h"
+
 using namespace std;
-Profesional::Profesional():Persona(){
+Profesional::Profesional():Persona()
+{
     strcpy(_matricula, "");
     idEspecialidad = 0;
     _valorConsulta = 0.0;
@@ -36,7 +38,8 @@ void Profesional::setValorConsulta(float valorConsulta)
         _valorConsulta = 0;
     }
 }
-void Profesional::setEliminado(bool estado){
+void Profesional::setEliminado(bool estado)
+{
 
     _eliminado = estado;
 }
@@ -60,7 +63,8 @@ const bool Profesional::getSoloParticular() const
 {
     return _soloParticular;
 }
-const bool Profesional::getEliminado() const {
+const bool Profesional::getEliminado() const
+{
 
     return _eliminado;
 }

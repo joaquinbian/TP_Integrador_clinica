@@ -336,9 +336,6 @@ void editarTurno()
         int horaTurno = turnos[indEditar-1].getHoraTurno();
         Fecha fechaTurno = turnos[indEditar-1].getFecha();
 
-        //std::cout << "PRUEBA --> " << "DNI: " << DNI << ", Fecha: " << fechaTurno.toString() << ", Hora: " << horaTurno << std::endl;
-
-
         int pos = ta.buscar(DNI, fechaTurno, horaTurno);
 
         Turno turno;
@@ -501,7 +498,6 @@ void eliminarTurno()
 }
 bool validarFechaTurno(Turno t1, Turno t2)
 {
-    //if(t1.getFecha() == t2.getFecha() && t1.getHoraTurno() == t2.getHoraTurno()){
     Fecha f1 = t1.getFecha();
     Fecha f2 = t2.getFecha();
     if(f1 == f2)
@@ -962,14 +958,6 @@ void informarProfesionalMayoresAtencionesParticulares()
     }
 
     ///PRUEBA
-    /*     std::cout << "PRUEBA: " << std::endl;
-
-        for(int d = 0; d < cantidadProfesionales; d++)
-        {
-            std::cout << "Profesional: " << std::string(profesionales[d].getApellido()) << ", " << std::string(profesionales[d].getNombre()) <<
-            " / Recaudacion: $" << atencionesParticulares[d] << std::endl;
-
-        }  */
 
     if(maximo < 1)
     {

@@ -4,7 +4,6 @@
 #include "PacientesArchivo.h"
 #include "funcionesGlobales.h"
 
-
 Paciente cargarPaciente()
 {
     char nombre[LONGITUD_NOMBRE], apellido[LONGITUD_APELLIDO], direccion[LONGITUD_DIRECCION], telefono[LONGITUD_TELEFONO], ciudad[LONGITUD_CIUDAD], email[LONGITUD_EMAIL];
@@ -165,7 +164,6 @@ Paciente cargarPaciente()
 
     return Paciente( nombre,  apellido, telefono,  direccion,  ciudad,  email, fechaNacimiento,  obraSocial,  dni);
 }
-
 Paciente cargarPacienteAEditar(char* Dni)
 {
     char nombre[LONGITUD_NOMBRE], apellido[LONGITUD_APELLIDO], direccion[LONGITUD_DIRECCION], telefono[LONGITUD_TELEFONO], ciudad[LONGITUD_CIUDAD], email[LONGITUD_EMAIL];
@@ -486,7 +484,6 @@ void editarPaciente()
         return;
     }
 }
-
 void eliminarPaciente()
 {
     Paciente paciente;
@@ -566,8 +563,6 @@ void restaurarPaciente()
         std::cout<<std::endl<<"El paciente que quiere restaurar no fue encontrado"<<std::endl<<std::endl;
     }
 }
-
-
 void buscarPaciente()
 {
     char DNI[LONGITUD_DNI];

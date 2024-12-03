@@ -3,7 +3,6 @@
 #include "EspecialidadesArchivo.h"
 #include "funcionesGlobales.h"
 
-
 bool existeEspecialidad(char *nombreEspecialidad)
 {
     EspecialidadesArchivo ea;
@@ -44,7 +43,6 @@ bool existeEspecialidad(char *nombreEspecialidad, int codigo)
 
     return false;
 }
-
 Especialidad cargarEspecialidad()
 {
     char nombreEspecialidad[LONGITUD_ESPECIALIDAD];
@@ -80,7 +78,6 @@ Especialidad cargarEspecialidad()
 
     return Especialidad(nombreEspecialidad,id ,false);
 }
-
 void guardarEspecialidad()
 {
     Especialidad especialidad;
@@ -143,7 +140,7 @@ void editarEspecialidad()
 
     std::cin.ignore();
 
-    
+
 
     if(validateCancelValueInt(id)){
         std::cout << "Edicion de especialidad cancelada" << std::endl;
@@ -166,7 +163,7 @@ void editarEspecialidad()
             std::cout<<"La especialidad ya existe " <<std::endl;
             return;
         }
-        
+
         int pos = ea.buscar(id);
         if(pos != -1)
         {
@@ -181,7 +178,6 @@ void editarEspecialidad()
         std::cout<<"No se encontro la especialidad "<<std::endl;
     }
 }
-
 void eliminarEspecialidad()
 {
     Especialidad especialidad;
@@ -194,7 +190,7 @@ void eliminarEspecialidad()
         std::cout << "Ingrese el codigo de la especialidad que desea eliminar: ";
         std::cin>>codigo;
         existeEsp = existeEspecialidadActiva(codigo) || validateCancelValueInt(codigo); //si ingresa 0, dejamos que avance para que cancele
-       
+
     }while(!validateInputInt());
 
     if(validateCancelValueInt(codigo)){

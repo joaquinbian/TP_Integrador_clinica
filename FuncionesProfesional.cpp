@@ -179,8 +179,6 @@ Profesional cargarProfesional()
 
     return Profesional(nombre, apellido, telefono, direccion, ciudad, email, matricula, especialidad, valorConsulta, soloParticular);
 }
-
-
 Profesional cargarProfesionalAEditar(char *matriculaAEditar)
 {
     char nombre[LONGITUD_NOMBRE], apellido[LONGITUD_APELLIDO], direccion[LONGITUD_DIRECCION], telefono[LONGITUD_TELEFONO], ciudad[LONGITUD_CIUDAD], email[LONGITUD_EMAIL], matricula[LONGITUD_MATRICULA], soloParticularChar;
@@ -355,8 +353,6 @@ Profesional cargarProfesionalAEditar(char *matriculaAEditar)
 
     return Profesional(nombre, apellido, telefono, direccion, ciudad, email, matricula, especialidad, valorConsulta, soloParticular);
 }
-
-
 void guardarProfesional()
 {
     Profesional profesional;
@@ -385,10 +381,6 @@ void guardarProfesional()
         system("cls");
     }
 }
-
-
-
-
 void mostrarProfesionalResumido(Profesional profesional)
 {
     std::cout<<"Nombre : " <<profesional.getNombre() <<std::endl;
@@ -397,8 +389,6 @@ void mostrarProfesionalResumido(Profesional profesional)
     std::cout<<"Especialidad : " << buscarEspecialidad(profesional.getEspecialidad()).getNombreEspecialidad() <<std::endl;
     std::cout<<"-----------------------------------------------"<<std::endl;
 }
-
-
 void mostrarTodosProfesionalesActivos()
 {
     Profesional *profesionales;
@@ -432,7 +422,6 @@ void mostrarTodosProfesionalesActivos()
 
     delete[] profesionales;
 }
-
 void mostrarTodosProfesionalesActivosResumido()
 {
     Profesional *profesionales;
@@ -450,7 +439,6 @@ void mostrarTodosProfesionalesActivosResumido()
     }
     delete [] profesionales;
 }
-
 void mostrarTodosProfesionalesEliminados()
 {
     Profesional *profesionales;
@@ -524,7 +512,6 @@ void editarProfesional()
 
 
 }
-
 void eliminarProfesional()
 {
     Profesional profesional;
@@ -567,8 +554,6 @@ void eliminarProfesional()
         std::cout<<std::endl<<"No se encontro el profesional "<<std::endl<<std::endl;
     }
 }
-
-
 void restaurarProfesional()
 {
     Profesional profesional;
@@ -611,7 +596,6 @@ void restaurarProfesional()
         std::cout<<std::endl<<"No se encontro el profesional "<<std::endl<<std::endl;
     }
 }
-
 void buscarProfesional()
 {
     char matricula[50];
@@ -646,7 +630,6 @@ void buscarProfesional()
         std::cout << "El profesional no ha sido encontrado." << std::endl;
     }
 }
-
 bool existeProfesional(char *matricula)
 {
     ProfesionalesArchivo pa;

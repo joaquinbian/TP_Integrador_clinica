@@ -6,13 +6,14 @@
 
 using namespace std;
 
-Fecha::Fecha(){
+Fecha::Fecha()
+{
     this->setFechaDefault();
     this->esValida = true;
 }
+Fecha::Fecha(int dia, int mes, int anio)
+{
 
-Fecha::Fecha(int dia, int mes, int anio){
-    
     if(esBisiesto(anio)){
         _meses[1] = 29;
     }
@@ -28,8 +29,7 @@ Fecha::Fecha(int dia, int mes, int anio){
     }
 }
 
-
-//GETTERS
+///GETTERS
 int Fecha::getDia()
 {
     return _dia;
@@ -44,9 +44,9 @@ int Fecha::getAnio()
 
 }
 
-
-//SETTERS
-void Fecha::setDia(int dia){
+///SETTERS
+void Fecha::setDia(int dia)
+{
 
     if(this->esValidoDia(dia, this->_mes)){
         this->_dia = dia;
@@ -55,8 +55,8 @@ void Fecha::setDia(int dia){
         std::cout << "El dia no es valido, se seteo un dia por defecto" << std::endl;
     }
 }
-
-void Fecha::setMes(int mes){
+void Fecha::setMes(int mes)
+{
     if(this->esValidoMes(mes)){
         this->_mes = mes;
     } else {
@@ -64,8 +64,8 @@ void Fecha::setMes(int mes){
         std::cout << "El mes no es valido, se seteo un mes por defecto" << std::endl;
     }
 }
-
-void Fecha::setAnio(int anio){
+void Fecha::setAnio(int anio)
+{
 
     if(anio > 0){
         this->_anio = anio;
@@ -77,23 +77,23 @@ void Fecha::setAnio(int anio){
         std::cout << "El anio no es valido, se seteo un anio por defecto" << std::endl;
     }
 }
-void Fecha::setFechaDefault(){
+void Fecha::setFechaDefault()
+{
     this->_dia = 1;
     this->_mes = 1;
     this->_anio = 2024;
 }
 
 
-//metodos
-
-
-string Fecha::toString(){
+///METODOS
+string Fecha::toString()
+{
     return to_string(this->_dia) + "/" + to_string(this->_mes) + "/" + to_string(this->_anio);
 }
 
 ///SOBRECARGA CIN
-std::istream& operator>>(std::istream& in, Fecha& fecha) {
-
+std::istream& operator>>(std::istream& in, Fecha& fecha)
+{
     bool fechaValida=true;
 
     do{
@@ -121,21 +121,29 @@ std::istream& operator>>(std::istream& in, Fecha& fecha) {
     return in;
 }
 
-bool Fecha::operator==(Fecha f1)  {
+bool Fecha::operator==(Fecha f1)
+{
     if(this->getDia() == f1.getDia() && this->getMes() == f1.getMes() && this->getAnio() == f1.getAnio()){
             return true;
     }
     return false;
 }
-
-bool Fecha::operator>(Fecha f1){
+bool Fecha::operator>(Fecha f1)
+{
     if(this->getAnio() > f1.getAnio()){
+
         return true;
+
     } else if(this->getAnio() == f1.getAnio()){
+
         if(this->getMes() > f1.getMes()){
+
             return true;
+
         } else if(this->getMes() == f1.getMes()){
+
             if(this->getDia() > f1.getDia()){
+
                 return true;
             }
         }
@@ -143,15 +151,15 @@ bool Fecha::operator>(Fecha f1){
     return false;
 }
 
-
-
 ///METODOS PRIVADOS
 
 bool Fecha::esFechaValida(int dia, int mes, int anio){
+
     return this->esValidoDia(dia, mes) && this->esValidoMes(mes);
 }
 
-bool Fecha::esValidoDia(int dia, int mes){
+bool Fecha::esValidoDia(int dia, int mes)
+{
     if(_meses[mes - 1] < dia){
         return false;
     } else if(dia < 1 || dia > 31){
@@ -160,15 +168,14 @@ bool Fecha::esValidoDia(int dia, int mes){
 
     return true;
 }
-
-bool Fecha::esValidoMes(int mes){
+bool Fecha::esValidoMes(int mes)
+{
     if(mes < 1 || mes > 12 ){
         return false;
-    } 
+    }
 
     return true;
 }
-
 bool Fecha::validar()
 {
     if(!esValidoDia() || !esValidoMes() || !esValidoAnio())
@@ -177,7 +184,6 @@ bool Fecha::validar()
     }
     return true;
 }
-
 bool Fecha::esValidoDia()
 {
 
@@ -194,7 +200,6 @@ bool Fecha::esValidoMes()
 {
     return _mes >= 1 && _mes <= 12;
 }
-
 bool Fecha::esValidoAnio()
 {
     return _anio > 0;

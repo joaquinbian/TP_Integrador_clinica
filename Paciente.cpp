@@ -7,12 +7,12 @@
 
 using namespace std;
 
-Paciente::Paciente():Persona(){
+Paciente::Paciente():Persona()
+{
     strcpy(_dni,"");
     strcpy(_obraSocial,"");
     _fechaNacimiento = Fecha();
 }
-
 Paciente::Paciente(string nombre, string apellido, string telefono, string direccion, string ciudad, string email, Fecha fechaNacimiento, std::string obraSocial, std::string dni, bool eliminado):Persona(nombre, apellido, telefono, direccion, ciudad, email)
 {
     setFechaNacimiento(fechaNacimiento);
@@ -34,7 +34,8 @@ void Paciente::setDni(string Dni)
     strncpy(_dni, Dni.c_str(), sizeof(_dni) - 1);
     _dni[sizeof(_dni) - 1] = '\0';
 }
-void Paciente::setEliminado(bool estado){
+void Paciente::setEliminado(bool estado)
+{
 
     _eliminado = estado;
 }
@@ -50,12 +51,12 @@ const char* Paciente::getObraSocial()const
 {
     return _obraSocial;
 }
-const bool Paciente::getEliminado() const{
+const bool Paciente::getEliminado() const
+{
     return _eliminado;
-
 }
-
-int Paciente::getEdad(){
+int Paciente::getEdad()
+{
     /// Obtener la fecha actual
     std::time_t tiempoActual = std::time(0);  ///Obtiene el tiempo actual
     std::tm* now = std::localtime(&tiempoActual); ///Convierte el tiempo actual a una estructura time

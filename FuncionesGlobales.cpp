@@ -10,8 +10,8 @@
 bool sonStringsIguales(char* str1, char* str2){
     return strcmp(str1, str2) == 0;
 }
-
-char* trim(char* s) {
+char* trim(char* s)
+{
     int len = strlen(s);
     char* d = new char[len + 1];
     if(d == NULL){
@@ -31,9 +31,8 @@ char* trim(char* s) {
 
     return d;
 }
-
-
-bool estaStringVacio(char *str) {
+bool estaStringVacio(char *str)
+{
    char *sinEspacios = trim(str);
     bool isEmpty = strlen(sinEspacios) == 0;
 
@@ -41,9 +40,8 @@ bool estaStringVacio(char *str) {
 
     return isEmpty;
 }
-
-void pedirStringBucle(char* variable, std::string mensaje, int longitud){
-    //std::cin.ignore();
+void pedirStringBucle(char* variable, std::string mensaje, int longitud)
+{
     do {
         std::cout << mensaje;
         std::cin.getline(variable, longitud);
@@ -51,8 +49,8 @@ void pedirStringBucle(char* variable, std::string mensaje, int longitud){
     }while(estaStringVacio(variable) || !validateInputString(variable, longitud));
 
 }
-
-bool validarInput(){
+bool validarInput()
+{
     bool valid = true;
     if(std::cin.fail()){
         valid = false;
@@ -61,9 +59,8 @@ bool validarInput(){
     }
     return valid;
 }
-
-
-bool validateInputInt(){
+bool validateInputInt()
+{
     bool valid = true;
 
     valid = validarInput();
@@ -76,8 +73,8 @@ bool validateInputInt(){
 
     return valid;
 }
-
-bool validateInputString(char* str, int longitud){
+bool validateInputString(char* str, int longitud)
+{
     bool valid = true;
     valid = validarInput();
 
@@ -94,26 +91,28 @@ bool validateInputString(char* str, int longitud){
 
     return valid;
 }
-
-bool validateCancelValueString(std::string str){
+bool validateCancelValueString(std::string str)
+{
     return strcmp(str.c_str(), "0") == 0;
 }
-
-bool validateCancelValueChar(char c){
+bool validateCancelValueChar(char c)
+{
     return c == '0';
 }
-
-bool validateCancelValueInt(int n){
+bool validateCancelValueInt(int n)
+{
     return n == 0;
 }
-bool validateCancelValueFloat(float num){
+bool validateCancelValueFloat(float num)
+{
     return num == 0.0;
 }
-bool validateCancelValueFecha(Fecha fecha){
+bool validateCancelValueFecha(Fecha fecha)
+{
     return fecha.validar();
 }
-
-int pedirIntValido(std::string msj){
+int pedirIntValido(std::string msj)
+{
     int num;
     do {
         std::cout << msj;
@@ -122,8 +121,8 @@ int pedirIntValido(std::string msj){
 
     return num;
 }
-
-int pedirDiaFechaCancelable(){
+int pedirDiaFechaCancelable()
+{
     int dia;
     do {
         do {
@@ -137,8 +136,8 @@ int pedirDiaFechaCancelable(){
 
     return dia;
 }
-
-int pedirMesFechaCancelable(){
+int pedirMesFechaCancelable()
+{
     int mes;
     do {
         do{
@@ -152,8 +151,8 @@ int pedirMesFechaCancelable(){
 
     return mes;
 }
-
-int pedirAnioFechaCancelable(){
+int pedirAnioFechaCancelable()
+{
     int anio;
     do {
         do{
@@ -168,10 +167,8 @@ int pedirAnioFechaCancelable(){
 
     return anio;
 }
-
 bool existePaciente(char* dni)
 {
-
     PacientesArchivo pa;
 
     int pos = pa.buscar(dni);
@@ -181,8 +178,8 @@ bool existePaciente(char* dni)
     }
     return false;
 }
-
-bool estaPacienteActivo(char *dni){
+bool estaPacienteActivo(char *dni)
+{
     PacientesArchivo pa;
 
     int pos = pa.buscar(dni);
@@ -193,9 +190,8 @@ bool estaPacienteActivo(char *dni){
     }
     return false;
 }
-
-
-bool estaProfesionalActivo(char *matricula){
+bool estaProfesionalActivo(char *matricula)
+{
     ProfesionalesArchivo pa;
 
     int pos = pa.buscar(matricula);
@@ -206,7 +202,6 @@ bool estaProfesionalActivo(char *matricula){
     }
     return false;
 }
-
 bool existeEspecialidad(int Id)
 {
     EspecialidadesArchivo ea;
@@ -218,7 +213,6 @@ bool existeEspecialidad(int Id)
     }
     return false;
 }
-
 bool existeEspecialidadActiva(int Id)
 {
     Especialidad *especialidades = nullptr;
@@ -242,7 +236,6 @@ bool existeEspecialidadActiva(int Id)
 
     return false;
 }
-
 void buscarProfesionalesPorEspecialidad(int idEspecialidad)
 {
     Profesional *profesional;
@@ -334,7 +327,6 @@ Especialidad buscarEspecialidad(int id)
 
     return espFile.buscarEspecalidad(id);
 }
-
 Fecha obtenerFechaActual()
 {
     time_t now = time(0);

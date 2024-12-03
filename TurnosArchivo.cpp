@@ -7,7 +7,6 @@ TurnosArchivo::TurnosArchivo()
 {
     _filename = "turnos.dat";
 }
-
 bool TurnosArchivo::Guardar(const Turno &registro)
 {
     bool resultado;
@@ -21,7 +20,6 @@ bool TurnosArchivo::Guardar(const Turno &registro)
     fclose(pFile);
     return resultado;
 }
-
 bool TurnosArchivo::leerTodos(Turno registros[], int cantidad)
 {
     bool resultado;
@@ -35,7 +33,6 @@ bool TurnosArchivo::leerTodos(Turno registros[], int cantidad)
     fclose(pFile);
     return resultado;
 }
-
 bool TurnosArchivo::guardar(int pos, const Turno &registro)
 {
     bool resultado;
@@ -50,7 +47,6 @@ bool TurnosArchivo::guardar(int pos, const Turno &registro)
     fclose(pFile);
     return resultado;
 }
-
 int TurnosArchivo::getCantidad()
 {
     int total;
@@ -67,7 +63,6 @@ int TurnosArchivo::getCantidad()
     return total / sizeof(Turno);
 
 }
-
 int TurnosArchivo::buscar(char* dni, Fecha fechaTurno, int horaTurno)
 {
     Turno registro;
@@ -90,7 +85,6 @@ int TurnosArchivo::buscar(char* dni, Fecha fechaTurno, int horaTurno)
 
     return -1;
 }
-
 Turno TurnosArchivo::Leer(int pos)
 {
     Turno registro;

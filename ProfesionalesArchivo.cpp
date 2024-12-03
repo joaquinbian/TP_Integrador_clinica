@@ -62,8 +62,6 @@ Profesional ProfesionalesArchivo::Leer(int pos)
     fclose(pFile);
     return registro;
 }
-
-
 bool ProfesionalesArchivo::guardar(int pos, const Profesional &registro)
 {
     bool resultado;
@@ -78,8 +76,6 @@ bool ProfesionalesArchivo::guardar(int pos, const Profesional &registro)
     fclose(pFile);
     return resultado;
 }
-
-
 int ProfesionalesArchivo::buscar(char* matricula)
 {
     Profesional registro;
